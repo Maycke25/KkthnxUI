@@ -122,7 +122,7 @@ end
 --[[Frames]]--
 local KkthnxUIAFKPanel = CreateFrame("Frame", "KkthnxUIAFKPanel", nil)
 KkthnxUIAFKPanel:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 0)
-KkthnxUIAFKPanel:SetSize((Kscreenhidth - 554), 80)
+KkthnxUIAFKPanel:SetSize((Kscreenwidth - 554), 80)
 KkthnxUIAFKPanel:SetBackdrop(backdrop)
 KkthnxUIAFKPanel:SetBackdropColor(0, 0, 0, 0.8)
 KkthnxUIAFKPanel:SetFrameStrata("FULLSCREEN")
