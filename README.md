@@ -15,7 +15,9 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever y
 * Enjoy the UI and be happy.     
 
 ### License 
-* All Rights Reserved   
+* All Rights Reserved © Kkthnx.
+* You have permission to copy all code from the lua / xml files.   
+* **Restriction:** Do not touch or use any of the tga files in this UI in any other way!   
 
 ### Picture of the UI in-game   
 
