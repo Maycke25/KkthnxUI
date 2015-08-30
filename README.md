@@ -2,6 +2,9 @@
 
 Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever you have your World of Warcraft installed. You get the idea.   
 
+### Donations   
+* Donations are welcome but not required to use the UI at all. Donations help me further my development and fuel my gaming! Donations will never be a requirement! If you would like to donate, you can do so here [Donate to KkthnxUI](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XC5463FDLTKSE&lc=US&item_name=KkthnxUI&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)   
+
 ### Commands   
 * Once in-game type **/installui** this will install all cvars and the chat.   
 * Once the UI reloads off the install, you can type **/settings** or **/settings all** if your prefer all the settings for addon profiles.   
