@@ -4,7 +4,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever y
 
 ### Commands   
 * Once in-game type **/installui** this will install all cvars and the chat.   
-* Once the UI reloads off the install, you can type **/settings** or **/settings** all if your prefer all the settings for addon profiles.   
+* Once the UI reloads off the install, you can type **/settings** or **/settings all** if your prefer all the settings for addon profiles.   
 
 ### Supported Addons   
 * [Skada](http://www.curse.com/addons/wow/skada), [Bartender4](http://www.curse.com/addons/wow/Bartender4), [Masque](http://www.curse.com/addons/wow/Masque), [BigWigs](http://www.curse.com/addons/wow/big-wigs), [WeakAuras 2](http://www.curse.com/addons/wow/weakauras-2)(Frost Mage), [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text)!   
