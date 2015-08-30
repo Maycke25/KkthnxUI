@@ -1,0 +1,9 @@
+## Interface: 60200
+## Name: KkthnxUI_Fonts
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Fonts|r 
+## Notes: Fonts Replacement for |cff1784d1KkthnxUI|r
+## Author: Josh Russell
+## Version: 1.0
+## Dependencies: KkthnxUI, KkthnxUI_Media
+
+Core.lua

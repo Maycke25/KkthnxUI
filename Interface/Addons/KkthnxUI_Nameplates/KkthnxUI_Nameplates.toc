@@ -1,0 +1,14 @@
+## Interface: 60200
+## Name: KkthnxUI_Nameplates
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Nameplates|r 
+## Notes: Modified Standard Nameplates
+## Author: Kkthnx
+## Version: 1.0
+## Dependencies: KkthnxUI
+
+Core\Core.xml
+Core\StatusBar.xml
+Core\SmoothBar.lua
+KkthnxUI_Nameplates.xml
+
+Config.lua

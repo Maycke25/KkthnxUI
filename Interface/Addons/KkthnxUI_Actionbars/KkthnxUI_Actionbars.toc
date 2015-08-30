@@ -1,0 +1,31 @@
+## Interface: 60200
+## Name: KkthnxUI_ActionBars
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200ActionBars|r
+## Notes: Modified Standard Actionbars
+## Author: Kkthnx
+## Version: 1.0
+## Dependencies: KkthnxUI
+
+config.lua
+config_custom.lua
+
+modules\core.lua
+modules\cooldowns.lua
+modules\bindings.lua
+modules\bottomLeft.lua
+modules\bottomRight.lua
+modules\left.lua
+modules\right.lua
+modules\skins.lua
+modules\expbar.lua
+modules\hotkey.lua
+modules\petbar.lua
+modules\possessbar.lua
+modules\repbar.lua
+modules\stancebar.lua
+modules\mouseover.lua
+modules\slash.lua
+modules\picomenu.lua
+
+modules\short\short.lua
+modules\short\extras.lua

@@ -1,0 +1,36 @@
+<Ui>
+
+	<Include file="StatusBar.lua"/>
+	<!-- Animated StatusBars -->
+	<StatusBar name="KkthnxUI_StatusBarTemplate" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\AddOns\KkthnxUI_Media\Media\Textures\StatusBar_Background" />
+			</Layer>
+		</Layers>
+		<BarTexture file="Interface\AddOns\KkthnxUI_Media\Media\Textures\KkthnxTex" />
+		<BarColor r="0.65" g="0.65" b="0.65" />
+	</StatusBar>
+
+	<StatusBar name="KkthnxUI_AnimatedStatusBarTemplate" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\AddOns\KkthnxUI_Media\Media\Textures\StatusBar_Background" />
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture parentKey="Fill" setAllPoints="true" file="Interface\AddOns\KkthnxUI_Media\Media\Textures\StatusBar_Animated_Fluid" />
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad function="KkthnxUI_AnimatedStatusBar_OnLoad" />
+		</Scripts>
+		<BarTexture />
+	</StatusBar>
+	
+	<Frame name="KkthnxUI_AnimatedStatusBarFrame">
+		<Scripts>
+			<OnUpdate function="KkthnxUI_AnimatedStatusBarFrame_OnUpdate" />
+		</Scripts>
+	</Frame>
+	
+</Ui>

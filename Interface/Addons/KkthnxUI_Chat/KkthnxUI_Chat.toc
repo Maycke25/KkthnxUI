@@ -1,0 +1,18 @@
+## Interface: 60200
+## Name: KkthnxUI_Chat
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Chat|r 
+## Notes: Modified Standard Chat
+## Author: Kkthnx
+## Version: 1.0
+## Dependencies: KkthnxUI
+
+Config.lua
+
+Core.lua
+ChatTabs.lua
+ChannelReplace.lua
+Bubbles.lua
+SpamFilter.lua
+CopyChat.lua
+CopyUrl.lua
+MouseScroll.lua

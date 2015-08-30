@@ -1,0 +1,16 @@
+## Interface: 60200
+## Name: KkthnxUI_Media
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Media|r 
+## Notes: Shared Media for |cFFFF7D0AKkthnx's|r |cFFFEB200UI|r
+## Author: Josh Russell
+## Version: 1.0
+## Dependencies: KkthnxUI
+## OptionalDeps: Ace3, LibSharedMedia-3.0
+
+### Libraries ###
+Libs\LibStub.lua
+Libs\CallbackHandler-1.0.lua
+Embeds.xml
+
+### Core ###
+Media\Media.lua

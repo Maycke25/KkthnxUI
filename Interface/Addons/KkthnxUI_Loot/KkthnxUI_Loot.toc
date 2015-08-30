@@ -1,0 +1,16 @@
+## Interface: 60200
+## Name: KkthnxUI_Loot
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Loot|r
+## Notes: Modified Standard Loot Frames + Group Loot
+## Author: Kkthnx
+## Version: 1.0
+## Dependencies: KkthnxUI
+## SavedVariables: LootDB
+
+config.lua
+
+border.lua
+core.lua
+extended.lua
+locale.lua
+lootgroup.lua

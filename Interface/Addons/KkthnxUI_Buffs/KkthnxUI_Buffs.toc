@@ -1,0 +1,10 @@
+## Interface: 60200
+## Name: KkthnxUI_Buffs
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Buffs|r 
+## Notes: Modified Standard Buffs
+## Author: Kkthnx
+## Version: 1.0
+## Dependencies: KkthnxUI
+
+config.lua
+core.lua

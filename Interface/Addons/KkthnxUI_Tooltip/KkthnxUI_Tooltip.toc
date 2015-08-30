@@ -1,0 +1,14 @@
+## Interface: 60200
+## Name: KkthnxUI_Tooltip
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Tooltip|r 
+## Notes: Modified Standard Tooltip
+## Author: Kkthnx
+## Version: 1.0
+## Dependencies: KkthnxUI
+
+config.lua
+
+core.lua
+fade.lua
+itemicons.lua
+health.lua

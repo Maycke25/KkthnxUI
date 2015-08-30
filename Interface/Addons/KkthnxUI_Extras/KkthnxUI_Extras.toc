@@ -1,0 +1,10 @@
+## Interface: 60200
+## Name: KkthnxUI_Extras
+## Title: |cFF4488FFKkthnx's|r |cFFFFB200Extras|r 
+## Notes: Extra modules for |cFF4488FFKkthnxUI|r
+## Author: Josh Russell
+## Version: 1.0
+## Dependencies: KkthnxUI, KkthnxUI_Media
+
+Embeds.xml
+Bags.lua

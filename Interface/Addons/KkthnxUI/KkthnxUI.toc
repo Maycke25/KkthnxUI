@@ -1,0 +1,8 @@
+## Interface: 60200
+## Name: KkthnxUI
+## Title: |cFF4488FFKkthnx's|r |cFFFEB200UI|r |cffffffff(Core)|r |cFF4488FF(WoW 6.2.0)|r
+## Notes: Highly Customized Blizzard UserInterface
+## Author: Josh Russell
+## Version: 1.0.Release-r3
+
+KkthnxUI.xml
