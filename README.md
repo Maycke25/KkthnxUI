@@ -3,8 +3,8 @@
 Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever you have your World of Warcraft installed. You get the idea.   
 
 ### Commands   
-* Once in-game type /installui this will install all cvars and the chat.   
-* Once the UI reloads off the install, you can type /settings or /settings all if your prefer all the settings for addon profiles.   
+* Once in-game type **/installui** this will install all cvars and the chat.   
+* Once the UI reloads off the install, you can type **/settings** or **/settings** all if your prefer all the settings for addon profiles.   
 
 ### Warning   
 * I am not responsible if you break your old UI due to putting mine on!   
