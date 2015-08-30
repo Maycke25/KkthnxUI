@@ -1,41 +1,12 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="Core\Constants.lua"/>
 	<Script file="Core\Functions.lua"/>
+	<Script file="Core\Kill.lua"/>
 	<Script file="Core\Commands.lua"/>
 
 	<Script file="Locales\English.lua"/>
 	
-	<Script file="Config.lua"/>
 	<Script file="Install.lua"/>
-	
-	<Script file="Modules\Announcements\Interrupts.lua"/>
-	<Script file="Modules\Announcements\SaySapped.lua"/>
-	
-	<Script file="Modules\Automation\AutoInvite.lua"/>
-	<Script file="Modules\Automation\AutoRelease.lua"/>
-	<Script file="Modules\Automation\DeclineDuel.lua"/>
-	
-	<Script file="Modules\Blizzard\Achievements.lua"/>
-	<Script file="Modules\Blizzard\Altpowerbar.lua"/>
-	<Script file="Modules\Blizzard\CaptureBar.lua"/>
-	<Script file="Modules\Blizzard\Durability.lua"/>
-	<Script file="Modules\Blizzard\FriendList.lua"/>
-	<Script file="Modules\Blizzard\MoveBlizzFrames.lua"/>
-	
-	<Script file="Modules\Misc\AlreadyKnown.lua"/>
-	<Script file="Modules\Misc\Mail.lua"/>
-	<Script file="Modules\Misc\Merchant.lua"/>
-	<Script file="Modules\Misc\Misc.lua"/>
-	<Script file="Modules\Misc\Mounts.lua"/>
-	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
-	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
-	<Script file="Modules\Misc\HatTrick.lua"/>
-	<Script file="Modules\Misc\ProfessionTabs.lua"/>
-	<Script file="Modules\Misc\PaperdollStats.lua"/>
-	
-	<Script file="Modules\Quests\AutoCollapse.lua"/>
-	<Script file="Modules\Quests\ObjectiveTracker.lua"/>
-	<Script file="Modules\Quests\WowheadLink.lua"/>
 	
 	<Script file="Core\Temp.lua"/>
 	<Script file="Core\WTF.lua"/>
