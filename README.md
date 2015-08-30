@@ -14,7 +14,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever y
 * if you find a bug, then properly make a bug [report](https://github.com/Kkthnx/KkthnxUI/issues/new) Do not be an idiot and spam me...   
 * Enjoy the UI and be happy.     
 
-### License: 
+### License 
 * All Rights Reserved   
 
 ### Picture of the UI in-game   
