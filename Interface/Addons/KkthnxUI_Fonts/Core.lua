@@ -10,7 +10,7 @@ end
 
 KkthnxUIFonts:RegisterEvent("ADDON_LOADED")
 KkthnxUIFonts:SetScript("OnEvent", function(self, event, addon)
-	if addon ~= "KkthnxUI" then return end
+	if addon ~= "KkthnxUI_Fonts" then return end
 
 	local NORMAL = [=[Interface\AddOns\KkthnxUI_Media\Media\Fonts\Normal.ttf]=]
 	local COMBAT = [=[Interface\AddOns\KkthnxUI_Media\Media\Fonts\Damage.ttf]=]
