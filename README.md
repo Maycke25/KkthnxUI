@@ -31,4 +31,6 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever y
 
 ### Picture of the UI in-game   
 
-![wowscrnshot_082915_020833](https://cloud.githubusercontent.com/assets/1692977/9566518/39e54c60-4ed6-11e5-980f-920990b90471.jpg)
+![wowscrnshot_082915_020833](https://cloud.githubusercontent.com/assets/1692977/9566518/39e54c60-4ed6-11e5-980f-920990b90471.jpg)   
+![wowscrnshot_083015_141346](https://cloud.githubusercontent.com/assets/1692977/9568824/454efad0-4f24-11e5-9547-dab47b764cb5.jpg)
+
