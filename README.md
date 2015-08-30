@@ -10,7 +10,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever y
 * [Skada](http://www.curse.com/addons/wow/skada), [Bartender4](http://www.curse.com/addons/wow/Bartender4), [Masque](http://www.curse.com/addons/wow/Masque), [BigWigs](http://www.curse.com/addons/wow/big-wigs), [WeakAuras 2](http://www.curse.com/addons/wow/weakauras-2)(Frost Mage), [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text)!   
 
 ### Suggested Addons   
-* [Skada](http://www.curse.com/addons/wow/skada), [Masque](http://www.curse.com/addons/wow/Masque), [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text), Skada Chat Frame Integrator, [BigWigs](http://www.curse.com/addons/wow/big-wigs), [Bagnon](http://www.curse.com/addons/wow/bagnon), [Bagnon Facade](http://www.curse.com/addons/wow/bagnon-facade)!   
+* [Skada](http://www.curse.com/addons/wow/skada), [Masque](http://www.curse.com/addons/wow/Masque), [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text), [Skada Chat Frame Integrator](http://www.wowinterface.com/downloads/info23287-SkadaChatFrameIntegrator.html), [BigWigs](http://www.curse.com/addons/wow/big-wigs), [Bagnon](http://www.curse.com/addons/wow/bagnon), [Bagnon Facade](http://www.curse.com/addons/wow/bagnon-facade)!   
 
 ### Warning   
 * I am not responsible if you break your old UI due to putting mine on!   
