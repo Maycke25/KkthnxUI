@@ -8,10 +8,10 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or whereever y
 
 ### Warning   
 * I am not responsible if you break your old UI due to putting mine on!   
-* If you do not like something about my UI... Well fuck off.   
+* If you do not like something about my UI... [Well fuck off](http://puu.sh/1AJEA).   
 * Most addons have a config.lua file. Open that with a program like notepad++ and edit what you want!   
-* I took time out of my life ot make this, take time out of your to say thank you!   
-* if you find a bug, then properly make a bug report! Do not be an idiot and spam me...   
+* I took time out of my life to make this, take time out of your to say thank you!   
+* if you find a bug, then properly make a bug [report](https://github.com/Kkthnx/KkthnxUI/issues/new) Do not be an idiot and spam me...   
 * Enjoy the UI and be happy.     
 
 ### Picture of the UI in-game   
