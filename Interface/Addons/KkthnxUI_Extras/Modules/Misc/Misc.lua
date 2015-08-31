@@ -200,6 +200,44 @@ if cfg.Misc.CustomLagTolerance == true then
 end
 
 --[[-----------------------------------
+SkinCam AFK
+---------------------------------------]]
+if cfg.Misc.SpinAFK == true then
+	local SpinCam = CreateFrame("Frame")
+	
+	local OnEvent = function(self, event, unit)
+		if event == "PLAYER_FLAGS_CHANGED" then
+			if unit == "player" then
+				if UnitIsAFK(unit) then
+					SpinStart()
+				else
+					SpinStop()
+				end
+			end
+		elseif event == "PLAYER_LEAVING_WORLD" then
+			SpinStop()
+		end
+	end
+	SpinCam:RegisterEvent("PLAYER_ENTERING_WORLD")
+	SpinCam:RegisterEvent("PLAYER_LEAVING_WORLD")
+	SpinCam:RegisterEvent("PLAYER_FLAGS_CHANGED")
+	SpinCam:SetScript("OnEvent", OnEvent)
+	
+	function SpinStart()
+		spinning = true
+		MoveViewRightStart(0.1)
+		UIParent:Hide()
+	end
+	
+	function SpinStop()
+		if not spinning then return end
+		spinning = nil
+		MoveViewRightStop()
+		UIParent:Show()
+	end
+end
+
+--[[-----------------------------------
 Collect Garbage
 ---------------------------------------]]
 if cfg.Misc.Collect then

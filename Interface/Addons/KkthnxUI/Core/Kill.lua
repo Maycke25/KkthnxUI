@@ -25,8 +25,8 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		CompactRaidFrameManager_UpdateOptionsFlowContainer = Kdummy
 	end
 
-	Advanced_UseUIScale:Kill()
-	Advanced_UIScaleSlider:Kill()
+	--Advanced_UseUIScale:Kill()
+	--Advanced_UIScaleSlider:Kill()
 	TutorialFrameAlertButton:Kill()
 	HelpOpenTicketButtonTutorial:Kill()
 	TalentMicroButtonAlert:Kill()
