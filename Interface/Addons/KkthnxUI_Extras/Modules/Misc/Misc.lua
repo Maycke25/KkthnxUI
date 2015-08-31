@@ -203,16 +203,16 @@ end
 Collect Garbage
 ---------------------------------------]]
 if cfg.Misc.Collect then
-	local eventcount = 0 
-	local a = CreateFrame("Frame") 
-	a:RegisterAllEvents() 
-	a:SetScript("OnEvent", function(self, event) 
-		eventcount = eventcount + 1 
-		if InCombatLockdown() then return end 
-		if eventcount > 6000 or event == "PLAYER_ENTERING_WORLD" then 
-			collectgarbage("collect") 
+	local eventcount = 0
+	local Garbage = CreateFrame("Frame")
+	Garbage:RegisterAllEvents()
+	Garbage:SetScript("OnEvent", function(self, event)
+		eventcount = eventcount + 1
+		
+		if (InCombatLockdown() and eventcount > 25000) or (not InCombatLockdown() and eventcount > 10000) or event == "PLAYER_ENTERING_WORLD" then
+			collectgarbage("collect")
 			eventcount = 0
-		end 
+		end
 	end)
 end
 

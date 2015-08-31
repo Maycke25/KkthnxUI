@@ -5,7 +5,13 @@ local Font = "Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf"
 
 KkthnxUIActionbars.Config = {
     showPicomenu = true,
-
+	
+	cooldown = {
+		ccFont = Font,
+		ccFontSize = 15,
+		ccFontStyle = 'OUTLINE',
+    },
+	
     button = {
         showVehicleKeybinds = true,
         showKeybinds = true,

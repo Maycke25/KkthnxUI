@@ -37,7 +37,6 @@ frame:SetScript("OnEvent", function(self, event, addon)
 	UNIT_NAME_FONT     = NORMAL
 	STANDARD_TEXT_FONT = NORMAL
 	DAMAGE_TEXT_FONT   = COMBAT
-	LARGE_NUMBER_SEPERATOR = ""
 
 	-- Base fonts
 	SetFont(AchievementFont_Small, NORMAL, 11, nil, nil, nil, nil, 0, 0, 0, 1, -1)
