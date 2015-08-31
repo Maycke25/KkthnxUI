@@ -8,7 +8,7 @@ KkthnxUIActionbars.Config = {
 	
 	cooldown = {
 		ccFont = Font,
-		ccFontSize = 15,
+		ccFontSize = 12,
 		ccFontStyle = 'OUTLINE',
     },
 	
