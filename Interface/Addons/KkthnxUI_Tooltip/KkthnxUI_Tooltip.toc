@@ -10,5 +10,7 @@ config.lua
 
 core.lua
 fade.lua
-itemicons.lua
 health.lua
+
+itemicons.lua
+spellid.lua

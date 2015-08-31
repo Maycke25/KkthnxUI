@@ -10,6 +10,7 @@ KkthnxTooltip.Config = {
     },
 	
 	TipIcons = true,
+	SpellID = true,
 
     disableFade = false,                        -- Can cause errors or a buggy tooltip!
     showOnMouseover = false,

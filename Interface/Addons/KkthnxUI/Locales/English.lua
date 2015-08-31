@@ -47,6 +47,12 @@ L_PLANNER_PALADIN_1 = "Holy"
 L_PLANNER_PRIEST_1 = "Discipline"
 
 --[[----------------------------
+Tooltip
+--------------------------------]]
+L_TOOLTIP_SPELL_ID = "Spell ID:"
+L_TOOLTIP_ITEM_ID = "Item ID:"
+
+--[[----------------------------
 Info Strings
 --------------------------------]]
 L_INFO_DUEL = "Declined duel request from "
