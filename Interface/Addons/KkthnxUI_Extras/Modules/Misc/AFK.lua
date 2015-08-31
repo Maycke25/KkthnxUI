@@ -129,15 +129,13 @@ KkthnxUIAFKPanel:SetFrameStrata("FULLSCREEN")
 KkthnxUIAFKPanel:Hide()
 
 local KkthnxUIAFKPanelIcon = CreateFrame("Frame", "KkthnxUIAFKPanelIcon", KkthnxUIAFKPanel)
-KkthnxUIAFKPanelIcon:SetSize(132,100)
+KkthnxUIAFKPanelIcon:SetSize(150, 75)
 KkthnxUIAFKPanelIcon:SetPoint("CENTER", KkthnxUIAFKPanel, "TOP", 0, 0)
---KkthnxUIAFKPanelIcon:SetBackdrop(backdrop)
-KkthnxUIAFKPanelIcon:SetBackdropColor(0, 0, 0, 0.8)
 
 KkthnxUIAFKPanelIcon.Texture = KkthnxUIAFKPanelIcon:CreateTexture(nil, "ARTWORK")
 KkthnxUIAFKPanelIcon.Texture:SetPoint("TOPLEFT", 2, -2)
 KkthnxUIAFKPanelIcon.Texture:SetPoint("BOTTOMRIGHT", -2, 2)
-KkthnxUIAFKPanelIcon.Texture:SetTexture(cfg.logoTexture)
+KkthnxUIAFKPanelIcon.Texture:SetTexture("Interface\\Glues\\Common\\GLUES-WOW-WODLOGO")
 
 KkthnxUIAFKPanel.KkthnxUIText = KkthnxUIAFKPanel:CreateFontString(nil, "OVERLAY")
 KkthnxUIAFKPanel.KkthnxUIText:SetPoint("CENTER", KkthnxUIAFKPanel, "CENTER", 0, -10)
@@ -238,7 +236,7 @@ KkthnxUIAFKPanel:SetScript("OnEvent", function(self, event, unit)
 				SpinStart()
 				KkthnxUIAFKPanel:Show()
 				GuildText()
-				Minimap:Hide()
+				UIParent:Hide()
 			else
 				SpinStop()
 				KkthnxUIAFKPanel:Hide()
@@ -249,13 +247,13 @@ KkthnxUIAFKPanel:SetScript("OnEvent", function(self, event, unit)
 		if UnitIsAFK("player") then
 			SpinStop()
 			KkthnxUIAFKPanel:Hide()
-			Minimap:Show()
+			UIParent:Show()
 		end
 	elseif event == "PLAYER_REGEN_DISABLED" then
 		if UnitIsAFK("player") then
 			SpinStop()
 			KkthnxUIAFKPanel:Hide()
-			Minimap:Show()
+			UIParent:Show()
 		end
 	elseif event == "PLAYER_LEAVING_WORLD" then
 		SpinStop()
