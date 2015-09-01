@@ -43,7 +43,7 @@ SLASH_INSTTELEPORT1 = "/teleport"
 -- Where it's due...
 SLASH_CREDITS1 = '/credits'
 SlashCmdList['CREDITS'] = function()
-    ChatFrame1:AddMessage('Special thanks to Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth. Without them I would not have had the inspiration or insight to be able to make this UI')
+    ChatFrame1:AddMessage('|cFF4488FFSpecial thanks to|r |cFFc248d8Magicnachos,|r |cFFFEB200syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth|r. Without them I would not have had the inspiration or insight to be able to make this UI')
 end
 
 ----------------------------------------------------------------------------------------
