@@ -22,8 +22,8 @@ local function SmoothBar(statusBar,value)
 	end
 end
 
-local function GetHealthBarColor(ref,healthBar)
-	local r,g,b = healthBar:GetStatusBarColor()
+local function GetHealthBarColor(ref, healthBar)
+	local r,g,b = ref.barFrame.healthbar:GetStatusBarColor()
 	local class;
 	
 	if ref.GUID then
@@ -133,12 +133,14 @@ function KkthnxUI_NamePlate_OnInit(ref)
 	
 	-- get reference stuff
 	ref.barFrame, ref.nameFrame = ref:GetChildren()
-	ref.healthbar, ref.castbar = ref.barFrame:GetChildren()
+	--ref.healthbar, ref.castbar = ref.barFrame:GetChildren()
+	ref.barFrame.healthbar, ref.barFrame.absorbBar, ref.barFrame.castbar = ref.barFrame:GetChildren()
 	ref.threat, ref.border, ref.highlight, ref.level, ref.boss, ref.raid, ref.dragon = ref.barFrame:GetRegions()
 	ref.name = ref.nameFrame:GetRegions()
-	ref.healthbar.texture = ref.healthbar:GetRegions()
-	ref.castbar.texture, ref.castbar.border, ref.castbar.shield, ref.castbar.icon, ref.castbar.name, ref.castbar.nameShadow = ref.castbar:GetRegions()
-	ref.castbar.icon.layer, ref.castbar.icon.sublevel = ref.castbar.icon:GetDrawLayer()
+	--ref.healthbar.texture = ref.healthbar:GetRegions()
+	ref.barFrame.healthbar.texture = ref.barFrame.healthbar:GetRegions()
+	ref.barFrame.castbar.texture, ref.barFrame.castbar.border, ref.barFrame.castbar.shield, ref.barFrame.castbar.icon, ref.barFrame.castbar.name, ref.barFrame.castbar.nameShadow = ref.barFrame.castbar:GetRegions()
+	ref.barFrame.castbar.icon.layer, ref.barFrame.castbar.icon.sublevel = ref.barFrame.castbar.icon:GetDrawLayer()
 	ref.isInit = true
 	ref.unit = nil
 	ref.GUID = nil
@@ -169,7 +171,7 @@ end
 function KkthnxUI_NamePlate_OnShow(self,ref)
 	local name = ref.name:GetText()
 	local level = ref.level:GetText()
-	local healthBar = ref.healthbar
+	local healthBar = ref.barFrame.healthbar --
 	local r,g,b = GetHealthBarColor(ref,healthBar)
 	
 	self.Name:SetText(name)
@@ -200,8 +202,8 @@ function KkthnxUI_NamePlate_OnHide(self,ref)
 end
 
 function KkthnxUI_NamePlate_OnUpdate(self,ref)
-	local healthBar = ref.healthbar
-	local castBar = ref.castbar
+	local healthBar = ref.barFrame.healthbar
+	local castBar = ref.barFrame.castbar
 	local maxHealth = select(2, healthBar:GetMinMaxValues())
 	local health = healthBar:GetValue()
 	local perc = math.ceil(health*100/maxHealth)

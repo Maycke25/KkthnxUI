@@ -43,8 +43,6 @@ KExts.Config = {
 		MoveoTF = true,
 	},
 	
-	logoTexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\KkthnxLogo.tga',
-	
 	uiTexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\KkthnxTex.tga',
 	uiFont = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf',
     uiFontSize = 12,
