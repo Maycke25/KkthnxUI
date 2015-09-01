@@ -717,6 +717,194 @@ local UploadXLoot = function()
 end
 
 ----------------------------------------------------------------------------------------
+--	Mapster settings
+----------------------------------------------------------------------------------------
+local UploadMapster = function()
+	if MapsterDB then table.wipe(MapsterDB) end
+	MapsterDB = {
+		["namespaces"] = {
+			["GroupIcons"] = {
+			},
+			["Coords"] = {
+			},
+			["FogClear"] = {
+				["profiles"] = {
+					["Default"] = {
+						["version"] = 2,
+					},
+				},
+			},
+			["BattleMap"] = {
+			},
+		},
+		["profiles"] = {
+			["Default"] = {
+				["scale"] = 1.2,
+				["mini"] = {
+					["scale"] = 1,
+					["hideBorder"] = false,
+					["disableMouse"] = false,
+				},
+			},
+		},
+	}
+end
+
+----------------------------------------------------------------------------------------
+--	Zygor settings
+----------------------------------------------------------------------------------------
+local UploadZygor = function()
+	if ZygorGuidesViewerSettings then table.wipe(ZygorGuidesViewerSettings) end
+	ZygorGuidesViewerSettings = {
+		["char"] = {
+			["Microlite - Stormreaver"] = {
+				["lastlogin"] = 1441146055,
+				["initialFlightPathsLoaded"] = true,
+				["guides_history_ZGV4clear"] = true,
+				["debuglog"] = {
+					"18:16:11.364.000> Viewer started. ---------------------------", -- [1]
+					"18:16:37.445.703> Viewer started. ---------------------------", -- [2]
+					"18:19:47.005.116> Viewer started. ---------------------------", -- [3]
+					"18:20:07.958.435> Viewer started. ---------------------------", -- [4]
+					"18:20:56.016.492> Viewer started. ---------------------------", -- [5]
+				},
+				["ActivatedPois"] = {
+				},
+				["notifications"] = {
+				},
+				["taxis"] = {
+					["Silvermoon City"] = true,
+					["Fairbreeze Village"] = true,
+					["Falconwing Square"] = true,
+					["Serpent's Overlook"] = true,
+				},
+			},
+		},
+		["profiles"] = {
+			["Kkthnx's UI"] = {
+				["dispprimary"] = {
+					["showborder"] = true,
+				},
+				["arrowcolordist"] = true,
+				["show_ui"] = true,
+				["frame_positions"] = {
+					["ZygorGuidesViewerViewer"] = {
+					},
+				},
+				["goalbackprogress"] = true,
+				["pathfinding_speed"] = 0.001,
+				["autogear"] = false,
+				["load_gold"] = true,
+				["collapsecompleted"] = false,
+				["frame_anchor"] = {
+					"LEFT", -- [1]
+					{
+						[0] = nil --[[ skipped userdata ]],
+						["firstTimeLoaded"] = 1,
+						["variablesLoaded"] = true,
+					}, -- [2]
+					"LEFT", -- [3]
+					322.000091552734, -- [4]
+					214.999969482422, -- [5]
+				},
+				["fullness_search"] = 1,
+				["analyzereps"] = true,
+				["tmp__was_sheened"] = true,
+				["autoturnin"] = true,
+				["antspeed"] = 1,
+				["load_mail"] = true,
+				["hideinlinetravel"] = true,
+				["n_nc_enabled"] = false,
+				["skin"] = "default",
+				["corpsearrowjokes"] = true,
+				["gold_profitlevel"] = 0.75,
+				["load_im"] = true,
+				["im_town_alert"] = false,
+				["Mail"] = {
+					["previousNames"] = {
+					},
+				},
+				["highlight"] = true,
+				["magickey_bind"] = "",
+				["questitemselector"] = false,
+				["skipauxsteps"] = true,
+				["guide_viewer_advanced"] = true,
+				["quiet"] = true,
+				["im_always_wait"] = false,
+				["mv_enabled"] = false,
+				["minicons"] = true,
+				["visible"] = false,
+				["autotaxi"] = true,
+				["stickycolored"] = false,
+				["gold_tooltips_out"] = 3,
+				["fixblizzardautoaccept"] = true,
+				["travel_system_advanced"] = true,
+				["load_betaguides"] = true,
+				["pathfinding_mode"] = "1fastest",
+				["gear_selected_class"] = 8,
+				["ranconfig2"] = true,
+				["Inventory Manager"] = {
+					["lastParentName"] = "Blizzard",
+					["showText"] = false,
+					["isSnapped"] = false,
+					["lastParent"] = {
+						["FilterIcon"] = {
+							["Icon"] = {
+							},
+						},
+						["PortraitButton"] = {
+							["Highlight"] = {
+							},
+						},
+						["Portrait"] = {
+						},
+						["ClickableTitleFrame"] = {
+						},
+						["bags"] = {
+						},
+						["FilterDropDown"] = {
+							["displayMode"] = "MENU",
+						},
+						["bagsShown"] = 0,
+					},
+					["isSnappedSize"] = 169,
+					["im_lastWidth"] = 169,
+				},
+				["talenton"] = false,
+				["debug_flags"] = {
+					["LibRover"] = {
+						["enabled"] = true,
+						["color"] = "ffffbb00",
+					},
+					["startup"] = {
+						["enabled"] = true,
+						["color"] = "ffff3300",
+					},
+					["waypoints"] = {
+						["enabled"] = true,
+						["color"] = "ff66ff00",
+					},
+					["display"] = {
+						["enabled"] = false,
+					},
+					["pointer"] = {
+						["enabled"] = true,
+						["color"] = "ff00ff00",
+					},
+					["sticky"] = {
+						["enabled"] = true,
+						["color"] = "ffff5500",
+					},
+				},
+				["gold_tooltips_ah"] = 3,
+				["multicolorants"] = true,
+				["singlecolorants__renamed"] = true,
+			},
+		},
+	}
+end
+
+----------------------------------------------------------------------------------------
 --	Skada settings
 ----------------------------------------------------------------------------------------
 local UploadSkada = function()
@@ -5726,6 +5914,8 @@ StaticPopupDialogs.SETTINGS_ALL = {
 	button2 = CANCEL,
 	OnAccept = function()
 		if IsAddOnLoaded("oUF_Abu") then UploadAbu() end
+		if IsAddOnLoaded("Mapster") then UploadMapster() end
+		if IsAddOnLoaded("ZygorGuidesViewer") then UploadZygor() end
 		if IsAddOnLoaded("MikScrollingBattleText") then UploadMSBT() end
 		if IsAddOnLoaded("XLoot") then UploadXLoot() end
 		if IsAddOnLoaded("Bartender4") then UploadBartender4() end
@@ -5749,28 +5939,42 @@ SlashCmdList.SETTINGS = function(msg)
 		else
 			print("|cffffff00oUF_Abu"..L_INFO_NOT_INSTALLED.."|r")
 		end
-	elseif msg == "Masque" then
+	elseif msg == "masque" then
 		if IsAddOnLoaded("Masque") then
 			UploadMasque()
 			ReloadUI()
 		else
 			print("|cffffff00Masque"..L_INFO_NOT_INSTALLED.."|r")
 		end
-	elseif msg == "WeakAuras" then
+	elseif msg == "mapster" then
+		if IsAddOnLoaded("Mapster") then
+			UploadMapster()
+			ReloadUI()
+		else
+			print("|cffffff00Masque"..L_INFO_NOT_INSTALLED.."|r")
+		end
+	elseif msg == "zygor" then
+		if IsAddOnLoaded("ZygorGuidesViewer") then
+			UploadZygor()
+			ReloadUI()
+		else
+			print("|cffffff00Zygor"..L_INFO_NOT_INSTALLED.."|r")
+		end
+	elseif msg == "weakauras" then
 		if IsAddOnLoaded("WeakAuras") then
 			UploadWeakAuras()
 			ReloadUI()
 		else
 			print("|cffffff00WeakAuras"..L_INFO_NOT_INSTALLED.."|r")
 		end
-	elseif msg == "Bartender4" then
+	elseif msg == "bartender4" then
 		if IsAddOnLoaded("Bartender4") then
 			UploadBartender4()
 			ReloadUI()
 		else
 			print("|cffffff00Bartender4"..L_INFO_NOT_INSTALLED.."|r")
 		end
-	elseif msg == "XLoot" then
+	elseif msg == "xloot" then
 		if IsAddOnLoaded("XLoot") then
 			UploadXLoot()
 			ReloadUI()
@@ -5784,7 +5988,7 @@ SlashCmdList.SETTINGS = function(msg)
 		else
 			print("|cffffff00Skada"..L_INFO_NOT_INSTALLED.."|r")
 		end
-	elseif msg == "MSBT" then
+	elseif msg == "msbt" then
 		if IsAddOnLoaded("MikScrollingBattleText") then
 			UploadMSBT()
 			ReloadUI()
@@ -5802,6 +6006,8 @@ SlashCmdList.SETTINGS = function(msg)
 		StaticPopup_Show("SETTINGS_ALL")
 	else
 		print("|cffffff00"..L_INFO_SETTINGS_ABU.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_MAPSTER.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_ZYGOR.."|r")
 		print("|cffffff00"..L_INFO_SETTINGS_MSBT.."|r")
 		print("|cffffff00"..L_INFO_SETTINGS_XLOOT.."|r")
 		print("|cffffff00"..L_INFO_SETTINGS_BT4.."|r")

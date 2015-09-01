@@ -10,7 +10,8 @@ HKfont:SetShadowOffset(0, 0)
 NumberFontNormalSmallGray:SetFontObject(HKfont)
 
 --[[-----------------------------------
-Fade in/out world when GameMenu is opened
+Fade in/out world when GameMenu 
+is opened
 ---------------------------------------]]
 local GMFade = UIParent:CreateTexture(nil, 'BACKGROUND')
 GMFade:SetAllPoints(UIParent)
@@ -144,7 +145,6 @@ if cfg.Misc.AutoScreenshot then
 	EventFrame:SetScript("OnEvent", OnEvent)
 end
 
--- We automatically confirm loot if we are not in a party or raid.
 --[[-----------------------------------
 We automatically confirm loot 
 if we are not in a party or raid.
@@ -295,7 +295,8 @@ if cfg.Misc.Collect then
 end
 
 --[[-----------------------------------
-Easy abandon quest / share a quest (by Suicidal Katt)
+Easy abandon quest / share a quest 
+(by Suicidal Katt)
 ---------------------------------------]]
 hooksecurefunc("QuestMapLogTitleButton_OnClick", function(self, button)
 	if IsModifiedClick() then
@@ -328,7 +329,8 @@ hooksecurefunc(QUEST_TRACKER_MODULE, "OnBlockHeaderClick", function(_, block)
 end)
 
 --[[-----------------------------------
-Remove Boss Emote spam in BG (by Partha)
+Remove Boss Emote spam in BG 
+(by Partha)
 ---------------------------------------]]
 if cfg.Misc.BGSpam then
 	local BGSpam = CreateFrame("Frame")

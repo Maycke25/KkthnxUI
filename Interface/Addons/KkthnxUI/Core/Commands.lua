@@ -69,7 +69,6 @@ SLASH_DBMTEST1 = "/dbmtest"
 ----------------------------------------------------------------------------------------
 --	Command to show frame you currently have mouseovered
 ----------------------------------------------------------------------------------------
--- Get frame info of mouse focus
 SLASH_FRAME1 = '/frame'
 SlashCmdList['FRAME'] = function(arg)
 	if arg ~= '' then
