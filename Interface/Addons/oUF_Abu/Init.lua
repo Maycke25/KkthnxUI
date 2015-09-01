@@ -12,35 +12,18 @@ ns.locale = GetLocale()
 
 ------------------------------------------------------------------------
 -- Colors
+RAID_CLASS_COLORS['PRIEST'] = { 220/255, 235/255, 250/255 } -- custom class color for priest.
+
 oUF.colors.uninterruptible = { 1, 0.7, 0 }
 oUF.colors.fallback = { 1, 1, 1 }
---oUF.colors.smooth = {1, 0, 0,	1, 1, 0,	0, 1, 0}
---oUF.colors.disconnected = {.6, .6, .6}
---oUF.colors.tapped = {.6,.6,.6}
-
---oUF.colors.reaction[1] = { 0.8, 0.3, 0.22} --:Exceptionally hostile
---oUF.colors.reaction[2] = { 0.8, 0.3, 0.22}
---oUF.colors.reaction[3] = { 0.75, 0.27, 0}
---oUF.colors.reaction[4] = { 0.9, 0.7, 0}
---oUF.colors.reaction[5] = { 0, 0.6, 0.1}
---oUF.colors.reaction[6] = { 0, 0.6, 0.1}
---oUF.colors.reaction[7] = { 0, 0.6, 0.1}
---oUF.colors.reaction[8] = { 0, 0.6, 0.1}	--: Exalted
 
 -- http://lslwiki.net/lslwiki/wakka.php?wakka=color
-oUF.colors.health = {49/255, 207/255, 37/255}
+oUF.colors.health = { 49/255, 207/255, 37/255 }
 oUF.colors.power["MANA"] = { 0.31, 0.45, 0.63 }
 oUF.colors.power["RAGE"] = { 0.78, 0.25, 0.25 }
 oUF.colors.power["FOCUS"] = { 0.71, 0.43, 0.27 }
 oUF.colors.power["ENERGY"] = { 0.65, 0.63, 0.35 }
 oUF.colors.power["RUNIC_POWER"] = { 0, 0.82, 1.00 }
-
---oUF.colors.power["CHI"] = { 0.71, 1.0, 0.92 }
---oUF.colors.power["RUNES"] = { 0.50, 0.50, 0.50 }
---oUF.colors.power["SOUL_SHARDS"] = { 0.50, 0.32, 0.55 }
---oUF.colors.power["HOLY_POWER"] = { 0.95, 0.90, 0.60 }
---oUF.colors.power["AMMOSLOT"] = { 0.80, 0.60, 0.00 }
---oUF.colors.power["FUEL"] = { 0.0, 0.55, 0.5 }
 
 ------------------------------------------------------------------------
 -- Event handler

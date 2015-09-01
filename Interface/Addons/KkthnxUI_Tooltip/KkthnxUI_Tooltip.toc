@@ -12,5 +12,6 @@ core.lua
 fade.lua
 health.lua
 
+hyperlink.lua
 itemicons.lua
 spellid.lua
