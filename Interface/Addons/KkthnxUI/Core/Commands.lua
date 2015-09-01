@@ -40,6 +40,12 @@ SlashCmdList.INSTTELEPORT = function()
 end
 SLASH_INSTTELEPORT1 = "/teleport"
 
+-- Where it's due...
+SLASH_CREDITS1 = '/credits'
+SlashCmdList['CREDITS'] = function()
+    ChatFrame1:AddMessage('Special thanks to Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth. Without them I would not have had the inspiration or insight to be able to make this UI')
+end
+
 ----------------------------------------------------------------------------------------
 --	Spec switching(by Monolit)
 ----------------------------------------------------------------------------------------
@@ -63,43 +69,51 @@ SLASH_DBMTEST1 = "/dbmtest"
 ----------------------------------------------------------------------------------------
 --	Command to show frame you currently have mouseovered
 ----------------------------------------------------------------------------------------
-SlashCmdList.FRAME = function(arg)
-	if arg ~= "" then
+-- Get frame info of mouse focus
+SLASH_FRAME1 = '/frame'
+SlashCmdList['FRAME'] = function(arg)
+	if arg ~= '' then
 		arg = _G[arg]
 	else
 		arg = GetMouseFocus()
 	end
-	if arg ~= nil then FRAME = arg end
 	if arg ~= nil and arg:GetName() ~= nil then
 		local point, relativeTo, relativePoint, xOfs, yOfs = arg:GetPoint()
-		ChatFrame1:AddMessage("|cffCC0000~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-		ChatFrame1:AddMessage("Name: |cffFFD100"..arg:GetName())
+		ChatFrame1:AddMessage('|cffCC0000----------------------------')
+		ChatFrame1:AddMessage('Name: |cffFFD100'..arg:GetName())
 		if arg:GetParent() and arg:GetParent():GetName() then
-			ChatFrame1:AddMessage("Parent: |cffFFD100"..arg:GetParent():GetName())
+			ChatFrame1:AddMessage('Parent: |cffFFD100'..arg:GetParent():GetName())
 		end
-
-		ChatFrame1:AddMessage("Width: |cffFFD100"..format("%.2f", arg:GetWidth()))
-		ChatFrame1:AddMessage("Height: |cffFFD100"..format("%.2f", arg:GetHeight()))
-		ChatFrame1:AddMessage("Strata: |cffFFD100"..arg:GetFrameStrata())
-		ChatFrame1:AddMessage("Level: |cffFFD100"..arg:GetFrameLevel())
-
-		if relativeTo and relativeTo:GetName() then
-			ChatFrame1:AddMessage("Point: |cffFFD100"..point.."|r anchored to "..relativeTo:GetName().."'s |cffFFD100"..relativePoint)
-		end
+ 
+		ChatFrame1:AddMessage('Width: |cffFFD100'..format('%.2f',arg:GetWidth()))
+		ChatFrame1:AddMessage('Height: |cffFFD100'..format('%.2f',arg:GetHeight()))
+		ChatFrame1:AddMessage('Strata: |cffFFD100'..arg:GetFrameStrata())
+		ChatFrame1:AddMessage('Level: |cffFFD100'..arg:GetFrameLevel())
+ 
 		if xOfs then
-			ChatFrame1:AddMessage("X: |cffFFD100"..format("%.2f", xOfs))
+			ChatFrame1:AddMessage('X: |cffFFD100'..format('%.2f',xOfs))
 		end
 		if yOfs then
-			ChatFrame1:AddMessage("Y: |cffFFD100"..format("%.2f", yOfs))
+			ChatFrame1:AddMessage('Y: |cffFFD100'..format('%.2f',yOfs))
 		end
-		ChatFrame1:AddMessage("|cffCC0000~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+		if relativeTo and relativeTo:GetName() then
+			ChatFrame1:AddMessage('Point: |cffFFD100'..point..'|r anchored to '..relativeTo:GetName().."'s |cffFFD100"..relativePoint)
+		end
+		ChatFrame1:AddMessage('|cffCC0000----------------------------')
 	elseif arg == nil then
-		ChatFrame1:AddMessage("Invalid frame name")
+		ChatFrame1:AddMessage('Invalid frame name')
 	else
-		ChatFrame1:AddMessage("Could not find frame info")
+		ChatFrame1:AddMessage('Could not find frame info')
 	end
 end
-SLASH_FRAME1 = "/frame"
+
+-- List child frames of mouse focus
+SlashCmdList['CHILDFRAMES'] = function() 
+	for k,v in pairs({GetMouseFocus():GetChildren()}) do
+		print(v:GetName(),'-',v:GetObjectType())
+	end
+end
+SLASH_CHILDFRAMES1 = '/child'
 
 ----------------------------------------------------------------------------------------
 --	Clear chat

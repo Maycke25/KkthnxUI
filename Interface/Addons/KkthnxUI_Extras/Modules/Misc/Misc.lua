@@ -10,6 +10,23 @@ HKfont:SetShadowOffset(0, 0)
 NumberFontNormalSmallGray:SetFontObject(HKfont)
 
 --[[-----------------------------------
+Fade in/out world when GameMenu is opened
+---------------------------------------]]
+local GMFade = UIParent:CreateTexture(nil, 'BACKGROUND')
+GMFade:SetAllPoints(UIParent)
+GMFade:SetTexture(0, 0, 0)
+GMFade:Hide()
+
+hooksecurefunc(GameMenuFrame, 'Show', function()
+	GMFade:SetAlpha(0)
+	securecall('UIFrameFadeIn', GMFade, 0.235, GMFade:GetAlpha(), 0.5)
+end)
+
+hooksecurefunc(GameMenuFrame, 'Hide', function()
+	securecall('UIFrameFadeOut', GMFade, 0.235, GMFade:GetAlpha(), 0)
+end)
+
+--[[-----------------------------------
 Better loot filter
 ---------------------------------------]]
 local minRarity = 3 --0 = Poor, 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Epic, 5 = Legendary, 6 = Artifact, 7 = Heirloom
@@ -127,53 +144,75 @@ if cfg.Misc.AutoScreenshot then
 	EventFrame:SetScript("OnEvent", OnEvent)
 end
 
+-- We automatically confirm loot if we are not in a party or raid.
+--[[-----------------------------------
+We automatically confirm loot 
+if we are not in a party or raid.
+---------------------------------------]]
+StaticPopupDialogs['LOOT_BIND'].OnCancel = function(_, slot)
+    if GetNumPartyMembers() == 0 and GetNumRaidMembers() == 0 then
+        ConfirmLootSlot(slot)
+    end
+end
+
 --[[-----------------------------------
 Auto repair and sell grey items
 ---------------------------------------]]
-local eventframe = CreateFrame('Frame')
-eventframe:SetScript('OnEvent', function(self, event, ...)
-	eventframe[event](self, ...)
-end)
+local format = string.format
 
-local IDs = {}
-for _, slot in pairs({"Head", "Shoulder", "Chest", "Waist", "Legs", "Feet", "Wrist", "Hands", "MainHand", "SecondaryHand"}) do 	
-	IDs[slot] = GetInventorySlotInfo(slot .. "Slot")
+local formatMoney = function(value)
+    if value >= 1e4 then
+        return format('|cffffd700%dg |r|cffc7c7cf%ds |r|cffeda55f%dc|r', value/1e4, strsub(value, -4) / 1e2, strsub(value, -2))
+    elseif value >= 1e2 then
+        return format('|cffc7c7cf%ds |r|cffeda55f%dc|r', strsub(value, -4) / 1e2, strsub(value, -2))
+    else
+        return format('|cffeda55f%dc|r', strsub(value, -2))
+    end
 end
-eventframe:RegisterEvent('MERCHANT_SHOW')
-function eventframe:MERCHANT_SHOW()
-	if CanMerchantRepair() and cfg.Misc.AutoRepair then
-		local gearRepaired = true -- to work around bug when there's not enough money in guild bank
-		local cost = GetRepairAllCost()
-		if cost > 0 and CanGuildBankRepair() and cfg.Misc.GuildAutoRepair then
-			if GetGuildBankWithdrawMoney() > cost then
-				RepairAllItems(1)
-				for slot, id in pairs(IDs) do
-					local dur, maxdur = GetInventoryItemDurability(id)
-					if dur and maxdur and dur < maxdur then
-						gearRepaired = false
-						break
-					end
-				end
-				if gearRepaired then
-					print(format(L_REPAIR_COST.." %.1fg ("..GUILD..")", cost * 0.0001))
-				end
-			end
-		elseif cost > 0 and GetMoney() > cost then
-			RepairAllItems()
-			print(format(L_REPAIR_COST.." %.1fg", cost * 0.0001))
-		end
-	end
-	if cfg.Misc.AutoSell then
-		for bag = 0, 4 do
-			for slot = 0, GetContainerNumSlots(bag) do
-				local link = GetContainerItemLink(bag, slot)
-				if link and (select(3, GetItemInfo(link))==0) then
-					UseContainerItem(bag, slot)
-				end
-			end
-		end
-	end
-end
+
+local itemCount, sellValue = 0, 0
+
+local merchant = CreateFrame('frame')
+merchant:RegisterEvent('MERCHANT_SHOW')
+merchant:SetScript('OnEvent', function(self, event)
+    for bag = 0, 4 do
+        for slot = 1, GetContainerNumSlots(bag) do
+            local item = GetContainerItemLink(bag, slot)
+            if item then
+                local itemValue = select(11, GetItemInfo(item)) * GetItemCount(item)
+
+                if select(3, GetItemInfo(item)) == 0 then
+                    ShowMerchantSellCursor(1)
+                    UseContainerItem(bag, slot)
+
+                    itemCount = itemCount + GetItemCount(item)
+                    sellValue = sellValue + itemValue
+                end
+            end
+        end
+    end
+
+    if sellValue > 0 then
+        print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Sold %d trash item%s for %s', itemCount, itemCount ~= 1 and 's' or '', formatMoney(sellValue)))
+        itemCount, sellValue = 0, 0
+    end
+
+    if CanMerchantRepair() then
+        local cost, needed = GetRepairAllCost()
+        if needed then
+            local GuildWealth = CanGuildBankRepair() and GetGuildBankWithdrawMoney() > cost
+            if GuildWealth and GetNumGroupMembers() > 5 then
+                RepairAllItems(1)
+                print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Guild bank repaired for %s.', formatMoney(cost)))
+            elseif cost < GetMoney() then
+                RepairAllItems()
+                print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Repaired for %s.', formatMoney(cost)))
+            else
+                print('|cFF4488FFKkthnxs|r |cFFFEB200UI: Repairs were unaffordable.')
+            end
+        end
+    end
+end)
 
 --[[-----------------------------------
 Custom Lag Tolerance(by Elv22)
@@ -242,14 +281,15 @@ Collect Garbage
 ---------------------------------------]]
 if cfg.Misc.Collect then
 	local eventcount = 0
-	local Garbage = CreateFrame("Frame")
-	Garbage:RegisterAllEvents()
-	Garbage:SetScript("OnEvent", function(self, event)
+	local GarbageCollect = CreateFrame("Frame")
+	GarbageCollect:RegisterAllEvents()
+	GarbageCollect:SetScript("OnEvent", function(self, event)
 		eventcount = eventcount + 1
+		--if InCombatLockdown() then return end
 		
 		if (InCombatLockdown() and eventcount > 25000) or (not InCombatLockdown() and eventcount > 10000) or event == "PLAYER_ENTERING_WORLD" then
 			collectgarbage("collect")
-			eventcount = 0
+			eventcount = 0 
 		end
 	end)
 end
