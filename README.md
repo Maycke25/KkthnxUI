@@ -1,4 +1,4 @@
-# Kkthnx's UI (WoW 6.2.0)
+# Kkthnx's UI (WoW 6.2.2)
 
 Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever you have your World of Warcraft installed. You get the idea.   
 
