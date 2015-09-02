@@ -12,7 +12,6 @@ ns.locale = GetLocale()
 
 ------------------------------------------------------------------------
 -- Colors
-RAID_CLASS_COLORS['PRIEST'] = { 220/255, 235/255, 250/255 } -- custom class color for priest.
 
 oUF.colors.uninterruptible = { 1, 0.7, 0 }
 oUF.colors.fallback = { 1, 1, 1 }

@@ -44,7 +44,6 @@ L_TOOLTIP_ITEM_ID = "Item ID:"
 --[[----------------------------
 Info Strings
 --------------------------------]]
-
 L_INFO_DUEL = "Declined duel request from "
 L_INFO_ERRORS = "No error yet."
 L_INFO_INVITE = "Accepted invite from "

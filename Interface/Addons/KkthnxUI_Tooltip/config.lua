@@ -24,10 +24,10 @@ KkthnxTooltip.Config = {
     abbrevRealmNames = true,
     hideRealmText = false,                      -- Hide the coalesced/interactive realm text
     showPlayerTitles = false,
-    showUnitRole = true,
+    showUnitRole = false,
     showPVPIcons = false,                       -- Show pvp icons instead of just a prefix
     showMouseoverTarget = true,
-    showSpecializationIcon = true,
+    showSpecializationIcon = false,
 
     healthbar = {
         showHealthValue = true,
