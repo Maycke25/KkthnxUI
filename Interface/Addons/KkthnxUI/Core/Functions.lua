@@ -53,9 +53,12 @@ function FadeIn(f)
 end
 
 function FadeOut(f)
-	UIFrameFadeOut(f, 0.8, f:GetAlpha(), 0)
+	UIFrameFadeOut(f, 0.8, f:GetAlpha(), 0.1)
 end
 
+--[[-----------------------------------
+StripTextures
+---------------------------------------]]
 local function StripTextures(object, kill)
 	for i = 1, object:GetNumRegions() do
 		local region = select(i, object:GetRegions())
@@ -71,7 +74,7 @@ end
 
 --[[-----------------------------------
 Kill object function
----------------------------------------]]
+	---------------------------------------]]
 local HiddenFrame = CreateFrame("Frame")
 HiddenFrame:Hide()
 local function Kill(object)

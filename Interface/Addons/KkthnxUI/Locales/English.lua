@@ -81,3 +81,25 @@ L_MISC_ONECLICK_BID = "Shift-Right-Click to bid on the selected item without con
 L_MISC_ONECLICK_BUYOUT = "Shift-Right-Click to buyout the selected item without confirmation"
 L_MISC_ONECLICK_CANCEL = "Shift-Right-Click to cancel on the selected item without confirmation"
 L_MISC_SCROLL = "Scroll"
+
+
+--[[----------------------------
+UI Help /Commands
+--------------------------------]]
+L_SLASHCMD_HELP = {
+	"Available slash commands:",
+	"/rl - Reload interface.",
+	"/rc - Activates a ready check.",
+	"/gm - Opens GM frame.",
+	"/teleport - Teleportation from random dungeon.",
+	"/spec, /ss - Switches between talent spec's.",
+	"/frame - Description is not ready.",
+	"/child - Description is not ready.",
+	"/farmmode - Increase the size of the minimap.",
+	"/installui - Lets you install the UI settings.",
+	"/settings ADDON_NAME - Applies settings to msbt, dbm, skada, or all addons.",
+	"/clear - Lets you clear your focused chat frame.",
+	"/tt - Whisper target.",
+	"/cfg - Opens interface settings.",
+	"/credits - Displays all credits where its due.",
+}

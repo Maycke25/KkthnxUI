@@ -16,16 +16,17 @@ SLASH_JOURNAL1 = "/ej"
 SlashCmdList.ROLECHECK = function() InitiateRolePoll() end
 SLASH_ROLECHECK1 = "/role"
 
-SlashCmdList.SHOWCLOAK = function() if ShowingCloak() then ShowCloak(false) else ShowCloak() end end
-SLASH_SHOWCLOAK1 = "/showcloak"
-SLASH_SHOWCLOAK2 = "/sc"
-
-SlashCmdList.SHOWHELM = function() if ShowingHelm() then ShowHelm(false) else ShowHelm() end end
-SLASH_SHOWHELM1 = "/showhelm"
-SLASH_SHOWHELM2 = "/sh"
-
 SlashCmdList.CLEARCOMBAT = function() CombatLogClearEntries() end
 SLASH_CLEARCOMBAT1 = "/clc"
+
+----------------------------------------------------------------------------------------
+--	Description of the slash commands
+----------------------------------------------------------------------------------------
+SlashCmdList.UIHELP = function()
+	for i, v in ipairs(L_SLASHCMD_HELP) do print("|cffffff00"..("%s"):format(tostring(v)).."|r") end
+end
+SLASH_UIHELP1 = "/uihelp"
+SLASH_UIHELP2 = "/helpui"
 
 ----------------------------------------------------------------------------------------
 --	Instance teleport
@@ -65,6 +66,14 @@ SLASH_SPEC2 = "/spec"
 ----------------------------------------------------------------------------------------
 SlashCmdList.DBMTEST = function() if IsAddOnLoaded("DBM-Core") then DBM:DemoMode() end end
 SLASH_DBMTEST1 = "/dbmtest"
+
+----------------------------------------------------------------------------------------
+--	Frame Stack on Cyrillic
+----------------------------------------------------------------------------------------
+SlashCmdList.FSTACK = function()
+	SlashCmdList.FRAMESTACK()
+end
+SLASH_FSTACK1 = "/fs"
 
 ----------------------------------------------------------------------------------------
 --	Command to show frame you currently have mouseovered
