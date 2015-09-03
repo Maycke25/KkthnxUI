@@ -2,13 +2,14 @@ local _, KLoot = ...
 
 KLoot.Config = {
 
-	extended = {
-		loot = true,
+	loot = {
+		LootFrame = true,
+		AutoGreed = true,
+		AutoConfirm = true,
+		GroupLoot = true,
     },
 	
-	bnormaltexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\textureNormal.tga',
-	bglowtexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\textureGlow.tga',
-	bshadowtexure = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\textureShadow.tga',
+	blankTexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Blank.tga',
 	
 	lootTexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\KkthnxTex.tga',
 	lootFont = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf',

@@ -126,12 +126,18 @@ SLASH_CHILDFRAMES1 = '/child'
 ----------------------------------------------------------------------------------------
 --	Clear chat
 ----------------------------------------------------------------------------------------
-SlashCmdList.CLEAR_CHAT = function()
+SLASH_CLEARCHAT1 = "/clear"
+SLASH_CLEARCHAT2 = "/clearchat"
+
+SlashCmdList.CLEARCHAT = function(cmd)
+	cmd = cmd and strtrim(strlower(cmd))
 	for i = 1, NUM_CHAT_WINDOWS do
-		_G[format("ChatFrame%d", i)]:Clear()
+		local f = _G["ChatFrame"..i]
+		if f:IsVisible() or cmd == "all" then
+			f:Clear()
+		end
 	end
 end
-SLASH_CLEAR_CHAT1 = "/clear"
 
 ----------------------------------------------------------------------------------------
 --	Test Blizzard Alerts

@@ -7,10 +7,9 @@
 ## Dependencies: KkthnxUI
 ## SavedVariables: LootDB
 
-config.lua
-
-border.lua
-core.lua
-extended.lua
-locale.lua
-lootgroup.lua
+Config.lua
+AutoConfirm.lua
+AutoGreed.lua
+GroupLoot.lua
+Loot.lua
+MasterLoot.lua

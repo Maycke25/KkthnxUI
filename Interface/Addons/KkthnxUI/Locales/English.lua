@@ -36,6 +36,18 @@ L_CHAT_RECRUITMENT = "GuildRecruitment"
 L_CHAT_LFG = "LookingForGroup"
 
 --[[----------------------------
+Loot / Group Loot
+--------------------------------]]
+L_LOOT_RANDOM = "Random Player"
+L_LOOT_SELF = "Self Loot"
+L_LOOT_FISH = "Fishing loot"
+L_LOOT_ANNOUNCE = "Announce to"
+L_LOOT_TO_RAID = "  raid"
+L_LOOT_TO_PARTY = "  party"
+L_LOOT_TO_GUILD = "  guild"
+L_LOOT_TO_SAY = "  say"
+
+--[[----------------------------
 Tooltip
 --------------------------------]]
 L_TOOLTIP_SPELL_ID = "Spell ID:"
