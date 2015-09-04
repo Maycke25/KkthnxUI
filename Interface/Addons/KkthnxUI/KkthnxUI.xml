@@ -1,4 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+	
 	<Script file="Core\Constants.lua"/>
 	<Script file="Core\Functions.lua"/>
 	<Script file="Core\Kill.lua"/>
@@ -11,4 +12,5 @@
 	
 	<Script file="Core\Temp.lua"/>
 	<Script file="Core\WTF.lua"/>
+	
 </Ui>

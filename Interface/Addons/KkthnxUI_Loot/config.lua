@@ -4,10 +4,14 @@ KLoot.Config = {
 
 	loot = {
 		LootFrame = true,
-		AutoGreed = true,
+		AutoGreed = false,
 		AutoConfirm = true,
 		GroupLoot = true,
     },
+	
+	Kneedloot = {
+		33865,	-- Amani Hex Stick
+	},
 	
 	blankTexture = 'Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Blank.tga',
 	

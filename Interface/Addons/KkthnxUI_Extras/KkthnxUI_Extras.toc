@@ -7,4 +7,3 @@
 ## Dependencies: KkthnxUI, KkthnxUI_Media
 
 Embeds.xml
-Bags.lua

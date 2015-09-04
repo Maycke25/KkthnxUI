@@ -31,4 +31,7 @@
 	<Script file="Modules\Quests\ObjectiveTracker.lua"/>
 	<Script file="Modules\Quests\WowheadLink.lua"/>
 	
+	<Script file="Skins\Addons.lua"/>
+	<Script file="Skins\Character.lua"/>
+	
 </Ui>

@@ -2,9 +2,10 @@ local _, KLoot = ...
 local cfg = KLoot.Config
 
 if cfg.loot.AutoConfirm ~= true then return end
-----------------------------------------------------------------------------------------
---	Disenchant confirmation(tekKrush by Tekkub)
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Disenchant confirmation
+by (tekKrush by Tekkub)
+---------------------------------------]]
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("CONFIRM_DISENCHANT_ROLL")
 frame:RegisterEvent("CONFIRM_LOOT_ROLL")

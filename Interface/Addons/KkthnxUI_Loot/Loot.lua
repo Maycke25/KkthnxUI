@@ -7,7 +7,7 @@ if cfg.loot.LootFrame ~= true then return end
 --	Loot frame(Butsu by Haste)
 ----------------------------------------------------------------------------------------
 local backdrop = {
-	bgFile = "Interface\\Buttons\\WHITE8X8",
+	bgFile = "Interface\\FrameGeneral\\UI-Background-Rock",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	edgeSize = 14,
 	insets = {
@@ -191,7 +191,7 @@ Butsu:SetParent(UIParent)
 Butsu:SetUserPlaced(true)
 Butsu:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 245, -220)
 Butsu:SetBackdrop(backdrop)
-Butsu:SetBackdropColor(0, 0, 0, .8)
+Butsu:SetBackdropColor(.3, .3, .3, .9)
 
 Butsu:SetClampedToScreen(true)
 Butsu:SetFrameStrata("DIALOG")
@@ -389,8 +389,8 @@ do
 		frame.name = name
 
 		local drop = frame:CreateTexture(nil, "ARTWORK")
-		drop:SetTexture(cfg.blankTexture)
-		drop:SetPoint("TOPLEFT", 24 + 5, -2)
+		drop:SetTexture(cfg.lootTexture)
+		drop:SetPoint("TOPLEFT", 24, -2)
 		drop:SetPoint("BOTTOMRIGHT", -2, 2)
 		drop:SetAlpha(0.8)
 		frame.drop = drop

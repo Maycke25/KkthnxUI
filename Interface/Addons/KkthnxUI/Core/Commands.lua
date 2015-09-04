@@ -19,18 +19,18 @@ SLASH_ROLECHECK1 = "/role"
 SlashCmdList.CLEARCOMBAT = function() CombatLogClearEntries() end
 SLASH_CLEARCOMBAT1 = "/clc"
 
-----------------------------------------------------------------------------------------
---	Description of the slash commands
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Description of the slash commands
+---------------------------------------]]
 SlashCmdList.UIHELP = function()
 	for i, v in ipairs(L_SLASHCMD_HELP) do print("|cffffff00"..("%s"):format(tostring(v)).."|r") end
 end
 SLASH_UIHELP1 = "/uihelp"
 SLASH_UIHELP2 = "/helpui"
 
-----------------------------------------------------------------------------------------
---	Instance teleport
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Instance teleport
+---------------------------------------]]
 SlashCmdList.INSTTELEPORT = function()
 	local inInstance = IsInInstance()
 	if inInstance then
@@ -41,17 +41,19 @@ SlashCmdList.INSTTELEPORT = function()
 end
 SLASH_INSTTELEPORT1 = "/teleport"
 
--- Where it's due...
+--[[-----------------------------------
+Where it's due.
+---------------------------------------]]
 SLASH_CREDITS1 = '/credits'
 SlashCmdList['CREDITS'] = function()
     ChatFrame1:AddMessage('|cFF4488FFSpecial thanks to|r |cFFc248d8Magicnachos,|r |cFFFEB200syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth|r. Without them I would not have had the inspiration or insight to be able to make this UI')
 end
 
-----------------------------------------------------------------------------------------
---	Spec switching(by Monolit)
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Spec switching(by Monolit)
+---------------------------------------]]
 SlashCmdList.SPEC = function()
-	if KkthnxLevel >= SHOW_TALENT_LEVEL then
+	if Klevel >= SHOW_TALENT_LEVEL then
 		local spec = GetActiveSpecGroup()
 		if spec == 1 then SetActiveSpecGroup(2) elseif spec == 2 then SetActiveSpecGroup(1) end
 	else
@@ -61,71 +63,111 @@ end
 SLASH_SPEC1 = "/ss"
 SLASH_SPEC2 = "/spec"
 
-----------------------------------------------------------------------------------------
---	Demo mode for DBM
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+DBM Bar testing.
+---------------------------------------]]
 SlashCmdList.DBMTEST = function() if IsAddOnLoaded("DBM-Core") then DBM:DemoMode() end end
 SLASH_DBMTEST1 = "/dbmtest"
 
-----------------------------------------------------------------------------------------
---	Frame Stack on Cyrillic
-----------------------------------------------------------------------------------------
-SlashCmdList.FSTACK = function()
-	SlashCmdList.FRAMESTACK()
-end
-SLASH_FSTACK1 = "/fs"
-
-----------------------------------------------------------------------------------------
---	Command to show frame you currently have mouseovered
-----------------------------------------------------------------------------------------
-SLASH_FRAME1 = '/frame'
-SlashCmdList['FRAME'] = function(arg)
-	if arg ~= '' then
+--[[-----------------------------------
+Command to show frame you currently 
+have mouseovered
+---------------------------------------]]
+SLASH_FRAME1 = "/frame"
+SlashCmdList["FRAME"] = function(arg)
+	if arg ~= "" then
 		arg = _G[arg]
 	else
 		arg = GetMouseFocus()
 	end
+	if arg ~= nil then FRAME = arg end --Set the global variable FRAME to = whatever we are mousing over to simplify messing with frames that have no name.
 	if arg ~= nil and arg:GetName() ~= nil then
 		local point, relativeTo, relativePoint, xOfs, yOfs = arg:GetPoint()
-		ChatFrame1:AddMessage('|cffCC0000----------------------------')
-		ChatFrame1:AddMessage('Name: |cffFFD100'..arg:GetName())
+		ChatFrame1:AddMessage("|cffCC0000----------------------------")
+		ChatFrame1:AddMessage("Name: |cffFFD100"..arg:GetName())
 		if arg:GetParent() and arg:GetParent():GetName() then
-			ChatFrame1:AddMessage('Parent: |cffFFD100'..arg:GetParent():GetName())
+			ChatFrame1:AddMessage("Parent: |cffFFD100"..arg:GetParent():GetName())
 		end
- 
-		ChatFrame1:AddMessage('Width: |cffFFD100'..format('%.2f',arg:GetWidth()))
-		ChatFrame1:AddMessage('Height: |cffFFD100'..format('%.2f',arg:GetHeight()))
-		ChatFrame1:AddMessage('Strata: |cffFFD100'..arg:GetFrameStrata())
-		ChatFrame1:AddMessage('Level: |cffFFD100'..arg:GetFrameLevel())
- 
+
+		ChatFrame1:AddMessage("Width: |cffFFD100"..format("%.2f",arg:GetWidth()))
+		ChatFrame1:AddMessage("Height: |cffFFD100"..format("%.2f",arg:GetHeight()))
+		ChatFrame1:AddMessage("Strata: |cffFFD100"..arg:GetFrameStrata())
+		ChatFrame1:AddMessage("Level: |cffFFD100"..arg:GetFrameLevel())
+
 		if xOfs then
-			ChatFrame1:AddMessage('X: |cffFFD100'..format('%.2f',xOfs))
+			ChatFrame1:AddMessage("X: |cffFFD100"..format("%.2f",xOfs))
 		end
 		if yOfs then
-			ChatFrame1:AddMessage('Y: |cffFFD100'..format('%.2f',yOfs))
+			ChatFrame1:AddMessage("Y: |cffFFD100"..format("%.2f",yOfs))
 		end
 		if relativeTo and relativeTo:GetName() then
-			ChatFrame1:AddMessage('Point: |cffFFD100'..point..'|r anchored to '..relativeTo:GetName().."'s |cffFFD100"..relativePoint)
+			ChatFrame1:AddMessage("Point: |cffFFD100"..point.."|r anchored to "..relativeTo:GetName().."'s |cffFFD100"..relativePoint)
 		end
-		ChatFrame1:AddMessage('|cffCC0000----------------------------')
+		ChatFrame1:AddMessage("|cffCC0000----------------------------")
 	elseif arg == nil then
-		ChatFrame1:AddMessage('Invalid frame name')
+		ChatFrame1:AddMessage("Invalid frame name")
 	else
-		ChatFrame1:AddMessage('Could not find frame info')
+		ChatFrame1:AddMessage("Could not find frame info")
 	end
 end
 
--- List child frames of mouse focus
-SlashCmdList['CHILDFRAMES'] = function() 
-	for k,v in pairs({GetMouseFocus():GetChildren()}) do
-		print(v:GetName(),'-',v:GetObjectType())
+
+SLASH_FRAMELIST1 = "/framelist"
+SlashCmdList["FRAMELIST"] = function(msg)
+	if(not FrameStackTooltip) then
+		UIParentLoadAddOn("Blizzard_DebugTools");
+	end
+
+	local isPreviouslyShown = FrameStackTooltip:IsShown()
+	if(not isPreviouslyShown) then
+		if(msg == tostring(true)) then
+			FrameStackTooltip_Toggle(true);
+		else
+			FrameStackTooltip_Toggle();
+		end
+	end
+
+	print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+	for i = 2, FrameStackTooltip:NumLines() do
+		local text = _G["FrameStackTooltipTextLeft"..i]:GetText();
+		if(text and text ~= "") then
+			print(text)
+		end
+	end
+	print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+	if(CopyChatFrame:IsShown()) then
+		CopyChatFrame:Hide()
+	end
+
+	ElvUI[1]:GetModule("Chat"):CopyChat(ChatFrame1)
+	if(not isPreviouslyShown) then
+		FrameStackTooltip_Toggle();
 	end
 end
-SLASH_CHILDFRAMES1 = '/child'
 
-----------------------------------------------------------------------------------------
---	Clear chat
-----------------------------------------------------------------------------------------
+function TextureList(frame)
+	frame = _G[frame] or FRAME
+	--[[for key, obj in pairs(frame) do
+		if type(obj) == "table" and obj.GetObjectType and obj:GetObjectType() == "Texture" then
+			print(key, obj:GetTexture())
+		end
+	end]]
+
+	for i=1, frame:GetNumRegions() do
+		local region = select(i, frame:GetRegions())
+		if(region:GetObjectType() == "Texture") then
+			print(region:GetTexture(), region:GetName(), region:GetDrawLayer())
+		end
+	end
+end
+
+SLASH_TEXLIST1 = "/texlist"
+SlashCmdList["TEXLIST"] = TextureList
+
+--[[-----------------------------------
+Clear chat
+---------------------------------------]]
 SLASH_CLEARCHAT1 = "/clear"
 SLASH_CLEARCHAT2 = "/clearchat"
 
@@ -139,9 +181,9 @@ SlashCmdList.CLEARCHAT = function(cmd)
 	end
 end
 
-----------------------------------------------------------------------------------------
---	Test Blizzard Alerts
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Test Blizzard Alerts
+---------------------------------------]]
 SlashCmdList.TEST_ACHIEVEMENT = function()
 	PlaySound("LFG_Rewards")
 	if not AchievementFrame then
@@ -162,9 +204,10 @@ SlashCmdList.TEST_ACHIEVEMENT = function()
 end
 SLASH_TEST_ACHIEVEMENT1 = "/testa"
 
-----------------------------------------------------------------------------------------
---	Test and move Blizzard Extra Action Button
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Test and move Blizzard Extra Action 
+Button
+---------------------------------------]]
 SlashCmdList.TEST_EXTRABUTTON = function()
 	if ExtraActionBarFrame:IsShown() then
 		ExtraActionBarFrame:Hide()
@@ -180,9 +223,9 @@ SlashCmdList.TEST_EXTRABUTTON = function()
 end
 SLASH_TEST_EXTRABUTTON1 = "/teb"
 
-----------------------------------------------------------------------------------------
---	Grid on screen
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Grid on screen
+---------------------------------------]]
 local grid
 SlashCmdList.GRIDONSCREEN = function()
 	if grid then

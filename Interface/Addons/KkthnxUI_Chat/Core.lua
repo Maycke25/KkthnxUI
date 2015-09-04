@@ -5,7 +5,7 @@ local cfg = Kchat.Config
 --	Style chat frame(by Tukz and p3lim)
 ----------------------------------------------------------------------------------------
 local backdrop = {
-	bgFile = "Interface\\Buttons\\WHITE8X8",
+	bgFile = "Interface\\FrameGeneral\\UI-Background-Rock",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	edgeSize = 14,
 	insets = {
@@ -123,7 +123,7 @@ local function SetChatStyle(frame)
 	end
 	
 	_G[chat..'EditBox']:SetBackdrop(backdrop);
-	_G[chat..'EditBox']:SetBackdropColor(0, 0, 0, 0.8);
+	_G[chat..'EditBox']:SetBackdropColor(.3, .3, .3, .9);
 	
 	
 	hooksecurefunc('ChatEdit_UpdateHeader', function(editBox)

@@ -12,4 +12,4 @@ Core.lua
 Micromenu.lua
 
 InfoLine.lua
-ButtonCollect.lua
+MinimapButtons.lua

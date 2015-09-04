@@ -1,6 +1,5 @@
 
 local _, KkthnxUIActionbars = ...
-
 local Font = "Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf"
 
 KkthnxUIActionbars.Config = {

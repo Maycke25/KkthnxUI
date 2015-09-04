@@ -1,10 +1,5 @@
 ﻿local addon = CreateFrame("Frame")
 
--- Used to detect 4.0, 5.0 and 6.0 clients
-local cata = select(4, GetBuildInfo()) >= 40000
-local mop = select(4, GetBuildInfo()) >= 50000
-local wod = select(4, GetBuildInfo()) >= 60000
-
 -- Based on the frame list from NDragIt by Nemes.
 -- These frames are hooked on login.
 local frames = {
@@ -95,6 +90,7 @@ end
 -- Frames provided by load on demand addons, hooked when the addon is loaded.
 local lodFrames = {
 	-- AddonName = { list of frames, same syntax as above }
+	Blizzard_GarrisonUI = { ["GarrisonMissionFrame"] = false, },
 	Blizzard_AuctionUI = { ["AuctionFrame"] = false },
 	Blizzard_BindingUI = { ["KeyBindingFrame"] = false },
 	Blizzard_CraftUI = { ["CraftFrame"] = false },

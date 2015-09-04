@@ -4,7 +4,7 @@ local numChildren = -1
 local bubbles = {}
 
 local backdrop = {
-	bgFile = "Interface\\Buttons\\WHITE8X8",
+	bgFile = "Interface\\FrameGeneral\\UI-Background-Rock",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	edgeSize = 14,
 	insets = {
@@ -23,7 +23,7 @@ local function SkinBubble(frame)
 	end
 	
 	frame:SetBackdrop(backdrop)
-	frame:SetBackdropColor(0, 0, 0, 0.8)
+	frame:SetBackdropColor(.3, .3, .3, .9)
 	
 	tinsert(bubbles, frame)
 end

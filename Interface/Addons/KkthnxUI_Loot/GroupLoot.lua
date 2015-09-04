@@ -2,9 +2,9 @@
 local cfg = KLoot.Config
 
 if cfg.loot.GroupLoot ~= true then return end
-----------------------------------------------------------------------------------------
---	Based on teksLoot(by Tekkub)
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+Based on teksLoot(by Tekkub)
+---------------------------------------]]
 local pos = "TOP"
 local frames = {}
 local cancelled_rolls = {}

@@ -35,4 +35,3 @@ SlashCmdList.DISABLEDECLINE = function()
 end
 
 SLASH_DISABLEDECLINE1 = "/disduel"
-SLASH_DISABLEDECLINE2 = "/вшывгуд"

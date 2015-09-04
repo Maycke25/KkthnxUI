@@ -22,9 +22,9 @@ local damagerIcon = '|TInterface\\LFGFrame\\UI-LFG-ICON-PORTRAITROLES.blp:13:13:
 local backdrop = {
 	bgFile = "Interface\\Buttons\\WHITE8X8",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	edgeSize = 16, 
+	edgeSize = 14,
 	insets = {
-	left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+		left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
 	}
 }
 

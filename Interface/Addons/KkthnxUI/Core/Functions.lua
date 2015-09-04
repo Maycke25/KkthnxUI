@@ -74,7 +74,7 @@ end
 
 --[[-----------------------------------
 Kill object function
-	---------------------------------------]]
+---------------------------------------]]
 local HiddenFrame = CreateFrame("Frame")
 HiddenFrame:Hide()
 local function Kill(object)

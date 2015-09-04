@@ -13,18 +13,19 @@ local sizes = {
 	":14"
 }
 
-local backdrop = GameTooltip:GetBackdrop()
-if backdrop.insets.left == 5 then
-	backdrop.insets.left = 3
-	backdrop.insets.right = 3
-	backdrop.insets.top = 3
-	backdrop.insets.bottom = 3
-end
+local backdrop = {
+	bgFile = "Interface\\Buttons\\WHITE8X8",
+	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+	edgeSize = 14,
+	insets = {
+	left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+	}
+}
 
 local function CreatCopyFrame()
 	frame = CreateFrame("Frame", "CopyFrame", UIParent)
 	frame:SetBackdrop(backdrop)
-	frame:SetBackdropColor(.1, .1, .1, .8)
+	frame:SetBackdropColor(0, 0, 0, .8)
 	frame:SetWidth(540)
 	frame:SetHeight(300)
 	frame:SetPoint("CENTER", UIParent, "CENTER", 0, 100)
@@ -109,7 +110,7 @@ for i = 1, NUM_CHAT_WINDOWS do
 	button:SetPoint("TOPRIGHT", 0, 0)
 	button:SetHeight(20)
 	button:SetWidth(20)
-	button:SetAlpha(0)
+	button:SetAlpha(0.1)
 	
 	local buttontexture = button:CreateTexture(nil, "BORDER")
 	buttontexture:SetPoint("CENTER")

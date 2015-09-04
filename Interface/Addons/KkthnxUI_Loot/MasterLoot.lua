@@ -2,9 +2,9 @@ local _, KLoot = ...
 local cfg = KLoot.Config
 
 if cfg.loot.LootFrame ~= true then return end
-----------------------------------------------------------------------------------------
---	MasterLoot by Ammo
-----------------------------------------------------------------------------------------
+--[[-----------------------------------
+MasterLoot by Ammo
+---------------------------------------]]
 local hexColors = {}
 for k, v in pairs(RAID_CLASS_COLORS) do
 	hexColors[k] = "|c"..v.colorStr

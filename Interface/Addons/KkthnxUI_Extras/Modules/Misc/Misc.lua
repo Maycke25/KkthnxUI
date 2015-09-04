@@ -146,28 +146,18 @@ if cfg.Misc.AutoScreenshot then
 end
 
 --[[-----------------------------------
-We automatically confirm loot 
-if we are not in a party or raid.
----------------------------------------]]
-StaticPopupDialogs['LOOT_BIND'].OnCancel = function(_, slot)
-    if GetNumPartyMembers() == 0 and GetNumRaidMembers() == 0 then
-        ConfirmLootSlot(slot)
-    end
-end
-
---[[-----------------------------------
 Auto repair and sell grey items
 ---------------------------------------]]
 local format = string.format
 
 local formatMoney = function(value)
-    if value >= 1e4 then
-        return format('|cffffd700%dg |r|cffc7c7cf%ds |r|cffeda55f%dc|r', value/1e4, strsub(value, -4) / 1e2, strsub(value, -2))
-    elseif value >= 1e2 then
-        return format('|cffc7c7cf%ds |r|cffeda55f%dc|r', strsub(value, -4) / 1e2, strsub(value, -2))
-    else
-        return format('|cffeda55f%dc|r', strsub(value, -2))
-    end
+	if value >= 1e4 then
+		return format('|cffffd700%dg |r|cffc7c7cf%ds |r|cffeda55f%dc|r', value/1e4, strsub(value, -4) / 1e2, strsub(value, -2))
+	elseif value >= 1e2 then
+		return format('|cffc7c7cf%ds |r|cffeda55f%dc|r', strsub(value, -4) / 1e2, strsub(value, -2))
+	else
+		return format('|cffeda55f%dc|r', strsub(value, -2))
+	end
 end
 
 local itemCount, sellValue = 0, 0
@@ -175,43 +165,43 @@ local itemCount, sellValue = 0, 0
 local merchant = CreateFrame('frame')
 merchant:RegisterEvent('MERCHANT_SHOW')
 merchant:SetScript('OnEvent', function(self, event)
-    for bag = 0, 4 do
-        for slot = 1, GetContainerNumSlots(bag) do
-            local item = GetContainerItemLink(bag, slot)
-            if item then
-                local itemValue = select(11, GetItemInfo(item)) * GetItemCount(item)
-
-                if select(3, GetItemInfo(item)) == 0 then
-                    ShowMerchantSellCursor(1)
-                    UseContainerItem(bag, slot)
-
-                    itemCount = itemCount + GetItemCount(item)
-                    sellValue = sellValue + itemValue
-                end
-            end
-        end
-    end
-
-    if sellValue > 0 then
-        print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Sold %d trash item%s for %s', itemCount, itemCount ~= 1 and 's' or '', formatMoney(sellValue)))
-        itemCount, sellValue = 0, 0
-    end
-
-    if CanMerchantRepair() then
-        local cost, needed = GetRepairAllCost()
-        if needed then
-            local GuildWealth = CanGuildBankRepair() and GetGuildBankWithdrawMoney() > cost
-            if GuildWealth and GetNumGroupMembers() > 5 then
-                RepairAllItems(1)
-                print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Guild bank repaired for %s.', formatMoney(cost)))
-            elseif cost < GetMoney() then
-                RepairAllItems()
-                print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Repaired for %s.', formatMoney(cost)))
-            else
-                print('|cFF4488FFKkthnxs|r |cFFFEB200UI: Repairs were unaffordable.')
-            end
-        end
-    end
+	for bag = 0, 4 do
+		for slot = 1, GetContainerNumSlots(bag) do
+			local item = GetContainerItemLink(bag, slot)
+			if item then
+				local itemValue = select(11, GetItemInfo(item)) * GetItemCount(item)
+				
+				if select(3, GetItemInfo(item)) == 0 then
+					ShowMerchantSellCursor(1)
+					UseContainerItem(bag, slot)
+					
+					itemCount = itemCount + GetItemCount(item)
+					sellValue = sellValue + itemValue
+				end
+			end
+		end
+	end
+	
+	if sellValue > 0 then
+		print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Sold %d trash item%s for %s', itemCount, itemCount ~= 1 and 's' or '', formatMoney(sellValue)))
+		itemCount, sellValue = 0, 0
+	end
+	
+	if CanMerchantRepair() then
+		local cost, needed = GetRepairAllCost()
+		if needed then
+			local GuildWealth = CanGuildBankRepair() and GetGuildBankWithdrawMoney() > cost
+			if GuildWealth and GetNumGroupMembers() > 5 then
+				RepairAllItems(1)
+				print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Guild bank repaired for %s.', formatMoney(cost)))
+			elseif cost < GetMoney() then
+				RepairAllItems()
+				print(format('|cFF4488FFKkthnxs|r |cFFFEB200UI: Repaired for %s.', formatMoney(cost)))
+			else
+				print('|cFF4488FFKkthnxs|r |cFFFEB200UI: Repairs were unaffordable.')
+			end
+		end
+	end
 end)
 
 --[[-----------------------------------
@@ -221,21 +211,50 @@ if cfg.Misc.CustomLagTolerance == true then
 	InterfaceOptionsCombatPanelMaxSpellStartRecoveryOffset:Hide()
 	InterfaceOptionsCombatPanelReducedLagTolerance:Hide()
 	
-	local customlag = CreateFrame("Frame")
-	local int = 5
-	local _, _, _, lag = GetNetStats()
-	local LatencyUpdate = function(self, elapsed)
-		int = int - elapsed
-		if int < 0 then
-			if GetCVar("reducedLagTolerance") ~= tostring(1) then SetCVar("reducedLagTolerance", tostring(1)) end
-			if lag ~= 0 and lag <= 400 then
-				SetCVar("maxSpellStartRecoveryOffset", tostring(lag))
-			end
-			int = 5
+	local AutoLagTolerance = CreateFrame( "Frame", "AutoLagTolerance" )
+	
+	local currentTolerance = GetCVar( "maxSpellStartRecoveryOffset" )
+	local lastUpdateTime = 0
+	
+	local function AutoLagTolerance_OnUpdate ( self, elapsed )
+		lastUpdateTime = lastUpdateTime + elapsed
+		
+		-- Update once per second.
+		if lastUpdateTime < 1.0 then
+			return
+		else
+			lastUpdateTime = 0
+		end
+		
+		-- Retrieve the world latency.
+		local newTolerance = select( 4, GetNetStats() )
+		
+		-- Ignore an empty value.
+		if newTolerance == 0 then
+			return
+		end
+		
+		-- Prevent update spam.
+		if newTolerance == currentTolerance then
+			return
+		else
+			currentTolerance = newTolerance
+		end
+		
+		-- Adjust the "Lag Tolerance" slider.
+		SetCVar( "maxSpellStartRecoveryOffset", newTolerance )
+	end
+	
+	local function AutoLagTolerance_OnEvent ( self, event, arg1, arg2, ... )
+		if event == "PLAYER_ENTERING_WORLD" then
+			SetCVar( "reducedLagTolerance", 1 )
 		end
 	end
-	customlag:SetScript("OnUpdate", LatencyUpdate)
-	LatencyUpdate(customlag, 10)
+	
+	AutoLagTolerance:SetScript( "OnUpdate", AutoLagTolerance_OnUpdate )
+	AutoLagTolerance:SetScript( "OnEvent", AutoLagTolerance_OnEvent )
+	
+	AutoLagTolerance:RegisterEvent( "PLAYER_ENTERING_WORLD" )
 end
 
 --[[-----------------------------------
@@ -280,17 +299,16 @@ end
 Collect Garbage
 ---------------------------------------]]
 if cfg.Misc.Collect then
-	local eventcount = 0
-	local GarbageCollect = CreateFrame("Frame")
-	GarbageCollect:RegisterAllEvents()
-	GarbageCollect:SetScript("OnEvent", function(self, event)
-		eventcount = eventcount + 1
-		--if InCombatLockdown() then return end
-		
-		if (InCombatLockdown() and eventcount > 25000) or (not InCombatLockdown() and eventcount > 10000) or event == "PLAYER_ENTERING_WORLD" then
-			collectgarbage("collect")
-			eventcount = 0 
-		end
+	local eventcount = 0 
+	local GarbageCollect = CreateFrame("Frame") 
+	GarbageCollect:RegisterAllEvents() 
+	GarbageCollect:SetScript("OnEvent", function(self, event) 
+		eventcount = eventcount + 1 
+		if InCombatLockdown() then return end 
+		if eventcount > 6000 or event == "PLAYER_ENTERING_WORLD" then 
+			collectgarbage("collect") 
+			eventcount = 0
+		end 
 	end)
 end
 

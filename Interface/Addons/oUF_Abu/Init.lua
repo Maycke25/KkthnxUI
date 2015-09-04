@@ -133,7 +133,7 @@ function oUFAbu:START_TIMER(event)
 			
 			local backdrop = select(1, bar:GetRegions())
 			backdrop:SetTexture('Interface\\Buttons\\WHITE8x8')
-			backdrop:SetVertexColor(0, 0, 0, 0.5)
+			backdrop:SetVertexColor(0, 0, 0, 0.8)
 			backdrop:SetAllPoints(bar)
 		end
 		

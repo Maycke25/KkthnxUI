@@ -3,7 +3,7 @@ local cfg = KExts.Config
 
 local BACKDROP = {
 	bgFile = [[Interface\BUTTONS\WHITE8X8]], tile = true, tileSize = 8,
-	edgeFile = [[Interface\BUTTONS\WHITE8X8]], edgeSize = 1,
+	--edgeFile = [[Interface\BUTTONS\WHITE8X8]], edgeSize = 1,
 	insets = { left = 0, right = 0, top = 0, bottom = 0 },
 }
 
@@ -24,13 +24,10 @@ AltPowerBar:SetSize(221, 25)
 AltPowerBar:SetPoint("TOP", UIParent, "TOP", 0, -21)
 AltPowerBar:SetFrameStrata("MEDIUM")
 AltPowerBar:SetFrameLevel(0)
+CreateBorder(AltPowerBar, 10, 2)
 AltPowerBar:SetBackdrop(BACKDROP)
 AltPowerBar:SetBackdropColor(0.1, 0.1, 0.1, 0.8)
 AltPowerBar:SetBackdropBorderColor(0, 0, 0, 1)
-
-if KkthnxUI_Border then
-	KkthnxUI_Border.AddBorder(AltPowerBar, nil, 1)
-end
 
 local AltPowerBarStatus = CreateFrame("StatusBar", "KkthnxUIAltPowerBarStatus", AltPowerBar)
 AltPowerBarStatus:SetFrameLevel(AltPowerBar:GetFrameLevel() + 1)
