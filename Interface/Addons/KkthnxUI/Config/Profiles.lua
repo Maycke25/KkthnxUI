@@ -21,7 +21,7 @@ local K, C, L, _ = unpack(select(2, ...))
 --	Per Class Config (overwrite general)
 --	Class need to be UPPERCASE
 ----------------------------------------------------------------------------------------
-if K.class == "DRUID" then
+if K.Class == "DRUID" then
 
 end
 
@@ -29,24 +29,24 @@ end
 --	Per Character Name Config (overwrite general and class)
 --	Name need to be case sensitive
 ----------------------------------------------------------------------------------------
-if K.name == "CharacterName" then
+if K.Name == "CharacterName" then
 
 end
 
 ----------------------------------------------------------------------------------------
 --	Per Max Character Level Config (overwrite general, class and name)
 ----------------------------------------------------------------------------------------
-if K.level ~= MAX_PLAYER_LEVEL then
+if K.Level ~= MAX_PLAYER_LEVEL then
 
 end
 
 ----------------------------------------------------------------------------------------
 --	Magicnachos@Stormreaver KkthnxUI Personal Config
 ----------------------------------------------------------------------------------------
-if K.name == "Magicnachos" and K.realm == "Stormreaver" then
+if K.Name == "Magicnachos" and K.Realm == "Stormreaver" then
 
 end
 
-if K.name == "Microlite" or "Kkthnx" and K.realm == "Stormreaver" or "Sargeras" then
+if K.Name == "Microlite" or "Kkthnx" and K.Realm == "Stormreaver" or "Sargeras" then
 	SetCVar("enableCombatText", 0)
 end

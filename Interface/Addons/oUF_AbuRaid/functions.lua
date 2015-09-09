@@ -85,7 +85,8 @@ function ns.UpdateBorder(self)
 
 	local threat = self.threat_status
 	if (threat) then
-		shadowcolor = colors2.threat[threat]
+		shadowcolor = colors.threat[threat]
+		--(unpack(oUF_colors.threat[threat]))
 	end
 
 	if (glowcolor) then

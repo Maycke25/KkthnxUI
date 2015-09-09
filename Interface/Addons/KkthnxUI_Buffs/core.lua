@@ -1,16 +1,6 @@
 local K, C, L, _ = unpack(KkthnxUI)
 local _G = _G
 
---[[
-_G.DAY_ONELETTER_ABBR = '|cffffffff%dd|r'
-_G.HOUR_ONELETTER_ABBR = '|cffffffff%dh|r'
-_G.MINUTE_ONELETTER_ABBR = '|cffffffff%dm|r'
-_G.SECOND_ONELETTER_ABBR = '|cffffffff%d|r'
-
-_G.DEBUFF_MAX_DISPLAY = 32 -- show more debuffs
-_G.BUFF_MIN_ALPHA = 1
---]]
-
 local origSecondsToTimeAbbrev = _G.SecondsToTimeAbbrev
 local function SecondsToTimeAbbrevHook(seconds)
     origSecondsToTimeAbbrev(seconds)
@@ -111,7 +101,7 @@ hooksecurefunc('BuffFrame_UpdateAllBuffAnchors', function()
             if (numBuffs == 1) then
                 UpdateFirstButton(buff)
             elseif (numBuffs > 1 and mod(numTotal, C.buffs.buffperrow) == 1) then
-                if (numTotal == cfg.buffperrow + 1) then
+                if (numTotal == C.buffs.buffperrow + 1) then
                     buff:SetPoint('TOP', TempEnchant1, 'BOTTOM', 0, -C.buffs.paddingY)
                 else
                     buff:SetPoint('TOP', aboveBuff, 'BOTTOM', 0, -C.buffs.paddingY)
@@ -198,8 +188,8 @@ hooksecurefunc('AuraButton_Update', function(self, index)
     if (button and not button.Shadow) then
         if (button) then
             if (self:match('Debuff')) then
-                button:SetSize(C.buffs.debuffSize, C.buffs.debuffSize)
-                button:SetScale(C.buffs.debuffScale)
+                button:SetSize(C.buffs.debuffsize, C.buffs.debuffsize)
+                button:SetScale(C.buffs.debuffscale)
             else
                 button:SetSize(C.buffs.buffsize, C.buffs.buffsize)
                 button:SetScale(C.buffs.buffscale)
