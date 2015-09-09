@@ -1,20 +1,22 @@
+local K, C, L, _ = unpack(KkthnxUI)
+
 ----------------------------------------------------------------------------------------
 --	Add quest/achievement wowhead link
 ----------------------------------------------------------------------------------------
 local linkQuest, linkAchievement
-if Kclient == "ruRU" then
+if K.Client == "ruRU" then
 	linkQuest = "http://ru.wowhead.com/quest=%d"
 	linkAchievement = "http://ru.wowhead.com/achievement=%d"
-elseif Kclient == "frFR" then
+elseif K.Client == "frFR" then
 	linkQuest = "http://fr.wowhead.com/quest=%d"
 	linkAchievement = "http://fr.wowhead.com/achievement=%d"
-elseif Kclient == "deDE" then
+elseif K.Client == "deDE" then
 	linkQuest = "http://de.wowhead.com/quest=%d"
 	linkAchievement = "http://de.wowhead.com/achievement=%d"
-elseif Kclient == "esES" or Kclient == "esMX" then
+elseif K.Client == "esES" or K.Client == "esMX" then
 	linkQuest = "http://es.wowhead.com/quest=%d"
 	linkAchievement = "http://es.wowhead.com/achievement=%d"
-elseif Kclient == "ptBR" or Kclient == "ptPT" then
+elseif K.Client == "ptBR" or K.Client == "ptPT" then
 	linkQuest = "http://pt.wowhead.com/quest=%d"
 	linkAchievement = "http://pt.wowhead.com/achievement=%d"
 else

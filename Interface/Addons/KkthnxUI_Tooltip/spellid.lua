@@ -1,7 +1,5 @@
-local _, KkthnxTooltip = ...
-local cfg = KkthnxTooltip.Config
-
-if cfg.SpellID ~= true then return end
+local K, C, L, _ = unpack(KkthnxUI)
+if C.tooltip.enable ~= true or C.tooltip.spellid ~= true then return end
 --[[----------------------------
 Spell/Item IDs(idTip by Silverwind)
 --------------------------------]]

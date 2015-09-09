@@ -1,10 +1,9 @@
-local _, Kchat = ...
-local cfg = Kchat.Config
+local K, C, L, _ = unpack(KkthnxUI)
 
 ----------------------------------------------------------------------------------------
 --	Based on Fane(by Haste)
 ----------------------------------------------------------------------------------------
-if cfg.ChatTabsMouseOver == true then
+if C.chat.tabmouseover == true then
 	CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0
 	CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0
 	CHAT_FRAME_TAB_ALERTING_NOMOUSE_ALPHA = 1
@@ -18,7 +17,7 @@ local Fane = CreateFrame("Frame")
 local updateFS = function(self, inc, ...)
 	local fstring = self:GetFontString()
 
-	fstring:SetFont(cfg.chatTabFont, cfg.chatTabFontSize, cfg.chatTabFontStyle)
+	fstring:SetFont(C.font.chat_tabs_font, C.font.chat_tabs_font_size, C.font.chat_tabs_font_style)
 	fstring:SetShadowOffset(0, 0)
 
 	if (...) then
@@ -28,7 +27,7 @@ end
 
 local OnEnter = function(self)
 	local emphasis = _G["ChatFrame"..self:GetID().."TabFlash"]:IsShown()
-	updateFS(self, emphasis, Kcolor.r, Kcolor.g, Kcolor.b)
+	updateFS(self, emphasis, K.Color.r, K.Color.g, K.Color.b)
 end
 
 local OnLeave = function(self)
@@ -37,7 +36,7 @@ local OnLeave = function(self)
 	local emphasis = _G["ChatFrame"..id.."TabFlash"]:IsShown()
 
 	if _G["ChatFrame"..id] == SELECTED_CHAT_FRAME then
-		r, g, b = Kcolor.r, Kcolor.g, Kcolor.b
+		r, g, b = K.Color.r, K.Color.g, K.Color.b
 	elseif emphasis then
 		r, g, b = 1, 0, 0
 	else
@@ -65,7 +64,7 @@ local faneifyTab = function(frame, sel)
 	if not frame.Fane then
 		frame:HookScript("OnEnter", OnEnter)
 		frame:HookScript("OnLeave", OnLeave)
-		if cfg.ChatTabsMouseOver ~= true then
+		if C.chat.tabmouseover ~= true then
 			frame:SetAlpha(1)
 
 			if i ~= 2 then
@@ -88,7 +87,7 @@ local faneifyTab = function(frame, sel)
 
 	-- We can't trust sel
 	if i == SELECTED_CHAT_FRAME:GetID() then
-		updateFS(frame, nil, Kcolor.r, Kcolor.g, Kcolor.b)
+		updateFS(frame, nil, K.Color.r, K.Color.g, K.Color.b)
 	else
 		updateFS(frame, nil, 1, 1, 1)
 	end

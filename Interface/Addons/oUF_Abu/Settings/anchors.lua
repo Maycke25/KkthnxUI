@@ -7,6 +7,9 @@ TODO work with non UIParent paraents
 local _, ns = ...
 local L = ns.L
 
+local oUF = ns.oUF or oUF
+if not oUF then return end
+
 ---------------------------------------------------------------------------------
 --		Functions for showing phony unitframes
 

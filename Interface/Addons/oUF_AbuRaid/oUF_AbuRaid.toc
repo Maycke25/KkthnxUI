@@ -1,8 +1,8 @@
 ## Interface: 60200
 ## Author: Abu
 ## Title: oUF_|cffffffffAbu|rRaid
-## RequiredDeps: oUF
-## OptionalDeps: SharedMedia
+## RequiredDeps: oUF, oUF_Abu
+## OptionalDeps: KkthnxUI_Media
 
 Libs/LibStub.lua
 Libs/CallbackHandler-1.0.lua

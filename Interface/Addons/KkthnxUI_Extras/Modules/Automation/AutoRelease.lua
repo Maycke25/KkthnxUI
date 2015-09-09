@@ -1,7 +1,6 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.automation.resurrection ~= true then return end
 
-if not cfg.Automation.AutoRess then return end
 ----------------------------------------------------------------------------------------
 --	Auto resurrection
 ----------------------------------------------------------------------------------------
@@ -16,7 +15,7 @@ frame:SetScript("OnEvent", function(self, event)
 		local status = GetBattlefieldStatus(i)
 		if status == "active" then inBattlefield = true end
 	end
-	if (kclass ~= "SHAMAN") and not (HasSoulstone() and CanUseSoulstone()) then
+	if (K.Class ~= "SHAMAN") and not (HasSoulstone() and CanUseSoulstone()) then
 		if (tostring(GetZoneText()) == WINTERGRASP) or (tostring(GetZoneText()) == BARAD) or inBattlefield == true then
 			RepopMe()
 		end

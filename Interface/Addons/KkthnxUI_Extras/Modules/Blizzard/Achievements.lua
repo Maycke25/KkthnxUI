@@ -1,16 +1,18 @@
+local K, C, L, _ = unpack(KkthnxUI)
+if C.blizzard.moveachievements ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Based on AchievementMover
 ----------------------------------------------------------------------------------------
 local AchievementAnchor = CreateFrame("Frame", "AchievementAnchor", UIParent)
 AchievementAnchor:SetWidth(DungeonCompletionAlertFrame1:GetWidth() - 36)
 AchievementAnchor:SetHeight(DungeonCompletionAlertFrame1:GetHeight() - 4)
-AchievementAnchor:SetPoint("TOP", UIParent, "TOP", 0, -21)
+AchievementAnchor:SetPoint(unpack(C.position.achievements))
 
 local POSITION, ANCHOR_POINT, YOFFSET = "BOTTOM", "TOP", -9
 
 local function fixAnchors()
 	local point = AchievementAnchor:GetPoint()
-
+	
 	if string.find(point, "TOP") or point == "CENTER" or point == "LEFT" or point == "RIGHT" then
 		POSITION = "TOP"
 		ANCHOR_POINT = "BOTTOM"
@@ -20,10 +22,10 @@ local function fixAnchors()
 		ANCHOR_POINT = "TOP"
 		YOFFSET = -9
 	end
-
+	
 	AlertFrame:ClearAllPoints()
 	AlertFrame:SetPoint(POSITION, AchievementAnchor, POSITION, 2, YOFFSET)
-
+	
 	GroupLootContainer:ClearAllPoints()
 	GroupLootContainer:SetPoint(POSITION, AlertFrame, ANCHOR_POINT, 0, YOFFSET)
 end

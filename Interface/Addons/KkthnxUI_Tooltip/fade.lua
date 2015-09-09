@@ -1,10 +1,5 @@
-
-local _, nTooltip = ...
-local cfg = nTooltip.Config
-
-if (not cfg.disableFade) then
-    return
-end
+local K, C, L, _ = unpack(KkthnxUI)
+if C.tooltip.fade ~= true then return end
 
 -- GameTooltip.FadeOut = GameTooltip.Hide
 GameTooltip.UpdateTime = 0

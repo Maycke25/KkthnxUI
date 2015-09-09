@@ -919,7 +919,7 @@ local UploadSkada = function()
 			["Default"] = {
 				["windows"] = {
 					{
-						["barheight"] = 23,
+						["barheight"] = 18,
 						["barslocked"] = true,
 						["background"] = {
 							["height"] = 118,

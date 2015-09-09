@@ -2,10 +2,12 @@
 
 	<Script file="Config.lua"/>
 	
+	<Script file="Modules\Announcements\BadGear.lua"/>
 	<Script file="Modules\Announcements\Interrupts.lua"/>
 	<Script file="Modules\Announcements\SaySapped.lua"/>
 	
 	<Script file="Modules\Automation\AutoInvite.lua"/>
+	<Script file="Modules\Automation\AutoOpens.lua"/>
 	<Script file="Modules\Automation\AutoRelease.lua"/>
 	<Script file="Modules\Automation\DeclineDuel.lua"/>
 	
@@ -15,6 +17,7 @@
 	<Script file="Modules\Blizzard\FriendList.lua"/>
 	<Script file="Modules\Blizzard\MoveBlizzFrames.lua"/>
 	
+	<Script file="Modules\Misc\AFK.lua"/>
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
 	<Script file="Modules\Misc\HatTrick.lua"/>
 	<Script file="Modules\Misc\LFGQueueTimer.lua"/>

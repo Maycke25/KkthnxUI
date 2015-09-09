@@ -1,14 +1,16 @@
+local K, C, L = unpack(KkthnxUI)
+if C.chat.bubbles ~= true then return end
+
 local ChatBubbleSkin = CreateFrame('Frame', nil, UIParent)
 local tslu = 0
 local numChildren = -1
 local bubbles = {}
 
 local backdrop = {
-	bgFile = "Interface\\FrameGeneral\\UI-Background-Rock",
-	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	edgeSize = 14,
-	insets = {
-	left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+	bgFile = "Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Background.blp",
+	--edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+	tile = true, tileSize = 16, --edgeSize = 14, 
+    insets = { left = 8, right = 8, top = 8, bottom = 8
 	}
 }
 
@@ -23,7 +25,8 @@ local function SkinBubble(frame)
 	end
 	
 	frame:SetBackdrop(backdrop)
-	frame:SetBackdropColor(.3, .3, .3, .9)
+	CreateBorder(frame, 10, -5)
+	frame:SetBackdropColor(1, 1, 1, .9)
 	
 	tinsert(bubbles, frame)
 end
@@ -57,7 +60,7 @@ ChatBubbleSkin:SetScript('OnUpdate', function(ChatBubbleSkin, elapsed)
 		
 		for i, frame in next, bubbles do
 			local r, g, b = frame.text:GetTextColor()
-			frame:SetBackdropBorderColor(r, g, b)
+			frame:SetBorderColor(r, g, b)
 		end
 	end
 end)

@@ -1,11 +1,5 @@
-
-local _, KkthnxUIBuffs = ...
-local cfg = KkthnxUIBuffs.Config
-
-local Font = "Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf"
-
+local K, C, L, _ = unpack(KkthnxUI)
 local _G = _G
-local unpack = unpack
 
 --[[
 _G.DAY_ONELETTER_ABBR = '|cffffffff%dd|r'
@@ -48,11 +42,11 @@ end)
 
 -- TemporaryEnchantFrame ...
 TempEnchant1:ClearAllPoints()
-TempEnchant1:SetPoint('TOPRIGHT', Minimap, 'TOPLEFT', -7, 2)
+TempEnchant1:SetPoint(unpack(C.position.tempenchant1))
 -- TempEnchant1.SetPoint = function() end
 
 TempEnchant2:ClearAllPoints()
-TempEnchant2:SetPoint('TOPRIGHT', TempEnchant1, 'TOPLEFT', -cfg.paddingX, 0)
+TempEnchant2:SetPoint(unpack(C.position.tempenchant2))
 
 ConsolidatedBuffs:SetSize(20, 20)
 ConsolidatedBuffs:ClearAllPoints()
@@ -63,7 +57,7 @@ ConsolidatedBuffsIcon:SetAlpha(0)
 
 ConsolidatedBuffsCount:ClearAllPoints()
 ConsolidatedBuffsCount:SetPoint('CENTER', ConsolidatedBuffsIcon, 0, 1)
-ConsolidatedBuffsCount:SetFont(Font, cfg.buffFontSize+2, 'THINOUTLINE')
+ConsolidatedBuffsCount:SetFont(C.font.buff_font, C.font.buff_font_size+2, C.font.buff_font_style)
 ConsolidatedBuffsCount:SetShadowOffset(0, 0)
 
 ConsolidatedBuffsTooltip:SetScale(1.2)
@@ -76,7 +70,7 @@ local function UpdateFirstButton(self)
             return
         else
             if (BuffFrame.numEnchants > 0) then
-                self:SetPoint('TOPRIGHT', _G['TempEnchant'..BuffFrame.numEnchants], 'TOPLEFT', -cfg.paddingX, 0)
+                self:SetPoint('TOPRIGHT', _G['TempEnchant'..BuffFrame.numEnchants], 'TOPLEFT', -C.buffs.paddingX, 0)
                 return
             else
                 self:SetPoint('TOPRIGHT', TempEnchant1)
@@ -116,16 +110,16 @@ hooksecurefunc('BuffFrame_UpdateAllBuffAnchors', function()
             buff:ClearAllPoints()
             if (numBuffs == 1) then
                 UpdateFirstButton(buff)
-            elseif (numBuffs > 1 and mod(numTotal, cfg.buffPerRow) == 1) then
-                if (numTotal == cfg.buffPerRow + 1) then
-                    buff:SetPoint('TOP', TempEnchant1, 'BOTTOM', 0, -cfg.paddingY)
+            elseif (numBuffs > 1 and mod(numTotal, C.buffs.buffperrow) == 1) then
+                if (numTotal == cfg.buffperrow + 1) then
+                    buff:SetPoint('TOP', TempEnchant1, 'BOTTOM', 0, -C.buffs.paddingY)
                 else
-                    buff:SetPoint('TOP', aboveBuff, 'BOTTOM', 0, -cfg.paddingY)
+                    buff:SetPoint('TOP', aboveBuff, 'BOTTOM', 0, -C.buffs.paddingY)
                 end
 
                 aboveBuff = buff
             else
-                buff:SetPoint('TOPRIGHT', previousBuff, 'TOPLEFT', -cfg.paddingX, 0)
+                buff:SetPoint('TOPRIGHT', previousBuff, 'TOPLEFT', -C.buffs.paddingX, 0)
             end
 
             previousBuff = buff
@@ -140,8 +134,8 @@ hooksecurefunc('DebuffButton_UpdateAnchors', function(self, index)
     end
 
     local rowSpacing
-    local debuffSpace = cfg.buffSize + cfg.paddingY
-    local numRows = ceil(numBuffs/cfg.buffPerRow)
+    local debuffSpace = C.buffs.buffsize + C.buffs.paddingY
+    local numRows = ceil(numBuffs/C.buffs.buffperrow)
 
     if (numRows and numRows > 1) then
         rowSpacing = -numRows * debuffSpace
@@ -154,17 +148,17 @@ hooksecurefunc('DebuffButton_UpdateAnchors', function(self, index)
 
     if (index == 1) then
         buff:SetPoint('TOP', TempEnchant1, 'BOTTOM', 0, rowSpacing)
-    elseif (index >= 2 and mod(index, cfg.buffPerRow) == 1) then
-        buff:SetPoint('TOP', _G[self..(index-cfg.buffPerRow)], 'BOTTOM', 0, -cfg.paddingY)
+    elseif (index >= 2 and mod(index, C.buffs.buffperrow) == 1) then
+        buff:SetPoint('TOP', _G[self..(index-C.buffs.buffperrow)], 'BOTTOM', 0, -C.buffs.paddingY)
     else
-        buff:SetPoint('TOPRIGHT', _G[self..(index-1)], 'TOPLEFT', -cfg.paddingX, 0)
+        buff:SetPoint('TOPRIGHT', _G[self..(index-1)], 'TOPLEFT', -C.buffs.paddingX, 0)
     end
 end)
 
 for i = 1, NUM_TEMP_ENCHANT_FRAMES do
     local button = _G['TempEnchant'..i]
-    button:SetScale(cfg.buffScale)
-    button:SetSize(cfg.buffSize, cfg.buffSize)
+    button:SetScale(C.buffs.buffscale)
+    button:SetSize(C.buffs.buffsize, C.buffs.buffsize)
 
     button:SetScript('OnShow', function()
         CheckFirstButton()
@@ -179,7 +173,7 @@ for i = 1, NUM_TEMP_ENCHANT_FRAMES do
     local duration = _G['TempEnchant'..i..'Duration']
     duration:ClearAllPoints()
     duration:SetPoint('BOTTOM', button, 'BOTTOM', 0, -2)
-    duration:SetFont(cfg.durationFont, cfg.buffFontSize, 'THINOUTLINE')
+    duration:SetFont(C.font.buff_font, C.font.buff_font_size, C.font.buff_font_style)
     duration:SetShadowOffset(0, 0)
     duration:SetDrawLayer('OVERLAY')
 
@@ -187,14 +181,14 @@ for i = 1, NUM_TEMP_ENCHANT_FRAMES do
     border:ClearAllPoints()
     border:SetPoint('TOPRIGHT', button, 1, 1)
     border:SetPoint('BOTTOMLEFT', button, -1, -1)
-    border:SetTexture(cfg.borderDebuff)
+    border:SetTexture(C.media.border)
     border:SetTexCoord(0, 1, 0, 1)
     border:SetVertexColor(0.9, 0.25, 0.9)
 
     button.Shadow = button:CreateTexture('$parentBackground', 'BACKGROUND')
     button.Shadow:SetPoint('TOPRIGHT', border, 3.35, 3.35)
     button.Shadow:SetPoint('BOTTOMLEFT', border, -3.35, -3.35)
-    button.Shadow:SetTexture('Interface\\AddOns\\KkthnxUI_Buffs\\media\\textureShadow')
+    button.Shadow:SetTexture(C.media.bordershadow)
     button.Shadow:SetVertexColor(0, 0, 0, 1)
 end
 
@@ -204,11 +198,11 @@ hooksecurefunc('AuraButton_Update', function(self, index)
     if (button and not button.Shadow) then
         if (button) then
             if (self:match('Debuff')) then
-                button:SetSize(cfg.debuffSize, cfg.debuffSize)
-                button:SetScale(cfg.debuffScale)
+                button:SetSize(C.buffs.debuffSize, C.buffs.debuffSize)
+                button:SetScale(C.buffs.debuffScale)
             else
-                button:SetSize(cfg.buffSize, cfg.buffSize)
-                button:SetScale(cfg.buffScale)
+                button:SetSize(C.buffs.buffsize, C.buffs.buffsize)
+                button:SetScale(C.buffs.buffscale)
             end
         end
 
@@ -222,9 +216,9 @@ hooksecurefunc('AuraButton_Update', function(self, index)
             duration:ClearAllPoints()
             duration:SetPoint('BOTTOM', button, 'BOTTOM', 0, -2)
             if (self:match('Debuff')) then
-                duration:SetFont(cfg.durationFont, cfg.debuffFontSize, 'THINOUTLINE')
+                duration:SetFont(C.font.debuff_font, C.font.debuff_font_size, C.font.debuff_font_style)
             else
-                duration:SetFont(cfg.durationFont, cfg.buffFontSize, 'THINOUTLINE')
+                duration:SetFont(C.font.buff_font, C.font.buff_font_size, C.font.buff_font_style)
             end
             duration:SetShadowOffset(0, 0)
             duration:SetDrawLayer('OVERLAY')
@@ -235,9 +229,9 @@ hooksecurefunc('AuraButton_Update', function(self, index)
             count:ClearAllPoints()
             count:SetPoint('TOPRIGHT', button)
             if (self:match('Debuff')) then
-                count:SetFont(cfg.countFont, cfg.debuffCountSize, 'THINOUTLINE')
+                count:SetFont(C.font.debuff_font, C.font.debuff_font_size, C.font.debuff_font_style)
             else
-                count:SetFont(cfg.countFont, cfg.buffCountSize, 'THINOUTLINE')
+                count:SetFont(C.font.buff_font, C.font.buff_font_size, C.font.buff_font_style)
             end
             count:SetShadowOffset(0, 0)
             count:SetDrawLayer('OVERLAY')
@@ -245,7 +239,7 @@ hooksecurefunc('AuraButton_Update', function(self, index)
 
         local border = _G[self..index..'Border']
         if (border) then
-            border:SetTexture(cfg.borderDebuff)
+            border:SetTexture(C.media.border)
             border:SetPoint('TOPRIGHT', button, 1, 1)
             border:SetPoint('BOTTOMLEFT', button, -1, -1)
             border:SetTexCoord(0, 1, 0, 1)
@@ -255,17 +249,17 @@ hooksecurefunc('AuraButton_Update', function(self, index)
             if (not button.texture) then
                 button.texture = button:CreateTexture('$parentOverlay', 'ARTWORK')
                 button.texture:SetParent(button)
-                button.texture:SetTexture(cfg.borderBuff)
+                button.texture:SetTexture(C.media.border)
                 button.texture:SetPoint('TOPRIGHT', button, 1, 1)
                 button.texture:SetPoint('BOTTOMLEFT', button, -1, -1)
-                button.texture:SetVertexColor(unpack(cfg.buffBorderColor))
+                button.texture:SetVertexColor(unpack(C.buffs.buffbordercolor))
             end
         end
 
         if (button) then
             if (not button.Shadow) then
                 button.Shadow = button:CreateTexture('$parentShadow', 'BACKGROUND')
-                button.Shadow:SetTexture('Interface\\AddOns\\KkthnxUI_Buffs\\media\\textureShadow')
+                button.Shadow:SetTexture(C.media.bordershadow)
                 button.Shadow:SetPoint('TOPRIGHT', button.texture or border, 3.35, 3.35)
                 button.Shadow:SetPoint('BOTTOMLEFT', button.texture or border, -3.35, -3.35)
                 button.Shadow:SetVertexColor(0, 0, 0, 1)

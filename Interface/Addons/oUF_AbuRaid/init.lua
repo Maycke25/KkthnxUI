@@ -1,5 +1,6 @@
+local K, C, L, _ = unpack(KkthnxUI)
+
 local ADDON, ns = ...
-local oUF = ns.oUF or oUF
 
 local path = "Interface\\AddOns\\"..ADDON.."\\Media\\"
 ns.statusbars = { }
@@ -113,6 +114,7 @@ ns.IndicatorList = {
 
 ns.config = defaults
 local colors = oUF.colors
+
 colors.charmed = colors.charmed or {1, 0, 0.4}
 colors.debuff = {
 	["Curse"] = { 0.8, 0, 1 },

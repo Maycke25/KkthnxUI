@@ -1,10 +1,9 @@
-local _, KLoot = ...
-local cfg = KLoot.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.loot.lootframe ~= true then return end
 
-if cfg.loot.LootFrame ~= true then return end
---[[-----------------------------------
-MasterLoot by Ammo
----------------------------------------]]
+----------------------------------------------------------------------------------------
+--	MasterLoot by Ammo
+----------------------------------------------------------------------------------------
 local hexColors = {}
 for k, v in pairs(RAID_CLASS_COLORS) do
 	hexColors[k] = "|c"..v.colorStr
@@ -159,7 +158,7 @@ local function init()
 	end
 	for i = 1, MAX_RAID_MEMBERS do
 		candidate, lclass, className = GetMasterLootCandidate(slot, i)
-		if candidate and candidate == Kname then
+		if candidate and candidate == K.Name then
 			info.colorCode = hexColors[className] or hexColors["UNKNOWN"]
 			info.isTitle = nil
 			info.textHeight = 12

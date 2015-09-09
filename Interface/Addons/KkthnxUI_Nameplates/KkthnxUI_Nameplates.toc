@@ -6,9 +6,5 @@
 ## Version: 1.0
 ## Dependencies: KkthnxUI
 
-Core\Core.xml
-Core\StatusBar.xml
-Core\SmoothBar.lua
-KkthnxUI_Nameplates.xml
-
-Config.lua
+Core.lua
+HealerIcon.lua

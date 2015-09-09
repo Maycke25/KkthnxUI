@@ -1,7 +1,6 @@
-local _, Kchat = ...
-local cfg = Kchat.Config
+local K, C, L, _ = unpack(KkthnxUI)
 
-if cfg.ShortChanNames then
+if C.chat.channelreplace then
 	local gsub = gsub
 	local time = _G.time
 	local newAddMsg = {}

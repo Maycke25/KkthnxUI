@@ -1,10 +1,5 @@
-
-local _, nTooltip = ...
-local cfg = nTooltip.Config
-
-if (not cfg.healthbar.showHealthValue) then
-    return
-end
+local K, C, L, _ = unpack(KkthnxUI)
+if C.tooltip.enable ~= true or C.tooltip.showhealthvalue ~= true then return end
 
 local select = select
 local tonumber = tonumber
@@ -15,13 +10,13 @@ local format = string.format
 
 local bar = GameTooltipStatusBar
 bar.Text = bar:CreateFontString(nil, 'OVERLAY')
-bar.Text:SetPoint('CENTER', bar, cfg.healthbar.textPos, 0, 1)
+bar.Text:SetPoint('CENTER', bar, C.tooltip.textpos, 0, 1)
 
-if (cfg.healthbar.showOutline) then
-    bar.Text:SetFont(cfg.healthbar.font, cfg.healthbar.fontSize, 'THINOUTLINE')
+if (C.tooltip.healthoutline) then
+    bar.Text:SetFont(C.font.tooltip_font, C.font.tooltip_font_size, C.font.tooltip_font_style)
     bar.Text:SetShadowOffset(0, 0)
 else
-    bar.Text:SetFont(cfg.healthbar.font, cfg.healthbar.fontSize)
+    bar.Text:SetFont(C.font.tooltip_font, C.font.tooltip_font_size)
     bar.Text:SetShadowOffset(1, -1)
 end
 
@@ -98,8 +93,8 @@ GameTooltipStatusBar:HookScript('OnValueChanged', function(self, value)
         CreateHealthString(self)
     end
 
-    local fullString = GetHealthTag(cfg.healthbar.healthFullFormat, value, max)
-    local normalString = GetHealthTag(cfg.healthbar.healthFormat, value, max)
+    local fullString = GetHealthTag(C.tooltip.healthfullformat, value, max)
+    local normalString = GetHealthTag(C.tooltip.healthformat, value, max)
 
     local perc = (value/max)*100
     if (perc >= 100 and currentValue ~= 1) then

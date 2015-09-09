@@ -1,7 +1,6 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.misc.professiontabs ~= true then return end
 
-if cfg.Misc.ProfessionTabs ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Professions tabs on tradeskill frame(ProfessionTabs by Beoko)
 ----------------------------------------------------------------------------------------

@@ -1,3 +1,6 @@
+local K, C, L, _ = unpack(KkthnxUI)
+if C.minimap.enable ~= true or C.minimap.collectbuttons ~= true then return end
+
 --[[-----------------------------------
 Collect minimap buttons in one line
 ---------------------------------------]]
@@ -22,11 +25,11 @@ local BlackList = {
 
 local buttons = {}
 local button = CreateFrame("Frame", "ButtonCollectFrame", UIParent)
-local line = math.ceil(140 / 20)
+local line = math.ceil(C.minimap.size / 20)
 
 local function PositionAndStyle()
 	button:SetSize(20, 20)
-	button:SetPoint("TOPLEFT", Minimap, "TOPRIGHT", -10, 2)
+	button:SetPoint(unpack(C.position.minimap_buttons))
 	for i = 1, #buttons do
 		buttons[i]:ClearAllPoints()
 		if i == 1 then
@@ -36,8 +39,8 @@ local function PositionAndStyle()
 		else
 			buttons[i]:SetPoint("TOP", buttons[i-1], "BOTTOM", 0, -1)
 		end
-		buttons[i].ClearAllPoints = Kdummy
-		buttons[i].SetPoint = Kdummy
+		buttons[i].ClearAllPoints = K.Dummy
+		buttons[i].SetPoint = K.Dummy
 		buttons[i]:SetAlpha(0.1)
 		buttons[i]:HookScript("OnEnter", function()
 			buttons[i]:FadeIn()
@@ -106,7 +109,7 @@ local function SkinButton(f)
 				region:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				region:SetDrawLayer("ARTWORK")
 				if f:GetName() == "PS_MinimapButton" then
-					region.SetPoint = Kdummy
+					region.SetPoint = K.Dummy
 				end
 			end
 		end

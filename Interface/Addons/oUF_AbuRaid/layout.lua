@@ -1,3 +1,5 @@
+local K, C, L, _ = unpack(KkthnxUI)
+
 local ADDON, ns = ...
 local cfg = ns.config
 local noop = function() end

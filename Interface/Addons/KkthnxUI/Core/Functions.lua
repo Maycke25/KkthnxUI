@@ -1,18 +1,9 @@
---[[-----------------------------------
-KkthnxUI Functions
----------------------------------------]]
-
---[[-----------------------------------
-Mult / Scale - gxResolution
----------------------------------------]]
-local mult = 768 / string.match(GetCVar("gxResolution"), "%d+x(%d+)") / 0.71
-local Scale = function(x) return mult * math.floor(x / mult + 0.5) end
-KScale = function(x) return Scale(x) end
+local K, C, L, _ = unpack(select(2, ...))
 
 --[[-----------------------------------
 Chat Checking
 ---------------------------------------]]
-KCheck = function(warning)
+K.Check = function(warning)
 	if IsInGroup(LE_PARTY_CATEGORY_INSTANCE) then
 		return "INSTANCE_CHAT"
 	elseif IsInRaid(LE_PARTY_CATEGORY_HOME) then
@@ -30,7 +21,7 @@ end
 --[[-----------------------------------
 Rounding
 ---------------------------------------]]
-KRound = function(number, decimals)
+K.Round = function(number, decimals)
 	if not decimals then decimals = 0 end
 	return (("%%.%df"):format(decimals)):format(number)
 end
@@ -38,73 +29,86 @@ end
 --[[-----------------------------------
 RGBToHex Color
 ---------------------------------------]]
-KRGBToHex = function(r, g, b)
-	r = r <= 1 and r >= 0 and r or 0
-	g = g <= 1 and g >= 0 and g or 0
-	b = b <= 1 and b >= 0 and b or 0
-	return string.format("|cff%02x%02x%02x", r*255, g*255, b*255)
+K.RGBToHex = function(r, g, b)
+	r = tonumber(r) <= 1 and tonumber(r) >= 0 and tonumber(r) or 0
+	g = tonumber(g) <= tonumber(g) and tonumber(g) >= 0 and tonumber(g) or 0
+	b = tonumber(b) <= 1 and tonumber(b) >= 0 and tonumber(b) or 0
+	return string.format("|cff%02x%02x%02x", r * 255, g * 255, b * 255)
 end
 
 --[[-----------------------------------
-Fade in/out functions
+Spec Checking / Role
 ---------------------------------------]]
-function FadeIn(f)
-	UIFrameFadeIn(f, 0.4, f:GetAlpha(), 1)
+K.CheckSpec = function(spec)
+	local activeGroup = GetActiveSpecGroup()
+	if activeGroup and GetSpecialization(false, false, activeGroup) then
+		return spec == GetSpecialization(false, false, activeGroup)
+	end
 end
 
-function FadeOut(f)
-	UIFrameFadeOut(f, 0.8, f:GetAlpha(), 0.1)
-end
+local isCaster = {
+	DEATHKNIGHT = {nil, nil, nil},
+	DRUID = {true},					-- Balance
+	HUNTER = {nil, nil, nil},
+	MAGE = {true, true, true},
+	MONK = {nil, nil, nil},
+	PALADIN = {nil, nil, nil},
+	PRIEST = {nil, nil, true},		-- Shadow
+	ROGUE = {nil, nil, nil},
+	SHAMAN = {true},				-- Elemental
+	WARLOCK = {true, true, true},
+	WARRIOR = {nil, nil, nil}
+}
 
---[[-----------------------------------
-StripTextures
----------------------------------------]]
-local function StripTextures(object, kill)
-	for i = 1, object:GetNumRegions() do
-		local region = select(i, object:GetRegions())
-		if region:GetObjectType() == "Texture" then
-			if kill then
-				region:Kill()
-			else
-				region:SetTexture(nil)
-			end
+local function CheckRole(self, event, unit)
+	local spec = GetSpecialization()
+	local role = spec and GetSpecializationRole(spec)
+
+	if role == "TANK" then
+		K.Role = "Tank"
+	elseif role == "HEALER" then
+		K.Role = "Healer"
+	elseif role == "DAMAGER" then
+		if isCaster[K.Class][spec] then
+			K.Role = "Caster"
+		else
+			K.Role = "Melee"
 		end
 	end
 end
+local RoleUpdater = CreateFrame("Frame")
+RoleUpdater:RegisterEvent("PLAYER_ENTERING_WORLD")
+RoleUpdater:RegisterEvent("PLAYER_TALENT_UPDATE")
+RoleUpdater:SetScript("OnEvent", CheckRole)
 
 --[[-----------------------------------
-Kill object function
+UTF functions
 ---------------------------------------]]
-local HiddenFrame = CreateFrame("Frame")
-HiddenFrame:Hide()
-local function Kill(object)
-	if object.UnregisterAllEvents then
-		object:UnregisterAllEvents()
-		object:SetParent(HiddenFrame)
+K.UTF = function(string, i, dots)
+	if not string then return end
+	local bytes = string:len()
+	if bytes <= i then
+		return string
 	else
-		object.Show = Kdummy
+		local len, pos = 0, 1
+		while (pos <= bytes) do
+			len = len + 1
+			local c = string:byte(pos)
+			if c > 0 and c <= 127 then
+				pos = pos + 1
+			elseif c >= 192 and c <= 223 then
+				pos = pos + 2
+			elseif c >= 224 and c <= 239 then
+				pos = pos + 3
+			elseif c >= 240 and c <= 247 then
+				pos = pos + 4
+			end
+			if len == i then break end
+		end
+		if len == i and pos <= bytes then
+			return string:sub(1, pos - 1)..(dots and "..." or "")
+		else
+			return string
+		end
 	end
-	object:Hide()
-end
-
-local function addapi(object)
-	local mt = getmetatable(object).__index
-	if not object.StripTextures then mt.StripTextures = StripTextures end
-	if not object.Kill then mt.Kill = Kill end
-	if not object.FadeIn then mt.FadeIn = FadeIn end
-	if not object.FadeOut then mt.FadeOut = FadeOut end
-end
-
-local handled = {["Frame"] = true}
-local object = CreateFrame("Frame")
-addapi(object)
-addapi(object:CreateTexture())
-
-object = EnumerateFrames()
-while object do
-	if not handled[object:GetObjectType()] then
-		addapi(object)
-		handled[object:GetObjectType()] = true
-	end
-	object = EnumerateFrames(object)
 end

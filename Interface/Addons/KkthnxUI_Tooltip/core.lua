@@ -1,5 +1,5 @@
-local _, KkthnxTooltip = ...
-local cfg = KkthnxTooltip.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.tooltip.enable ~= true then return end
 
 local _G = _G
 local select = select
@@ -20,16 +20,15 @@ local healIcon = '|TInterface\\LFGFrame\\UI-LFG-ICON-PORTRAITROLES.blp:13:13:0:0
 local damagerIcon = '|TInterface\\LFGFrame\\UI-LFG-ICON-PORTRAITROLES.blp:13:13:0:0:64:64:20:39:22:41|t'
 
 local backdrop = {
-	bgFile = "Interface\\Buttons\\WHITE8X8",
-	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	edgeSize = 14,
-	insets = {
-		left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+	bgFile = "Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Background.blp",
+	edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+	tile = true, tileSize = 16, edgeSize = 14, 
+    insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
 	}
 }
 
 --	Modify default position
---if (cfg.userplaced) then return end
+--if (C.tooltip.userplaced) then return end
 hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 	self:SetOwner(parent, "ANCHOR_NONE")
 	self:ClearAllPoints()
@@ -43,22 +42,22 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 	end
 end)
 
-if (cfg.fontOutline) then
-	GameTooltipHeaderText:SetFont('Fonts\\ARIALN.ttf', (cfg.fontSize + 2), 'THINOUTLINE')
+if (C.tooltip.fontoutline) then
+	GameTooltipHeaderText:SetFont(C.font.tooltip_font, (C.font.tooltip_font_size + 2), C.font.tooltip_font_style)
 	GameTooltipHeaderText:SetShadowOffset(0, 0)
 	
-	GameTooltipText:SetFont('Fonts\\ARIALN.ttf', (cfg.fontSize), 'THINOUTLINE')
+	GameTooltipText:SetFont(C.font.tooltip_font, C.font.tooltip_font_size, C.font.tooltip_font_style)
 	GameTooltipText:SetShadowOffset(0, 0)
 	
-	GameTooltipTextSmall:SetFont('Fonts\\ARIALN.ttf', (cfg.fontSize), 'THINOUTLINE')
+	GameTooltipTextSmall:SetFont(C.font.tooltip_font, C.font.tooltip_font_size, C.font.tooltip_font_style)
 	GameTooltipTextSmall:SetShadowOffset(0, 0)
 else
-	GameTooltipHeaderText:SetFont('Fonts\\ARIALN.ttf', (cfg.fontSize + 2))
-	GameTooltipText:SetFont('Fonts\\ARIALN.ttf', (cfg.fontSize))
-	GameTooltipTextSmall:SetFont('Fonts\\ARIALN.ttf', (cfg.fontSize))
+	GameTooltipHeaderText:SetFont(C.font.tooltip_font, (C.font.tooltip_font_size + 2))
+	GameTooltipText:SetFont(C.font.tooltip_font, C.font.tooltip_font_size)
+	GameTooltipTextSmall:SetFont(C.font.tooltip_font, C.font.tooltip_font_size)
 end
 
-GameTooltipStatusBar:SetHeight(7)
+GameTooltipStatusBar:SetHeight(8)
 GameTooltipStatusBar:SetBackdrop({bgFile = 'Interface\\Buttons\\WHITE8x8'})
 GameTooltipStatusBar:SetBackdropColor(0, 1, 0, 0.3)
 
@@ -108,7 +107,7 @@ end
 
 -- Itemquaility border, we use our beautycase functions
 
-if (cfg.itemqualityBorderColor) then
+if (C.tooltip.itemqualitybordercolor) then
 	for _, tooltip in pairs({
 		GameTooltip,
 		ItemRefTooltip,
@@ -195,7 +194,7 @@ local function GetFormattedUnitString(unit, specIcon)
 		if (not UnitRace(unit)) then
 			return nil
 		end
-		return GetFormattedUnitLevel(unit)..UnitRace(unit)..GetFormattedUnitClass(unit)..(cfg.showSpecializationIcon and specIcon or '')
+		return GetFormattedUnitLevel(unit)..UnitRace(unit)..GetFormattedUnitClass(unit)..(C.tooltip.showSpecializationIcon and specIcon or '')
 	else
 		return GetFormattedUnitLevel(unit)..GetFormattedUnitClassification(unit)..GetFormattedUnitType(unit)
 	end
@@ -205,11 +204,11 @@ local function GetUnitRoleString(unit)
 	local role = UnitGroupRolesAssigned(unit)
 	local roleList = nil
 	
-	if (role == 'TANK') then
+	if (K.Role == 'TANK') then
 		roleList = ' '..tankIcon..' '..TANK
-	elseif (role == 'HEALER') then
+	elseif (K.Role== 'HEALER') then
 		roleList = ' '..healIcon..' '..HEALER
-	elseif (role == 'DAMAGER') then
+	elseif (K.Role == 'DAMAGER') then
 		roleList = ' '..damagerIcon..' '..DAMAGER
 	end
 	
@@ -220,9 +219,9 @@ end
 
 local function SetHealthBarColor(unit)
 	local r, g, b
-	if (cfg.healthbar.customColor.apply and not cfg.healthbar.reactionColoring) then
-		r, g, b = cfg.healthbar.customColor.r, cfg.healthbar.customColor.g, cfg.healthbar.customColor.b
-	elseif (cfg.healthbar.reactionColoring and unit) then
+	if (C.tooltip.customcolor and not C.tooltip.reactioncoloring) then
+		r, g, b = 0, 1, 1
+	elseif (C.tooltip.reactioncoloring and unit) then
 		r, g, b = UnitSelectionColor(unit)
 	else
 		r, g, b = 0, 1, 0
@@ -236,7 +235,7 @@ local function GetUnitRaidIcon(unit)
 	local index = GetRaidTargetIndex(unit)
 	
 	if (index) then
-		if (UnitIsPVP(unit) and cfg.showPVPIcons) then
+		if (UnitIsPVP(unit) and C.tooltip.showpvpicons) then
 			return ICON_LIST[index]..'11|t'
 		else
 			return ICON_LIST[index]..'11|t '
@@ -250,13 +249,13 @@ local function GetUnitPVPIcon(unit)
 	local factionGroup = UnitFactionGroup(unit)
 	
 	if (UnitIsPVPFreeForAll(unit)) then
-		if (cfg.showPVPIcons) then
+		if (C.tooltip.showpvpicons) then
 			return '|TInterface\\AddOns\\KkthnxUI_Media\\Media\\Textures\\UI-PVP-FFA:12|t'
 		else
 			return '|cffFF0000# |r'
 		end
 	elseif (factionGroup and UnitIsPVP(unit)) then
-		if (cfg.showPVPIcons) then
+		if (C.tooltip.showpvpicons) then
 			return '|TInterface\\AddOns\\KkthnxUI_Media\\Media\\Textures\\UI-PVP-'..factionGroup..':12|t'
 		else
 			return '|cff00FF00# |r'
@@ -293,7 +292,7 @@ GameTooltip.inspectCache = {}
 GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 	local unit = GetRealUnit(self)
 	
-	if (cfg.hideInCombat and InCombatLockdown()) then
+	if (C.tooltip.hideincombat and InCombatLockdown()) then
 		self:Hide()
 		return
 	end
@@ -326,7 +325,7 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		
 		-- Hide player titles
 		
-		if (cfg.showPlayerTitles) then
+		if (C.tooltip.showplayertitles) then
 			if (UnitPVPName(unit)) then
 				name = UnitPVPName(unit)
 			end
@@ -352,13 +351,13 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		
 		-- Role text
 		
-		if (cfg.showUnitRole) then
+		if (C.tooltip.showunitrole) then
 			self:AddLine(GetUnitRoleString(unit), 1, 1, 1)
 		end
 		
 		-- Mouse over target with raidicon support
 		
-		if (cfg.showMouseoverTarget) then
+		if (C.tooltip.showmouseovertarget) then
 			AddMouseoverTarget(self, unit)
 		end
 		
@@ -386,7 +385,7 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		-- Player realm names
 		
 		if (realm and realm ~= '') then
-			if (cfg.abbrevRealmNames) then
+			if (C.tooltip.abbrevRealmNames) then
 				self:AppendText(' (*)')
 			else
 				self:AppendText(' - '..realm)
@@ -402,7 +401,7 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		
 		-- Border coloring
 		
-		if (cfg.reactionBorderColor) then
+		if (C.tooltip.reactionBorderColor) then
 			local r, g, b = UnitSelectionColor(unit)
 			
 			self:SetBackdropBorderColor(r, g, b)
@@ -413,7 +412,7 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		if (UnitIsDead(unit) or UnitIsGhost(unit)) then
 			GameTooltipStatusBar:SetBackdropColor(0.5, 0.5, 0.5, 0.3)
 		else
-			if (not cfg.healthbar.customColor.apply and not cfg.healthbar.reactionColoring) then
+			if (not C.tooltip.customcolor and not C.tooltip.reactionbordercolor) then
 				GameTooltipStatusBar:SetBackdropColor(27/255, 243/255, 27/255, 0.3)
 			else
 				SetHealthBarColor(unit)
@@ -428,14 +427,14 @@ GameTooltip:HookScript('OnTooltipCleared', function(self)
 	GameTooltipStatusBar:SetPoint('BOTTOMRIGHT', self, 'TOPRIGHT', -1, 3)
 	GameTooltipStatusBar:SetBackdropColor(0, 1, 0, 0.3)
 	
-	if (cfg.reactionBorderColor) then
+	if (C.tooltip.reactionbordercolor) then
 		self:SetBackdropBorderColor(1, 1, 1)
 	end
 end)
 
 -- Custom healthbar coloring
 
-if (cfg.healthbar.reactionColoring or cfg.healthbar.customColor.apply) then
+if (C.tooltip.reactioncoloring or C.tooltip.customcolor) then
 	GameTooltipStatusBar:HookScript('OnValueChanged', function(self)
 		local unit = GetRealUnit(self:GetParent())
 		SetHealthBarColor(unit)
@@ -444,7 +443,7 @@ end
 
 -- Hide coalesced/interactive realm information
 
-if (cfg.hideRealmText) then
+if (C.tooltip.hiderealmtext) then
 	local COALESCED_REALM_TOOLTIP1 = string.split(FOREIGN_SERVER_LABEL, COALESCED_REALM_TOOLTIP)
 	local INTERACTIVE_REALM_TOOLTIP1 = string.split(INTERACTIVE_SERVER_LABEL, INTERACTIVE_REALM_TOOLTIP)
 	-- Dirty checking of the coalesced realm text because it's added
@@ -470,14 +469,14 @@ if (cfg.hideRealmText) then
 	end)
 end
 
-if (cfg.userplaced) then
+if (C.tooltip.userplaced) then
 	hooksecurefunc('GameTooltip_SetDefaultAnchor', function(self, parent)
-		if (cfg.showOnMouseover) then
+		if (C.tooltip.showOnMouseover) then
 			self:SetOwner(parent, 'ANCHOR_CURSOR')
 		else
 			self:SetOwner(parent, 'ANCHOR_NONE')
 			self:ClearAllPoints()
-			self:SetPoint(unpack(cfg.position))
+			self:SetPoint(unpack(C.tooltip.position))
 		end
 	end)
 end

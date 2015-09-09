@@ -5,6 +5,9 @@
 
 local _, ns = ...
 
+local oUF = ns.oUF or oUF
+if not oUF then return end
+
 --[[ Default Aura Filter ]]
 local BaseAuras = {
 	-- Useless

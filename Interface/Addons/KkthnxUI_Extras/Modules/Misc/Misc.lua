@@ -1,11 +1,10 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
 
 --[[-----------------------------------
 Clean up Keys
 ---------------------------------------]]
 local HKfont = CreateFont("HotKeyFont")
-HKfont:SetFont(cfg.hkFont, cfg.hkFontSize, cfg.hkFontStyle)
+HKfont:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
 HKfont:SetShadowOffset(0, 0)
 NumberFontNormalSmallGray:SetFontObject(HKfont)
 
@@ -86,7 +85,7 @@ hooksecurefunc(ExtraActionButton1.style, 'SetTexture', RemoveTexture)
 --[[-----------------------------------
 Shorten gold display
 ---------------------------------------]]
-if cfg.Misc.ShortGoldDisplay == true then
+if C.misc.shortengold == true then
 	local frame = CreateFrame("FRAME", "DuffedGold")
 	frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 	frame:RegisterEvent("MAIL_SHOW")
@@ -135,7 +134,7 @@ SLASH_FARMMODE1 = "/farmmode"
 --[[-----------------------------------
 Auto Screenshot
 ---------------------------------------]]
-if cfg.Misc.AutoScreenshot then
+if C.misc.autoscreenshot then
 	local function OnEvent(self, event, ...)
 		C_Timer.After(1, function() Screenshot() end)
 	end
@@ -207,7 +206,7 @@ end)
 --[[-----------------------------------
 Custom Lag Tolerance(by Elv22)
 ---------------------------------------]]
-if cfg.Misc.CustomLagTolerance == true then
+if C.misc.customlagtolerance == true then
 	InterfaceOptionsCombatPanelMaxSpellStartRecoveryOffset:Hide()
 	InterfaceOptionsCombatPanelReducedLagTolerance:Hide()
 	
@@ -258,57 +257,19 @@ if cfg.Misc.CustomLagTolerance == true then
 end
 
 --[[-----------------------------------
-SkinCam AFK
----------------------------------------]]
-if cfg.Misc.SpinAFK == true then
-	local SpinCam = CreateFrame("Frame")
-	
-	local OnEvent = function(self, event, unit)
-		if event == "PLAYER_FLAGS_CHANGED" then
-			if unit == "player" then
-				if UnitIsAFK(unit) then
-					SpinStart()
-				else
-					SpinStop()
-				end
-			end
-		elseif event == "PLAYER_LEAVING_WORLD" then
-			SpinStop()
-		end
-	end
-	SpinCam:RegisterEvent("PLAYER_ENTERING_WORLD")
-	SpinCam:RegisterEvent("PLAYER_LEAVING_WORLD")
-	SpinCam:RegisterEvent("PLAYER_FLAGS_CHANGED")
-	SpinCam:SetScript("OnEvent", OnEvent)
-	
-	function SpinStart()
-		spinning = true
-		MoveViewRightStart(0.1)
-		UIParent:Hide()
-	end
-	
-	function SpinStop()
-		if not spinning then return end
-		spinning = nil
-		MoveViewRightStop()
-		UIParent:Show()
-	end
-end
-
---[[-----------------------------------
 Collect Garbage
 ---------------------------------------]]
-if cfg.Misc.Collect then
-	local eventcount = 0 
-	local GarbageCollect = CreateFrame("Frame") 
-	GarbageCollect:RegisterAllEvents() 
-	GarbageCollect:SetScript("OnEvent", function(self, event) 
-		eventcount = eventcount + 1 
-		if InCombatLockdown() then return end 
-		if eventcount > 6000 or event == "PLAYER_ENTERING_WORLD" then 
-			collectgarbage("collect") 
-			eventcount = 0
-		end 
+if C.misc.collectgarbage then
+	local eventcount = 0
+	local Garbage = CreateFrame("Frame")
+	Garbage:RegisterAllEvents()
+	Garbage:SetScript("OnEvent", function(self, event)
+	eventcount = eventcount + 1
+
+	if (InCombatLockdown() and eventcount > 25000) or (not InCombatLockdown() and eventcount > 10000) or event == "PLAYER_ENTERING_WORLD" then
+		collectgarbage("collect")
+		eventcount = 0
+	end
 	end)
 end
 
@@ -350,7 +311,7 @@ end)
 Remove Boss Emote spam in BG 
 (by Partha)
 ---------------------------------------]]
-if cfg.Misc.BGSpam then
+if C.misc.bgspam then
 	local BGSpam = CreateFrame("Frame")
 	local RaidBossEmoteFrame, spamDisabled = RaidBossEmoteFrame
 	
@@ -372,7 +333,7 @@ end
 --[[-----------------------------------
 Boss Banner Hider
 ---------------------------------------]]
-if cfg.Misc.BossBanner == true then
+if C.misc.BossBanner == true then
 	BossBanner.PlayBanner = function()
 	end
 end

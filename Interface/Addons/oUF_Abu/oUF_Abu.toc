@@ -1,7 +1,7 @@
 ## Interface: 60200
 ## Author: Abu
 ## Title: oUF_|cffffffffAbu|r
-## RequiredDeps: oUF
+## RequiredDeps: KkthnxUI
 ## Version: 6.1-3
 ## SavedVariables: oUFAbuSettings, oUFAbuAuraFilters
 ## SavedVariablesPerCharacter: oUFAbuProfile

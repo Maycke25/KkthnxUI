@@ -1,5 +1,7 @@
 local addon, ns = ...
 
+local oUF = ns.oUF or oUF
+if not oUF then return end
 local colors = oUF.colors
 
 ----------------------------------------------------------------------
@@ -83,7 +85,7 @@ function ns.UpdateBorder(self)
 
 	local threat = self.threat_status
 	if (threat) then
-		shadowcolor = colors.threat[threat]
+		shadowcolor = colors2.threat[threat]
 	end
 
 	if (glowcolor) then

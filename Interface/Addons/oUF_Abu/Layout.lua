@@ -1,9 +1,12 @@
-
+local K, C, L, _ = unpack(KkthnxUI)
 local _, ns = ...
 local config, playerClass
 local textPath = 'Interface\\AddOns\\oUF_Abu\\Media\\Frames\\'
 local pathFat = textPath.."Fat\\"
 local pathNormal = textPath.."Normal\\"
+
+local oUF = ns.oUF or oUF
+if not oUF then return end
 
 -- Frame data
 local DataNormal = {
@@ -435,7 +438,7 @@ local function CreateUnitLayout(self, unit)
 	if (self.IsMainFrame) then
 		--[[ 	Level text		]]
 		self.Level = self:CreateFontString(nil, 'ARTWORK')
-		self.Level:SetFont('Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf', 13, 'THINOUTLINE')
+		self.Level:SetFont(C.font.unitframes_font, C.font.unitframes_font_size, C.font.unitframes_font_style)
 		self.Level:SetShadowOffset(0, 0)
 		self.Level:SetPoint('CENTER', self.Texture, (cUnit == 'player' and -63) or 63, -16)
 		self:Tag(self.Level, '[level]')

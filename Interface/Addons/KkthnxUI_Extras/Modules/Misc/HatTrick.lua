@@ -1,3 +1,5 @@
+local K, C, L, _ = unpack(KkthnxUI)
+if C.misc.hattrick ~= true then return end
 
 local GameTooltip = GameTooltip
 

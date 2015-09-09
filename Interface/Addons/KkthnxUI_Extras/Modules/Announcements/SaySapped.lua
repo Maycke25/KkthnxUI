@@ -1,7 +1,5 @@
-local _, KExts = ...
-local cfg = KExts.Config
-
-if not cfg.Announcements.SaySapped then return end
+local K, C, L, _ = unpack(KkthnxUI)
+if C.announcements.saysapped ~= true then return end
 ----------------------------------------------------------------------------------------
 -- Say Sapped
 ----------------------------------------------------------------------------------------
@@ -13,7 +11,7 @@ SaySapped:SetScript("OnEvent", function(_,_,_,event, _,_,sourceName, _,_,_,destN
 	and (destName == SaySapped.playername)
 	and (event == "SPELL_AURA_APPLIED" or event == "SPELL_AURA_REFRESH"))
 	then
-		SendChatMessage("Sapped","SAY")
+		SendChatMessage("I'm Sapped Help!","SAY")
 		DEFAULT_CHAT_FRAME:AddMessage("Sapped by: "..(sourceName or "(unknown)"))
 	end
 end)

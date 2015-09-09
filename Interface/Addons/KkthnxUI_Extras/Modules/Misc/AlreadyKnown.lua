@@ -1,5 +1,7 @@
-if IsAddOnLoaded("RecipeKnown") or IsAddOnLoaded("AlreadyKnown") then return end
+local K, C, L, _ = unpack(KkthnxUI)
+if C.misc.alreadyknown ~= true then return end
 
+if IsAddOnLoaded("RecipeKnown") or IsAddOnLoaded("AlreadyKnown") then return end
 local knowncolor = { r = 0.1, g = 1.0, b = 0.2 }
 local tooltip = CreateFrame('GameTooltip')
 tooltip:SetOwner(WorldFrame, 'ANCHOR_NONE')

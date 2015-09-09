@@ -1,6 +1,8 @@
----------------------------------------------------------------------------------------
---	Slash commands
-----------------------------------------------------------------------------------------
+local K, C, L, _ = unpack(select(2, ...))
+
+--[[-----------------------------------
+Misc Slash commands
+---------------------------------------]]
 SlashCmdList.RELOADUI = function() ReloadUI() end
 SLASH_RELOADUI1 = "/rl"
 
@@ -40,14 +42,6 @@ SlashCmdList.INSTTELEPORT = function()
 	end
 end
 SLASH_INSTTELEPORT1 = "/teleport"
-
---[[-----------------------------------
-Where it's due.
----------------------------------------]]
-SLASH_CREDITS1 = '/credits'
-SlashCmdList['CREDITS'] = function()
-    ChatFrame1:AddMessage('|cFF4488FFSpecial thanks to|r |cFFc248d8Magicnachos,|r |cFFFEB200syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth|r. Without them I would not have had the inspiration or insight to be able to make this UI')
-end
 
 --[[-----------------------------------
 Spec switching(by Monolit)
@@ -148,11 +142,6 @@ end
 
 function TextureList(frame)
 	frame = _G[frame] or FRAME
-	--[[for key, obj in pairs(frame) do
-		if type(obj) == "table" and obj.GetObjectType and obj:GetObjectType() == "Texture" then
-			print(key, obj:GetTexture())
-		end
-	end]]
 
 	for i=1, frame:GetNumRegions() do
 		local region = select(i, frame:GetRegions())
@@ -168,9 +157,6 @@ SlashCmdList["TEXLIST"] = TextureList
 --[[-----------------------------------
 Clear chat
 ---------------------------------------]]
-SLASH_CLEARCHAT1 = "/clear"
-SLASH_CLEARCHAT2 = "/clearchat"
-
 SlashCmdList.CLEARCHAT = function(cmd)
 	cmd = cmd and strtrim(strlower(cmd))
 	for i = 1, NUM_CHAT_WINDOWS do
@@ -180,6 +166,8 @@ SlashCmdList.CLEARCHAT = function(cmd)
 		end
 	end
 end
+SLASH_CLEARCHAT1 = "/clear"
+SLASH_CLEARCHAT2 = "/clearchat"
 
 --[[-----------------------------------
 Test Blizzard Alerts

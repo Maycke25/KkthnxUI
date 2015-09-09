@@ -10,7 +10,20 @@ L_BIND_NO_SET = "No bindings set"
 L_BIND_SAVED = "All keybindings have been saved."
 
 --[[----------------------------
-Chat
+Welcome message
+--------------------------------]]
+L_WELCOME_LINE_1 = "Welcome to |cFF4488FFKkthnx's|r |cFFFEB200UI|r "
+L_WELCOME_LINE_2_1 = ""
+L_WELCOME_LINE_2_2 = "Type |cFF4488FF/uihep|r or |cFF4488FF/uicfg|r for more features"
+L_WELCOME_LINE_2_3 = ""
+L_WELCOME_LINE_2_4 = "For more info visit |cFF4488FFhttps://github.com/Kkthnx/KkthnxUI|r"
+
+-- Popups
+L_POPUP_INSTALLUI = "First time on |cFF4488FFKkthnx's|r |cFFFEB200UI|r with this Character. You must reload UI to configure it."
+L_POPUP_RESETUI = "Are you sure you want to reset all settings for |cFF4488FFKkthnx's|r |cFFFEB200UI|r?"
+
+--[[----------------------------
+Chat Strings
 --------------------------------]]
 L_CHAT_AFK = "[AFK]"
 L_CHAT_AFK = "[AFK]"
@@ -36,13 +49,6 @@ L_CHAT_RECRUITMENT = "GuildRecruitment"
 L_CHAT_WHISPER = "From"
 
 --[[----------------------------
-World Map
---------------------------------]]
-L_MAP_BOUNDS = "Out of bounds!"
-L_MAP_CURSOR = "Cursor: "
-L_MAP_FOG = "Fog of War"
-
---[[----------------------------
 Loot / Group Loot
 --------------------------------]]
 L_LOOT_ANNOUNCE = "Announce to"
@@ -55,7 +61,7 @@ L_LOOT_TO_RAID = "  raid"
 L_LOOT_TO_SAY = "  say"
 
 --[[----------------------------
-Tooltip
+Tooltip Strings
 --------------------------------]]
 L_TOOLTIP_ITEM_ID = "Item ID:"
 L_TOOLTIP_SPELL_ID = "Spell ID:"
@@ -70,13 +76,13 @@ L_INFO_NOT_INSTALLED = " is not installed."
 L_INFO_PET_DUEL = "Declined pet duel request from "
 
 --[[----------------------------
-Misc
+Misc Strings
 --------------------------------]]
 L_ANNOUNCE_INTERRUPTED = INTERRUPTED
 L_WATCH_WOWHEAD_LINK = "Wowhead link"
 
 --[[----------------------------
-Installer Strings
+Profile Strings
 --------------------------------]]
 L_INFO_SETTINGS_ABU = "Type /settings abu, to apply the settings |cffffc700oUF_Abu|r."
 L_INFO_SETTINGS_ALL = "Type /settings all, to apply the settings for all modifications."
@@ -89,7 +95,6 @@ L_INFO_SETTINGS_SKADA = "Type /settings skada, to apply the settings |cffffc700S
 L_INFO_SETTINGS_WEAKAURAS = "Type /settings weakauras, to apply the settings |cffffc700WeakAuras|r."
 L_INFO_SETTINGS_XLOOT = "Type /settings weakauras, to apply the settings |cffffc700XLoot|r."
 L_INFO_SETTINGS_ZYGOR = "Type /settings zygor, to apply the settings |cffffc700ZygorGuidesViewer|r."
-L_POPUP_INSTALLUI = "First time on |cFF4488FFKkthnx's|r |cFFFEB200UI|r with this Character. You must Install / Accept to configure it."
 L_POPUP_SETTINGS_ALL = "Apply settings for all modifications? (|cffffc700Masque, Bigwigs, oUF_ABU, Bartender4|r and |cffffc700Skada|r)"
 
 --[[----------------------------
@@ -118,5 +123,4 @@ L_SLASHCMD_HELP = {
 	"/clear - Lets you clear your focused chat frame.",
 	"/tt - Whisper target.",
 	"/testroll - Test the roll frames.",
-	"/credits - Displays all credits where its due.",
 }

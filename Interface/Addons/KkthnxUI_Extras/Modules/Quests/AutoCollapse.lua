@@ -1,7 +1,6 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.misc.autocollapse ~= true then return end
 
-if cfg.Quests.AutoCollapse ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Auto collapse ObjectiveTrackerFrame in instance
 ----------------------------------------------------------------------------------------

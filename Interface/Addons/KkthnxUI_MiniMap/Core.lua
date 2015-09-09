@@ -1,12 +1,12 @@
-local _, Kmap = ...
-local cfg = Kmap.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.minimap.enable ~= true then return end
 
 local backdrop = {
 	bgFile = "Interface\\Buttons\\WHITE8X8",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	edgeSize = 14,
 	insets = {
-	left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+		left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
 	}
 }
 
@@ -31,13 +31,13 @@ local frames = {
 }
 
 for i in pairs(frames) do
-    _G[frames[i]]:Hide()
-    _G[frames[i]].Show = Kdummy
+	_G[frames[i]]:Hide()
+	_G[frames[i]].Show = K.Dummy
 end
 
 -- Set Default Map X/Y Position
-Minimap:SetPoint('TOPRIGHT', UIParent, -7, -7)
-Minimap:SetSize(140, 140)
+Minimap:SetPoint(unpack(C.position.minimap))
+Minimap:SetSize(C.minimap.size, C.minimap.size)
 
 -- Hide Mail Button
 MiniMapMailFrame:SetParent(Minimap)
@@ -112,12 +112,16 @@ HelpOpenTicketButton:SetSize(24, 24)
 -- Enable mouse scrolling
 Minimap:EnableMouseWheel(true)
 Minimap:SetScript("OnMouseWheel", function(self, d)
-	if d > 0 then _G.MinimapZoomIn:Click() elseif d < 0 then _G.MinimapZoomOut:Click() end
+	if d > 0 then
+		_G.MinimapZoomIn:Click()
+	elseif d < 0 then
+		_G.MinimapZoomOut:Click()
+	end
 end)
 
 -- displays time/clock 
 if not IsAddOnLoaded("Blizzard_TimeManager") then
-  LoadAddOn("Blizzard_TimeManager")
+	LoadAddOn("Blizzard_TimeManager")
 end
 
 local clockFrame, clockTime = TimeManagerClockButton:GetRegions()
@@ -127,7 +131,7 @@ clockTime:SetShadowOffset(0, 0)
 clockTime:SetTextColor(1,1,1)
 TimeManagerClockButton:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, -8)
 TimeManagerClockButton:SetScript("OnClick", function(_,btn)
- 	if btn == "LeftButton" then
+	if btn == "LeftButton" then
 		TimeManager_Toggle()
 	end 
 	if btn == "RightButton" then
@@ -141,32 +145,120 @@ end)
 ----------------------------------------------------------------------------------------
 --	Right click menu
 ----------------------------------------------------------------------------------------
-Minimap:SetScript("OnMouseUp", function(self, btn)
-	local xoff = 0
-	local position = Minimap:GetPoint()
+local menuFrame = CreateFrame("Frame", "MinimapRightClickMenu", UIParent, "UIDropDownMenuTemplate")
+local guildText = IsInGuild() and ACHIEVEMENTS_GUILD_TAB or LOOKINGFORGUILD
+local micromenu = {
+	{text = CHARACTER_BUTTON, notCheckable = 1, func = function()
+			ToggleCharacter("PaperDollFrame")
+	end},
+	{text = SPELLBOOK_ABILITIES_BUTTON, notCheckable = 1, func = function()
+			if InCombatLockdown() then
+				print("|cffffff00"..ERR_NOT_IN_COMBAT.."|r") return
+			end
+			ToggleFrame(SpellBookFrame)
+	end},
+	{text = TALENTS_BUTTON, notCheckable = 1, func = function()
+			if not PlayerTalentFrame then
+				TalentFrame_LoadUI()
+			end
+			if K.Level >= SHOW_TALENT_LEVEL then
+				ShowUIPanel(PlayerTalentFrame)
+			else
+				print("|cffffff00"..format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, SHOW_TALENT_LEVEL).."|r")
+			end
+	end},
+	{text = ACHIEVEMENT_BUTTON, notCheckable = 1, func = function()
+			ToggleAchievementFrame()
+	end},
+	{text = QUESTLOG_BUTTON, notCheckable = 1, func = function()
+			ToggleQuestLog()
+	end},
+	{text = guildText, notCheckable = 1, func = function()
+			ToggleGuildFrame()
+			if IsInGuild() then
+				GuildFrame_TabClicked(GuildFrameTab2)
+			end
+	end},
+	{text = SOCIAL_BUTTON, notCheckable = 1, func = function()
+			ToggleFriendsFrame()
+	end},
+	{text = PLAYER_V_PLAYER, notCheckable = 1, func = function()
+			if K.Level >= SHOW_PVP_LEVEL then
+				TogglePVPUI()
+			else
+				if C.error.white == false then
+					UIErrorsFrame:AddMessage(format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, SHOW_PVP_LEVEL), 1, 0.1, 0.1)
+				else
+					print("|cffffff00"..format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, SHOW_PVP_LEVEL).."|r")
+				end
+			end
+	end},
+	{text = DUNGEONS_BUTTON, notCheckable = 1, func = function()
+			if K.Level >= SHOW_LFD_LEVEL then
+				PVEFrame_ToggleFrame("GroupFinderFrame", nil)
+			else
+				if C.error.white == false then
+					UIErrorsFrame:AddMessage(format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, SHOW_LFD_LEVEL), 1, 0.1, 0.1)
+				else
+					print("|cffffff00"..format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, SHOW_LFD_LEVEL).."|r")
+				end
+			end
+	end},
+	{text = ADVENTURE_JOURNAL, notCheckable = 1, func = function()
+			ToggleEncounterJournal()
+	end},
+	{text = COLLECTIONS, notCheckable = 1, func = function()
+			if InCombatLockdown() then
+				print("|cffffff00"..ERR_NOT_IN_COMBAT.."|r") return
+			end
+			ToggleCollectionsJournal()
+	end},
+	{text = HELP_BUTTON, notCheckable = 1, func = function()
+			ToggleHelpFrame()
+	end},
+	{text = L_MINIMAP_CALENDAR, notCheckable = 1, func = function()
+			ToggleCalendar()
+	end},
+	{text = BATTLEFIELD_MINIMAP, notCheckable = 1, func = function()
+			ToggleBattlefieldMinimap()
+	end},
+	{text = LOOT_ROLLS, notCheckable = 1, func = function()
+			ToggleFrame(LootHistoryFrame)
+	end},
+}
 
-	if btn == "MiddleButton" or (IsShiftKeyDown() and btn == "RightButton") then
-		if not KkthnxUIMicroButtonsDropDown then return end
-		if position:match("RIGHT") then xoff = KScale(-160) end
-		EasyMenu(KMicroMenu, KkthnxUIMicroButtonsDropDown, "cursor", xoff, 0, "MENU", 2)
-	elseif btn == "RightButton" then
-		if position:match("RIGHT") then xoff = KScale(-8) end
-		ToggleDropDownMenu(nil, nil, MiniMapTrackingDropDown, Minimap, xoff, KScale(-2))
-	else
+if not IsTrialAccount() and not C_StorePublic.IsDisabledByParentalControls() then
+	tinsert(micromenu, {text = BLIZZARD_STORE, notCheckable = 1, func = function() StoreMicroButton:Click() end})
+end
+
+if K.Level > 89 then
+	tinsert(micromenu, {text = GARRISON_LANDING_PAGE_TITLE, notCheckable = 1, func = function() GarrisonLandingPage_Toggle() end})
+end
+
+Minimap:SetScript("OnMouseUp", function(self, button)
+	local position = Minimap:GetPoint()
+	if button == "RightButton" then
+		if position:match("LEFT") then
+			EasyMenu(micromenu, menuFrame, "cursor", 0, 0, "MENU")
+		else
+			EasyMenu(micromenu, menuFrame, "cursor", -160, 0, "MENU")
+		end
+	elseif button == "MiddleButton" then
+		if position:match("LEFT") then
+			ToggleDropDownMenu(nil, nil, MiniMapTrackingDropDown, "cursor", 0, 0, "MENU", 2)
+		else
+			ToggleDropDownMenu(nil, nil, MiniMapTrackingDropDown, "cursor", -160, 0, "MENU", 2)
+		end
+	elseif button == "LeftButton" then
 		Minimap_OnClick(self)
 	end
-end)
-
-Minimap:EnableMouseWheel(true)
-Minimap:SetScript("OnMouseWheel", function(self, delta)
-	if delta > 0 then MinimapZoomIn:Click() elseif delta < 0 then MinimapZoomOut:Click() end
 end)
 
 -- For others mods with a minimap button, set minimap buttons position in square mode
 function GetMinimapShape() return "SQUARE" end
 
 -- Set Square Map View
-Minimap:SetMaskTexture("Interface\\AddOns\\KkthnxUI_Media\\Media\\Textures\\Blank")
+Minimap:SetMaskTexture(C.media.blank)
 MinimapBorder:Hide()
 Minimap:SetArchBlobRingScalar(0)
 Minimap:SetQuestBlobRingScalar(0)
@@ -174,8 +266,8 @@ Minimap:SetQuestBlobRingScalar(0)
 -- Set Boarder Texture
 MinimapBackdrop:SetBackdrop(backdrop)		
 MinimapBackdrop:ClearAllPoints()		
---MinimapBackdrop:SetBackdropBorderColor(0.75, 0.75, 0.75)		
-MinimapBackdrop:SetBackdropColor(0.15, 0.15, 0.15, 0.0)		
+MinimapBackdrop:SetBackdropBorderColor(1, 1, 1)		
+MinimapBackdrop:SetBackdropColor(.3, .3, .3, 0)		
 MinimapBackdrop:SetAlpha(1.0)		
 MinimapBackdrop:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -4, 4)		
 MinimapBackdrop:SetPoint("BOTTOMRIGHT", Minimap, "BOTTOMRIGHT", 4, -4)
@@ -198,7 +290,7 @@ wPing:RegisterEvent'MINIMAP_PING'
 wPing:SetScript('OnEvent', function(self, event, u)
 	local c = RAID_CLASS_COLORS[select(2,UnitClass(u))]
 	local name = UnitName(u)
-    if(name ~= Kname) then
+	if(name ~= K.Name) then
 		wPing:AddMessage(name, c.r, c.g, c.b)
 	end
 end)

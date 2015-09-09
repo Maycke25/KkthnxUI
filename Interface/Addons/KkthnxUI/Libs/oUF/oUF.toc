@@ -1,0 +1,15 @@
+## Interface: 60000
+## Title: oUF
+## Author: Haste
+## Version: 1.6.8
+## OptionalDeps: Clique
+## X-eMail: troeks@gmail.com
+## X-oUF: oUF
+## Notes: Unit frame framework. Does nothing by itself.
+## Notes-ruRU: Каркас для модификации фреймов игроков. Сам по себе не делает ничего.
+## X-Curse-Packaged-Version: Release-r94
+## X-Curse-Project-Name: Goldpaw's UnitFrames
+## X-Curse-Project-ID: gui4_unitframes
+## X-Curse-Repository-ID: wow/gui4_unitframes/mainline
+
+oUF.xml

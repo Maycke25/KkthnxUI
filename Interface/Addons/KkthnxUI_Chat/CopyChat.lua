@@ -14,7 +14,7 @@ local sizes = {
 }
 
 local backdrop = {
-	bgFile = "Interface\\Buttons\\WHITE8X8",
+	bgFile = "Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Background.blp",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	edgeSize = 14,
 	insets = {
@@ -25,7 +25,7 @@ local backdrop = {
 local function CreatCopyFrame()
 	frame = CreateFrame("Frame", "CopyFrame", UIParent)
 	frame:SetBackdrop(backdrop)
-	frame:SetBackdropColor(0, 0, 0, .8)
+	frame:SetBackdropColor(1, 1, 1, .9)
 	frame:SetWidth(540)
 	frame:SetHeight(300)
 	frame:SetPoint("CENTER", UIParent, "CENTER", 0, 100)

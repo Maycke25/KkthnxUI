@@ -1,11 +1,11 @@
-local _, Kchat = ...
-local cfg = Kchat.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.chat.enable ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Style chat frame(by Tukz and p3lim)
 ----------------------------------------------------------------------------------------
 local backdrop = {
-	bgFile = "Interface\\FrameGeneral\\UI-Background-Rock",
+	bgFile = "Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Background.blp",
 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	edgeSize = 14,
 	insets = {
@@ -112,8 +112,20 @@ local function SetChatStyle(frame)
 		CombatLogQuickButtonFrame_Custom:StripTextures()
 		CombatLogQuickButtonFrame_CustomAdditionalFilterButton:SetSize(12, 12)
 		CombatLogQuickButtonFrame_CustomAdditionalFilterButton:SetHitRectInsets (0, 0, 0, 0)
-		CombatLogQuickButtonFrame_CustomProgressBar:SetStatusBarTexture(cfg.chatTexture)
+		CombatLogQuickButtonFrame_CustomProgressBar:SetStatusBarTexture(C.media.texture)
 		CombatLogQuickButtonFrameButton1:SetPoint("BOTTOM", 0, 0)
+	end
+
+	if _G[chat] ~= _G["ChatFrame2"] then
+		origs[_G[chat]] = _G[chat].AddMessage
+		_G[chat].AddMessage = AddMessage
+		-- Custom timestamps color
+		_G.TIMESTAMP_FORMAT_HHMM = K.RGBToHex(unpack(C.chat.time_color)).."[%I:%M]|r "
+		_G.TIMESTAMP_FORMAT_HHMMSS = K.RGBToHex(unpack(C.chat.time_color)).."[%I:%M:%S]|r "
+		_G.TIMESTAMP_FORMAT_HHMMSS_24HR = K.RGBToHex(unpack(C.chat.time_color)).."[%H:%M:%S]|r "
+		_G.TIMESTAMP_FORMAT_HHMMSS_AMPM = K.RGBToHex(unpack(C.chat.time_color)).."[%I:%M:%S %p]|r "
+		_G.TIMESTAMP_FORMAT_HHMM_24HR = K.RGBToHex(unpack(C.chat.time_color)).."[%H:%M]|r "
+		_G.TIMESTAMP_FORMAT_HHMM_AMPM = K.RGBToHex(unpack(C.chat.time_color)).."[%I:%M %p]|r "
 	end
 	
 	-- Modify the editbox
@@ -123,7 +135,7 @@ local function SetChatStyle(frame)
 	end
 	
 	_G[chat..'EditBox']:SetBackdrop(backdrop);
-	_G[chat..'EditBox']:SetBackdropColor(.3, .3, .3, .9);
+	_G[chat..'EditBox']:SetBackdropColor(1, 1, 1, .9);
 	
 	
 	hooksecurefunc('ChatEdit_UpdateHeader', function(editBox)
@@ -148,7 +160,11 @@ local function SetupChat(self)
 	
 	-- Remember last channel
 	local var
-	var = 1
+	if C.chat.sticky == true then
+		var = 1
+	else
+		var = 0
+	end
 	ChatTypeInfo.SAY.sticky = var
 	ChatTypeInfo.PARTY.sticky = var
 	ChatTypeInfo.PARTY_LEADER.sticky = var
@@ -177,21 +193,21 @@ local function SetupChatPosAndFont(self)
 		end
 		
 		-- Font and font style for chat
-		chat:SetFont(cfg.chatFont, cfg.chatFontSize, cfg.chatFontStyle)
+		chat:SetFont(C.font.chat_font, fontSize, C.font.chat_font_style)
 		chat:SetShadowOffset(1, -1)
 		
 		-- Force chat position
 		if i == 1 then
 			chat:ClearAllPoints()
-			chat:SetSize(370, 130)
-			chat:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 5, 5)
+			chat:SetSize(C.chat.width, C.chat.height)
+			chat:SetPoint(C.position.chat[1], C.position.chat[2], C.position.chat[3], C.position.chat[4], C.position.chat[5])
 			FCF_SavePositionAndDimensions(chat)
 		elseif i == 2 then
-			if cfg.CombatLog ~= true then
+			if C.chat.combatlog ~= true then
 				FCF_DockFrame(chat)
 				ChatFrame2Tab:EnableMouse(false)
 				ChatFrame2Tab:SetText("")
-				ChatFrame2Tab.SetText = Kdummy
+				ChatFrame2Tab.SetText = K.Dummy
 				ChatFrame2Tab:SetScale(0.001)
 			end
 		end
@@ -235,7 +251,7 @@ end
 
 -- Remove player's realm name
 local function RemoveRealmName(self, event, msg, author, ...)
-	local realm = string.gsub(Krealm, " ", "")
+	local realm = string.gsub(K.Realm, " ", "")
 	if msg:find("-" .. realm) then
 		return false, gsub(msg, "%-"..realm, ""), author, ...
 	end

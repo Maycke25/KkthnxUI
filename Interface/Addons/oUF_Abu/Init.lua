@@ -18,11 +18,13 @@ oUF.colors.fallback = { 1, 1, 1 }
 
 -- http://lslwiki.net/lslwiki/wakka.php?wakka=color
 oUF.colors.health = { 49/255, 207/255, 37/255 }
-oUF.colors.power["MANA"] = { 0.31, 0.45, 0.63 }
-oUF.colors.power["RAGE"] = { 0.78, 0.25, 0.25 }
-oUF.colors.power["FOCUS"] = { 0.71, 0.43, 0.27 }
-oUF.colors.power["ENERGY"] = { 0.65, 0.63, 0.35 }
-oUF.colors.power["RUNIC_POWER"] = { 0, 0.82, 1.00 }
+oUF.colors.power["MANA"] = {0.31, 0.45, 0.63}
+oUF.colors.power["RAGE"] = {0.69, 0.31, 0.31}
+oUF.colors.power["FOCUS"] = {0.71, 0.43, 0.27}
+oUF.colors.power["ENERGY"] = {0.65, 0.63, 0.35}
+oUF.colors.power["POWER_TYPE_FEL_ENERGY"] = {0.65, 0.63, 0.35}
+oUF.colors.power["RUNES"] = {0.55, 0.57, 0.61}
+oUF.colors.power["RUNIC_POWER"] = {0, 0.82, 1}
 
 ------------------------------------------------------------------------
 -- Event handler

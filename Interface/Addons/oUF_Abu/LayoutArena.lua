@@ -1,6 +1,9 @@
 local _, ns = ...
 local config
 
+local oUF = ns.oUF or oUF
+if not oUF then return end
+
 local textPath = 'Interface\\AddOns\\oUF_Abu\\Media\\Frames\\'
 
 local function CreateBaseFrames(self)

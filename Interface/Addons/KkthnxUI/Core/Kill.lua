@@ -1,3 +1,5 @@
+local K, C, L, _ = unpack(select(2, ...))
+
 ----------------------------------------------------------------------------------------
 --	Kill all stuff on default UI that we don't need
 ----------------------------------------------------------------------------------------
@@ -17,16 +19,14 @@ frame:SetScript("OnEvent", function(self, event, addon)
 			CompactRaidFrameManager:Kill()
 			CompactRaidFrameContainer:Kill()
 		end
-		ShowPartyFrame = Kdummy
-		HidePartyFrame = Kdummy
-		CompactUnitFrame_UpdateAll = Kdummy
-		CompactUnitFrameProfiles_ApplyProfile = Kdummy
-		CompactRaidFrameManager_UpdateShown = Kdummy
-		CompactRaidFrameManager_UpdateOptionsFlowContainer = Kdummy
+		ShowPartyFrame = K.Dummy
+		HidePartyFrame = K.Dummy
+		CompactUnitFrame_UpdateAll = K.Dummy
+		CompactUnitFrameProfiles_ApplyProfile = K.Dummy
+		CompactRaidFrameManager_UpdateShown = K.Dummy
+		CompactRaidFrameManager_UpdateOptionsFlowContainer = K.Dummy
 	end
-
-	--Advanced_UseUIScale:Kill()
-	--Advanced_UIScaleSlider:Kill()
+	
 	TutorialFrameAlertButton:Kill()
 	HelpOpenTicketButtonTutorial:Kill()
 	TalentMicroButtonAlert:Kill()

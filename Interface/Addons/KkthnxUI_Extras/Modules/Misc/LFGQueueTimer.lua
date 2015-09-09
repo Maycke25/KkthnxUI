@@ -1,5 +1,5 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.misc.lfgqueuetimer ~= true then return end
 
 if IsAddOnLoaded("DBM-Core") or IsAddOnLoaded("BigWigs") then return end
 ----------------------------------------------------------------------------------------
@@ -14,7 +14,7 @@ frame.t:SetSize(375, 64)
 frame.t:SetPoint("TOP", 0, 28)
 
 frame.bar = CreateFrame("StatusBar", nil, frame)
-frame.bar:SetStatusBarTexture(cfg.uiTexture)
+frame.bar:SetStatusBarTexture(C.media.texture)
 frame.bar:SetAllPoints()
 frame.bar:SetFrameLevel(LFGDungeonReadyDialog:GetFrameLevel() + 1)
 frame.bar:SetStatusBarColor(1, 0.7, 0)

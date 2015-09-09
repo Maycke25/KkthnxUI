@@ -1,10 +1,9 @@
-﻿local _, KExts = ...
-local cfg = KExts.Config
+﻿local K, C, L, _ = unpack(KkthnxUI)
 
 ----------------------------------------------------------------------------------------
 --	Accept invites from guild members or friend list(by ALZA)
 ----------------------------------------------------------------------------------------
-if cfg.AutoInvite == true then
+if C.automation.autoinvite == true then
 	local CheckFriend = function(name)
 		for i = 1, GetNumFriends() do
 			if GetFriendInfo(i) == name then

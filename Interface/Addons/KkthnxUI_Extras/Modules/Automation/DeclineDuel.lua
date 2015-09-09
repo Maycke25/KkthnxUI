@@ -1,16 +1,15 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.automation.declineduel ~= true then return end
 
-if not cfg.Automation.DeclineDuel then return end
 ----------------------------------------------------------------------------------------
 --	Auto decline duel
 ----------------------------------------------------------------------------------------
-local disable = false
-local frame = CreateFrame("Frame")
-frame:RegisterEvent("DUEL_REQUESTED")
-frame:RegisterEvent("PET_BATTLE_PVP_DUEL_REQUESTED")
-frame:SetScript("OnEvent", function(self, event, name)
-	if disable == true then return end
+local Disable = false
+local DeclineDuel = CreateFrame("Frame")
+DeclineDuel:RegisterEvent("DUEL_REQUESTED")
+DeclineDuel:RegisterEvent("PET_BATTLE_PVP_DUEL_REQUESTED")
+DeclineDuel:SetScript("OnEvent", function(self, event, name)
+	if Disable == true then return end
 	if event == "DUEL_REQUESTED" then
 		CancelDuel()
 		RaidNotice_AddMessage(RaidWarningFrame, L_INFO_DUEL..name, {r = 0.41, g = 0.8, b = 0.94}, 3)
@@ -25,12 +24,12 @@ frame:SetScript("OnEvent", function(self, event, name)
 end)
 
 SlashCmdList.DISABLEDECLINE = function()
-	if not disable then
-		disable = true
+	if not Disable then
+		Disable = true
 		print ("Dueling is now enabled")
 	else
-		disable = false
-		print ("Dueling is now enabled")
+		Disable = false
+		print ("Dueling is now disabled")
 	end
 end
 

@@ -1,14 +1,14 @@
-local _, Kmap = ...
-local cfg = Kmap.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.minimap.enable ~= true or C.minimap.infoline ~= true then return end
 
 --[[----------------------------------
 FUNCTIONS
 --------------------------------------]]
-local memformat = function(number)
-	if number > 1024 then
-		return string.format("%.2fmb", (number / 1024))
+local memformat = function(num)
+	if num > 1024 then
+		return format("%.2f mb", (num / 1024))
 	else
-		return string.format("%.1fkb", floor(number))
+		return format("%.1f kb", floor(num))
 	end
 end
 
@@ -51,25 +51,25 @@ end)
 
 local frame = CreateFrame("Frame", "rIS_DragFrame", PBHandler)
 frame:SetSize(5, 5)
-frame:SetScale(cfg.InfoLine.Scale)
-frame:SetPoint(cfg.InfoLine.PoS.a1,cfg.InfoLine.PoS.af,cfg.InfoLine.PoS.a2,cfg.InfoLine.PoS.x,cfg.InfoLine.PoS.y) -- Needs to be checked.
+frame:SetScale(1)
+frame:SetPoint(unpack(C.position.infoline)) -- Needs to be checked.
 
-local f1 = CreateFrame("Frame", "rInfoStringsContainer1", frame)
-local f2 = CreateFrame("Frame", "rInfoStringsContainer2", frame)
+local f1 = CreateFrame("Frame", "InfoStringsContainer1", frame)
+local f2 = CreateFrame("Frame", "InfoStringsContainer2", frame)
 
 f1:SetPoint("TOP", frame, 0, 0)
 f2:SetPoint("TOP", f1, "BOTTOM", 0, -3)
 
-local function rsiCreateFontString(f,size)
+local function CreateFontString(f,size)
 	local t = f:CreateFontString(nil, "BACKGROUND")
-	t:SetFont(cfg.mapFont, cfg.mapFontSize, cfg.mapFontStyle)
+	t:SetFont(C.font.infoline_text_font, C.font.infoline_text_font_size, C.font.infoline_text_font_style)
 	t:SetShadowOffset(0, 0)
 	t:SetPoint("CENTER", f)
 	return t
 end
 
-f1.text = rsiCreateFontString(f1,12)
-f2.text = rsiCreateFontString(f2,12)
+f1.text = CreateFontString(f1,12)
+f2.text = CreateFontString(f2,12)
 
 --[[----------------------------------
 Garbage function from Lyn
@@ -80,11 +80,12 @@ local function rsiClearGarbage()
 	collectgarbage()
 	UpdateAddOnMemoryUsage()
 	local after = gcinfo()
-	print("Cleaned: "..memformat(before-after))
+	print("|c0000ddffCleaned:|r "..memformat(before-after))
 end
 
 f2:EnableMouse(true)
 f2:SetScript("OnMouseDown", function()
+	if InCombatLockdown() then return end
 	rsiClearGarbage()
 end)
 

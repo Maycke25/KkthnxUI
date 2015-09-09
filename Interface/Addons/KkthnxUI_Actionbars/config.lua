@@ -1,6 +1,6 @@
 
 local _, KkthnxUIActionbars = ...
-local Font = "Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf"
+local Font = "Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf"
 
 KkthnxUIActionbars.Config = {
     showPicomenu = true,

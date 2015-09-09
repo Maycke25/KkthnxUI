@@ -1,7 +1,6 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
 
-if cfg.Misc.Disenchanting ~= true then return end
+if C.misc.disenchanting ~= true then return end
 ----------------------------------------------------------------------------------------
 --	One-click Milling, Prospecting and Disenchanting(Molinari by p3lim)
 ----------------------------------------------------------------------------------------

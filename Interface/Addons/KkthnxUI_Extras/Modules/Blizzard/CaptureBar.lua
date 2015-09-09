@@ -1,5 +1,5 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.blizzard.capturebar ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Reposition Capture Bar
@@ -13,7 +13,7 @@ local function CaptureUpdate()
 		if bar and bar:IsVisible() then
 			bar:ClearAllPoints()
 			if i == 1 then
-				bar:SetPoint('TOP', UIParent, 'TOP', 0, 3)
+				bar:SetPoint(unpack(C.position.capturebar))
 			else
 				bar:SetPoint("TOPLEFT", _G["WorldStateCaptureBar"..i-1], "BOTTOMLEFT", 0, -7)
 			end
@@ -27,9 +27,9 @@ local function CaptureUpdate()
 				_G[barname.."LeftIconHighlight"]:SetAlpha(0)
 				_G[barname.."RightIconHighlight"]:SetAlpha(0)
 				
-				left:SetTexture(cfg.uiTexture)
-				right:SetTexture(cfg.uiTexture)
-				middle:SetTexture(cfg.uiTexture)
+				left:SetTexture(C.media.texture)
+				right:SetTexture(C.media.texture)
+				middle:SetTexture(C.media.texture)
 				
 				left:SetVertexColor(0.2, 0.6, 1)
 				right:SetVertexColor(0.9, 0.2, 0.2)

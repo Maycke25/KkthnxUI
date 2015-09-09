@@ -1,7 +1,6 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
 
-if cfg.Misc.EnchantScroll ~= true then return end
+if C.misc.enchantscroll ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Enchantment scroll on TradeSkill frame(OneClickEnchantScroll by Sara.Festung)
 ----------------------------------------------------------------------------------------

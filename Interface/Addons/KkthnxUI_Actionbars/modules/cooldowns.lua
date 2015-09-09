@@ -1,6 +1,4 @@
-local _, KkthnxUIActionbars = ...
-local cfg = KkthnxUIActionbars.Config
-
+local K, C, L, _ = unpack(KkthnxUI)
 if IsAddOnLoaded("OmniCC") or IsAddOnLoaded("ncCooldown") or IsAddOnLoaded("tullaCC") then return end
 
 OmniCC = true
@@ -9,32 +7,32 @@ local DAY, HOUR, MINUTE = 86400, 3600, 60
 local DAYISH, HOURISH, MINUTEISH = 3600 * 23.5, 60 * 59.5, 59.5
 local HALFDAYISH, HALFHOURISH, HALFMINUTEISH = DAY / 2 + 0.5, HOUR / 2 + 0.5, MINUTE / 2 + 0.5
 
-SetDefaultActionButtonCooldownFont = 'Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf'
-SetDefaultActionButtonCooldownFontSize = 18
+SetDefaultActionButtonCooldownFont = C.font.cooldown_timers_font
+SetDefaultActionButtonCooldownFontSize = C.font.cooldown_timers_font_size
 SetDefaultActionButtonCooldownMinScale = 0.5
 SetDefaultActionButtonCooldownMinDuration = 2.5
 local EXPIRING_DURATION = 8
-local EXPIRING_FORMAT = KRGBToHex(1, 0, 0) .. "%.1f|r"
-local SECONDS_FORMAT = KRGBToHex(1, 1, 0) .. "%d|r"
-local MINUTES_FORMAT = KRGBToHex(1, 1, 1) .. "%dm|r"
-local HOURS_FORMAT = KRGBToHex(0.4, 1, 1) .. "%dh|r"
-local DAYS_FORMAT = KRGBToHex(0.4, 0.4, 1) .. "%dh|r"
+local EXPIRING_FORMAT = K.RGBToHex(1, 0, 0) .. "%.1f|r"
+local SECONDS_FORMAT = K.RGBToHex(1, 1, 0) .. "%d|r"
+local MINUTES_FORMAT = K.RGBToHex(1, 1, 1) .. "%dm|r"
+local HOURS_FORMAT = K.RGBToHex(0.4, 1, 1) .. "%dh|r"
+local DAYS_FORMAT = K.RGBToHex(0.4, 0.4, 1) .. "%dh|r"
 local floor = math.floor
 local min = math.min
 local GetTime = GetTime
 
 local function getTimeText(s)
 	if s < MINUTEISH then
-		local seconds = tonumber(KRound(s))
+		local seconds = tonumber(K.Round(s))
 		if seconds > EXPIRING_DURATION then return SECONDS_FORMAT, seconds, s - (seconds - .51) else return EXPIRING_FORMAT, s, .051 end
 	elseif s < HOURISH then
-		local minutes = tonumber(KRound(s/MINUTE))
+		local minutes = tonumber(K.Round(s/MINUTE))
 		return MINUTES_FORMAT, minutes, minutes > 1 and (s - (minutes*MINUTE - HALFMINUTEISH)) or (s - MINUTEISH)
 	elseif s < DAYISH then
-		local hours = tonumber(KRound(s/HOUR))
+		local hours = tonumber(K.Round(s/HOUR))
 		return HOURS_FORMAT, hours, hours > 1 and (s - (hours*HOUR - HALFHOURISH)) or (s - HOURISH)
 	else
-		local days = tonumber(KRound(s/DAY))
+		local days = tonumber(K.Round(s/DAY))
 		return DAYS_FORMAT, days,  days > 1 and (s - (days*DAY - HALFDAYISH)) or (s - DAYISH)
 	end
 end
@@ -50,7 +48,7 @@ local function Timer_ForceUpdate(self)
 end
 
 local function Timer_OnSizeChanged(self, width, height)
-	local fontScale = KRound(width) / ICON_SIZE
+	local fontScale = K.Round(width) / ICON_SIZE
 	if fontScale == self.fontScale then return end
 
 	self.fontScale = fontScale
@@ -69,7 +67,7 @@ local function Timer_OnUpdate(self, elapsed)
 		self.nextUpdate = self.nextUpdate - elapsed
 	else
 		local remain = self.duration - (GetTime() - self.start)
-		if tonumber(KRound(remain)) > 0 then
+		if tonumber(K.Round(remain)) > 0 then
 			if (self.fontScale * self:GetEffectiveScale() / UIParent:GetScale()) < SetDefaultActionButtonCooldownMinScale then
 				self.text:SetText("")
 				self.nextUpdate  = 1

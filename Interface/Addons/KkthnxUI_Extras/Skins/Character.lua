@@ -1,9 +1,4 @@
-local backdrop = {
-	bgFile = "Interface\\Buttons\\WHITE8X8",
-	insets = {
-	left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
-	}
-}
+local K, C, L = unpack(KkthnxUI)
 
 local AddBorderToItemButton
 do
@@ -28,7 +23,6 @@ do
 		button.IconBorder:SetTexture("")
 		hooksecurefunc(button.IconBorder, "Hide", IconBorder_Hide)
 		hooksecurefunc(button.IconBorder, "SetVertexColor", IconBorder_SetVertexColor)
-		--button:HookScript("OnEnter", ColorByClass)
 		button:HookScript("OnLeave", Button_OnLeave)
 	end
 end
@@ -62,9 +56,6 @@ select(11, CharacterMainHandSlot:GetRegions()):SetTexture("")
 select(11, CharacterSecondaryHandSlot:GetRegions()):SetTexture("")
 
 hooksecurefunc("PaperDollItemSlotButton_Update", function(self)
-	-- Despite these buttons having an IconBorder the default UI does not use it;
-	-- fix that oversight so PhanxBorder colors will also work.
-	-- This function doesn't depend on PhanxBorder and will work in any addon.
 	local item = GetInventoryItemLink("player", self:GetID())
 	if not item then return end
 	local _, _, quality = GetItemInfo(item)
@@ -92,13 +83,11 @@ hooksecurefunc("PaperDollEquipmentManagerPane_Update", function()
 	local buttons = PaperDollEquipmentManagerPane.buttons
 	for i = 1, #buttons do
 		local button = buttons[i]
-		if not button.__PhanxBorder then
-			CreateBorder(button)
-			button.icon:SetDrawLayer("BORDER")
-			button.BgTop:SetTexture("")
-			button.BgMiddle:SetTexture("")
-			button.BgBottom:SetTexture("")
-		end
+		CreateBorder(button)
+		button.icon:SetDrawLayer("BORDER")
+		button.BgTop:SetTexture("")
+		button.BgMiddle:SetTexture("")
+		button.BgBottom:SetTexture("")
 		if button.Check:IsShown() then
 			button:SetBorderColor(1, 0.82, 0)
 		else
@@ -131,7 +120,7 @@ local function Button_OnEnable(self)
 	self:SetAlpha(1)
 end
 local function Button_OnEnter(self)
-	self:SetBorderColor(Kcolor.r, Kcolor.g, Kcolor.b)
+	self:SetBorderColor(K.Color.r, K.Color.g, K.Color.b)
 end
 local function Button_OnLeave(self)
 	self:SetBorderColor()
@@ -148,9 +137,6 @@ for i = 1, SPELLS_PER_PAGE do
 	button:HookScript("OnEnable", Button_OnEnable)
 	button:HookScript("OnEnter", Button_OnEnter)
 	button:HookScript("OnLeave", Button_OnLeave)
-	if isPhanx then
-		button.SpellName:SetFont(FONT, 16)
-	end
 end
 
 for i = 1, 5 do
@@ -160,17 +146,12 @@ end
 hooksecurefunc("SpellBook_UpdateCoreAbilitiesTab", function()
 	for i = 1, #SpellBookCoreAbilitiesFrame.Abilities do
 		local button = SpellBookCoreAbilitiesFrame.Abilities[i]
-		if not button.__PhanxBorder then
-			CreateBorder(button, nil, 1)
-			button.iconTexture:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-			button.FutureTexture:SetTexture("")
-			select(3, button:GetRegions()):SetTexture("") -- swirly thing
-			local a, b, c, x, y = button.Name:GetPoint(1)
-			button.Name:SetPoint(a, b, c, x, 3)
-			if isPhanx then
-				button.Name:SetFont(FONT, 16)
-			end
-		end
+		CreateBorder(button, nil, 1)
+		button.iconTexture:SetTexCoord(0.05, 0.95, 0.05, 0.95)
+		button.FutureTexture:SetTexture("")
+		select(3, button:GetRegions()):SetTexture("") -- swirly thing
+		local a, b, c, x, y = button.Name:GetPoint(1)
+		button.Name:SetPoint(a, b, c, x, 3)
 	end
 	for i = 1, #SpellBookCoreAbilitiesFrame.SpecTabs do
 		SkinTab(SpellBookCoreAbilitiesFrame.SpecTabs[i])

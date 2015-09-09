@@ -1,9 +1,8 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.blizzard.altpowerbar ~= true then return end
 
-local BACKDROP = {
-	bgFile = [[Interface\BUTTONS\WHITE8X8]], tile = true, tileSize = 8,
-	--edgeFile = [[Interface\BUTTONS\WHITE8X8]], edgeSize = 1,
+local backdrop = {
+	bgFile = [[Interface\FrameGeneral\UI-Background-Rock.blp]], tile = true, tileSize = 8,
 	insets = { left = 0, right = 0, top = 0, bottom = 0 },
 }
 
@@ -24,20 +23,19 @@ AltPowerBar:SetSize(221, 25)
 AltPowerBar:SetPoint("TOP", UIParent, "TOP", 0, -21)
 AltPowerBar:SetFrameStrata("MEDIUM")
 AltPowerBar:SetFrameLevel(0)
-CreateBorder(AltPowerBar, 10, 2)
-AltPowerBar:SetBackdrop(BACKDROP)
-AltPowerBar:SetBackdropColor(0.1, 0.1, 0.1, 0.8)
-AltPowerBar:SetBackdropBorderColor(0, 0, 0, 1)
+CreateBorder(AltPowerBar, 10, 3)
+AltPowerBar:SetBackdrop(backdrop)
+AltPowerBar:SetBackdropColor(0.3, 0.3, 0.3, 0.9)
 
 local AltPowerBarStatus = CreateFrame("StatusBar", "KkthnxUIAltPowerBarStatus", AltPowerBar)
 AltPowerBarStatus:SetFrameLevel(AltPowerBar:GetFrameLevel() + 1)
-AltPowerBarStatus:SetStatusBarTexture(cfg.uiTexture)
+AltPowerBarStatus:SetStatusBarTexture(C.media.texture)
 AltPowerBarStatus:SetMinMaxValues(0, 100)
 AltPowerBarStatus:SetPoint("TOPLEFT", AltPowerBar, "TOPLEFT", 1, -1)
 AltPowerBarStatus:SetPoint("BOTTOMRIGHT", AltPowerBar, "BOTTOMRIGHT", -1, 1)
 
 local AltPowerText = AltPowerBarStatus:CreateFontString("KkthnxUIAltPowerBarText", "OVERLAY")
-AltPowerText:SetFont(cfg.uiFont, cfg.uiFontSize, "OUTLINE")
+AltPowerText:SetFont(C.font.basic_font, C.font.basic_font_size, C.font.basic_font_sytle)
 AltPowerText:SetPoint("CENTER", AltPowerBar, "CENTER", 0, 0)
 AltPowerText:SetShadowColor(0, 0, 0)
 AltPowerText:SetShadowOffset(0, 0)

@@ -1,5 +1,4 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
 
 ----------------------------------------------------------------------------------------
 --	Universal Mount macro(by Monolit)

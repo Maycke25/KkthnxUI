@@ -4,6 +4,6 @@
 ## Notes: Extra modules for |cFF4488FFKkthnxUI|r
 ## Author: Josh Russell
 ## Version: 1.0
-## Dependencies: KkthnxUI, KkthnxUI_Media
+## Dependencies: KkthnxUI
 
 Embeds.xml

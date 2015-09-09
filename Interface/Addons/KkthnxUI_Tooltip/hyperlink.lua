@@ -1,5 +1,5 @@
-local _, KkthnxTooltip = ...
-local cfg = KkthnxTooltip.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.tooltip.enable ~= true then return end
 
 if IsAddOnLoaded("tekKompare") then return end
 ----------------------------------------------------------------------------------------

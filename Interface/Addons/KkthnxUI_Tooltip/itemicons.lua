@@ -1,7 +1,5 @@
-local _, KkthnxTooltip = ...
-local cfg = KkthnxTooltip.Config
-
-if cfg.TipIcons ~= true then return end
+local K, C, L, _ = unpack(KkthnxUI)
+if C.tooltip.enable ~= true or C.tooltip.tipicons ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Adds item icons to tooltips(Tipachu by Tuller)
 ----------------------------------------------------------------------------------------

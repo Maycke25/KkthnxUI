@@ -1,7 +1,6 @@
-local _, KExts = ...
-local cfg = KExts.Config
+local K, C, L, _ = unpack(KkthnxUI)
+if C.misc.paperdollstats ~= true then return end
 
-if cfg.Misc.ItemLevel ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Item level on slot buttons in Character/InspectFrame(by Tukz)
 ----------------------------------------------------------------------------------------
@@ -35,7 +34,7 @@ local function CreateButtonsText(frame)
 	for _, slot in pairs(slots) do
 		local button = _G[frame .. slot]
 		button.text = button:CreateFontString(nil, "ARTWORK")
-		button.text:SetFont(cfg.uiFont, 11, "THINOUTLINE")
+		button.text:SetFont(C.font.basic_font, 11, "THINOUTLINE")
 		if slot == "HeadSlot" or slot == "NeckSlot" or slot == "ShoulderSlot" or slot == "BackSlot" or slot == "ChestSlot" or slot == "WristSlot" or slot == "ShirtSlot" or slot == "TabardSlot" then
 			button.text:SetPoint("CENTER", button, "CENTER", 42, 0)
 		elseif slot == "HandsSlot" or slot == "WaistSlot" or slot == "LegsSlot" or slot == "FeetSlot" or slot == "Finger0Slot" or slot == "Finger1Slot" or slot == "Trinket0Slot" or slot == "Trinket1Slot" then
@@ -86,7 +85,7 @@ local function UpdateButtonsText(frame)
 								elseif itemDurabilityPercentage == 0 then
 									duracolor = "|cFFFF0000"
 								end
-								text:SetText(ilevelcolor..ilevel.."\n"..duracolor..KRound(itemDurabilityPercentage).."%|r")
+								text:SetText(ilevelcolor..ilevel.."\n"..duracolor..K.Round(itemDurabilityPercentage).."%|r")
 							else
 								text:SetText(ilevelcolor..ilevel)
 							end
