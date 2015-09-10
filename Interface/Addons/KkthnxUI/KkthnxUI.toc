@@ -2,7 +2,7 @@
 ## Title: |cFF4488FFKkthnx's|r |cFFFEB200UI|r
 ## Notes: Highly Customized Blizzard UserInterface
 ## Author: Josh "Kkthnx" Russell
-## Version: 2.02
+## Version: 2.03
 ## OptionalDeps: Blizzard_CombatText, KkthnxUI_Config, alEnemyCD, alRaidCD, AtlasLoot, caelNamePlates, cargBags, Clique, dNameplates, DXE, eCastingBar, epgp, Grid, Grid2, Mapster, Omen, oUF_Freebgrid, PitBull4, Postal, Prat-3.0, Quartz, Recount, ShadowedUnitFrames, sThreatMeter2, Stuf, TidyPlates, TipTac, TipTacTalents, TradeSkillMaster_Mailing, tullaCC, VuhDo, _NPCScan.Overlay
 ## SavedVariables: SavedOptions, SavedStats, SavedAddonProfiles, SavedBindings, SavedCurrency
 ## SavedVariablesPerCharacter: SavedOptionsPerChar, SavedPositions
