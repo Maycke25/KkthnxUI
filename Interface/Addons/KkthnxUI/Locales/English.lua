@@ -14,7 +14,7 @@ Welcome message
 --------------------------------]]
 L_WELCOME_LINE_1 = "Welcome to |cFF4488FFKkthnx's|r |cFFFEB200UI|r "
 L_WELCOME_LINE_2_1 = ""
-L_WELCOME_LINE_2_2 = "Type |cFF4488FF/uihep|r or |cFF4488FF/cfg|r for more features"
+L_WELCOME_LINE_2_2 = "Type |cFF4488FF/uihelp|r or |cFF4488FF/cfg|r for more features"
 L_WELCOME_LINE_2_3 = ""
 L_WELCOME_LINE_2_4 = "For more info visit |cFF4488FFhttps://github.com/Kkthnx/KkthnxUI|r"
 
@@ -138,6 +138,7 @@ L_MISC_ONECLICK_BID = "Shift-Right-Click to bid on the selected item without con
 L_MISC_ONECLICK_BUYOUT = "Shift-Right-Click to buyout the selected item without confirmation"
 L_MISC_ONECLICK_CANCEL = "Shift-Right-Click to cancel on the selected item without confirmation"
 L_MISC_SCROLL = "Scroll"
+L_MISC_UI_OUTDATED = "Your version of |cFF4488FFKkthnx's|r |cFFFEB200UI|r is out of date. You can download the latest version from www.github.com/Kkthnx/KkthnxUI"
 
 --[[----------------------------
 Click2Cast

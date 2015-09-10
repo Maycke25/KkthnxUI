@@ -1,7 +1,7 @@
 ﻿local K, C, L, _ = unpack(select(2, ...))
 
 ----------------------------------------------------------------------------------------
---	Check outdated UI Version
+--	Check outdated UI version
 ----------------------------------------------------------------------------------------
 local check = function(self, event, prefix, message, channel, sender)
 	if event == "CHAT_MSG_ADDON" then
@@ -31,7 +31,7 @@ frame:SetScript("OnEvent", check)
 RegisterAddonMessagePrefix("KkthnxUIVersion")
 
 ----------------------------------------------------------------------------------------
---	Whisper UI Version
+--	Whisper UI version
 ----------------------------------------------------------------------------------------
 local whisp = CreateFrame("Frame")
 whisp:RegisterEvent("CHAT_MSG_WHISPER")
