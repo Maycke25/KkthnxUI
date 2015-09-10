@@ -178,15 +178,16 @@ local function InstallUI()
 		ChangeChatColor("CHANNEL2", 232/255, 158/255, 121/255)
 		--Local Defense
 		ChangeChatColor("CHANNEL3", 232/255, 228/255, 121/255)
-		
-		--ReloadUI()
 	end
 	
 	-- Reset saved variables on char
+	SavedPositions = {}
 	SavedOptionsPerChar = {}
 	
 	SavedOptionsPerChar.Install = true
-	SavedOptionsPerChar.AutoInvite = false
+	SavedOptionsPerChar.autoinvite = false
+
+	ReloadUI()
 end
 
 local function DisableUI()
@@ -234,11 +235,26 @@ StaticPopupDialogs.RESET_UI = {
 	preferredIndex = 5,
 }
 
+StaticPopupDialogs.RESET_STATS = {
+	text = L_POPUP_RESETSTATS,
+	button1 = ACCEPT,
+	button2 = CANCEL,
+	OnAccept = function() SavedStats = {} ReloadUI() end,
+	showAlert = true,
+	timeout = 0,
+	whileDead = 1,
+	hideOnEscape = true,
+	preferredIndex = 5,
+}
+
 SLASH_CONFIGURE1 = "/resetui"
 SlashCmdList.CONFIGURE = function() StaticPopup_Show("RESET_UI") end
 
-SLASH_RESETSTATS1 = "/installui"
-SlashCmdList.RESETSTATS = function() StaticPopup_Show("INSTALL_UI") end
+SLASH_INSTALLUI1 = "/installui"
+SlashCmdList.INSTALLUI = function() StaticPopup_Show("INSTALL_UI") end
+
+SLASH_RESETSTATS1 = "/resetstats"
+SlashCmdList.RESETSTATS = function() StaticPopup_Show("RESET_STATS") end
 
 --[[-----------------------------------
 On logon function
@@ -250,6 +266,7 @@ OnLogon:SetScript("OnEvent", function(self, event)
 
 	-- Create empty CVar if they doesn't exist
 	if SavedOptions == nil then SavedOptions = {} end
+	if SavedPositions == nil then SavedPositions = {} end
 	if SavedAddonProfiles == nil then SavedAddonProfiles = {} end
 	if SavedOptionsPerChar == nil then SavedOptionsPerChar = {} end
 	if SavedOptionsPerChar.autoinvite == nil then SavedOptionsPerChar.autoinvite = false end

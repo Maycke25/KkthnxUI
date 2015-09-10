@@ -616,14 +616,14 @@ local UploadAbu = function()
 			},
 			["fontBigSize"] = 0.900000005960465,
 			["combatText"] = true,
-			["statusbar"] = "Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\KkthnxTex",
+			["statusbar"] = "Interface\\Addons\\KkthnxUI\\Media\\Textures\\KkthnxTex",
 			["pet"] = {
 				["cbshow"] = false,
 				["style"] = "fat",
 			},
-			["fontBig"] = "Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf",
+			["fontBig"] = "Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Unitframe.ttf",
 			["fontNormalSize"] = 0.900000005960465,
-			["fontNormal"] = "Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Unitframe.ttf",
+			["fontNormal"] = "Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Unitframe.ttf",
 			["focustarget"] = {
 				["style"] = "fat",
 			},
@@ -700,7 +700,7 @@ local UploadXLoot = function()
 							0, -- [4]
 						},
 						["loot_icon_size"] = 40,
-						["font"] = "Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf",
+						["font"] = "Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Normal.ttf",
 					},
 				},
 			},
@@ -5913,16 +5913,16 @@ StaticPopupDialogs.SETTINGS_ALL = {
 	button1 = ACCEPT,
 	button2 = CANCEL,
 	OnAccept = function()
-		if IsAddOnLoaded("oUF_Abu") then UploadAbu() end
-		if IsAddOnLoaded("Mapster") then UploadMapster() end
-		if IsAddOnLoaded("ZygorGuidesViewer") then UploadZygor() end
-		if IsAddOnLoaded("MikScrollingBattleText") then UploadMSBT() end
-		if IsAddOnLoaded("XLoot") then UploadXLoot() end
 		if IsAddOnLoaded("Bartender4") then UploadBartender4() end
-		if IsAddOnLoaded("WeakAuras") then UploadWeakAuras() end
-		if IsAddOnLoaded("Skada") then UploadSkada() end
-		if IsAddOnLoaded("Masque") then UploadMasque() end
 		if IsAddOnLoaded("BigWigs") then UploadBigWigs() end
+		if IsAddOnLoaded("Mapster") then UploadMapster() end
+		if IsAddOnLoaded("Masque") then UploadMasque() end
+		if IsAddOnLoaded("MikScrollingBattleText") then UploadMSBT() end
+		if IsAddOnLoaded("Skada") then UploadSkada() end
+		if IsAddOnLoaded("WeakAuras") then UploadWeakAuras() end
+		if IsAddOnLoaded("XLoot") then UploadXLoot() end
+		if IsAddOnLoaded("ZygorGuidesViewer") then UploadZygor() end
+		if IsAddOnLoaded("oUF_Abu") then UploadAbu() end
 		ReloadUI()
 	end,
 	timeout = 0,
@@ -5951,7 +5951,7 @@ SlashCmdList.SETTINGS = function(msg)
 			UploadMapster()
 			ReloadUI()
 		else
-			print("|cffffff00Masque"..L_INFO_NOT_INSTALLED.."|r")
+			print("|cffffff00Mapster"..L_INFO_NOT_INSTALLED.."|r")
 		end
 	elseif msg == "zygor" then
 		if IsAddOnLoaded("ZygorGuidesViewer") then
@@ -6006,16 +6006,16 @@ SlashCmdList.SETTINGS = function(msg)
 		StaticPopup_Show("SETTINGS_ALL")
 	else
 		print("|cffffff00"..L_INFO_SETTINGS_ABU.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_MAPSTER.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_ZYGOR.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_MSBT.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_XLOOT.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_BT4.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_WEAKAURAS.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_MASQUE.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_SKADA.."|r")
-		print("|cffffff00"..L_INFO_SETTINGS_BIGWIGS.."|r")
 		print("|cffffff00"..L_INFO_SETTINGS_ALL.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_BIGWIGS.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_BT4.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_MAPSTER.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_MASQUE.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_MSBT.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_SKADA.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_WEAKAURAS.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_XLOOT.."|r")
+		print("|cffffff00"..L_INFO_SETTINGS_ZYGOR.."|r")
 	end
 end
 SLASH_SETTINGS1 = "/settings"

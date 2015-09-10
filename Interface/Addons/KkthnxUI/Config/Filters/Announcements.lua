@@ -5,7 +5,20 @@
 --	Example: Misdirection -> http://www.wowhead.com/spell=34477
 --	Take the number ID at the end of the URL, and add it to the list
 ----------------------------------------------------------------------------------------
-if C.announcements.bad_gear == true then
+if C.announcements.spells == true then
+	K.AnnounceSpells = {
+		34477,	-- Misdirection
+		19801,	-- Tranquilizing Shot
+		57934,	-- Tricks of the Trade
+		633,	-- Lay on Hands
+		20484,	-- Rebirth
+		61999,	-- Raise Ally
+		20707,	-- Soulstone
+		2908,	-- Soothe
+	}
+end
+
+if C.announcements.badgear == true then
 	K.AnnounceBadGear = {
 		-- Head
 		[1] = {

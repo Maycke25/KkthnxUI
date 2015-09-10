@@ -1,6 +1,51 @@
 local K, C, L, _ = unpack(select(2, ...))
 
 --[[-----------------------------------
+Backdrops
+---------------------------------------]]
+K.Backdrop = {
+	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+	edgeFile = "Interface\\Addons\\KkthnxUI\\Media\\Tooltips\\KkthnxBorder.blp",
+	tile = true, tileSize = 16, edgeSize = 14, 
+    insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+	}
+}
+
+K.BasicBackdrop = {
+	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+	tile = true, tileSize = 16,
+    insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
+	}
+}
+
+K.SimpleBackdrop = {
+	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+}
+
+K.ModBackdrop = {
+	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+	tile = true, tileSize = 16,
+    insets = { left = 8, right = 8, top = 8, bottom = 8
+	}
+}
+
+K.ShortValue = function(value)
+	if value >= 1e8 then
+		return ("%.0fm"):format(value / 1e6)
+	elseif value >= 1e7 then
+		return ("%.1fm"):format(value / 1e6):gsub("%.?0+([km])$", "%1")
+	elseif value >= 1e6 then
+		return ("%.2fm"):format(value / 1e6):gsub("%.?0+([km])$", "%1")
+	elseif value >= 1e5 then
+		return ("%.0fk"):format(value / 1e3)
+	elseif value >= 1e3 then
+		return ("%.1fk"):format(value / 1e3):gsub("%.?0+([km])$", "%1")
+	else
+		return value
+	end
+end
+
+--[[-----------------------------------
 Chat Checking
 ---------------------------------------]]
 K.Check = function(warning)

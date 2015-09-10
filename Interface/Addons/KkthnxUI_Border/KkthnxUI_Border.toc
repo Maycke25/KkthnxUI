@@ -1,9 +1,0 @@
-## Interface: 60200
-## Name: KkthnxUI_Border
-## Title: |cFF4488FFKkthnx's|r |cFFFFB200Border|r 
-## Notes: Modified Standard Blizzard Border
-## Author: Kkthnx
-## Version: 1.0
-## Dependencies: KkthnxUI, KkthnxUI_Media
-
-Border.lua

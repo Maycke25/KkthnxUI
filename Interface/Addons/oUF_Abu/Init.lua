@@ -36,17 +36,6 @@ end)
 
 function oUFAbu:ADDON_LOADED(event, addon)
 	if addon == OUF_ABU then
-		local SharedMedia = LibStub("LibSharedMedia-3.0", true)
-		if SharedMedia then
-			SharedMedia:Register("font", "Accidental Presidency", [[Interface\AddOns\oUF_Abu\Media\Font\fontNumber.ttf]])
-			SharedMedia:Register("font", "Expressway Free", [[Interface\AddOns\oUF_Abu\Media\Font\fontSmall.ttf]])
-			SharedMedia:Register("font", "Expressway RG", [[Interface\AddOns\oUF_Abu\Media\Font\fontThick.ttf]])
-			
-			SharedMedia:Register("statusbar", "Flat", [[Interface\BUTTONS\WHITE8X8]])
-			SharedMedia:Register("statusbar", "Neal", [[Interface\AddOns\oUF_Abu\Media\Texture\statusbarNeal]])
-			SharedMedia:Register("statusbar", "Neal Dark", [[Interface\AddOns\oUF_Abu\Media\Texture\statusbarNealDark]])
-			SharedMedia:Register("statusbar", "Flat Dark", [[Interface\AddOns\oUF_Abu\Media\Texture\Raid-Bar-Hp-Fill]])
-		end
 		
 		self:SetupSettings()
 		

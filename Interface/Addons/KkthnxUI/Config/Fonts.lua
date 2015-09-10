@@ -20,6 +20,11 @@ C["font"] = {
 	["basic_font"] = C.media.normal_font,
 	["basic_font_size"] = 12,
 	["basic_font_style"] = "OUTLINE",
+
+	["stats_font"] = C.media.normal_font,
+	["stats_font_size"] = 12,
+	["stats_font_style"] = "OUTLINE",
+	["stats_font_shadow"] = false,
 	
 	-- combat text font
 	["combat_font"] = C.media.combat_font,

@@ -1,3 +1,4 @@
+local K, C, L, _ = unpack(select(2, ...))
 ----------------------------------------------------------------------------------------
 --	Temporary stuff
 -- Killing the anoying Blizz error "Interface\FrameXML\RaidFrame.lua:181" - by Semlar

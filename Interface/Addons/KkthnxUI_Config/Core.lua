@@ -1,14 +1,6 @@
 ----------------------------------------------------------------------------------------
 --	GUI for KkthnxUI (by Fernir, Tukz and Tohveli, Shestak)
 ----------------------------------------------------------------------------------------
-local backdrop = {
-	bgFile = "Interface\\Addons\\KkthnxUI_Media\\Media\\Textures\\Background.blp",
-	edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
-	tile = true, tileSize = 16, edgeSize = 14, 
-    insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
-	}
-}
-
 local realm = GetRealmName()
 local name = UnitName("player")
 
@@ -16,15 +8,18 @@ local ALLOWED_GROUPS = {
 	["general"] = 1,
 	["misc"] = 2,
 	["blizzard"] = 3,
-	["minimap"] = 4,
-	["buffs"] = 5,
-	["announcements"] = 6,
-	["automation"] = 7,
-	["chat"] = 8,
-	["tooltip"] = 9,
-	["loot"] = 10,
-	["nameplate"] = 11,
-	["error"] = 12,
+	["combattext"] = 4,
+	["minimap"] = 5,
+	["buffs"] = 6,
+	["announcements"] = 7,
+	["automation"] = 8,
+	["chat"] = 9,
+	["tooltip"] = 10,
+	["loot"] = 11,
+	["nameplate"] = 12,
+	["error"] = 13,
+	["toppanel"] = 14,
+	["stats"] = 15,
 }
 
 local function Local(o)
@@ -37,20 +32,26 @@ local function Local(o)
 	if o == "UIConfiggeneralwelcome_message" then o = L_GUI_GENERAL_WELCOME_MESSAGE end
 
 	-- Miscellaneous options
-	if o == "UIConfigmisc" then o = OTHER end
+	if o == "UIConfigmisc" then o = L_GUI_MISC end
 	if o == "UIConfigmiscafkcam" then o = L_GUI_MISC_SPIN_CAMERA end
 	if o == "UIConfigmiscalreadyknown" then o = L_GUI_MISC_ALREADY_KNOWN end
+	if o == "UIConfigmiscbetterlootfilter" then o = L_GUI_MISC_BETTERLOOTFILTER end
 	if o == "UIConfigmiscbgspam" then o = L_GUI_MISC_HIDE_BG_SPAM end
 	if o == "UIConfigmiscbossbanner" then o = L_GUI_MISC_BOSSBANNER end
+	if o == "UIConfigmisccharscurrency" then o = L_GUI_MISC_CHARS_CURRENCY end
+	if o == "UIConfigmiscclickcast" then o = L_GUI_MISC_CLICK_CAST end
+	if o == "UIConfigmiscclickcastfilter" then o = L_GUI_MISC_CLICK_CAST_FILTER end
 	if o == "UIConfigmiscdisenchanting" then o = L_GUI_MISC_DISENCHANTING end
 	if o == "UIConfigmiscenchantscroll" then o = L_GUI_MISC_ENCHANTMENT_SCROLL end
+	if o == "UIConfigmiscfadegamemenu" then o = L_GUI_MISC_FADEGAMEMENU end
 	if o == "UIConfigmischattrick" then o = L_GUI_MISC_HATTRICK end
 	if o == "UIConfigmisclfgqueuetimer" then o = L_GUI_MISC_LFGQUEUETIMER end
-	if o == "UIConfigmiscmoveobjectivetracker" then o = L_GUI_MISC_MOVE_TRACKER end
 	if o == "UIConfigmiscpaperdollstats" then o = L_GUI_MISC_PAPERDOLLSTATS end
 	if o == "UIConfigmiscprofessiontabs" then o = L_GUI_MISC_PROFESSION_TABS end
+	if o == "UIConfigmiscquestautobutton" then o = L_GUI_MISC_QUEST_AUTOBUTTON end
+	if o == "UIConfigmiscquestautobutton" then o = L_GUI_MISC_QUEST_AUTOBUTTON end
 	if o == "UIConfigmiscshortengold" then o = L_GUI_MISC_SHORTGOLD end
-	if o == "UIConfigmiscstyleobjectivetracker" then o = L_GUI_MISC_STYLE_TRACKER end
+	if o == "UIConfigmiscsumbuyouts" then o = L_GUI_MISC_SUM_BUYOUTS end
 	
 	-- Blizzard options
 	if o == "UIConfigblizzard" then o = L_GUI_BLIZZARD end
@@ -58,13 +59,42 @@ local function Local(o)
 	if o == "UIConfigblizzardcapturebar" then o = L_GUI_BLIZZARD_CAPTUREBAR end
 	if o == "UIConfigblizzardmoveachievements" then o = L_GUI_BLIZZARD_ACHIEVEMENTS end
 	if o == "UIConfigblizzardmoveblizzard" then o = L_GUI_BLIZZARD_MOVE_BLIZZARD end
+	if o == "UIConfigblizzardrepreward" then o = L_GUI_BLIZZARD_REPREWARD end
+
+	-- Combat text options
+	if o == "UIConfigcombattext" then o = L_GUI_COMBATTEXT end
+	if o == "UIConfigcombattextenable" then o = L_GUI_COMBATTEXT_ENABLE end
+	if o == "UIConfigcombattextblizz_head_numbers" then o = L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS end
+	if o == "UIConfigcombattextdamage_style" then o = L_GUI_COMBATTEXT_DAMAGE_STYLE end
+	if o == "UIConfigcombattextdamage" then o = L_GUI_COMBATTEXT_DAMAGE end
+	if o == "UIConfigcombattexthealing" then o = L_GUI_COMBATTEXT_HEALING end
+	if o == "UIConfigcombattextshow_hots" then o = L_GUI_COMBATTEXT_HOTS end
+	if o == "UIConfigcombattextshow_overhealing" then o = L_GUI_COMBATTEXT_OVERHEALING end
+	if o == "UIConfigcombattextpet_damage" then o = L_GUI_COMBATTEXT_PET_DAMAGE end
+	if o == "UIConfigcombattextdot_damage" then o = L_GUI_COMBATTEXT_DOT_DAMAGE end
+	if o == "UIConfigcombattextdamage_color" then o = L_GUI_COMBATTEXT_DAMAGE_COLOR end
+	if o == "UIConfigcombattextcrit_prefix" then o = L_GUI_COMBATTEXT_CRIT_PREFIX end
+	if o == "UIConfigcombattextcrit_postfix" then o = L_GUI_COMBATTEXT_CRIT_POSTFIX end
+	if o == "UIConfigcombattexticons" then o = L_GUI_COMBATTEXT_ICONS end
+	if o == "UIConfigcombattexticon_size" then o = L_GUI_COMBATTEXT_ICON_SIZE end
+	if o == "UIConfigcombattexttreshold" then o = L_GUI_COMBATTEXT_TRESHOLD end
+	if o == "UIConfigcombattextheal_treshold" then o = L_GUI_COMBATTEXT_HEAL_TRESHOLD end
+	if o == "UIConfigcombattextscrollable" then o = L_GUI_COMBATTEXT_SCROLLABLE end
+	if o == "UIConfigcombattextmax_lines" then o = L_GUI_COMBATTEXT_MAX_LINES end
+	if o == "UIConfigcombattexttime_visible" then o = L_GUI_COMBATTEXT_TIME_VISIBLE end
+	if o == "UIConfigcombattextdk_runes" then o = L_GUI_COMBATTEXT_DK_RUNES end
+	if o == "UIConfigcombattextkillingblow" then o = L_GUI_COMBATTEXT_KILLINGBLOW end
+	if o == "UIConfigcombattextmerge_aoe_spam" then o = L_GUI_COMBATTEXT_MERGE_AOE_SPAM end
+	if o == "UIConfigcombattextmerge_melee" then o = L_GUI_COMBATTEXT_MERGE_MELEE end
+	if o == "UIConfigcombattextdispel" then o = L_GUI_COMBATTEXT_DISPEL end
+	if o == "UIConfigcombattextinterrupt" then o = L_GUI_COMBATTEXT_INTERRUPT end
+	if o == "UIConfigcombattextdirection" then o = L_GUI_COMBATTEXT_DIRECTION end
 
 	-- Minimap options
 	if o == "UIConfigminimap" then o = L_GUI_MINIMAP end
+	if o == "UIConfigminimapcollectbuttons" then o = L_GUI_MINIMAP_COLLECTBUTTONS end
 	if o == "UIConfigminimapenable" then o = L_GUI_MINIMAP_ENABLEMINIMAP end
 	if o == "UIConfigminimapsize" then o = L_GUI_MINIMAP_MINIMAPSIZE end
-	if o == "UIConfigminimapinfoline" then o = L_GUI_MINIMAP_INFOLINE end
-	if o == "UIConfigminimapcollectbuttons" then o = L_GUI_MINIMAP_COLLECTBUTTONS end
 
 	-- Buffs options
 	if o == "UIConfigbuffs" then o = L_GUI_BUFFS end
@@ -74,6 +104,7 @@ local function Local(o)
 	if o == "UIConfigbuffsbuffperrow" then o = L_GUI_BUFFS_BUFFPERROW end
 	if o == "UIConfigbuffsbuffscale" then o = L_GUI_BUFFS_BUFFSCALE end
 	if o == "UIConfigbuffsbuffsize" then o = L_GUI_BUFFS_BUFFSIZE end
+	if o == "UIConfigbuffsbuffsource" then o = L_GUI_BUFFS_BUFFSOURCE end
 	if o == "UIConfigbuffsdebuffcountsize" then o = L_GUI_BUFFS_DEBUFFCOUNTSIZE end
 	if o == "UIConfigbuffsdebufffontsize" then o = L_GUI_BUFFS_DEBUFFFONTSIZE end
 	if o == "UIConfigbuffsdebuffscale" then o = L_GUI_BUFFS_DEBUFFSCALE end
@@ -84,9 +115,11 @@ local function Local(o)
 
 	-- Announcements options
 	if o == "UIConfigannouncements" then o = L_GUI_ANNOUNCEMENTS end
+	if o == "UIConfigannouncementsbadgear" then o = L_GUI_ANNOUNCEMENTS_BAD_GEAR end
+	if o == "UIConfigannouncementsdrinking" then o = L_GUI_ANNOUNCEMENTS_DRINKING end
 	if o == "UIConfigannouncementsinterrupts" then o = L_GUI_ANNOUNCEMENTS_INTERRUPTS end
 	if o == "UIConfigannouncementssaysapped" then o = L_GUI_ANNOUNCEMENTS_SAYSAPPED end
-	if o == "UIConfigannouncementsbad_gear" then o = L_GUI_ANNOUNCEMENTS_BAD_GEAR end
+	if o == "UIConfigannouncementsspells" then o = L_GUI_ANNOUNCEMENTS_SPELLS end
 
 	-- Automation options
 	if o == "UIConfigautomation" then o = L_GUI_AUTOMATION end
@@ -97,6 +130,7 @@ local function Local(o)
 	if o == "UIConfigautomationcollectgarbage" then o = L_GUI_AUTOMATION_COLLECTGARBAGE end
 	if o == "UIConfigautomationdeclineduel" then o = L_GUI_AUTOMATION_DECLINEDUEL end
 	if o == "UIConfigautomationresurrection" then o = L_GUI_AUTOMATION_RESURRECTION end
+	if o == "UIConfigautomationtabbinder" then o = L_GUI_AUTOMATION_TAB_BINDER end
 
 	-- Chat options
 	if o == "UIConfigchat" then o = SOCIALS end
@@ -115,60 +149,93 @@ local function Local(o)
 	if o == "UIConfigchatwhisp_sound" then o = L_GUI_CHAT_WHISP end
 	if o == "UIConfigchatwidth" then o = L_GUI_CHAT_WIDTH end
 
-	-- tooltip options
+	-- Tooltip options
 	if o == "UIConfigtooltip" then o = L_GUI_TOOLTIP end
-	if o == "UIConfigtooltipabbrevrealmnames" then o = L_GUI_TOOLTIP_ABBREVREALMNAMES end
-	if o == "UIConfigtooltipdisablefade" then o = L_GUI_TOOLTIP_FADE end
+	if o == "UIConfigtooltipachievements" then o = L_GUI_TOOLTIP_ACHIEVEMENTS end
+	if o == "UIConfigtooltiparena_experience" then o = L_GUI_TOOLTIP_ARENA_EXPERIENCE end
+	if o == "UIConfigtooltipaverage_lvl" then o = STAT_AVERAGE_ITEM_LEVEL end
+	if o == "UIConfigtooltipcursor" then o = L_GUI_TOOLTIP_CURSOR end
 	if o == "UIConfigtooltipenable" then o = L_GUI_TOOLTIP_ENABLE end
-	if o == "UIConfigtooltiphideincombat" then o = L_GUI_TOOLTIP_HIDEINCOMBAT end
-	if o == "UIConfigtooltiphiderealmtext" then o = L_GUI_TOOLTIP_HIDEREALMTEXT end
-	if o == "UIConfigtooltipitemqualitybordercolor" then o = L_GUI_TOOLTIP_ITEMQUALITYBORDERCOLOR end
-	if o == "UIConfigtooltipmouseovertarget" then o = L_GUI_TOOLTIP_MOUSEOVERTARGET end
-	if o == "UIConfigtooltipreactionbordercolor" then o = L_GUI_TOOLTIP_REACTIONBORDERCOLOR end
-	if o == "UIConfigtooltipshowhealthvalue" then o = L_GUI_TOOLTIP_SHOWHEALTHVALUE end
-	if o == "UIConfigtooltipshowplayertitles" then o = L_GUI_TOOLTIP_SHOWPLAYERTITLES end
-	if o == "UIConfigtooltipshowpvpicons" then o = L_GUI_TOOLTIP_SHOWPVPICONS end
-	if o == "UIConfigtooltipshowspecicon" then o = L_GUI_TOOLTIP_SHOWSPECICON end
-	if o == "UIConfigtooltipshowunitrole" then o = L_GUI_TOOLTIP_SHOWUNITROLE end
-	if o == "UIConfigtooltipspellid" then o = L_GUI_TOOLTIP_SPELLID end
-	if o == "UIConfigtooltiptipicons" then o = L_GUI_TOOLTIP_ICONS end
-	if o == "UIConfigtooltipuserplaced" then o = L_GUI_TOOLTIP_USERPLACED end
+	if o == "UIConfigtooltiphealth_value" then o = L_GUI_TOOLTIP_HEALTH end
+	if o == "UIConfigtooltiphide_combat" then o = L_GUI_TOOLTIP_HIDE_COMBAT end
+	if o == "UIConfigtooltiphidebuttons" then o = L_GUI_TOOLTIP_HIDE end
+	if o == "UIConfigtooltipinstance_lock" then o = L_GUI_TOOLTIP_INSTANCE_LOCK end
+	if o == "UIConfigtooltipitem_count" then o = L_GUI_TOOLTIP_ITEM_COUNT end
+	if o == "UIConfigtooltipitem_icon" then o = L_GUI_TOOLTIP_ICON end
+	if o == "UIConfigtooltipitem_transmogrify" then o = L_GUI_TOOLTIP_ITEM_TRANSMOGRIFY end
+	if o == "UIConfigtooltipraid_icon" then o = L_GUI_TOOLTIP_RAID_ICON end
+	if o == "UIConfigtooltiprank" then o = L_GUI_TOOLTIP_RANK end
+	if o == "UIConfigtooltiprealm" then o = L_GUI_TOOLTIP_REALM end
+	if o == "UIConfigtooltipshift_modifer" then o = L_GUI_TOOLTIP_SHIFT end
+	if o == "UIConfigtooltipspell_id" then o = L_GUI_TOOLTIP_SPELL_ID end
+	if o == "UIConfigtooltiptalents" then o = L_GUI_TOOLTIP_TALENTS end
+	if o == "UIConfigtooltiptarget" then o = L_GUI_TOOLTIP_TARGET end
+	if o == "UIConfigtooltiptitle" then o = L_GUI_TOOLTIP_TITLE end
+	if o == "UIConfigtooltipunit_role" then o = L_GUI_TOOLTIP_UNIT_ROLE end
+	if o == "UIConfigtooltipwho_targetting" then o = L_GUI_TOOLTIP_WHO_TARGETTING end
 	
 	-- Nameplate options
 	if o == "UIConfignameplate" then o = UNIT_NAMEPLATES end
-	if o == "UIConfignameplateenable" then o = L_GUI_NAMEPLATE_ENABLE end
-	if o == "UIConfignameplateheight" then o = L_GUI_NAMEPLATE_HEIGHT end
-	if o == "UIConfignameplatewidth" then o = L_GUI_NAMEPLATE_WIDTH end
 	if o == "UIConfignameplatead_height" then o = L_GUI_NAMEPLATE_AD_HEIGHT end
 	if o == "UIConfignameplatead_width" then o = L_GUI_NAMEPLATE_AD_WIDTH end
+	if o == "UIConfignameplateauras_size" then o = L_GUI_NAMEPLATE_DEBUFFS_SIZE end
+	if o == "UIConfignameplatebad_color" then o = L_GUI_NAMEPLATE_BAD_COLOR end
+	if o == "UIConfignameplateclass_icons" then o = L_GUI_NAMEPLATE_CLASS_ICON end
 	if o == "UIConfignameplatecombat" then o = L_GUI_NAMEPLATE_COMBAT end
+	if o == "UIConfignameplateenable" then o = L_GUI_NAMEPLATE_ENABLE end
+	if o == "UIConfignameplateenhance_threat" then o = L_GUI_NAMEPLATE_THREAT end
+	if o == "UIConfignameplategood_color" then o = L_GUI_NAMEPLATE_GOOD_COLOR end
+	if o == "UIConfignameplatehealer_icon" then o = L_GUI_NAMEPLATE_HEALER_ICON end
 	if o == "UIConfignameplatehealth_value" then o = L_GUI_NAMEPLATE_HEALTH end
+	if o == "UIConfignameplateheight" then o = L_GUI_NAMEPLATE_HEIGHT end
+	if o == "UIConfignameplatename_abbrev" then o = L_GUI_NAMEPLATE_NAME_ABBREV end
+	if o == "UIConfignameplatenear_color" then o = L_GUI_NAMEPLATE_NEAR_COLOR end
 	if o == "UIConfignameplateshow_castbar" then o = L_GUI_NAMEPLATE_CASTBAR end
 	if o == "UIConfignameplateshow_castbar_name" then o = L_GUI_NAMEPLATE_CASTBAR_NAME end
-	if o == "UIConfignameplateenhance_threat" then o = L_GUI_NAMEPLATE_THREAT end
-	if o == "UIConfignameplateclass_icons" then o = L_GUI_NAMEPLATE_CLASS_ICON end
-	if o == "UIConfignameplatename_abbrev" then o = L_GUI_NAMEPLATE_NAME_ABBREV end
-	if o == "UIConfignameplategood_color" then o = L_GUI_NAMEPLATE_GOOD_COLOR end
-	if o == "UIConfignameplatenear_color" then o = L_GUI_NAMEPLATE_NEAR_COLOR end
-	if o == "UIConfignameplatebad_color" then o = L_GUI_NAMEPLATE_BAD_COLOR end
 	if o == "UIConfignameplatetrack_auras" then o = L_GUI_NAMEPLATE_SHOW_DEBUFFS end
-	if o == "UIConfignameplateauras_size" then o = L_GUI_NAMEPLATE_DEBUFFS_SIZE end
-	if o == "UIConfignameplatehealer_icon" then o = L_GUI_NAMEPLATE_HEALER_ICON end
+	if o == "UIConfignameplatewidth" then o = L_GUI_NAMEPLATE_WIDTH end
 
 	-- Error options
 	if o == "UIConfigerror" then o = L_GUI_ERROR end
 	if o == "UIConfigerrorblack" then o = L_GUI_ERROR_BLACK end
-	if o == "UIConfigerrorwhite" then o = L_GUI_ERROR_WHITE end
 	if o == "UIConfigerrorcombat" then o = L_GUI_ERROR_HIDE_COMBAT end
+	if o == "UIConfigerrorwhite" then o = L_GUI_ERROR_WHITE end
 
 	-- Loot options
 	if o == "UIConfigloot" then o = LOOT end
+	if o == "UIConfiglootauto_confirm_de" then o = L_GUI_LOOT_AUTODE end
+	if o == "UIConfiglootauto_greed" then o = L_GUI_LOOT_AUTOGREED end
+	if o == "UIConfiglooticon_size" then o = L_GUI_LOOT_ICON_SIZE end
 	if o == "UIConfiglootlootframe" then o = L_GUI_LOOT_ENABLE end
 	if o == "UIConfiglootrolllootframe" then o = L_GUI_LOOT_ROLL_ENABLE end
-	if o == "UIConfiglooticon_size" then o = L_GUI_LOOT_ICON_SIZE end
 	if o == "UIConfiglootwidth" then o = L_GUI_LOOT_WIDTH end
-	if o == "UIConfiglootauto_greed" then o = L_GUI_LOOT_AUTOGREED end
-	if o == "UIConfiglootauto_confirm_de" then o = L_GUI_LOOT_AUTODE end
+
+	-- Panel options
+	if o == "UIConfigtoppanel" then o = L_GUI_TOP_PANEL end
+	if o == "UIConfigtoppanelenable" then o = L_GUI_TOP_PANEL_ENABLE end
+	if o == "UIConfigtoppanelheight" then o = L_GUI_TOP_PANEL_HEIGHT end
+	if o == "UIConfigtoppanelmouseover" then o = L_GUI_TOP_PANEL_MOUSE end
+	if o == "UIConfigtoppanelwidth" then o = L_GUI_TOP_PANEL_WIDTH end
+
+	-- Stats options
+	if o == "UIConfigstats" then o = L_GUI_STATS end
+	if o == "UIConfigstatsbattleground" then o = L_GUI_STATS_BG end
+	if o == "UIConfigstatsclock" then o = L_GUI_STATS_CLOCK end
+	if o == "UIConfigstatscoords" then o = L_GUI_STATS_COORDS end
+	if o == "UIConfigstatscurrency_archaeology" then o = L_GUI_STATS_CURRENCY_ARCHAEOLOGY end
+	if o == "UIConfigstatscurrency_cooking" then o = L_GUI_STATS_CURRENCY_COOKING end
+	if o == "UIConfigstatscurrency_misc" then o = L_GUI_STATS_CURRENCY_MISCELLANEOUS end
+	if o == "UIConfigstatscurrency_professions" then o = L_GUI_STATS_CURRENCY_PROFESSIONS end
+	if o == "UIConfigstatscurrency_pvp" then o = L_GUI_STATS_CURRENCY_PVP end
+	if o == "UIConfigstatscurrency_raid" then o = L_GUI_STATS_CURRENCY_RAID end
+	if o == "UIConfigstatsdurability" then o = DURABILITY end
+	if o == "UIConfigstatsexperience" then o = L_GUI_STATS_EXPERIENCE end
+	if o == "UIConfigstatsfps" then o = L_GUI_STATS_FPS end
+	if o == "UIConfigstatsfriend" then o = FRIENDS end
+	if o == "UIConfigstatsguild" then o = GUILD end
+	if o == "UIConfigstatslatency" then o = L_GUI_STATS_LATENCY end
+	if o == "UIConfigstatslocation" then o = L_GUI_STATS_LOCATION end
+	if o == "UIConfigstatsmemory" then o = L_GUI_STATS_MEMORY end
 
 	K.option = o
 end
@@ -355,7 +422,7 @@ function CreateUIConfig()
 	UIConfigMain:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 200)
 	UIConfigMain:SetWidth(780)
 	UIConfigMain:SetHeight(520)
-	UIConfigMain:SetBackdrop(backdrop)
+	UIConfigMain:SetBackdrop(K.Backdrop)
 	UIConfigMain:SetBackdropColor(1, 1, 1, .9)
 	UIConfigMain:SetFrameStrata("DIALOG")
 	UIConfigMain:SetFrameLevel(20)
@@ -530,7 +597,7 @@ function CreateUIConfig()
 				editbox:SetFontObject(GameFontHighlight)
 				editbox:SetPoint("TOPLEFT", 8, -(offset + 20))
 				editbox:SetText(value)
-				editbox:SetBackdrop(backdrop)
+				editbox:SetBackdrop(K.Backdrop)
 				editbox:SetBackdropColor(.2,.2,.2,1)
 
 				local okbutton = CreateFrame("Button", nil, frame)
@@ -570,7 +637,7 @@ function CreateUIConfig()
 
 				local colorbutton = CreateFrame("Button", colorbuttonname, frame)
 				colorbutton:SetHeight(20)
-				colorbutton:SetBackdrop(backdrop)
+				colorbutton:SetBackdrop(K.Backdrop)
 				colorbutton:SetBackdropBorderColor(unpack(value))
 				colorbutton:SetBackdropColor(value[1], value[2], value[3], 0.3)
 				colorbutton:SetPoint("LEFT", label, "RIGHT", 2, 0)
@@ -684,8 +751,8 @@ function CreateUIConfig()
 
 	local bgskins = {TitleBox, TitleBoxVer, UIConfigBG, groupsBG}
 	for _, sb in pairs(bgskins) do
-		sb:SetBackdrop(backdrop)
-		sb:SetBackdropColor(.9, .9, .9, .9)
+		sb:SetBackdrop(K.Backdrop)
+		sb:SetBackdropColor(1, 1, 1, 1)
 		sb:SetBackdropBorderColor(.3, .3, .3)
 	end
 

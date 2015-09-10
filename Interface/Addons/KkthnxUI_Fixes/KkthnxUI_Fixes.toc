@@ -1,9 +1,0 @@
-## Interface: 60200
-## Name: KkthnxUI_Fixes
-## Title: |cFF4488FFKkthnx's|r |cFFFFB200Fixes|r 
-## Notes: Misc Fixes for BlizzardUI and |cFFFF7D0AKkthnxUI|r
-## Author: Josh Russell
-## Version: 1.0
-## Dependencies: KkthnxUI
-
-core.lua

@@ -1,9 +1,0 @@
-## Interface: 60200
-## Name: KkthnxUI_Errors
-## Title: |cFF4488FFKkthnx's|r |cFFFFB200Errors|r 
-## Notes: Modified Errors Frame
-## Author: Kkthnx
-## Version: 1.0
-## Dependencies: KkthnxUI
-
-Core.lua

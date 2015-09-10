@@ -18,11 +18,11 @@ end
 
 -- [[	Default Settings	]] --
 ns.defaultConfig = {
-	fontNormal = 'Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf',
+	fontNormal = 'Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Unitframe.ttf',
 	fontNormalOutline = "NONE",
 	fontNormalSize = 1, -- relative size
 
-	fontBig = 'Interface\\AddOns\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf',
+	fontBig = 'Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Unitframe.ttf',
 	fontBigOutline = "NONE",
 	fontBigSize = 1, -- relative size
 
