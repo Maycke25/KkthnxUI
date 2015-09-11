@@ -5,14 +5,12 @@ if C.misc.afkcam ~= true then return end
 local SpinStart = function()
 	spinning = true
 	MoveViewRightStart(.1)
-	UIParent:Hide()
 end
 
 local SpinStop = function()
 	if not spinning then return end
 	spinning = nil
 	MoveViewRightStop()
-	UIParent:Show()
 end
 
 local CameraSpin = CreateFrame('Frame')

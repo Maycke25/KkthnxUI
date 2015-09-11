@@ -32,7 +32,9 @@ lpanels:CreateLayout("Load For All", {
 		},
 		OnLoad = function(self)
 			self:RegisterEvent("PLAYER_FLAGS_CHANGED")
-			--self:SetTemplate("Transparent")
+			self:SetBackdrop(K.Backdrop)
+			self:SetBackdropColor(1, 1, 1, .9)
+			self:SetBackdropBorderColor(1, 0, 0)
 			self:Hide()
 		end,
 		OnEvent = function(self)
