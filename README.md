@@ -11,7 +11,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever 
 * Once You get in-game you will be prompted with an install feature. Accept it.      
 * Once the UI reloads off the install, you can type **/settings** or **/settings all** if you prefer all the settings for addon profiles.   
 * To move the **pet bar / stance bar** you have to **shift+alt+click** the first button on the bar and hold and drag where you would like it!   
-* You can type /move and move certain features of the UI. More to come later.   
+* You can type /moveui and move certain features of the UI. More to come later.   
 
 ### Supported Addon Profiles   
 * [Skada](http://www.curse.com/addons/wow/skada)   
