@@ -10,17 +10,18 @@ local ALLOWED_GROUPS = {
 	["blizzard"] = 3,
 	["combattext"] = 4,
 	["minimap"] = 5,
-	["buffs"] = 6,
-	["announcements"] = 7,
-	["automation"] = 8,
-	["chat"] = 9,
-	["actionbar"] = 10,
-	["tooltip"] = 11,
-	["loot"] = 12,
-	["nameplate"] = 13,
-	["error"] = 14,
-	["toppanel"] = 15,
-	["stats"] = 16,
+	["map"] = 6,
+	["buffs"] = 7,
+	["announcements"] = 8,
+	["automation"] = 9,
+	["chat"] = 10,
+	["actionbar"] = 11,
+	["tooltip"] = 12,
+	["loot"] = 13,
+	["nameplate"] = 14,
+	["error"] = 15,
+	["toppanel"] = 16,
+	["stats"] = 17,
 }
 
 local function Local(o)
@@ -96,6 +97,12 @@ local function Local(o)
 	if o == "UIConfigminimapcollectbuttons" then o = L_GUI_MINIMAP_COLLECTBUTTONS end
 	if o == "UIConfigminimapenable" then o = L_GUI_MINIMAP_ENABLEMINIMAP end
 	if o == "UIConfigminimapsize" then o = L_GUI_MINIMAP_MINIMAPSIZE end
+
+	-- Map options
+	if o == "UIConfigmap" then o = WORLD_MAP end
+	if o == "UIConfigmapmapbosscount" then o = L_GUI_MAP_BOSS_COUNT end
+	if o == "UIConfigmapexploremap" then o = L_GUI_MAP_EXPLORE end
+	if o == "UIConfigmapfogofwar" then o = L_GUI_MAP_FOG_OF_WAR end
 
 	-- Buffs options
 	if o == "UIConfigbuffs" then o = L_GUI_BUFFS end

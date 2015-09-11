@@ -88,6 +88,11 @@ L_GUI_MINIMAP_COLLECTBUTTONS = "Collect the minimap buttons and syle them"
 L_GUI_MINIMAP_ENABLEMINIMAP = "Enable minimap, and make it square"
 L_GUI_MINIMAP_MINIMAPSIZE = "Minimap size - Default is 130"
 
+-- Map options
+L_GUI_MAP_BOSS_COUNT = "Show boss count in World Map"
+L_GUI_MAP_EXPLORE = "Tracking Explorer and Lore Master achievements in World Map"
+L_GUI_MAP_FOG_OF_WAR = "Remove fog of war on World Map"
+
 -- Buffs options
 L_GUI_BUFFS = "Buffs & Debuffs"
 L_GUI_AURA_CAST_BY = "Show who cast a buff/debuff in its tooltip"

@@ -126,6 +126,9 @@
 
 	<Script file="Modules\Maps\MiniMap.lua"/>
 	<Script file="Modules\Maps\MinimapButtons.lua"/>
+	<Script file="Modules\Maps\ExploreMap.lua"/>
+	<Script file="Modules\Maps\FogOfWar.lua"/>
+	<Script file="Modules\Maps\MapBossCount.lua"/>
 
 	<Script file="Modules\Quests\AutoButton.lua"/>
 	<Script file="Modules\Quests\AutoCollapse.lua"/>

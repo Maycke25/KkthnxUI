@@ -185,7 +185,7 @@ local function InstallUI()
 	SavedOptionsPerChar = {}
 	
 	SavedOptionsPerChar.Install = true
-	SavedOptionsPerChar.autoinvite = false
+	SavedOptionsPerChar.FogOfWar = false
 
 	ReloadUI()
 end
@@ -269,7 +269,7 @@ OnLogon:SetScript("OnEvent", function(self, event)
 	if SavedPositions == nil then SavedPositions = {} end
 	if SavedAddonProfiles == nil then SavedAddonProfiles = {} end
 	if SavedOptionsPerChar == nil then SavedOptionsPerChar = {} end
-	if SavedOptionsPerChar.autoinvite == nil then SavedOptionsPerChar.autoinvite = false end
+	if SavedOptionsPerChar.FogOfWar == nil then SavedOptionsPerChar.FogOfWar = false end
 
 	if K.getscreenwidth < 1024 and GetCVar("gxMonitor") == "0" then
 		SetCVar("useUiScale", 0)

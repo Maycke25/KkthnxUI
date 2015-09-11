@@ -36,7 +36,7 @@ local function SetHyperlink(tooltip, refString)
 	if completed then
 		if year < 10 then year = "0"..year end
 
-		if T.client == "ruRU" then
+		if K.Client == "ruRU" then
 			tooltip:AddLine(L_TOOLTIP_ACH_COMPLETE..day.."/"..month.."/"..year, 0, 1, 0)
 		else
 			tooltip:AddLine(L_TOOLTIP_ACH_COMPLETE..month.."/"..day.."/"..year, 0, 1, 0)
@@ -47,9 +47,9 @@ local function SetHyperlink(tooltip, refString)
 				tooltip:AddLine(format(ACHIEVEMENT_EARNED_BY, earnedBy))
 			end
 			if not wasEarnedByMe then
-				tooltip:AddLine(format(ACHIEVEMENT_NOT_COMPLETED_BY, T.name))
-			elseif T.name ~= earnedBy then
-				tooltip:AddLine(format(ACHIEVEMENT_COMPLETED_BY, T.name))
+				tooltip:AddLine(format(ACHIEVEMENT_NOT_COMPLETED_BY, K.Name))
+			elseif K.Name ~= earnedBy then
+				tooltip:AddLine(format(ACHIEVEMENT_COMPLETED_BY, K.Name))
 			end
 		end
 	elseif numCriteria == 0 then

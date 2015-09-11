@@ -83,6 +83,15 @@ C["minimap"] = {
 }
 
 --[[----------------------------
+Map options
+--------------------------------]]
+C["map"] = {
+	["mapbosscount"] = false,					-- Show boss count in World Map
+	["exploremap"] = false,					-- Tracking Explorer and Lore Master achievements in World Map
+	["fogofwar"] = false,						-- Remove fog of war on World Map
+}
+
+--[[----------------------------
 Buffs / Debuffs options
 --------------------------------]]
 C["buffs"] = {
