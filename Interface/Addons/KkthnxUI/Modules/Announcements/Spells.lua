@@ -27,7 +27,7 @@ frame:SetScript("OnEvent", function(self, _, ...)
 			end
 		end
 	else
-		if not (sourceGUID == UnitGUID("player") and sourceName == T.name) then return end
+		if not (sourceGUID == UnitGUID("player") and sourceName == K.Name) then return end
 
 		for i, spells in pairs(spells) do
 			if spellID == spells then

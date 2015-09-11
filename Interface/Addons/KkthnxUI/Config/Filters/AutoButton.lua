@@ -43,13 +43,13 @@ K.ABItems = {
 	93668,	-- Saur Fetish
 	93806,	-- Resonance Siphon
 	93761,	-- Arcane Emancipator
-
-	114120,	-- Arcane Emancipator
 	-- Seaforium
 	46847,	-- Seaforium Bombs
 	47030,	-- Huge Seaforium Bombs
 	-- Other
 	45072,	-- Brightly Colored Egg (Noblegarden)
+	
+	--114120,	-- Big Crate of Savage -- Testing purposes only..
 }
 
 K.ABEquipedItems = {

@@ -1,22 +1,22 @@
-local T, C, L, _ = unpack(select(2, ...))
+local K, C, L, _ = unpack(select(2, ...))
 
 ----------------------------------------------------------------------------------------
 --	Add quest/achievement wowhead link
 ----------------------------------------------------------------------------------------
 local linkQuest, linkAchievement
-if T.client == "ruRU" then
+if K.Client == "ruRU" then
 	linkQuest = "http://ru.wowhead.com/quest=%d"
 	linkAchievement = "http://ru.wowhead.com/achievement=%d"
-elseif T.client == "frFR" then
+elseif K.Client == "frFR" then
 	linkQuest = "http://fr.wowhead.com/quest=%d"
 	linkAchievement = "http://fr.wowhead.com/achievement=%d"
-elseif T.client == "deDE" then
+elseif K.Client == "deDE" then
 	linkQuest = "http://de.wowhead.com/quest=%d"
 	linkAchievement = "http://de.wowhead.com/achievement=%d"
-elseif T.client == "esES" or T.client == "esMX" then
+elseif K.Client == "esES" or K.Client == "esMX" then
 	linkQuest = "http://es.wowhead.com/quest=%d"
 	linkAchievement = "http://es.wowhead.com/achievement=%d"
-elseif T.client == "ptBR" or T.client == "ptPT" then
+elseif K.Client == "ptBR" or K.Client == "ptPT" then
 	linkQuest = "http://pt.wowhead.com/quest=%d"
 	linkAchievement = "http://pt.wowhead.com/achievement=%d"
 else
