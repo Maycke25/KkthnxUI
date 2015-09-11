@@ -12,7 +12,7 @@ C["position"] = {
 	["quest"] = {"RIGHT", UIParent, "RIGHT", -182.00, 193.00},
 	["tempenchant1"] = {"TOPRIGHT", Minimap, "TOPLEFT", -7, 2},
 	["tempenchant2"] = {'TOPRIGHT', TempEnchant1, 'TOPLEFT', -C.buffs.paddingX, 0},
-	["tooltip"] = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -41, 2},
+	["tooltip"] = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5, 5},
 	["top_panel"] = {"TOP", UIParent, "TOP", 0, -20},
 	["uierror"] = {"TOP", UIParent, "TOP", 0, -30},
 

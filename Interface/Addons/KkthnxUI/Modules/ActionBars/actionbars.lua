@@ -150,7 +150,7 @@ if (cfg.multiBarRight.orderHorizontal) then
     end)
 else
     MultiBarRightButton1:ClearAllPoints()
-    MultiBarRightButton1:SetPoint('TOPRIGHT', UIParent, 'BOTTOMRIGHT', -6, (MultiBarRight:GetHeight() / .99))
+    MultiBarRightButton1:SetPoint('TOPRIGHT', UIParent, 'RIGHT', -6, (MultiBarRight:GetHeight() / 2))
 end
 
 -- Stancebar

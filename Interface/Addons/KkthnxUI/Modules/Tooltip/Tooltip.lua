@@ -130,13 +130,7 @@ local function GameTooltipDefault(tooltip, parent)
 	else
 		tooltip:SetOwner(parent, "ANCHOR_NONE")
 		tooltip:ClearAllPoints()
-	if ( MultiBarLeft:IsShown() ) then
-		anchor:SetPoint("BOTTOMRIGHT", MultiBarLeftButton12, "BOTTOMLEFT", -4, -3)
-	elseif ( MultiBarRight:IsShown() ) then
-		anchor:SetPoint("BOTTOMRIGHT", MultiBarRightButton12, "BOTTOMLEFT", -4, -3)
-	else
-		anchor:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -2, 2)
-	end
+		tooltip:SetPoint("BOTTOMRIGHT", TooltipAnchor, "BOTTOMRIGHT", -5, 5)
 		tooltip.default = 1
 	end
 end
