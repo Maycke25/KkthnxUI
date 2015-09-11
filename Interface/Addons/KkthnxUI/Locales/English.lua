@@ -1,4 +1,4 @@
-﻿--[[----------------------------
+--[[----------------------------
 Keybinding
 --------------------------------]]
 L_BIND_BINDING = "Binding"
@@ -235,5 +235,5 @@ L_SLASHCMD_HELP = {
 	"/spec, /ss - Switches between talent spec's.",
 	"/teleport - Teleportation from random dungeon.",
 	"/tt - Whisper target.",
-	--"/xct - Manage the combat text.",
+	"/xct - Manage the combat text.",
 }

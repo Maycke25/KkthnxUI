@@ -2,7 +2,7 @@
 ## Title: |cFF4488FFKkthnx's|r |cFFFEB200UI|r Config
 ## Notes: In-game configuration for KkthnxUI
 ## Author: Josh "Kkthnx" Russell
-## Version: 2.03
+## Version: 2.04
 ## RequiredDeps: KkthnxUI
 ## SavedVariables: GUIConfigAll, GUIConfigSettings
 ## SavedVariablesPerCharacter: GUIConfig
