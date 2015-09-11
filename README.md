@@ -12,14 +12,14 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever 
 * Once the UI reloads off the install, you can type **/settings** or **/settings all** if you prefer all the settings for addon profiles.   
 * To move the **pet bar / stance bar** you have to **shift+alt+click** the first button on the bar and hold and drag where you would like it!   
 * You can type /move and move certain features of the UI. More to come later.   
-* 
+
 ### Supported Addon Profiles   
 * [Skada](http://www.curse.com/addons/wow/skada)   
 * [Bartender4](http://www.curse.com/addons/wow/Bartender4)   
 * [Masque](http://www.curse.com/addons/wow/Masque)   
 * [BigWigs](http://www.curse.com/addons/wow/big-wigs)   
-* [WeakAuras 2](http://www.curse.com/addons/wow/weakauras-2)(Frost Mage)   
-* [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text)!   
+* [WeakAuras 2](http://www.curse.com/addons/wow/weakauras-2) (Frost Mage)   
+* [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text)   
 
 ### Suggested Addons   
 * [Skada](http://www.curse.com/addons/wow/skada)   
