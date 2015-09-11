@@ -105,6 +105,9 @@ L_GUI_BUFFS_ENABLE = "Enable buffs and debuffs"
 L_GUI_BUFFS_PADDINGX = "Buffs paddingx (Left and Right)"
 L_GUI_BUFFS_PADDINGY = "Buffs paddingx (Up and Down)"
 
+-- ActionBar options
+L_GUI_ACTIONBAR_ENABLE = "Enable action bars"
+
 -- Tooltip options
 L_GUI_TOOLTIP = "Tooltip"
 L_GUI_TOOLTIP_ACHIEVEMENTS = "Comparing achievements in tooltip"

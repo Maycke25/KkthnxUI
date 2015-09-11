@@ -14,12 +14,13 @@ local ALLOWED_GROUPS = {
 	["announcements"] = 7,
 	["automation"] = 8,
 	["chat"] = 9,
-	["tooltip"] = 10,
-	["loot"] = 11,
-	["nameplate"] = 12,
-	["error"] = 13,
-	["toppanel"] = 14,
-	["stats"] = 15,
+	["actionbar"] = 10,
+	["tooltip"] = 11,
+	["loot"] = 12,
+	["nameplate"] = 13,
+	["error"] = 14,
+	["toppanel"] = 15,
+	["stats"] = 16,
 }
 
 local function Local(o)
@@ -112,6 +113,10 @@ local function Local(o)
 	if o == "UIConfigbuffsenable" then o = L_GUI_BUFFS_ENABLE end
 	if o == "UIConfigbuffspaddingX" then o = L_GUI_BUFFS_PADDINGX end
 	if o == "UIConfigbuffspaddingY" then o = L_GUI_BUFFS_PADDINGY end
+
+	-- ActionBar options
+	if o == "UIConfigactionbar" then o = ACTIONBAR_LABEL end
+	if o == "UIConfigactionbarenable" then o = L_GUI_ACTIONBAR_ENABLE end
 
 	-- Announcements options
 	if o == "UIConfigannouncements" then o = L_GUI_ANNOUNCEMENTS end

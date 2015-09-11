@@ -103,6 +103,14 @@ C["buffs"] = {
 }
 
 --[[----------------------------
+ActionBar options
+--------------------------------]]
+C["actionbar"] = {
+	-- Main
+	["enable"] = true,							-- Enable actionbars
+}
+
+--[[----------------------------
 Nameplate options
 --------------------------------]]
 C["nameplate"] = {

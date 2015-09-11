@@ -2,6 +2,9 @@
 local _, KkthnxUIActionbars = ...
 local cfg = KkthnxUIActionbars.Config
 
+local K, C, L, _ = unpack(select(2, ...))
+if C.actionbar.enable ~= true then return end
+
 if (not cfg.MainMenuBar.skinButton) then
     return
 end

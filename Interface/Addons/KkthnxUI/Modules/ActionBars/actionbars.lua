@@ -1,6 +1,8 @@
-
 local _, KkthnxUIActionbars = ...
 local cfg = KkthnxUIActionbars.Config
+
+local K, C, L, _ = unpack(select(2, ...))
+if C.actionbar.enable ~= true then return end
 
 if (cfg.MainMenuBar.hideGryphons) then
     MainMenuBarLeftEndCap:SetTexCoord(0, 0, 0, 0)

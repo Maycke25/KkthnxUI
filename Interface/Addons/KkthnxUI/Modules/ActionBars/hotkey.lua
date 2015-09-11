@@ -1,3 +1,5 @@
+local K, C, L, _ = unpack(select(2, ...))
+if C.actionbar.enable ~= true then return end
 
 local gsub = string.gsub
 

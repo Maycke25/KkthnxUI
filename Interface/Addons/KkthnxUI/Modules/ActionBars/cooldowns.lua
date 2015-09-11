@@ -1,4 +1,5 @@
 local K, C, L, _ = unpack(select(2, ...))
+if C.actionbar.enable ~= true then return end
 if IsAddOnLoaded("OmniCC") or IsAddOnLoaded("ncCooldown") or IsAddOnLoaded("tullaCC") then return end
 
 OmniCC = true

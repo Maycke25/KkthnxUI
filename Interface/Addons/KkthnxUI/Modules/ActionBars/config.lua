@@ -2,6 +2,9 @@
 local _, KkthnxUIActionbars = ...
 local Font = "Interface\\Addons\\KkthnxUI_Media\\Media\\Fonts\\Normal.ttf"
 
+local K, C, L, _ = unpack(select(2, ...))
+if C.actionbar.enable ~= true then return end
+
 KkthnxUIActionbars.Config = {
     showPicomenu = true,
 	
