@@ -114,6 +114,7 @@ L_GUI_BUFFS_PADDINGY = "Buffs paddingx (Up and Down)"
 
 -- ActionBar options
 L_GUI_ACTIONBAR_ENABLE = "Enable action bars"
+L_GUI_ACTIONBAR_BUTTON_SIZE = "Buttons size"
 
 -- Tooltip options
 L_GUI_TOOLTIP = "Tooltip"
@@ -162,6 +163,7 @@ L_GUI_CHAT_TABS_MOUSEOVER = "Chat tabs on mouseover"
 L_GUI_CHAT_TIMESTAMP = "Timestamp coloring"
 L_GUI_CHAT_WHISP = "Sound when whisper"
 L_GUI_CHAT_WIDTH = "Chat width"
+L_GUI_CHAT_DAMAGE_METER_SPAM = "Merge damage meter spam in one line-link"
 
 -- Nameplate options
 L_GUI_NAMEPLATE_AD_HEIGHT = "Additional height for selected nameplate"

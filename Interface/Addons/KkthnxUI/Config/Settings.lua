@@ -10,15 +10,15 @@ C["media"] = {
 	["blank_font"] = [[Interface\AddOns\KkthnxUI\Media\Fonts\Invisible.ttf]],
 	["texture"] = [[Interface\AddOns\KkthnxUI\Media\Textures\KkthnxTex.tga]],
 	["blank"] = [[Interface\AddOns\KkthnxUI\Media\Textures\Blank.tga]],
-
+	
 	["bordernormal"] = [[Interface\Addons\KkthnxUI\Media\Border\BorderNormal.tga]],
 	["bordershadow"] = [[Interface\Addons\KkthnxUI\Media\Border\BorderShadow.tga]],
 	["borderglow"] = [[Interface\Addons\KkthnxUI\Media\Border\BorderGlow.tga]],
-
+	
 	["buffnormal"] = [[Interface\Addons\KkthnxUI\Media\Buffs\TextureNormal.tga]],
 	["buffshadow"] = [[Interface\Addons\KkthnxUI\Media\Buffs\TextureShadow.tga]],
 	["buffoverlay"] = [[Interface\Addons\KkthnxUI\Media\Buffs\TextureDebuff.tga]],
-
+	
 	["whisp_sound"] = [[Interface\AddOns\KkthnxUI\Media\Sounds\Whisper.ogg]],
 	["warning_sound"] = [[Interface\AddOns\KkthnxUI\Media\Sounds\Warning.ogg]],
 	
@@ -116,7 +116,8 @@ ActionBar options
 --------------------------------]]
 C["actionbar"] = {
 	-- Main
-	["enable"] = true,							-- Enable actionbars
+	["enable"] = true,
+	["buttonsize"] = 25,
 }
 
 --[[----------------------------
@@ -133,12 +134,12 @@ C["nameplate"] = {
 	["enhance_threat"] = false,
 	["good_color"] = {0.2, 0.8, 0.2},
 	["healer_icon"] = false,
-	["health_value"] = false,
-	["height"] = 9,
+	["health_value"] = true,
+	["height"] = 12,
 	["name_abbrev"] = false,
 	["near_color"] = {1, 1, 0},
-	["show_castbar_name"] = false,
-	["track_auras"] = false,
+	["show_castbar_name"] = true,
+	["track_auras"] = true,
 	["width"] = 120,
 }
 
@@ -184,7 +185,7 @@ C["stats"] = {
 	["latency"] = true,
 	["location"] = true,
 	["memory"] = true,
-
+	
 }
 
 --[[----------------------------
@@ -219,6 +220,9 @@ C["combattext"] = {
 	["direction"] = "bottom",					-- Scrolling Direction("top"(goes down) or "bottom"(goes up))
 }
 
+--[[----------------------------
+Unitframe options
+--------------------------------]]
 C["unitframe"] = {
 	-- Main
 	["enable"] = true,							-- Enable unit frames
@@ -297,7 +301,7 @@ C["chat"] = {
 	["chatfilter"] = true,
 	["chatspam"] = true,
 	["combatlog"] = true,
-	["damage_meter_spam"] = true,
+	["damagemeterspam"] = false,
 	["enable"] = true,
 	["height"] = 112,
 	["sticky"] = true,

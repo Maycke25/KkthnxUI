@@ -225,7 +225,7 @@ function SlashCmdList.LSTATS()
 	if experience.enabled then
 		slprint(format("%s/%s/%s", COMBAT_XP_GAIN, TIME_PLAYED_MSG, FACTION), L_STATS_RC_EXPERIENCE, L_STATS_WATCH_FACTIONS)
 	end
-	print("|cffBCEE68", format(L_STATS_OTHER_OPTIONS, "|cff66C6FFShestakUI\\Config\\DataText.lua"))
+	print("|cffBCEE68", format(L_STATS_OTHER_OPTIONS, "|cff66C6FFKkthnxUI\\Config\\DataText.lua"))
 end
 
 CreateFrame("Frame", "LSMenus", UIParent, "UIDropDownMenuTemplate")

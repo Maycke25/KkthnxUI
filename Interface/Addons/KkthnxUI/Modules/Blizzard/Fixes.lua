@@ -1,8 +1,8 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[-----------------------------------------------------------------------------
+--[[----------------------------
 Fix SearchLFGLeave() taint
--------------------------------------------------------------------------------]]
+--------------------------------]]
 local TaintFix = CreateFrame("Frame")
 TaintFix:SetScript("OnUpdate", function(self, elapsed)
 	if LFRBrowseFrame.timeToClear then
@@ -10,20 +10,43 @@ TaintFix:SetScript("OnUpdate", function(self, elapsed)
 	end
 end)
 
---[[-----------------------------------------------------------------------------
-Suppresses the "You are not in a raid group" spam
--------------------------------------------------------------------------------]]
+--[[----------------------------
+Suppresses the 
+"You are not in a raid group" spam
+--------------------------------]]
 ERR_NOT_IN_RAID = "";
 
---[[-----------------------------------------------------------------------------
-Disable tooltip for player arrow on map
--------------------------------------------------------------------------------]]
+--[[----------------------------
+Disable tooltip for player 
+arrow on map
+--------------------------------]]
 WorldMapPlayerUpper:EnableMouse(false)
 WorldMapPlayerLower:EnableMouse(false)
 
---[[-----------------------------------------------------------------------------
-Clear Button on the TradeSkill search box(TradeSkillClearButton by Kunda)
--------------------------------------------------------------------------------]]
+--[[----------------------------
+Fix RemoveTalent() taint
+--------------------------------]]
+FCF_StartAlertFlash = K.Dummy
+
+--[[----------------------------
+Misclicks for some popups
+--------------------------------]]
+StaticPopupDialogs.RESURRECT.hideOnEscape = nil
+StaticPopupDialogs.AREA_SPIRIT_HEAL.hideOnEscape = nil
+StaticPopupDialogs.PARTY_INVITE.hideOnEscape = nil
+StaticPopupDialogs.PARTY_INVITE_XREALM.hideOnEscape = nil
+StaticPopupDialogs.CONFIRM_SUMMON.hideOnEscape = nil
+StaticPopupDialogs.ADDON_ACTION_FORBIDDEN.button1 = nil
+StaticPopupDialogs.TOO_MANY_LUA_ERRORS.button1 = nil
+PetBattleQueueReadyFrame.hideOnEscape = nil
+PVPReadyDialog.leaveButton:Hide()
+PVPReadyDialog.enterButton:ClearAllPoints()
+PVPReadyDialog.enterButton:SetPoint("BOTTOM", PVPReadyDialog, "BOTTOM", 0, 25)
+
+--[[----------------------------
+Clear Button on the TradeSkill 
+search box (by Kunda)
+--------------------------------]]
 local TradeSkillClearButton = CreateFrame("Button", nil, UIParent)
 
 local function CreateButton()

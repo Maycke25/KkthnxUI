@@ -15,11 +15,15 @@ end
 --[[----------------------------
 Auto-overwrite script config is X addon is found
 --------------------------------]]
-if IsAddOnLoaded("TidyPlates") or IsAddOnLoaded("Aloft") or IsAddOnLoaded("dNamePlates") or IsAddOnLoaded("caelNamePlates") then
+if IsAddOnLoaded("gUI4_Minimap") or IsAddOnLoaded("SexyMap") or IsAddOnLoaded("wMinimap") then
+	C.minimap.enable = false
+end
+
+if IsAddOnLoaded("TidyPlates") or IsAddOnLoaded("Aloft") or IsAddOnLoaded("dNamePlates") or IsAddOnLoaded("caelNamePlates") or IsAddOnLoaded("gUI4_NamePlates") then
 	C.nameplate.enable = false
 end
 
-if IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded("RazerNaga") then
+if IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded("RazerNaga") or IsAddOnLoaded("gUI4_ActionBars") then
 	C.actionbar.enable = false
 end
 
@@ -29,11 +33,11 @@ if IsAddOnLoaded("Mapster") then
 	C.map.map_boss_count = false
 end
 
-if IsAddOnLoaded("Prat-3.0") or IsAddOnLoaded("Chatter") then
+if IsAddOnLoaded("Prat-3.0") or IsAddOnLoaded("Chatter") or IsAddOnLoaded("gUI4_Chat") then
 	C.chat.enable = false
 end
 
-if IsAddOnLoaded("TipTac") or IsAddOnLoaded("FreebTip") or IsAddOnLoaded("bTooltip") or IsAddOnLoaded("PhoenixTooltip") or IsAddOnLoaded("Icetip") then
+if IsAddOnLoaded("TipTac") or IsAddOnLoaded("FreebTip") or IsAddOnLoaded("bTooltip") or IsAddOnLoaded("PhoenixTooltip") or IsAddOnLoaded("Icetip") or IsAddOnLoaded("gUI4_Tooltip") then
 	C.tooltip.enable = false
 end
 

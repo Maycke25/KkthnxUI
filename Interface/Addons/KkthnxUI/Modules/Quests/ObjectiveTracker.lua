@@ -27,9 +27,7 @@ hooksecurefunc(QUEST_TRACKER_MODULE, "SetBlockHeader", function(_, block)
 	local item = block.itemButton
 
 	if item and not item.skinned then
-		item:SetSize(C.actionbar.button_size, C.actionbar.button_size)
-		--item:SetTemplate("Default")
-		--item:StyleButton()
+		item:SetSize(C.actionbar.buttonsize, C.actionbar.buttonsize)
 
 		item:SetNormalTexture(nil)
 

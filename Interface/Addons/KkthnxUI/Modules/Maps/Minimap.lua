@@ -2,7 +2,6 @@ local K, C, L, _ = unpack(select(2, ...))
 if C.minimap.enable ~= true then return end
 
 local frames = {
-	'MiniMapInstanceDifficulty',
 	'MiniMapVoiceChatFrame',
 	'MiniMapWorldMapButton',
 	'MiniMapMailBorder',

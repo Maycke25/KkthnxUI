@@ -6,15 +6,16 @@ if C.chat.enable ~= true or C.chat.damage_meter_spam ~= true then return end
 ----------------------------------------------------------------------------------------
 local firstLines = {
 	"^Recount - (.*)$", 									-- Recount
-	"^Skada: (.*) for (.*):$",								-- Skada enUS
-	"^Skada: (.*) für (.*):$",								-- Skada deDE
-	"^Skada: (.*) pour (.*):$",								-- Skada frFR
-	"^Отчёт Skada: (.*), с (.*):$",							-- Skada ruRU
-	"^Skada: (.*) por (.*):$",								-- Skada esES/ptBR
-	"^Skada: (.*) per (.*):$",								-- Skada itIT
-	"^(.*) 의 Skada 보고 (.*):$",							-- Skada koKR
-	"^Skada报告(.*)的(.*):$",								-- Skada zhCN
-	"^Skada:(.*)來自(.*):$",								-- Skada zhTW
+	"^Skada: (.*) for (.*), (.*) - (.*):$",					-- Skada
+	"^Skada report on (.*) for (.*), (.*) to (.*):$",		-- Skada enUS (Not Checked)
+	"^Skada: Bericht für (.*) gegen (.*), (.*) bis (.*):$",	-- Skada deDE (Not Checked)
+	"^Skada: (.*) für (.*), (.*) - (.*):$",					-- Skada deDE
+	"^Skada : (.*) pour (.*), de (.*) à (.*) :$",			-- Skada frFR
+	"Отчёт Skada: (.*) - (.*), с (.*) до (.*):$",			-- Skada ruRU
+	"^Skada: (.*) por (.*) - (.*):$",						-- Skada esES
+	"^(.*) - (.*)의 Skada 보고, (.*) ~ (.*):$",				-- Skada koKR
+	"^Skada战斗报告：(.*)的(.*), (.*)到(.*):$",				-- Skada zhCN
+	"^Skada:(.*)來自(.*)，(.*) - (.*):$",					-- Skada zhTW
 	"^(.*) Done for (.*)$",									-- TinyDPS enUS
 	"^(.*) für (.*)$",										-- TinyDPS deDE
 	"데미지량 -(.*)$",										-- TinyDPS koKR
@@ -23,14 +24,14 @@ local firstLines = {
 	"Исцеление:(.*)$",										-- TinyDPS ruRU
 	"^Numeration: (.*) - (.*)$",							-- Numeration
 	"alDamageMeter : (.*)$",								-- alDamageMeter
-	"^Details! Report for (.*)$"							-- Details!
 }
 
 local nextLines = {
-	"^(%d+)\. (.*)$",										-- Recount, Details! and Skada
-	"^(.*)   (.*)$",										-- Additional Skada
+	"^(%d+). (.*)$",										-- Recount and Skada
+	"^ (%d+). (.*)$", 										-- Skada, Numeration
+	"^.*%%%)$", 											-- Skada player details
 	"^[+-]%d+.%d",											-- Numeration deathlog details
-	"^(%d+). (.*):(.*)(%d+)(.*)(%d+)%%(.*)%((%d+)%)$"		-- TinyDPS
+	"^(%d+). (.*):(.*)(%d+)(.*)(%d+)%%(.*)%((%d+)%)$",		-- TinyDPS
 }
 
 local meters = {}
@@ -65,7 +66,7 @@ local function FilterLine(event, source, message, ...)
 							toInsert = false
 						end
 					end
-
+					
 					if toInsert then
 						table.insert(j.data, message)
 					end
@@ -74,12 +75,12 @@ local function FilterLine(event, source, message, ...)
 			end
 		end
 	end
-
+	
 	for k, v in ipairs(firstLines) do
 		local newID = 0
 		if message:match(v) then
 			local curTime = time()
-
+			
 			for i, j in ipairs(meters) do
 				local elapsed = curTime - j.time
 				if j.source == source and j.event == event and elapsed < 1 then
@@ -87,15 +88,15 @@ local function FilterLine(event, source, message, ...)
 					return true, true, string.format("|HMergeSpamMeter:%1$d|h|cFFFFFF00[%2$s]|r|h", newID or 0, message or "nil")
 				end
 			end
-
+			
 			table.insert(meters, {source = source, event = event, time = curTime, data = {}, title = message})
-
+			
 			for i, j in ipairs(meters) do
 				if j.source == source and j.event == event and j.time == curTime then
 					newID = i
 				end
 			end
-
+			
 			return true, true, string.format("|HMergeSpamMeter:%1$d|h|cFFFFFF00[%2$s]|r|h", newID or 0, message or "nil")
 		end
 	end
@@ -115,7 +116,7 @@ function SetItemRef(link, text, button, frame)
 		ItemRefTooltip:AddLine(meters[meterID].title)
 		ItemRefTooltip:AddLine(string.format(BY_SOURCE..": %s", meters[meterID].source))
 		for k, v in ipairs(meters[meterID].data) do
-			local left, right = v:match("^(.*)  (.*)$")
+			local left, right = v:match("^(.*) (.*)$")
 			if left and right then
 				ItemRefTooltip:AddDoubleLine(left, right, 1, 1, 1, 1, 1, 1)
 			else
