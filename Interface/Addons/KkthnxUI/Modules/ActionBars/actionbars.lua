@@ -1,172 +1,433 @@
-local _, KkthnxUIActionbars = ...
-local cfg = KkthnxUIActionbars.Config
-
 local K, C, L, _ = unpack(select(2, ...))
 if C.actionbar.enable ~= true then return end
 
-if (cfg.MainMenuBar.hideGryphons) then
-    MainMenuBarLeftEndCap:SetTexCoord(0, 0, 0, 0)
-    MainMenuBarRightEndCap:SetTexCoord(0, 0, 0, 0)
+local KBars = CreateFrame( "Frame", "ActionBars", UIParent );
+
+local petBar = CreateFrame("Frame", nil, PetActionBarFrame);
+petBar:SetFrameStrata("BACKGROUND");
+petBar:SetWidth(330);
+petBar:SetHeight(33);
+
+local function HideMicroMenu()
+    -- Move Micro Menu
+    CharacterMicroButton:SetMovable(true);
+    CharacterMicroButton:ClearAllPoints();
+    CharacterMicroButton:SetPoint('BOTTOMLEFT', UIParent, 9000, 9000);
+    CharacterMicroButton:SetUserPlaced(true);
+    CharacterMicroButton:SetMovable(false);
 end
 
-MainMenuBar:SetScale(cfg.MainMenuBar.scale)
-OverrideActionBar:SetScale(cfg.vehicleBar.scale)
-
--- Bottomleft bar
-MultiBarBottomLeft:SetAlpha(cfg.multiBarBottomLeft.alpha)
-
--- Bottomright bar
-MultiBarBottomRight:SetAlpha(cfg.multiBarBottomRight.alpha)
-
-if (cfg.multiBarBottomRight.orderVertical) then
-    for i = 2, 12 do
-        button = _G['MultiBarBottomRightButton'..i]
-        button:ClearAllPoints()
-        button:SetPoint('TOP', _G['MultiBarBottomRightButton'..(i - 1)], 'BOTTOM', 0, -6)
-    end
-
-    MultiBarBottomRightButton1:HookScript('OnShow', function(self)
-        self:ClearAllPoints()
-
-        if (cfg.multiBarBottomRight.verticalPosition == 'RIGHT') then
-            self:SetPoint('TOPRIGHT', MultiBarLeftButton1, 'TOPLEFT', -6, 0)
-        else
-            self:SetPoint('TOPLEFT', UIParent, 'LEFT', 6, (MultiBarBottomRight:GetWidth() / 2))
-        end
-    end)
-end
-
--- experience bar mouseover text
-MainMenuBarExpText:SetFont(cfg.expBar.font, cfg.expBar.fontsize, 'THINOUTLINE')
-MainMenuBarExpText:SetShadowOffset(0, 0)
-
-if (cfg.expBar.mouseover) then
-    MainMenuBarExpText:SetAlpha(0)
-
-    MainMenuExpBar:HookScript('OnEnter', function()
-        securecall('UIFrameFadeIn', MainMenuBarExpText, 0.2, MainMenuBarExpText:GetAlpha(), 1)
-    end)
-
-    MainMenuExpBar:HookScript('OnLeave', function()
-        securecall('UIFrameFadeOut', MainMenuBarExpText, 0.2, MainMenuBarExpText:GetAlpha(), 0)
-    end)
-else
-    MainMenuBarExpText:Show()
-    MainMenuBarExpText.Hide = function() end
-end
-
--- left bar
-MultiBarLeft:SetAlpha(cfg.multiBarLeft.alpha)
-MultiBarLeft:SetScale(cfg.MainMenuBar.scale)
-
-MultiBarLeft:SetParent(UIParent)
-
-if (cfg.multiBarLeft.orderHorizontal) then
-    for i = 2, 12 do
-        button = _G['MultiBarLeftButton'..i]
-        button:ClearAllPoints()
-        button:SetPoint('LEFT', _G['MultiBarLeftButton'..(i - 1)], 'RIGHT', 6, 0)
-    end
-
-    MultiBarLeftButton1:HookScript('OnShow', function(self)
-        self:ClearAllPoints()
-
-        if (not cfg.MainMenuBar.shortBar) then
-            self:SetPoint('BOTTOMLEFT', MultiBarBottomLeftButton1, 'TOPLEFT', 0, 6)
-        else
-            if (cfg.multiBarRight.orderHorizontal) then
-                self:SetPoint('BOTTOMLEFT', MultiBarRightButton1, 'TOPLEFT', 0, 6)
-            else
-                self:SetPoint('BOTTOMLEFT', MultiBarBottomRightButton1, 'TOPLEFT', 0, 6)
-            end
-
-        end
-    end)
-else
-    if (cfg.multiBarRight.orderHorizontal) then
-        MultiBarLeftButton1:ClearAllPoints()
-        MultiBarLeftButton1:SetPoint('TOPRIGHT', UIParent, 'RIGHT', -6, (MultiBarLeft:GetHeight() / 2))
+local function BuildPet()
+    local offset = 0;
+    
+    if(ReputationWatchBar:IsShown() and MainMenuExpBar:IsShown())then
+        offset = 0;
     else
-        MultiBarLeftButton1:ClearAllPoints()
-        MultiBarLeftButton1:SetPoint('TOPRIGHT', MultiBarRightButton1, 'TOPLEFT', -6, 0)
+        offset = 10;
+    end
+    
+    if ( StanceBarFrame and GetNumShapeshiftForms() > 0 ) then
+        PetActionButton1:ClearAllPoints()
+        PetActionButton1:SetPoint("CENTER", -606, 28 + offset)
+    else
+        PetActionButton1:ClearAllPoints()
+        PetActionButton1:SetPoint("CENTER", -140, 28 + offset)
     end
 end
 
--- Petbar
-PetActionBarFrame:SetFrameStrata('MEDIUM')
+local function SetBars()
+    
+    MainMenuBarVehicleLeaveButton:SetMovable(true);
+    MainMenuBarVehicleLeaveButton:ClearAllPoints();
+    MainMenuBarVehicleLeaveButton:SetPoint("TOPLEFT", 0, 0);
+    MainMenuBarVehicleLeaveButton:SetUserPlaced(true);
+    MainMenuBarVehicleLeaveButton:SetMovable(false);
+    
+    -- Remove Art
+    MainMenuBarTexture2:SetTexture(nil)
+    MainMenuBarTexture3:SetTexture(nil)
+    
+    -- Move Main Bar
+    MainMenuBar:SetMovable(true);
+    MainMenuBar:ClearAllPoints();
+    MainMenuBar:SetScale(C.actionbar.scale);
+    MainMenuBar:SetPoint("BOTTOM", 256, 0);
+    MainMenuBar:SetUserPlaced(true);
+    MainMenuBar:SetMovable(false);
+    
+    -- Move End Cap
+    MainMenuBarRightEndCap:SetPoint("CENTER", MainMenuBarArtFrame, 34, 0);
+    if( bShowBarArt == false)then
+        MainMenuBarRightEndCap:SetTexture(nil);
+        MainMenuBarLeftEndCap:SetTexture(nil);
+    end
+    
+    -- Move Bottom Right Bar
+    MultiBarBottomRight:SetMovable(true);
+    MultiBarBottomRight:ClearAllPoints();
+    MultiBarBottomRight:SetPoint("BOTTOM", -254, 97);
+    MultiBarBottomRight:SetUserPlaced(true);
+    MultiBarBottomRight:SetMovable(false);
+    
+    -- Move Bottom Left Bar
+    MultiBarBottomLeft:SetMovable(true);
+    MultiBarBottomLeft:ClearAllPoints();
+    MultiBarBottomLeft:SetPoint("BOTTOM", -254, 55);
+    MultiBarBottomLeft:SetUserPlaced(true);
+    MultiBarBottomLeft:SetMovable(false);
+    
+    -- Move MultibarRight
+    MultiBarRight:SetMovable(true);
+    MultiBarRight:ClearAllPoints();
+    MultiBarRight:SetPoint('TOPRIGHT', UIParent, 'RIGHT', -5, (MultiBarRight:GetHeight() / 2))
+    MultiBarRight:SetUserPlaced(true);
+    MultiBarRight:SetMovable(false);
+    
+    BuildPet();
+    
+    -- Remove Pet Bar Textures
+    for i = 0, 1 do
+        local texture = _G["SlidingActionBarTexture"..i]
+        if texture then
+            texture:SetTexture(nil);
+        end
+    end
+    
+    -- Remove Stance Bar Art
+    _G["StanceBarLeft"]:SetTexture(nil);
+    _G["StanceBarMiddle"]:SetTexture(nil);
+    _G["StanceBarRight"]:SetTexture(nil);
+    
+    -- Move Stance Bar
+    StanceBarFrame:SetMovable(true);
+    StanceBarFrame:ClearAllPoints();
+    StanceBarFrame:SetPoint("TOPLEFT", 0, 120);
+    StanceBarFrame:SetUserPlaced(true);
+    StanceBarFrame:SetMovable( false );
+    
+    -- Adjust EXP Bar
+    MainMenuExpBar:ClearAllPoints();
+    MainMenuExpBar:SetWidth(512);
+    MainMenuExpBar:SetPoint("TOP", -256, 0 );
+    ExhaustionTick:Hide();
+    ExhaustionLevelFillBar:SetVertexColor(0.0, 0.0, 0.0, 0.0);
+    
+    -- NOT the actual Rep Bar - Mouse Over Info "Frame"
+    ReputationWatchStatusBar:SetWidth(512);
+    ReputationWatchStatusBar:ClearAllPoints();
+    ReputationWatchStatusBar:SetPoint("TOP", 0, 0 );
+    
+    for i = 1, 19 do -- Remove EXP Dividers
+        local texture = _G["MainMenuXPBarDiv"..i]
+        if texture then
+            texture:Hide()
+        end
+    end
+    
+    -- Remove "collapsed" exp bar at max level
+    for i = 0, 3 do
+        local texture = _G["MainMenuMaxLevelBar"..i]
+        if( texture ) then
+            texture:Hide();
+        end
+    end
+    
+    -- Hide Bar Buttons
+    MainMenuBarPageNumber:Hide();
+    ActionBarDownButton:Hide();
+    ActionBarUpButton:Hide();
+    
+    -- Move Bag Bar
+    MainMenuBarBackpackButton:SetPoint("BOTTOMRIGHT", UIParent, -1, -300);
+    
+    HideMicroMenu();
+    
+    --Hide Exhaustion Tick
+    ExhaustionTick:HookScript("OnShow", ExhaustionTick.Hide);
+end
 
-PetActionBarFrame:SetScale(cfg.petBar.scale)
-PetActionBarFrame:SetAlpha(cfg.petBar.alpha)
-
-   -- horizontal/vertical bars
-
-if (cfg.petBar.vertical) then
-    for i = 2, 10 do
-        button = _G['PetActionButton'..i]
-        button:ClearAllPoints()
-        button:SetPoint('TOP', _G['PetActionButton'..(i - 1)], 'BOTTOM', 0, -8)
+local function Bars_HandleEvents( self, event, ... )
+    if( event == "PLAYER_ENTERING_WORLD" ) then
+        if( InCombatLockdown() == false )then
+            --BuildPetBar();
+            SetBars();
+        end
+    end
+    
+    if( event == "PLAYER_FLAGS_CHANGED" )then
+        if( InCombatLockdown() == false )then
+            HideMicroMenu();
+        end
+    end
+    
+    if( event == "UNIT_EXITED_VEHICLE" )then
+        local unit = ...;
+        if(unit == "player")then
+            if( InCombatLockdown() == false )then
+                HideMicroMenu();
+                SetBars();
+            end
+        end
+    end
+    
+    if( event == "PLAYER_TALENT_UPDATE" or event == "ACTIVE_TALENT_GROUP_CHANGED")then
+        if( InCombatLockdown() == false)then
+            SetBars();
+        end
     end
 end
 
---possessbar
-PossessBarFrame:SetScale(cfg.possessBar.scale)
-PossessBarFrame:SetAlpha(cfg.possessBar.alpha)
-
--- reputation bar mouseover text
-ReputationWatchStatusBarText:SetFont(cfg.repBar.font, cfg.repBar.fontsize, 'THINOUTLINE')
-ReputationWatchStatusBarText:SetShadowOffset(0, 0)
-
-if (cfg.repBar.mouseover) then
-    ReputationWatchStatusBarText:SetAlpha(0)
-
-    ReputationWatchBar:HookScript('OnEnter', function()
-        securecall('UIFrameFadeIn', ReputationWatchStatusBarText, 0.2, ReputationWatchStatusBarText:GetAlpha(), 1)
-    end)
-
-    ReputationWatchBar:HookScript('OnLeave', function()
-        securecall('UIFrameFadeOut', ReputationWatchStatusBarText, 0.2, ReputationWatchStatusBarText:GetAlpha(), 0)
-    end)
-else
-    ReputationWatchStatusBarText:Show()
-    ReputationWatchStatusBarText.Hide = function() end
-end
-
--- right bar
-MultiBarRight:SetAlpha(cfg.multiBarRight.alpha)
-MultiBarRight:SetScale(cfg.MainMenuBar.scale)
-
-MultiBarRight:SetParent(UIParent)
-
-if (cfg.multiBarRight.orderHorizontal) then
-    for i = 2, 12 do
-        button = _G['MultiBarRightButton'..i]
-        button:ClearAllPoints()
-        button:SetPoint('LEFT', _G['MultiBarRightButton'..(i - 1)], 'RIGHT', 6, 0)
-    end
-
-    MultiBarRightButton1:HookScript('OnShow', function(self)
-        self:ClearAllPoints()
-        self:SetPoint('BOTTOMLEFT', MultiBarBottomRightButton1, 'TOPLEFT', 0, 6)
-    end)
-else
-    MultiBarRightButton1:ClearAllPoints()
-    MultiBarRightButton1:SetPoint('TOPRIGHT', UIParent, 'RIGHT', -6, (MultiBarRight:GetHeight() / 2))
-end
-
--- Stancebar
-StanceBarFrame:SetFrameStrata('MEDIUM')
-
-StanceBarFrame:SetScale(cfg.stanceBar.scale)
-StanceBarFrame:SetAlpha(cfg.stanceBar.alpha)
-
-if (cfg.stanceBar.hide) then
-    for i = 1, NUM_STANCE_SLOTS do
-        local button = _G['StanceButton'..i]
-        button:SetAlpha(0)
-        button.SetAlpha = function() end
-
-        button:EnableMouse(false)
-        button.EnableMouse = function() end
+local function Bars_Init()
+    KBars:SetScript( "OnEvent", Bars_HandleEvents );
+    
+    KBars:RegisterEvent( "PLAYER_LOGIN" );
+    KBars:RegisterEvent( "PLAYER_ENTERING_WORLD" );
+    KBars:RegisterEvent( "PLAYER_TARGET_CHANGED" );
+    KBars:RegisterEvent( "UNIT_EXITED_VEHICLE" );
+    KBars:RegisterEvent( "PLAYER_FLAGS_CHANGED" );
+    KBars:RegisterEvent( "PLAYER_TALENT_UPDATE" );
+    KBars:RegisterEvent( "ACTIVE_TALENT_GROUP_CHANGED" )
+    if( InCombatLockdown() == false )then
+        SetBars();
+        --BuildPetBar();
     end
 end
 
+-- Nigh identical replacement for ReputationWatchBar_Update
+-- Orig Func exists in Blizz ReputationFrame.lua
+local function RepWatchBar_Update( newLevel )
+    local name, reaction, min, max, value, factionID = GetWatchedFactionInfo();
+    local visibilityChanged = nil;
+    if ( not newLevel ) then
+        newLevel = UnitLevel("player");
+    end
+    if ( name ) then
+        local colorIndex = reaction;
+        -- if it's a different faction, save possible friendship id
+        if ( ReputationWatchBar.factionID ~= factionID ) then
+            ReputationWatchBar.factionID = factionID;
+            ReputationWatchBar.friendshipID = GetFriendshipReputation(factionID);
+        end
+        
+        local isCappedFriendship;
+        -- do something different for friendships
+        if ( ReputationWatchBar.friendshipID ) then
+            local friendID, friendRep, friendMaxRep, friendName, friendText, friendTexture, friendTextLevel, friendThreshold, nextFriendThreshold = GetFriendshipReputation(factionID);
+            if ( nextFriendThreshold ) then
+                min, max, value = friendThreshold, nextFriendThreshold, friendRep;
+            else
+                -- max rank, make it look like a full bar
+                min, max, value = 0, 1, 1;
+                isCappedFriendship = true;
+            end
+            colorIndex = 5;     -- always color friendships green
+        end
+        
+        -- See if it was already shown or not
+        if ( not ReputationWatchBar:IsShown() ) then
+            visibilityChanged = 1;
+        end
+        
+        -- Normalize values
+        max = max - min;
+        value = value - min;
+        min = 0;
+        ReputationWatchStatusBar:SetMinMaxValues(min, max);
+        ReputationWatchStatusBar:SetValue(value);
+        if ( isCappedFriendship ) then
+            ReputationWatchStatusBarText:SetText(name);
+        else
+            ReputationWatchStatusBarText:SetText(name.." "..value.." / "..max);
+        end
+        local color = FACTION_BAR_COLORS[colorIndex];
+        ReputationWatchStatusBar:SetStatusBarColor(color.r, color.g, color.b);
+        ReputationWatchBar:Show();
+        
+        -- If the player is max level then replace the xp bar with the watched reputation, otherwise stack the reputation watch bar on top of the xp bar
+        ReputationWatchStatusBar:SetFrameLevel(MainMenuBarArtFrame:GetFrameLevel()-1);
+        if ( newLevel < MAX_PLAYER_LEVEL and not IsXPUserDisabled() ) then
+            -- Reconfigure reputation bar
+            ReputationWatchStatusBar:SetHeight(8);
+            ReputationWatchBar:ClearAllPoints();
+            ReputationWatchBar:SetPoint("TOP", -256, 0 ); --MODIFIED
+            ReputationWatchStatusBarText:SetPoint("CENTER", ReputationWatchBarOverlayFrame, "CENTER", 0, 3);
+            
+            for i = 0, 3 do
+                _G["ReputationWatchBarTexture"..i]:Hide();
+                _G["ReputationXPBarTexture"..i]:Hide();
+            end
+            
+            -- Show the XP bar
+            MainMenuExpBar:Show();
+            MainMenuExpBar.pauseUpdates = nil;
+            -- Hide max level bar
+            MainMenuBarMaxLevelBar:Hide();
+        else
+            -- Replace xp bar
+            ReputationWatchStatusBar:SetHeight(13);
+            ReputationWatchBar:ClearAllPoints();
+            ReputationWatchBar:SetPoint("TOP", -256, 0 ); --MODIFIED
+            ReputationWatchStatusBarText:SetPoint("CENTER", ReputationWatchBarOverlayFrame, "CENTER", 0, 1);
+            
+            for i = 0, 3 do
+                _G["ReputationWatchBarTexture"..i]:Hide();
+                _G["ReputationXPBarTexture"..i]:Hide();
+            end
+            
+            ExhaustionTick:Hide();
+            
+            -- Hide the XP bar
+            MainMenuExpBar:Hide();
+            MainMenuExpBar.pauseUpdates = true;
+            -- Hide max level bar
+            MainMenuBarMaxLevelBar:Hide();
+        end
+        
+    else
+        if ( ReputationWatchBar:IsShown() ) then
+            visibilityChanged = 1;
+        end
+        ReputationWatchBar:Hide();
+        if ( newLevel < MAX_PLAYER_LEVEL and not IsXPUserDisabled() ) then
+            MainMenuExpBar:Show();
+            MainMenuExpBar.pauseUpdates = nil;
+            MainMenuBarMaxLevelBar:Hide();
+        else
+            MainMenuExpBar:Hide();
+            MainMenuExpBar.pauseUpdates = true;
+            ExhaustionTick:Hide();
+        end
+    end
+    
+    -- update the xp bar
+    TextStatusBar_UpdateTextString(MainMenuExpBar);
+    ExpBar_Update();
+    
+    if( InCombatLockdown() == false )then
+        SetBars();
+    end
+end
+
+-- reduce the size of some main menu bar objects
+for _, object in pairs({
+    -- _G['MainMenuBar'],
+    _G['MainMenuExpBar'],
+    _G['MainMenuBarMaxLevelBar'],
+    
+    _G['ReputationWatchBar'],
+    _G['ReputationWatchStatusBar'],
+}) do
+    object:SetWidth(512)
+end
+
+local function UpdateRange( self, elapsed )
+    if ( ActionButton_IsFlashing(self) ) then
+        local flashtime = self.flashtime;
+        flashtime = flashtime - elapsed;
+        
+        if ( flashtime <= 0 ) then
+            local overtime = -flashtime;
+            if ( overtime >= ATTACK_BUTTON_FLASH_TIME ) then
+                overtime = 0;
+            end
+            flashtime = ATTACK_BUTTON_FLASH_TIME - overtime;
+            
+            local flashTexture = self.Flash;
+            if ( flashTexture:IsShown() ) then
+                flashTexture:Hide();
+            else
+                flashTexture:Show();
+            end
+        end
+        
+        self.flashtime = flashtime;
+    end
+    
+    local rangeTimer = self.rangeTimer
+    local icon = self.icon;
+    
+    if( rangeTimer == TOOLTIP_UPDATE_TIME ) then
+        local inRange = IsActionInRange( self.action );
+        if( inRange == false ) then
+            -- Red Out Button
+            icon:SetVertexColor( 1, 0, 0 );
+        else
+            local canUse, amountMana = IsUsableAction( self.action );
+            if( canUse ) then
+                icon:SetVertexColor( 1.0, 1.0, 1.0 );
+            elseif( amountMana ) then
+                icon:SetVertexColor( 0.5, 0.5, 1.0 );
+            else
+                icon:SetVertexColor( 0.4, 0.4, 0.4 );
+            end
+        end
+    end
+end
+
+local function MoveMicro(anchor, anchorTo, relAnchor, x, y, isStacked)
+    HideMicroMenu();
+    UpdateMicroButtons();
+end
+
+local function VehicleLeaveButton_Update()
+    if ( CanExitVehicle() and ActionBarController_GetCurrentActionBarState() == LE_ACTIONBAR_STATE_MAIN ) then
+        MainMenuBarVehicleLeaveButton:ClearAllPoints();
+        MainMenuBarVehicleLeaveButton:SetPoint("CENTER", -600, 40)
+        
+        MainMenuBarVehicleLeaveButton:Show();
+        if( InCombatLockdown() == false)then
+            ShowPetActionBar(true);
+        end
+    else
+        MainMenuBarVehicleLeaveButton:Hide();
+        if( InCombatLockdown() == false)then
+            ShowPetActionBar(true);
+        end
+    end
+end
+
+-- Fixes the Blizzard Bug related to World Map Breaking Cooldown Display
+-- Force Cooldown Update
+local function FixCooldowns()
+    
+    -- Action Bar 1
+    for i = 1, 12 do
+        local button = _G["ActionButton"..i];
+        ActionButton_UpdateCooldown( button );
+    end
+    
+    -- Action Bar 2
+    for i = 1, 12 do
+        local button = _G["MultiBarBottomLeftButton"..i];
+        ActionButton_UpdateCooldown( button );
+    end
+    
+    -- Action Bar 3
+    for i = 1, 12 do
+        local button = _G["MultiBarBottomRightButton"..i];
+        ActionButton_UpdateCooldown( button );
+    end
+    
+    -- Action Bar 4
+    for i = 1, 12 do
+        local button = _G["MultiBarLeftButton"..i];
+        ActionButton_UpdateCooldown( button );
+    end
+    
+    -- Action Bar 5
+    for i = 1, 12 do
+        local button = _G["MultiBarRightButton"..i];
+        ActionButton_UpdateCooldown( button );
+    end     
+end
+
+do
+    hooksecurefunc(WorldMapFrame, "Hide", FixCooldowns);
+    hooksecurefunc( "MainMenuBarVehicleLeaveButton_Update", VehicleLeaveButton_Update)
+    hooksecurefunc( "MoveMicroButtons", MoveMicro );
+    hooksecurefunc( "ActionButton_OnUpdate", UpdateRange );
+    hooksecurefunc( "ReputationWatchBar_Update", RepWatchBar_Update );
+end
+
+-- Initalise
+Bars_Init();

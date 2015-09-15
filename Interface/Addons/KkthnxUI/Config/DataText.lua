@@ -184,10 +184,9 @@ LPSTAT_CONFIG = {
 --	Gold block
 	Gold = {
 		enabled = true,
-		style = 1, -- Display styles: [1] 55g 21s 11c [2] 8829.4g [3] 823.55.94
-		anchor_frame = "Experience",
-		anchor_to = "left", anchor_from = "right",
-		C.stats.experience and 3 or 0, y_off = 0, tip_frame = "UIParent", tip_anchor = "BOTTOMLEFT", tip_x = 21, tip_y = 20,
+		style = 2, -- Display styles: [1] 55g 21s 11c [2] 8829.4g [3] 823.55.94
+		anchor_frame = "Experience", anchor_to = "left", anchor_from = "right",
+		x_off = C.stats.experience and 3 or 0, y_off = 0, tip_frame = "UIParent", tip_anchor = "BOTTOMLEFT", tip_x = 21, tip_y = 20
 	},
 }
 

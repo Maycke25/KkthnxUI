@@ -46,6 +46,8 @@
 	<Script file="Core\Colors.lua"/>
 	<Script file="Core\Border.lua"/>
 
+	<Script file="Modules\UnitFrames\CustomScript.lua"/>
+
 	<Script file="Modules\Misc\AFK.lua"/>
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
 	<Script file="Modules\Misc\CharsCurrency.lua"/>
@@ -64,16 +66,10 @@
 	<Script file="Modules\Misc\PvPQueueTimer.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
 	
-	<Script file="Modules\ActionBars\config.lua"/>
 	<Script file="Modules\ActionBars\actionbars.lua"/>
-	<Script file="Modules\ActionBars\bindings.lua"/>
-	<Script file="Modules\ActionBars\cooldowns.lua"/>
-	<Script file="Modules\ActionBars\hotkey.lua"/>
-	<Script file="Modules\ActionBars\mouseover.lua"/>
-	<Script file="Modules\ActionBars\picomenu.lua"/>
-	<Script file="Modules\ActionBars\short\extras.lua"/>
-	<Script file="Modules\ActionBars\short\short.lua"/>
 	<Script file="Modules\ActionBars\skins.lua"/>
+	<Script file="Modules\ActionBars\cooldowns.lua"/>
+	<Script file="Modules\ActionBars\bindings.lua"/>
 
 	<Script file="Modules\Announcements\BadGear.lua"/>
 	<Script file="Modules\Announcements\Drinking.lua"/>
@@ -101,8 +97,8 @@
 	<Script file="Modules\Blizzard\Nameplates.lua"/>
 	<Script file="Modules\Blizzard\RepReward.lua"/>
 
-	<Script file="Modules\Buffs\Core.lua"/>
-	<Script file="Modules\Buffs\AuraSource.lua"/>
+	<Script file="Modules\Auras\Auras.lua"/>
+	<Script file="Modules\Auras\AuraSource.lua"/>
 
 	<Script file="Modules\Chat\Core.lua"/>
 	<Script file="Modules\Chat\Bubbles.lua"/>

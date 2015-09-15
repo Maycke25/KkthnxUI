@@ -106,7 +106,7 @@ local function SetChatStyle(frame)
 		CombatLogQuickButtonFrame_CustomProgressBar:SetStatusBarTexture(C.media.texture)
 		CombatLogQuickButtonFrameButton1:SetPoint("BOTTOM", 0, 0)
 	end
-
+	
 	if _G[chat] ~= _G["ChatFrame2"] then
 		origs[_G[chat]] = _G[chat].AddMessage
 		_G[chat].AddMessage = AddMessage
@@ -184,8 +184,13 @@ local function SetupChatPosAndFont(self)
 		end
 		
 		-- Font and font style for chat
-		chat:SetFont(C.font.chat_font, fontSize, C.font.chat_font_style)
-		chat:SetShadowOffset(1, -1)
+		if C.chat.outline == true then
+			chat:SetFont(C.font.chat_font, fontSize, "OUTLINE")
+			chat:SetShadowOffset(0, -0)
+		else
+			chat:SetFont(C.font.chat_font, fontSize, C.font.chat_font_style)
+			chat:SetShadowOffset(1, -1)
+		end
 		
 		-- Force chat position
 		if i == 1 then

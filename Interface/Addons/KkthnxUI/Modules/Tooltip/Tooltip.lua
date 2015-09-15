@@ -7,20 +7,20 @@ if C.tooltip.enable ~= true then return end
 local StoryTooltip = QuestScrollFrame.StoryTooltip
 local tooltips = {
 	GameTooltip,
-	ItemRefTooltip,
-	ShoppingTooltip1,
-	ShoppingTooltip2,
-	WorldMapTooltip,
-	WorldMapCompareTooltip1,
-	WorldMapCompareTooltip2,
-	FriendsTooltip,
-	ConsolidatedBuffsTooltip,
-	ItemRefShoppingTooltip1,
-	ItemRefShoppingTooltip2,
-	AtlasLootTooltip,
-	QuestHelperTooltip,
-	QuestGuru_QuestWatchTooltip,
-	StoryTooltip
+    ItemRefTooltip,
+    ShoppingTooltip1,
+    ShoppingTooltip2,
+    ShoppingTooltip3,
+    WorldMapTooltip,
+    DropDownList1MenuBackdrop,
+    DropDownList2MenuBackdrop,
+    ConsolidatedBuffsTooltip,
+    ChatMenu,
+    EmoteMenu,
+    LanguageMenu,
+    VoiceMacroMenu,
+    FriendsTooltip,
+    FloatingGarrisonFollowerTooltip
 }
 
 for _, tt in pairs(tooltips) do
@@ -32,10 +32,6 @@ for _, tt in pairs(tooltips) do
 		bg:SetFrameLevel(tt:GetFrameLevel() -1)
 		bg:SetBackdrop(K.Backdrop)
 		bg:SetBackdropColor(1, 1, 1, .9)
-
-		--tt.GetBackdrop = function() return backdrop end
-		--tt.GetBackdropColor = function() return unpack(C.media.overlay_color) end
-		--tt.GetBackdropBorderColor = function() return unpack(C.media.border_color) end
 	end
 end
 

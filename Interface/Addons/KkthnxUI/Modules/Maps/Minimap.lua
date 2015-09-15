@@ -86,18 +86,30 @@ if StreamingIcon then
 	StreamingIcon:SetScale(0.8)
 end
 
--- Ticket icon
+-- Ticket icons
 HelpOpenTicketButton:SetParent(Minimap)
 HelpOpenTicketButton:SetBackdrop(nil)
 HelpOpenTicketButton:SetFrameLevel(4)
 HelpOpenTicketButton:ClearAllPoints()
-HelpOpenTicketButton:SetPoint("TOP", Minimap, "CENTER", 6, -9)
+HelpOpenTicketButton:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, 2)
 HelpOpenTicketButton:SetHighlightTexture(nil)
 HelpOpenTicketButton:SetPushedTexture("Interface\\Icons\\inv_misc_note_03")
 HelpOpenTicketButton:SetNormalTexture("Interface\\Icons\\inv_misc_note_03")
 HelpOpenTicketButton:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
 HelpOpenTicketButton:GetPushedTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
 HelpOpenTicketButton:SetSize(24, 24)
+
+HelpOpenWebTicketButton:SetParent(Minimap)
+HelpOpenWebTicketButton:SetBackdrop(nil)
+HelpOpenWebTicketButton:SetFrameLevel(4)
+HelpOpenWebTicketButton:ClearAllPoints()
+HelpOpenWebTicketButton:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, 2)
+HelpOpenWebTicketButton:SetHighlightTexture(nil)
+HelpOpenWebTicketButton:SetPushedTexture("Interface\\Icons\\inv_misc_note_03")
+HelpOpenWebTicketButton:SetNormalTexture("Interface\\Icons\\inv_misc_note_03")
+HelpOpenWebTicketButton:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+HelpOpenWebTicketButton:GetPushedTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+HelpOpenWebTicketButton:SetSize(24, 24)
 
 -- Enable mouse scrolling
 Minimap:EnableMouseWheel(true)
@@ -242,7 +254,7 @@ Minimap:SetQuestBlobRingScalar(0)
 -- Set Boarder Texture
 MinimapBackdrop:SetBackdrop(K.Backdrop)		
 MinimapBackdrop:ClearAllPoints()		
-MinimapBackdrop:SetBackdropBorderColor(1, 1, 1)		
+MinimapBackdrop:SetBackdropBorderColor(.7, .7, .7, 1)		
 MinimapBackdrop:SetBackdropColor(1, 1, 1, 0)		
 MinimapBackdrop:SetAlpha(1.0)		
 MinimapBackdrop:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -4, 4)		

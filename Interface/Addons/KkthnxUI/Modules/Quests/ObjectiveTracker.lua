@@ -27,9 +27,10 @@ hooksecurefunc(QUEST_TRACKER_MODULE, "SetBlockHeader", function(_, block)
 	local item = block.itemButton
 
 	if item and not item.skinned then
-		item:SetSize(C.actionbar.buttonsize, C.actionbar.buttonsize)
+		item:SetSize(C.blizzard.questbuttonsize, C.blizzard.questbuttonsize)
 
 		item:SetNormalTexture(nil)
+		CreateBorder(item, 10, 2)
 
 		item.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 		item.icon:SetPoint("TOPLEFT", item, 2, -2)
@@ -37,13 +38,13 @@ hooksecurefunc(QUEST_TRACKER_MODULE, "SetBlockHeader", function(_, block)
 
 		item.HotKey:ClearAllPoints()
 		item.HotKey:SetPoint("BOTTOMRIGHT", 0, 2)
-		item.HotKey:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
-		item.HotKey:SetShadowOffset(C.font.action_bars_font_shadow and 1 or 0, C.font.action_bars_font_shadow and -1 or 0)
+		item.HotKey:SetFont(C.font.basic_font, C.font.basic_font_size, C.font.basic_font_style)
+		item.HotKey:SetShadowOffset(C.font.basic_font_shadow and 1 or 0, C.font.basic_font_shadow and -1 or 0)
 
 		item.Count:ClearAllPoints()
 		item.Count:SetPoint("TOPLEFT", 1, -1)
-		item.Count:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
-		item.Count:SetShadowOffset(C.font.action_bars_font_shadow and 1 or 0, C.font.action_bars_font_shadow and -1 or 0)
+		item.Count:SetFont(C.font.basic_font, C.font.basic_font_size, C.font.basic_font_style)
+		item.Count:SetShadowOffset(C.font.basic_font_shadow and 1 or 0, C.font.basic_font_shadow and -1 or 0)
 
 		item.skinned = true
 	end

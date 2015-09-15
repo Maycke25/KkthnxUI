@@ -10,14 +10,10 @@ C["media"] = {
 	["blank_font"] = [[Interface\AddOns\KkthnxUI\Media\Fonts\Invisible.ttf]],
 	["texture"] = [[Interface\AddOns\KkthnxUI\Media\Textures\KkthnxTex.tga]],
 	["blank"] = [[Interface\AddOns\KkthnxUI\Media\Textures\Blank.tga]],
-	
-	["bordernormal"] = [[Interface\Addons\KkthnxUI\Media\Border\BorderNormal.tga]],
-	["bordershadow"] = [[Interface\Addons\KkthnxUI\Media\Border\BorderShadow.tga]],
-	["borderglow"] = [[Interface\Addons\KkthnxUI\Media\Border\BorderGlow.tga]],
-	
-	["buffnormal"] = [[Interface\Addons\KkthnxUI\Media\Buffs\TextureNormal.tga]],
-	["buffshadow"] = [[Interface\Addons\KkthnxUI\Media\Buffs\TextureShadow.tga]],
-	["buffoverlay"] = [[Interface\Addons\KkthnxUI\Media\Buffs\TextureDebuff.tga]],
+
+	["abtextures"] = [[Interface\Addons\KkthnxUI\Media\Actionbars\]],
+	["auratextures"] = [[Interface\Addons\KkthnxUI\Media\Buffs\]],
+	["bordertextures"] = [[Interface\Addons\KkthnxUI\Media\Border\]],
 	
 	["whisp_sound"] = [[Interface\AddOns\KkthnxUI\Media\Sounds\Whisper.ogg]],
 	["warning_sound"] = [[Interface\AddOns\KkthnxUI\Media\Sounds\Warning.ogg]],
@@ -71,6 +67,7 @@ C["blizzard"] = {
 	["moveachievements"] = true,
 	["moveblizzard"] = false,
 	["repreward"] = false,
+	["questbuttonsize"] = 26,
 }
 
 --[[----------------------------
@@ -95,20 +92,13 @@ C["map"] = {
 Buffs / Debuffs options
 --------------------------------]]
 C["buffs"] = {
-	["buffbordercolor"] = {1, 1, 1},
-	["buffcountsize"] = 16,
-	["bufffontsize"] = 14,
-	["buffperrow"] = 12,
-	["buffscale"] = 1,
-	["buffsize"] = 36,
-	["buffsource"] = true,
-	["debuffcountsize"] = 16,
-	["debufffontsize"] = 14,
-	["debuffscale"] = 1,
-	["debuffsize"] = 40,
 	["enable"] = true,
-	["paddingX"] = 4,
-	["paddingY"] = 7,
+	["buffsize"] = 34,
+	["debuffsize"] = 44,
+	["paddingx"] = 6,
+	["paddingy"] = 6,
+	["aurasperrow"] = 12,
+	["buffsource"] = true,
 }
 
 --[[----------------------------
@@ -117,7 +107,10 @@ ActionBar options
 C["actionbar"] = {
 	-- Main
 	["enable"] = true,
-	["buttonsize"] = 25,
+	["scale"] = 1,
+	["skinbuttons"] = true,
+	["showmacroname"] = true,
+	["showhotkeys"] = true,
 }
 
 --[[----------------------------
@@ -226,6 +219,7 @@ Unitframe options
 C["unitframe"] = {
 	-- Main
 	["enable"] = true,							-- Enable unit frames
+	["customscript"] = false,
 }
 
 
@@ -305,6 +299,7 @@ C["chat"] = {
 	["enable"] = true,
 	["height"] = 112,
 	["sticky"] = true,
+	["outline"] = true,
 	["tabmouseover"] = true,
 	["time_color"] = {1, 1, 0},
 	["whisp_sound"] = true,

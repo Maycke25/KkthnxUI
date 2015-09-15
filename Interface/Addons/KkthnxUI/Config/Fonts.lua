@@ -60,6 +60,10 @@ C["font"] = {
 	["action_bars_font_size"] = 12,
 	["action_bars_font_style"] = "OUTLINE",
 
+	["bar_macro_font"] = C.media.normal_font,
+	["bar_macro_font_size"] = 10,
+	["bar_macro_font_style"] = "OUTLINE",
+
 	-- Cooldowns timer font
 	["cooldown_timers_font"] = C.media.normal_font,
 	["cooldown_timers_font_size"] = 18,
@@ -94,13 +98,12 @@ C["font"] = {
 	["auras_font_size"] = 12,
 	["auras_font_style"] = "OUTLINE",
 	["auras_font_shadow"] = false,
-
 }
 
 ----------------------------------------------------------------------------------------
 --	Font replace for zhTW and zhCN client
 ----------------------------------------------------------------------------------------
-if K.client == "zhTW" then
+if K.Client == "zhTW" then
 	C["media"].basic_font = "Fonts\\bLEI00D.ttf"
 	C["media"].basic_font = "Fonts\\bLEI00D.ttf"
 	C["media"].basic_font_style = "OUTLINE"

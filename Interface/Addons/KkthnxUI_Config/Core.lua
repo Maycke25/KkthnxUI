@@ -9,19 +9,20 @@ local ALLOWED_GROUPS = {
 	["misc"] = 2,
 	["blizzard"] = 3,
 	["combattext"] = 4,
-	["minimap"] = 5,
-	["map"] = 6,
-	["buffs"] = 7,
-	["announcements"] = 8,
-	["automation"] = 9,
-	["chat"] = 10,
-	["actionbar"] = 11,
-	["tooltip"] = 12,
-	["loot"] = 13,
-	["nameplate"] = 14,
-	["error"] = 15,
-	["toppanel"] = 16,
-	["stats"] = 17,
+	["unitframe"] = 5,
+	["minimap"] = 6,
+	["map"] = 7,
+	["buffs"] = 8,
+	["announcements"] = 9,
+	["automation"] = 10,
+	["chat"] = 11,
+	["actionbar"] = 12,
+	["tooltip"] = 13,
+	["loot"] = 14,
+	["nameplate"] = 15,
+	["error"] = 16,
+	["toppanel"] = 17,
+	["stats"] = 18,
 }
 
 local function Local(o)
@@ -62,6 +63,7 @@ local function Local(o)
 	if o == "UIConfigblizzardmoveachievements" then o = L_GUI_BLIZZARD_ACHIEVEMENTS end
 	if o == "UIConfigblizzardmoveblizzard" then o = L_GUI_BLIZZARD_MOVE_BLIZZARD end
 	if o == "UIConfigblizzardrepreward" then o = L_GUI_BLIZZARD_REPREWARD end
+	if o == "UIConfigblizzardquestbuttonsize" then o = L_GUI_BLIZZARD_QUESTBUTTON_SIZE end
 	
 	-- Combat text options
 	if o == "UIConfigcombattext" then o = L_GUI_COMBATTEXT end
@@ -91,6 +93,11 @@ local function Local(o)
 	if o == "UIConfigcombattextdispel" then o = L_GUI_COMBATTEXT_DISPEL end
 	if o == "UIConfigcombattextinterrupt" then o = L_GUI_COMBATTEXT_INTERRUPT end
 	if o == "UIConfigcombattextdirection" then o = L_GUI_COMBATTEXT_DIRECTION end
+
+	-- Unitframe options
+	if o == "UIConfigunitframe" then o = L_GUI_UNITFRAME end
+	if o == "UIConfigunitframeenable" then o = L_GUI_UNITFRAME_ENABLE end
+	if o == "UIConfigunitframecustomscript" then o = L_GUI_UNITFRAME_CUSTOMSCRIPT end
 	
 	-- Minimap options
 	if o == "UIConfigminimap" then o = L_GUI_MINIMAP end
@@ -106,26 +113,22 @@ local function Local(o)
 	
 	-- Buffs options
 	if o == "UIConfigbuffs" then o = L_GUI_BUFFS end
-	if o == "UIConfigbuffsbuffbordercolor" then o = L_GUI_BUFFS_BUFFBORDERCOLOR end
-	if o == "UIConfigbuffsbuffcountsize" then o = L_GUI_BUFFS_BUFFCOUNTSIZE end
-	if o == "UIConfigbuffsbufffontsize" then o = L_GUI_BUFFS_BUFFFONTSIZE end
-	if o == "UIConfigbuffsbuffperrow" then o = L_GUI_BUFFS_BUFFPERROW end
-	if o == "UIConfigbuffsbuffscale" then o = L_GUI_BUFFS_BUFFSCALE end
-	if o == "UIConfigbuffsbuffsize" then o = L_GUI_BUFFS_BUFFSIZE end
-	if o == "UIConfigbuffsbuffsource" then o = L_GUI_BUFFS_BUFFSOURCE end
-	if o == "UIConfigbuffsdebuffcountsize" then o = L_GUI_BUFFS_DEBUFFCOUNTSIZE end
-	if o == "UIConfigbuffsdebufffontsize" then o = L_GUI_BUFFS_DEBUFFFONTSIZE end
-	if o == "UIConfigbuffsdebuffscale" then o = L_GUI_BUFFS_DEBUFFSCALE end
-	if o == "UIConfigbuffsdebuffsize" then o = L_GUI_BUFFS_DEBUFFSIZE end
 	if o == "UIConfigbuffsenable" then o = L_GUI_BUFFS_ENABLE end
-	if o == "UIConfigbuffspaddingX" then o = L_GUI_BUFFS_PADDINGX end
-	if o == "UIConfigbuffspaddingY" then o = L_GUI_BUFFS_PADDINGY end
+	if o == "UIConfigbuffsaurasperrow" then o = L_GUI_BUFFS_BUFFPERROW end
+	if o == "UIConfigbuffsbuffsize" then o = L_GUI_BUFFS_BUFFSIZE end
+	if o == "UIConfigbuffsdebuffsize" then o = L_GUI_BUFFS_DEBUFFSIZE end
+	if o == "UIConfigbuffspaddingx" then o = L_GUI_BUFFS_PADDINGX end
+	if o == "UIConfigbuffspaddingy" then o = L_GUI_BUFFS_PADDINGY end
+	if o == "UIConfigbuffsbuffsource" then o = L_GUI_AURA_CAST_BY end
 	
 	-- ActionBar options
 	if o == "UIConfigactionbar" then o = ACTIONBAR_LABEL end
 	if o == "UIConfigactionbarenable" then o = L_GUI_ACTIONBAR_ENABLE end
-	if o == "UIConfigactionbarbuttonsize" then o = L_GUI_ACTIONBAR_BUTTON_SIZE end
-	
+	if o == "UIConfigactionbarscale" then o = L_GUI_ACTIONBAR_SCALE end
+	if o == "UIConfigactionbarskinbuttons" then o = L_GUI_ACTIONBAR_SKIN_BUTTONS end
+	if o == "UIConfigactionbarshowmacroname" then o = L_GUI_ACTIONBAR_SHOW_MACRONAME end
+	if o == "UIConfigactionbarshowhotkeys" then o = L_GUI_ACTIONBAR_SHOW_HOTKEYS end
+
 	-- Announcements options
 	if o == "UIConfigannouncements" then o = L_GUI_ANNOUNCEMENTS end
 	if o == "UIConfigannouncementsbadgear" then o = L_GUI_ANNOUNCEMENTS_BAD_GEAR end
@@ -157,6 +160,7 @@ local function Local(o)
 	if o == "UIConfigchatenable" then o = L_GUI_CHAT_ENABLE end
 	if o == "UIConfigchatheight" then o = L_GUI_CHAT_HEIGHT end
 	if o == "UIConfigchatsticky" then o = L_GUI_CHAT_STICKY end
+	if o == "UIConfigchatoutline" then o = L_GUI_CHAT_OUTLINE end
 	if o == "UIConfigchattabmouseover" then o = L_GUI_CHAT_TABS_MOUSEOVER end
 	if o == "UIConfigchattime_color" then o = L_GUI_CHAT_TIMESTAMP end
 	if o == "UIConfigchatwhisp_sound" then o = L_GUI_CHAT_WHISP end
@@ -438,6 +442,7 @@ function CreateUIConfig()
 	UIConfigMain:SetHeight(520)
 	UIConfigMain:SetBackdrop(K.Backdrop)
 	UIConfigMain:SetBackdropColor(1, 1, 1, .9)
+	UIConfigMain:SetBackdropBorderColor(.7, .7, .7, 1)
 	UIConfigMain:SetFrameStrata("DIALOG")
 	UIConfigMain:SetFrameLevel(20)
 	tinsert(UISpecialFrames, "UIConfigMain")
