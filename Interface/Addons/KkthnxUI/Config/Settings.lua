@@ -41,6 +41,7 @@ C["misc"] = {
 	["alreadyknown"] = true,
 	["betterlootfilter"] = true,
 	["bgspam"] = false,
+	["rarealert"] = true,
 	["bossbanner"] = false,
 	["charscurrency"] = false,
 	["clickcast"] = false,
@@ -111,6 +112,7 @@ C["actionbar"] = {
 	["skinbuttons"] = true,
 	["showmacroname"] = true,
 	["showhotkeys"] = true,
+	["showbarart"] = true,
 }
 
 --[[----------------------------
@@ -234,6 +236,7 @@ C["tooltip"] = {
 	["hidebuttons"] = false,
 	["item_icon"] = false,
 	["shift_modifer"] = false,
+	["scale"] = 1.1,
 	-- Plugins
 	["achievements"] = true,
 	["arena_experience"] = false,

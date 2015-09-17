@@ -40,6 +40,7 @@ local function Local(o)
 	if o == "UIConfigmiscalreadyknown" then o = L_GUI_MISC_ALREADY_KNOWN end
 	if o == "UIConfigmiscbetterlootfilter" then o = L_GUI_MISC_BETTERLOOTFILTER end
 	if o == "UIConfigmiscbgspam" then o = L_GUI_MISC_HIDE_BG_SPAM end
+	if o == "UIConfigmiscrarealert" then o = L_GUI_MISC_HIDE_RAREALERT end
 	if o == "UIConfigmiscbossbanner" then o = L_GUI_MISC_BOSSBANNER end
 	if o == "UIConfigmisccharscurrency" then o = L_GUI_MISC_CHARS_CURRENCY end
 	if o == "UIConfigmiscclickcast" then o = L_GUI_MISC_CLICK_CAST end
@@ -128,6 +129,7 @@ local function Local(o)
 	if o == "UIConfigactionbarskinbuttons" then o = L_GUI_ACTIONBAR_SKIN_BUTTONS end
 	if o == "UIConfigactionbarshowmacroname" then o = L_GUI_ACTIONBAR_SHOW_MACRONAME end
 	if o == "UIConfigactionbarshowhotkeys" then o = L_GUI_ACTIONBAR_SHOW_HOTKEYS end
+	if o == "UIConfigactionbarshowbarart" then o = L_GUI_ACTIONBAR_SHOW_BARART end
 
 	-- Announcements options
 	if o == "UIConfigannouncements" then o = L_GUI_ANNOUNCEMENTS end
@@ -172,6 +174,7 @@ local function Local(o)
 	if o == "UIConfigtooltipachievements" then o = L_GUI_TOOLTIP_ACHIEVEMENTS end
 	if o == "UIConfigtooltiparena_experience" then o = L_GUI_TOOLTIP_ARENA_EXPERIENCE end
 	if o == "UIConfigtooltipaverage_lvl" then o = STAT_AVERAGE_ITEM_LEVEL end
+	if o == "UIConfigtooltipscale" then o = L_GUI_TOOLTIP_SCALE end
 	if o == "UIConfigtooltipcursor" then o = L_GUI_TOOLTIP_CURSOR end
 	if o == "UIConfigtooltipenable" then o = L_GUI_TOOLTIP_ENABLE end
 	if o == "UIConfigtooltiphealth_value" then o = L_GUI_TOOLTIP_HEALTH end

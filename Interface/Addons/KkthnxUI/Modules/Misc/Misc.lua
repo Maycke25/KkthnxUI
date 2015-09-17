@@ -189,6 +189,25 @@ if C.misc.customlagtolerance == true then
 end
 
 --[[-----------------------------------
+Rare Alert
+---------------------------------------]]
+if C.misc.rarealert == true then
+	local blacklist = {
+		[971] = true, -- Alliance garrison
+		[976] = true, -- Horde garrison
+	}
+	
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("VIGNETTE_ADDED")
+	f:SetScript("OnEvent", function()
+		if blacklist[GetCurrentMapAreaID()] then return end
+		
+		PlaySoundFile("Sound\\Interface\\RaidWarning.ogg")
+		RaidNotice_AddMessage(RaidWarningFrame, "Rare spotted!", ChatTypeInfo["RAID_WARNING"])
+	end)
+end
+
+--[[-----------------------------------
 Collect Garbage
 ---------------------------------------]]
 if C.misc.collectgarbage then

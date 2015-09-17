@@ -19,19 +19,19 @@ end
 
 local function BuildPet()
     local offset = 0;
-    
+    --[[
     if(ReputationWatchBar:IsShown() and MainMenuExpBar:IsShown())then
         offset = 0;
     else
         offset = 10;
     end
-    
+    ]]
     if ( StanceBarFrame and GetNumShapeshiftForms() > 0 ) then
         PetActionButton1:ClearAllPoints()
-        PetActionButton1:SetPoint("CENTER", -606, 28 + offset)
+        PetActionButton1:SetPoint("CENTER", -606, 26 + offset)
     else
         PetActionButton1:ClearAllPoints()
-        PetActionButton1:SetPoint("CENTER", -140, 28 + offset)
+        PetActionButton1:SetPoint("CENTER", -140, 26 + offset)
     end
 end
 
@@ -44,8 +44,10 @@ local function SetBars()
     MainMenuBarVehicleLeaveButton:SetMovable(false);
     
     -- Remove Art
-    MainMenuBarTexture2:SetTexture(nil)
-    MainMenuBarTexture3:SetTexture(nil)
+    -- MainMenuBarTexture2:SetTexture(nil)
+    -- MainMenuBarTexture3:SetTexture(nil)
+    MainMenuBarTexture2:Kill()
+    MainMenuBarTexture3:Kill()
     
     -- Move Main Bar
     MainMenuBar:SetMovable(true);
@@ -57,22 +59,26 @@ local function SetBars()
     
     -- Move End Cap
     MainMenuBarRightEndCap:SetPoint("CENTER", MainMenuBarArtFrame, 34, 0);
-    if( bShowBarArt == false)then
-        MainMenuBarRightEndCap:SetTexture(nil);
-        MainMenuBarLeftEndCap:SetTexture(nil);
+    if( C.actionbar.showbarart == false)then
+        -- MainMenuBarRightEndCap:SetTexture(nil);
+        -- MainMenuBarLeftEndCap:SetTexture(nil);
+        MainMenuBarRightEndCap:Kill()
+        MainMenuBarLeftEndCap:Kill()
+        MainMenuBarTexture0:Kill()
+        MainMenuBarTexture1:Kill()
     end
     
     -- Move Bottom Right Bar
     MultiBarBottomRight:SetMovable(true);
     MultiBarBottomRight:ClearAllPoints();
-    MultiBarBottomRight:SetPoint("BOTTOM", -254, 97);
+    MultiBarBottomRight:SetPoint("BOTTOM", -254, 88);
     MultiBarBottomRight:SetUserPlaced(true);
     MultiBarBottomRight:SetMovable(false);
     
     -- Move Bottom Left Bar
     MultiBarBottomLeft:SetMovable(true);
     MultiBarBottomLeft:ClearAllPoints();
-    MultiBarBottomLeft:SetPoint("BOTTOM", -254, 55);
+    MultiBarBottomLeft:SetPoint("BOTTOM", -254, 46);
     MultiBarBottomLeft:SetUserPlaced(true);
     MultiBarBottomLeft:SetMovable(false);
     
@@ -94,9 +100,13 @@ local function SetBars()
     end
     
     -- Remove Stance Bar Art
-    _G["StanceBarLeft"]:SetTexture(nil);
-    _G["StanceBarMiddle"]:SetTexture(nil);
-    _G["StanceBarRight"]:SetTexture(nil);
+   -- _G["StanceBarLeft"]:SetTexture(nil);
+   -- _G["StanceBarMiddle"]:SetTexture(nil);
+   -- _G["StanceBarRight"]:SetTexture(nil);
+
+    _G["StanceBarLeft"]:Kill()
+    _G["StanceBarMiddle"]:Kill()
+    _G["StanceBarRight"]:Kill()
     
     -- Move Stance Bar
     StanceBarFrame:SetMovable(true);
@@ -106,16 +116,18 @@ local function SetBars()
     StanceBarFrame:SetMovable( false );
     
     -- Adjust EXP Bar
-    MainMenuExpBar:ClearAllPoints();
-    MainMenuExpBar:SetWidth(512);
-    MainMenuExpBar:SetPoint("TOP", -256, 0 );
-    ExhaustionTick:Hide();
-    ExhaustionLevelFillBar:SetVertexColor(0.0, 0.0, 0.0, 0.0);
+    --MainMenuExpBar:ClearAllPoints();
+    MainMenuExpBar:Kill()
+    ReputationWatchBar:Kill()
+    -- MainMenuExpBar:SetWidth(512);
+    -- MainMenuExpBar:SetPoint("TOP", -256, 0 );
+    ExhaustionTick:Kill()
+    -- ExhaustionLevelFillBar:SetVertexColor(0.0, 0.0, 0.0, 0.0);
     
     -- NOT the actual Rep Bar - Mouse Over Info "Frame"
-    ReputationWatchStatusBar:SetWidth(512);
-    ReputationWatchStatusBar:ClearAllPoints();
-    ReputationWatchStatusBar:SetPoint("TOP", 0, 0 );
+    --ReputationWatchStatusBar:SetWidth(512);
+    --ReputationWatchStatusBar:ClearAllPoints();
+    -- ReputationWatchStatusBar:SetPoint("TOP", 0, 0 );
     
     for i = 1, 19 do -- Remove EXP Dividers
         local texture = _G["MainMenuXPBarDiv"..i]
@@ -143,7 +155,7 @@ local function SetBars()
     HideMicroMenu();
     
     --Hide Exhaustion Tick
-    ExhaustionTick:HookScript("OnShow", ExhaustionTick.Hide);
+    -- ExhaustionTick:HookScript("OnShow", ExhaustionTick.Hide);
 end
 
 local function Bars_HandleEvents( self, event, ... )
@@ -193,7 +205,7 @@ local function Bars_Init()
     end
 end
 
--- Nigh identical replacement for ReputationWatchBar_Update
+--[[ Nigh identical replacement for ReputationWatchBar_Update
 -- Orig Func exists in Blizz ReputationFrame.lua
 local function RepWatchBar_Update( newLevel )
     local name, reaction, min, max, value, factionID = GetWatchedFactionInfo();
@@ -220,7 +232,7 @@ local function RepWatchBar_Update( newLevel )
                 min, max, value = 0, 1, 1;
                 isCappedFriendship = true;
             end
-            colorIndex = 5;     -- always color friendships green
+            colorIndex = 5; -- always color friendships green
         end
         
         -- See if it was already shown or not
@@ -319,7 +331,7 @@ for _, object in pairs({
 }) do
     object:SetWidth(512)
 end
-
+]]
 local function UpdateRange( self, elapsed )
     if ( ActionButton_IsFlashing(self) ) then
         local flashtime = self.flashtime;
@@ -418,7 +430,7 @@ local function FixCooldowns()
     for i = 1, 12 do
         local button = _G["MultiBarRightButton"..i];
         ActionButton_UpdateCooldown( button );
-    end     
+    end 
 end
 
 do
@@ -426,7 +438,7 @@ do
     hooksecurefunc( "MainMenuBarVehicleLeaveButton_Update", VehicleLeaveButton_Update)
     hooksecurefunc( "MoveMicroButtons", MoveMicro );
     hooksecurefunc( "ActionButton_OnUpdate", UpdateRange );
-    hooksecurefunc( "ReputationWatchBar_Update", RepWatchBar_Update );
+    -- hooksecurefunc( "ReputationWatchBar_Update", RepWatchBar_Update );
 end
 
 -- Initalise
