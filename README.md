@@ -23,12 +23,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever 
 
 ### Suggested Addons   
 * [Skada](http://www.curse.com/addons/wow/skada)   
-* [Masque](http://www.curse.com/addons/wow/Masque)   
-* [MikScrollingBattleText](http://www.curse.com/addons/wow/mik-scrolling-battle-text)   
-* [Skada Chat Frame Integrator](http://www.wowinterface.com/downloads/info23287-SkadaChatFrameIntegrator.html)   
 * [BigWigs](http://www.curse.com/addons/wow/big-wigs)   
-* [Bagnon](http://www.curse.com/addons/wow/bagnon)   
-* [Bagnon Facade](http://www.curse.com/addons/wow/bagnon-facade)!   
 
 ### Warning   
 * I am not responsible if you break your old UI due to putting mine on!   
