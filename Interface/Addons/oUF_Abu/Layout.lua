@@ -489,12 +489,6 @@ local function CreateUnitLayout(self, unit)
 			absorb.spark = spark
 			self.HealPrediction.TotalAbsorb = absorb
 		end
-		
-		-- Combat CombatFeedbackText 
-		if (config.combatText) then
-			self.CombatFeedbackText = ns.CreateFontString(self, 18, 'CENTER', 'OUTLINE')
-			self.CombatFeedbackText:SetPoint('CENTER', self.Portrait)
-		end
 	end
 
 	--[[ 	Portrait Timer		]]	
@@ -566,10 +560,6 @@ local function CreateUnitLayout(self, unit)
 				self.PhaseIcon:SetSize(18, 18)
 			end
 		end
-
-		self.OfflineIcon = self:CreateTexture(nil, 'OVERLAY')
-		self.OfflineIcon:SetPoint('TOPRIGHT', self.Portrait, 7, 7)
-		self.OfflineIcon:SetPoint('BOTTOMLEFT', self.Portrait, -7, -7)
 
 		if (cUnit == 'player' or self.IsPartyFrame) then
 			self.ReadyCheck = self:CreateTexture(nil, 'OVERLAY')

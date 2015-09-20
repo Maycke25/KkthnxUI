@@ -23,29 +23,25 @@ local tooltips = {
 	FloatingGarrisonFollowerTooltip
 }
 
-local function TooltipOnShow(self,...)
-	self:SetBackdropColor(1, 1, 1, .9)
-	self:SetBackdropBorderColor(.7, .7, .7, 1)
-	local itemName, itemLink = self:GetItem()
-	if itemLink then
-		local itemRarity = select(3,GetItemInfo(itemLink))
-		if itemRarity then
-			self:SetBackdropBorderColor(unpack({GetItemQualityColor(itemRarity)}))
-		end
+local backdrop = {
+	bgFile = C.media.blank, edgeFile = C.media.blank, edgeSize = K.mult,
+	insets = {left = -K.mult, right = -K.mult, top = -K.mult, bottom = -K.mult}
+}
+
+for _, tt in pairs(tooltips) do
+	if not IsAddOnLoaded("Aurora") then
+		tt:SetBackdrop(nil)
+		local bg = CreateFrame("Frame", nil, tt)
+		bg:SetPoint("TOPLEFT")
+		bg:SetPoint("BOTTOMRIGHT")
+		bg:SetFrameLevel(tt:GetFrameLevel() -1)
+		--bg:SetTemplate("Transparent")
+		CreateStyle(tt, 2)
+
+		tt.GetBackdrop = function() return backdrop end
+		tt.GetBackdropColor = function() return unpack(C.media.overlay_color) end
+		tt.GetBackdropBorderColor = function() return unpack(C.media.border_color) end
 	end
-end
-
-local function TooltipOnHide(self,...)
-	self:SetBackdropColor(1, 1, 1, .9)
-	self:SetBackdropBorderColor(.7, .7, .7, 1)
-end
-
-local tooltips = { GameTooltip, ItemRefTooltip, ShoppingTooltip1, ShoppingTooltip2, ShoppingTooltip3, WorldMapTooltip, }
-for idx, tooltip in ipairs(tooltips) do
-	tooltip:SetBackdrop(K.Backdrop)
-	tooltip:SetScale(C.tooltip.scale)
-	tooltip:HookScript("OnShow", TooltipOnShow)
-	tooltip:HookScript("OnHide", TooltipOnHide)
 end
 
 local anchor = CreateFrame("Frame", "TooltipAnchor", UIParent)
@@ -57,14 +53,11 @@ PVP_ENABLED = ""
 
 -- Statusbar
 GameTooltipStatusBar:SetStatusBarTexture(C.media.texture)
-GameTooltipStatusBar:SetHeight(12)
+GameTooltipStatusBar:SetHeight(5)
 GameTooltipStatusBar:ClearAllPoints()
-GameTooltipStatusBar:SetPoint('BOTTOMLEFT', GameTooltip, 'TOPLEFT', 2, 2)
-GameTooltipStatusBar:SetPoint('BOTTOMRIGHT', GameTooltip, 'TOPRIGHT', -3, 2)
-CreateBorder(GameTooltipStatusBar, 12, 3)
-GameTooltipStatusBar:SetBorderColor(.7, .7, .7, 1)
-GameTooltipStatusBar:SetBackdrop(K.SimpleBackdrop)
-GameTooltipStatusBar:SetBackdropColor(1, 1, 1, 0.9)
+GameTooltipStatusBar:SetPoint('BOTTOMLEFT', GameTooltip, 'TOPLEFT', 3, -7)
+GameTooltipStatusBar:SetPoint('BOTTOMRIGHT', GameTooltip, 'TOPRIGHT', -3, 7)
+CreateStyle2(GameTooltipStatusBar, 2)
 
 -- Raid icon
 local ricon = GameTooltip:CreateTexture("GameTooltipRaidIcon", "OVERLAY")

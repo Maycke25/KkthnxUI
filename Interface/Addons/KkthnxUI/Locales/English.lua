@@ -75,6 +75,11 @@ L_TOOLTIP_SPELL_ID = "Spell ID:"
 L_TOOLTIP_WHO_TARGET = "Targeted By"
 
 --[[----------------------------
+Raid Utility
+--------------------------------]]
+L_RAID_UTIL_DISBAND = "Disband Group"
+
+--[[----------------------------
 Combat text
 --------------------------------]]
 L_COMBATTEXT_KILLING_BLOW = "Killing Blow"
@@ -97,6 +102,8 @@ L_INFO_ERRORS = "No error yet."
 L_INFO_INVITE = "Accepted invite from "
 L_INFO_NOT_INSTALLED = " is not installed."
 L_INFO_PET_DUEL = "Declined pet duel request from "
+L_INFO_DISBAND = "Disbanding group..."
+L_POPUP_DISBAND_RAID = "Are you sure you want to disband the group?"
 
 --[[----------------------------
 Misc Strings

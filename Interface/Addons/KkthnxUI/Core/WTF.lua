@@ -914,24 +914,25 @@ local UploadSkada = function()
 			["LibDualSpec-1.0"] = {
 			},
 		},
-		["hasUpgraded"] = true, -- Kill that annoying popup.
+		["hasUpgraded"] = true,
 		["profiles"] = {
 			["Default"] = {
 				["windows"] = {
 					{
-						["barheight"] = 18,
+						["barheight"] = 17,
 						["barslocked"] = true,
 						["background"] = {
-							["height"] = 127.000030517578,
 							["color"] = {
-								["a"] = 0.813252419233322,
+								["a"] = 0.777107566595078,
 								["b"] = 0.0901960784313726,
 								["g"] = 0.0901960784313726,
 								["r"] = 0.0941176470588235,
 							},
+							["height"] = 90.0000610351563,
+							["bordertexture"] = "Blizzard Tooltip",
 						},
-						["y"] = 6.00070142745972,
-						["barfont"] = "KkthnxUI",
+						["y"] = 19.00048828125,
+						["x"] = -394.999877929688,
 						["title"] = {
 							["color"] = {
 								["a"] = 0,
@@ -946,23 +947,23 @@ local UploadSkada = function()
 						},
 						["point"] = "BOTTOMRIGHT",
 						["barcolor"] = {
-							["r"] = 0.788235294117647,
-							["g"] = 0.8,
 							["b"] = 0.784313725490196,
+							["g"] = 0.8,
+							["r"] = 0.788235294117647,
 						},
 						["mode"] = "DPS",
 						["buttons"] = {
 							["stop"] = false,
 						},
-						["barwidth"] = 207.999847412109,
+						["barwidth"] = 207.999969482422,
 						["barbgcolor"] = {
-							["a"] = 0.600000023841858,
+							["a"] = 1,
 							["b"] = 0.243137254901961,
 							["g"] = 0.243137254901961,
 							["r"] = 0.243137254901961,
 						},
 						["bartexture"] = "KkthnxTex",
-						["x"] = -396.000122070313,
+						["barfont"] = "KkthnxUI",
 					}, -- [1]
 				},
 			},

@@ -1,5 +1,50 @@
 local K, C, L, _ = unpack(select(2, ...))
 
+function CreateBackdrop(f, t, tex)
+	if f.backdrop then return end
+	
+	local b = CreateFrame("Frame", nil, f)
+	b:SetPoint("TOPLEFT", -2, 2)
+	b:SetPoint("BOTTOMRIGHT", 2, -2)
+	CreateStyle(b, 2)
+
+	if f:GetFrameLevel() - 1 >= 0 then
+		b:SetFrameLevel(f:GetFrameLevel() - 1)
+	else
+		b:SetFrameLevel(0)
+	end
+	
+	f.backdrop = b
+end
+
+local function GetTemplate(t)
+	borderr, borderg, borderb, bordera = unpack(C.media.border_color)
+	backdropr, backdropg, backdropb, backdropa = unpack(C.media.backdrop_color)
+end
+
+local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
+	GetTemplate(t)
+
+	f:SetWidth(w)
+	f:SetHeight(h)
+	f:SetFrameLevel(1)
+	f:SetFrameStrata("BACKGROUND")
+	f:SetPoint(a1, p, a2, x, y)
+	f:SetBackdrop(backdrop)
+	--CreateStyle(f, 2)
+
+	if t == "Invisible" then
+		backdropa = 0
+		bordera = 0
+	else
+		backdropa = C.media.backdrop_color[4]
+		CreateStyle(f, 2)
+	end
+
+	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
+	f:SetBackdropBorderColor(borderr, borderg, borderb, bordera)
+end
+
 --[[-----------------------------------
 StripTextures
 ---------------------------------------]]
@@ -44,6 +89,7 @@ end
 
 local function addapi(object)
 	local mt = getmetatable(object).__index
+	if not object.CreatePanel then mt.CreatePanel = CreatePanel end
 	if not object.StripTextures then mt.StripTextures = StripTextures end
 	if not object.Kill then mt.Kill = Kill end
 	if not object.FadeIn then mt.FadeIn = FadeIn end

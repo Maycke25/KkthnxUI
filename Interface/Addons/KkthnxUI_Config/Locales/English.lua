@@ -19,11 +19,14 @@ L_GUI_MISC = "Miscellaneous"
 L_GUI_AUTOMATION_COLLECTGARBAGE = "Auto collect garbage to keep your UI running fast"
 L_GUI_MISC_ALREADY_KNOWN = "Colorizes recipes, mounts & pets that are already known"
 L_GUI_MISC_BETTERLOOTFILTER = "Filter party and raid members' loot messages, based on item rarity"
+L_GUI_MISC_FILGER = "Track buffs/debuffs on yourself, target, pets, focus, etc"
+L_GUI_MISC_FILGER_CONFIG = "Config for Filger to help position it better with /moveui"
 L_GUI_MISC_BOSSBANNER = "Prevents the big Boss Defeated Banner from appearing"
 L_GUI_MISC_CHARS_CURRENCY = "Tracks your currency tokens across multiple characters"
 L_GUI_MISC_CLICK_CAST = "Simple click2cast spell binder"
 L_GUI_MISC_CLICK_CAST_FILTER = "Ignore Player and Target frames for click2cast"
 L_GUI_MISC_DISENCHANTING = "Milling, Prospecting and Disenchanting by Alt + click"
+L_GUI_MISC_RAID_TOOLS = "Raid tools"
 L_GUI_MISC_ENCHANTMENT_SCROLL = "Enchantment scroll on TradeSkill frame"
 L_GUI_MISC_FADEGAMEMENU = "Fade out the background when you hit ESC"
 L_GUI_MISC_HATTRICK = "Adds checkboxes to toggle the helm and cloak settings"
@@ -84,9 +87,17 @@ L_GUI_COMBATTEXT_DISPEL = "Tells you about your dispels"
 L_GUI_COMBATTEXT_INTERRUPT = "Tells you about your interrupts"
 L_GUI_COMBATTEXT_DIRECTION = "Scrolling Direction('top'(goes down) or 'bottom'(goes up))"
 
+-- Unitframe options
 L_GUI_UNITFRAME = "Uniframe"
 L_GUI_UNITFRAME_ENABLE = "Enable Custom Unifames Settings"
 L_GUI_UNITFRAME_CUSTOMSCRIPT = "Kkthnx's custom Blizzard Unitframe script"
+
+-- Skin options
+L_GUI_SKINS = "Stylization"
+L_GUI_SKINS_BW = "Enable styling BigWigs"
+L_GUI_SKINS_DBM = "Enable styling DeadlyBossMods"
+L_GUI_SKINS_WEAKAURAS = "Enable styling WeakAuras"
+L_GUI_SKINS_SKADA = "Enable styling Skada"
 
 -- Minimap options
 L_GUI_MINIMAP = "Minimap"
@@ -150,6 +161,7 @@ L_GUI_AUTOMATION_DECLINEDUEL = "Auto decline all duels"
 L_GUI_AUTOMATION_RESURRECTION = "Auto resurrection in battlegrounds"
 L_GUI_AUTOMATION_SCREENSHOT = "Take screenshot when player gets achievement"
 L_GUI_AUTOMATION_TAB_BINDER = "Auto change Tab key to only target enemy players"
+L_GUI_AUTOMATION_OPEN_ITEMS = "Auto opening of items in bag"
 
 -- Chat options
 L_GUI_CHAT_ENABLE = "Enable chat"

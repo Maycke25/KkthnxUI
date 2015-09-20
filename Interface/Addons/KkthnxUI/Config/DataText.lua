@@ -17,7 +17,7 @@ LPSTAT_FONT = {
 	size = C.font.stats_font_size,			-- Point font size
 	alpha = 1,								-- Alpha transparency
 	outline = 3,							-- Thin outline. 0 = no outline.
-	shadow = {alpha = C.font.stats_font_shadow and 1 or 0, x = 1, y = -1},	-- Font shadow = 1
+	shadow = {alpha = 0, x = 1, y = -1},	-- Font shadow = 1
 }
 
 LTIPICONSIZE = 14							-- Icon sizes in info tips

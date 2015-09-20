@@ -29,6 +29,55 @@ K.ModBackdrop = {
 	}
 }
 
+--[[-----------------------------------
+Blizz Style
+---------------------------------------]]
+local style = {
+	bgFile =  C.media.blank,
+	edgeFile = C.media.blizz, 
+	edgeSize = 14,
+	insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5 }
+}
+function CreateStyle(f, size, level, alpha, alphaborder) 
+	if f.BlizzBorder then return end
+	local BlizzBorder = CreateFrame("Frame", nil, f)
+	BlizzBorder:SetFrameLevel(level or 0)
+	BlizzBorder:SetFrameStrata(f:GetFrameStrata())
+	BlizzBorder:SetPoint("TOPLEFT", -size, size)
+	BlizzBorder:SetPoint("BOTTOMRIGHT", size, -size)
+	BlizzBorder:SetBackdrop(style)
+	BlizzBorder:SetBackdropColor(.08,.08,.08, .9)
+	BlizzBorder:SetBackdropBorderColor(.7, .7, .7, 1)
+	f.BlizzBorder = BlizzBorder
+	return BlizzBorder
+end
+
+--[[-----------------------------------
+Shadow Style
+---------------------------------------]]
+local style2 = {
+	bgFile =  C.media.blank,
+	edgeFile = C.media.glow, 
+	edgeSize = 4,
+	insets = { left = 3, right = 3, top = 3, bottom = 3 }
+}
+function CreateStyle2(f, size, level, alpha, alphaborder) 
+	if f.shadow then return end
+	local shadow = CreateFrame("Frame", nil, f)
+	shadow:SetFrameLevel(level or 0)
+	shadow:SetFrameStrata(f:GetFrameStrata())
+	shadow:SetPoint("TOPLEFT", -size, size)
+	shadow:SetPoint("BOTTOMRIGHT", size, -size)
+	shadow:SetBackdrop(style2)
+	shadow:SetBackdropColor(.08,.08,.08, alpha or .9)
+	shadow:SetBackdropBorderColor(0, 0, 0, alphaborder or 1)
+	f.shadow = shadow
+	return shadow
+end
+
+--[[-----------------------------------
+ShortValue
+---------------------------------------]]
 K.ShortValue = function(value)
 	if value >= 1e8 then
 		return ("%.0fm"):format(value / 1e6)

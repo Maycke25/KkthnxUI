@@ -16,8 +16,7 @@ local function SkinBubble(frame)
 		end
 	end
 	
-	frame:SetBackdrop(K.ModBackdrop)
-	CreateBorder(frame, 10, -5)
+	frame:SetBackdrop(K.Backdrop)
 	frame:SetBackdropColor(1, 1, 1, .9)
 	
 	tinsert(bubbles, frame)
@@ -52,7 +51,7 @@ ChatBubbleSkin:SetScript('OnUpdate', function(ChatBubbleSkin, elapsed)
 		
 		for i, frame in next, bubbles do
 			local r, g, b = frame.text:GetTextColor()
-			frame:SetBorderColor(r, g, b)
+			frame:SetBackdropBorderColor(r, g, b)
 		end
 	end
 end)

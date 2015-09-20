@@ -30,6 +30,64 @@ end
 SLASH_UIHELP1 = "/uihelp"
 SLASH_UIHELP2 = "/helpui"
 
+----------------------------------------------------------------------------------------
+--	Disband party or raid(by Monolit)
+----------------------------------------------------------------------------------------
+function DisbandRaidGroup()
+	if InCombatLockdown() then return end
+	if UnitInRaid("player") then
+		SendChatMessage(L_INFO_DISBAND, "RAID")
+		for i = 1, GetNumGroupMembers() do
+			local name, _, _, _, _, _, _, online = GetRaidRosterInfo(i)
+			if online and name ~= T.name then
+				UninviteUnit(name)
+			end
+		end
+	else
+		SendChatMessage(L_INFO_DISBAND, "PARTY")
+		for i = MAX_PARTY_MEMBERS, 1, -1 do
+			if GetNumGroupMembers(i) then
+				UninviteUnit(UnitName("party"..i))
+			end
+		end
+	end
+	LeaveParty()
+end
+
+StaticPopupDialogs.DISBAND_RAID = {
+	text = L_POPUP_DISBAND_RAID,
+	button1 = ACCEPT,
+	button2 = CANCEL,
+	OnAccept = DisbandRaidGroup,
+	timeout = 0,
+	whileDead = 1,
+	hideOnEscape = true,
+	preferredIndex = 5,
+}
+
+SlashCmdList.GROUPDISBAND = function()
+	StaticPopup_Show("DISBAND_RAID")
+end
+SLASH_GROUPDISBAND1 = "/rd"
+
+----------------------------------------------------------------------------------------
+--	Convert party to raid
+----------------------------------------------------------------------------------------
+SlashCmdList.PARTYTORAID = function()
+	if GetNumGroupMembers() > 0 then
+		if UnitInRaid("player") and IsGroupLeader() then
+			ConvertToParty()
+		elseif UnitInParty("player") and IsGroupLeader() then
+			ConvertToRaid()
+		end
+	else
+		print("|cffffff00"..ERR_NOT_IN_GROUP.."|r")
+	end
+end
+SLASH_PARTYTORAID1 = "/toraid"
+SLASH_PARTYTORAID2 = "/toparty"
+SLASH_PARTYTORAID3 = "/convert"
+
 --[[-----------------------------------
 Instance teleport
 ---------------------------------------]]

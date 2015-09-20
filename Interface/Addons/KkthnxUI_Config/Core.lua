@@ -10,19 +10,20 @@ local ALLOWED_GROUPS = {
 	["blizzard"] = 3,
 	["combattext"] = 4,
 	["unitframe"] = 5,
-	["minimap"] = 6,
-	["map"] = 7,
-	["buffs"] = 8,
-	["announcements"] = 9,
-	["automation"] = 10,
-	["chat"] = 11,
-	["actionbar"] = 12,
-	["tooltip"] = 13,
-	["loot"] = 14,
-	["nameplate"] = 15,
-	["error"] = 16,
-	["toppanel"] = 17,
-	["stats"] = 18,
+	["skins"] = 6,
+	["minimap"] = 7,
+	["map"] = 8,
+	["buffs"] = 9,
+	["announcements"] = 10,
+	["automation"] = 11,
+	["chat"] = 12,
+	["actionbar"] = 13,
+	["tooltip"] = 14,
+	["loot"] = 15,
+	["nameplate"] = 16,
+	["error"] = 17,
+	["toppanel"] = 18,
+	["stats"] = 19,
 }
 
 local function Local(o)
@@ -39,6 +40,9 @@ local function Local(o)
 	if o == "UIConfigmiscafkcam" then o = L_GUI_MISC_SPIN_CAMERA end
 	if o == "UIConfigmiscalreadyknown" then o = L_GUI_MISC_ALREADY_KNOWN end
 	if o == "UIConfigmiscbetterlootfilter" then o = L_GUI_MISC_BETTERLOOTFILTER end
+	if o == "UIConfigmiscfilger" then o = L_GUI_MISC_FILGER end
+	if o == "UIConfigmiscfilgerconfigmode" then o = L_GUI_MISC_FILGER_CONFIG end
+	if o == "UIConfigmiscraidtools" then o = L_GUI_MISC_RAID_TOOLS end
 	if o == "UIConfigmiscbgspam" then o = L_GUI_MISC_HIDE_BG_SPAM end
 	if o == "UIConfigmiscrarealert" then o = L_GUI_MISC_HIDE_RAREALERT end
 	if o == "UIConfigmiscbossbanner" then o = L_GUI_MISC_BOSSBANNER end
@@ -99,7 +103,14 @@ local function Local(o)
 	if o == "UIConfigunitframe" then o = L_GUI_UNITFRAME end
 	if o == "UIConfigunitframeenable" then o = L_GUI_UNITFRAME_ENABLE end
 	if o == "UIConfigunitframecustomscript" then o = L_GUI_UNITFRAME_CUSTOMSCRIPT end
-	
+
+	-- Skins options
+	if o == "UIConfigskins" then o = L_GUI_SKINS end
+	if o == "UIConfigskinsbigwigs" then o = L_GUI_SKINS_BW end
+	if o == "UIConfigskinsdbm" then o = L_GUI_SKINS_DBM end
+	if o == "UIConfigskinsweakauras" then o = L_GUI_SKINS_WEAKAURAS end
+	if o == "UIConfigskinsskada" then o = L_GUI_SKINS_SKADA end
+
 	-- Minimap options
 	if o == "UIConfigminimap" then o = L_GUI_MINIMAP end
 	if o == "UIConfigminimapcollectbuttons" then o = L_GUI_MINIMAP_COLLECTBUTTONS end
@@ -149,6 +160,7 @@ local function Local(o)
 	if o == "UIConfigautomationdeclineduel" then o = L_GUI_AUTOMATION_DECLINEDUEL end
 	if o == "UIConfigautomationresurrection" then o = L_GUI_AUTOMATION_RESURRECTION end
 	if o == "UIConfigautomationtabbinder" then o = L_GUI_AUTOMATION_TAB_BINDER end
+	if o == "UIConfigautomationopenitems" then o = L_GUI_AUTOMATION_OPEN_ITEMS end
 	
 	-- Chat options
 	if o == "UIConfigchat" then o = SOCIALS end
@@ -443,7 +455,8 @@ function CreateUIConfig()
 	UIConfigMain:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 200)
 	UIConfigMain:SetWidth(780)
 	UIConfigMain:SetHeight(520)
-	UIConfigMain:SetBackdrop(K.Backdrop)
+	--UIConfigMain:SetBackdrop(K.Backdrop)
+	CreateStyle(UIConfigMain, 2)
 	UIConfigMain:SetBackdropColor(1, 1, 1, .9)
 	UIConfigMain:SetBackdropBorderColor(.7, .7, .7, 1)
 	UIConfigMain:SetFrameStrata("DIALOG")

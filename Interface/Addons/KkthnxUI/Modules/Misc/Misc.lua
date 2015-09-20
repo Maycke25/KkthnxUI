@@ -142,50 +142,21 @@ if C.misc.customlagtolerance == true then
 	InterfaceOptionsCombatPanelMaxSpellStartRecoveryOffset:Hide()
 	InterfaceOptionsCombatPanelReducedLagTolerance:Hide()
 	
-	local AutoLagTolerance = CreateFrame( "Frame", "AutoLagTolerance" )
-	
-	local currentTolerance = GetCVar( "maxSpellStartRecoveryOffset" )
-	local lastUpdateTime = 0
-	
-	local function AutoLagTolerance_OnUpdate ( self, elapsed )
-		lastUpdateTime = lastUpdateTime + elapsed
-		
-		-- Update once per second.
-		if lastUpdateTime < 1.0 then
-			return
-		else
-			lastUpdateTime = 0
-		end
-		
-		-- Retrieve the world latency.
-		local newTolerance = select( 4, GetNetStats() )
-		
-		-- Ignore an empty value.
-		if newTolerance == 0 then
-			return
-		end
-		
-		-- Prevent update spam.
-		if newTolerance == currentTolerance then
-			return
-		else
-			currentTolerance = newTolerance
-		end
-		
-		-- Adjust the "Lag Tolerance" slider.
-		SetCVar( "maxSpellStartRecoveryOffset", newTolerance )
-	end
-	
-	local function AutoLagTolerance_OnEvent ( self, event, arg1, arg2, ... )
-		if event == "PLAYER_ENTERING_WORLD" then
-			SetCVar( "reducedLagTolerance", 1 )
+	local customlag = CreateFrame("Frame")
+	local int = 5
+	local _, _, _, lag = GetNetStats()
+	local LatencyUpdate = function(self, elapsed)
+		int = int - elapsed
+		if int < 0 then
+			if GetCVar("reducedLagTolerance") ~= tostring(1) then SetCVar("reducedLagTolerance", tostring(1)) end
+			if lag ~= 0 and lag <= 400 then
+				SetCVar("maxSpellStartRecoveryOffset", tostring(lag))
+			end
+			int = 5
 		end
 	end
-	
-	AutoLagTolerance:SetScript( "OnUpdate", AutoLagTolerance_OnUpdate )
-	AutoLagTolerance:SetScript( "OnEvent", AutoLagTolerance_OnEvent )
-	
-	AutoLagTolerance:RegisterEvent( "PLAYER_ENTERING_WORLD" )
+	customlag:SetScript("OnUpdate", LatencyUpdate)
+	LatencyUpdate(customlag, 10)
 end
 
 --[[-----------------------------------
@@ -195,6 +166,8 @@ if C.misc.rarealert == true then
 	local blacklist = {
 		[971] = true, -- Alliance garrison
 		[976] = true, -- Horde garrison
+		[947] = true, -- Lunarfall Excavation
+		[941] = true, -- Frostwall Shipyard
 	}
 	
 	local f = CreateFrame("Frame")
@@ -211,7 +184,6 @@ end
 Collect Garbage
 ---------------------------------------]]
 if C.misc.collectgarbage then
-	local eventcount = 0
 	local Garbage = CreateFrame("Frame")
 	Garbage:RegisterAllEvents()
 	Garbage:SetScript("OnEvent", function(self, event)
@@ -223,6 +195,34 @@ if C.misc.collectgarbage then
 		end
 	end)
 end
+
+--[[-----------------------------------
+Auto select current event boss from LFD 
+tool(EventBossAutoSelect by Nathanyel)
+---------------------------------------]]
+local firstLFD
+LFDParentFrame:HookScript("OnShow", function()
+	if not firstLFD then
+		firstLFD = 1
+		for i = 1, GetNumRandomDungeons() do
+			local id = GetLFGRandomDungeonInfo(i)
+			local isHoliday = select(15, GetLFGDungeonInfo(id))
+			if isHoliday and not GetLFGDungeonRewards(id) then
+				LFDQueueFrame_SetType(id)
+			end
+		end
+	end
+end)
+
+--[[-----------------------------------
+GuildTab in FriendsFrame
+---------------------------------------]]
+local n = FriendsFrame.numTabs + 1
+local gtframe = CreateFrame("Button", "FriendsFrameTab"..n, FriendsFrame, "FriendsFrameTabTemplate")
+gtframe:SetText(GUILD)
+gtframe:SetPoint("LEFT", _G["FriendsFrameTab"..n - 1], "RIGHT", -15, 0)
+PanelTemplates_DeselectTab(gtframe)
+gtframe:SetScript("OnClick", function() ToggleGuildFrame() end)
 
 --[[-----------------------------------
 Remove Boss Emote spam in BG 
@@ -254,3 +254,47 @@ if C.misc.bossbanner == true then
 	BossBanner.PlayBanner = function()
 	end
 end
+
+--[[-----------------------------------
+Old achievements filter
+---------------------------------------]]
+function AchievementFrame_GetCategoryNumAchievements_OldIncomplete(categoryID)
+	local numAchievements, numCompleted = GetCategoryNumAchievements(categoryID)
+	return numAchievements - numCompleted, 0, numCompleted
+end
+
+function old_nocomplete_filter_init()
+	AchievementFrameFilters = {
+		{text = ACHIEVEMENTFRAME_FILTER_ALL, func = AchievementFrame_GetCategoryNumAchievements_All},
+		{text = ACHIEVEMENTFRAME_FILTER_COMPLETED, func = AchievementFrame_GetCategoryNumAchievements_Complete},
+		{text = ACHIEVEMENTFRAME_FILTER_INCOMPLETE, func = AchievementFrame_GetCategoryNumAchievements_Incomplete},
+		{text = ACHIEVEMENTFRAME_FILTER_INCOMPLETE.." ("..ALL.." )", func = AchievementFrame_GetCategoryNumAchievements_OldIncomplete}
+	}
+end
+
+local filter = CreateFrame("Frame")
+filter:RegisterEvent("ADDON_LOADED")
+filter:SetScript("OnEvent", function(self, event, addon, ...)
+	if addon == "Blizzard_AchievementUI" then
+		if AchievementFrame then
+			old_nocomplete_filter_init()
+			if C.skins.blizzard_frames == true then
+				AchievementFrameFilterDropDown:SetWidth(AchievementFrameFilterDropDown:GetWidth() + 20)
+			end
+			filter:UnregisterEvent("ADDON_LOADED")
+		end
+	end
+end)
+
+--[[-----------------------------------
+Force quit
+---------------------------------------]]
+local CloseWoW = CreateFrame("Frame")
+CloseWoW:RegisterEvent("CHAT_MSG_SYSTEM")
+CloseWoW:SetScript("OnEvent", function(self, event, msg)
+	if event == "CHAT_MSG_SYSTEM" then
+		if msg and msg == IDLE_MESSAGE then
+			ForceQuit()
+		end
+	end
+end)

@@ -4,6 +4,7 @@ local K, C, L, _ = unpack(select(2, ...))
 --	Movement function(by Allez)
 ----------------------------------------------------------------------------------------
 K.MoverFrames = {
+	MinimapAnchor,
 	WatchFrameAnchor,
 	AchievementAnchor,
 	MinimapAnchor,
@@ -11,6 +12,15 @@ K.MoverFrames = {
 	LootRollAnchor,
 	TooltipAnchor,
 	AutoButtonAnchor,
+	PVEPVPCDAnchor,
+	TIGERPOWERAnchor,
+	PVEDEBUFFAnchor,
+	CDAnchor,
+	SPECIALPBUFFICONAnchor,
+	PPROCICONAnchor,
+	TBUFFICONAnchor,
+	BUFFICONAnchor,
+	TDEBUFFICONAnchor,
 }
 
 local moving = false

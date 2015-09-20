@@ -1,5 +1,5 @@
 local K, C, L, _ = unpack(select(2, ...))
-if C.automation.open_items ~= true then return end
+if C.automation.openitems ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Auto opening of items in bag (kAutoOpen by Kellett)

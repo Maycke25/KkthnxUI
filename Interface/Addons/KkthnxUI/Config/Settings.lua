@@ -9,6 +9,8 @@ C["media"] = {
 	["unitframe_font"] = [[Interface\AddOns\KkthnxUI\Media\Fonts\Unitframe.ttf]],
 	["blank_font"] = [[Interface\AddOns\KkthnxUI\Media\Fonts\Invisible.ttf]],
 	["texture"] = [[Interface\AddOns\KkthnxUI\Media\Textures\KkthnxTex.tga]],
+	["glow"] = [[Interface\AddOns\KkthnxUI\Media\Textures\GlowTex.tga]],
+	["blizz"] = [[Interface\AddOns\KkthnxUI\Media\Tooltips\KkthnxBorder.blp]],
 	["blank"] = [[Interface\AddOns\KkthnxUI\Media\Textures\Blank.tga]],
 
 	["abtextures"] = [[Interface\Addons\KkthnxUI\Media\Actionbars\]],
@@ -39,22 +41,24 @@ Misc options
 C["misc"] = {
 	["afkcam"] = true,
 	["alreadyknown"] = true,
-	["betterlootfilter"] = true,
-	["bgspam"] = false,
-	["rarealert"] = true,
-	["bossbanner"] = false,
-	["charscurrency"] = false,
+	["betterlootfilter"] = false,
+	["bgspam"] = true,
+	["bossbanner"] = true,
+	["charscurrency"] = true,
 	["clickcast"] = false,
 	["clickcastfilter"] = false,
-	["disenchanting"] = false,
-	["enchantscroll"] = false,
+	["disenchanting"] = true,
+	["enchantscroll"] = true,
 	["fadegamemenu"] = true,
+	["filger"] = true,
+	["filgerconfigmode"] = false,
 	["hattrick"] = true,
 	["lfgqueuetimer"] = true,
 	["paperdollstats"] = true,
 	["professiontabs"] = false,
 	["questautobutton"] = false,
-	["questautobutton"] = false,
+	["raidtools"] = true,
+	["rarealert"] = false,
 	["shortengold"] = true,
 	["sumbuyouts"] = false,
 }
@@ -66,9 +70,9 @@ C["blizzard"] = {
 	["altpowerbar"] = true,
 	["capturebar"] = true,
 	["moveachievements"] = true,
-	["moveblizzard"] = false,
-	["repreward"] = false,
+	["moveblizzard"] = true,
 	["questbuttonsize"] = 26,
+	["repreward"] = true,
 }
 
 --[[----------------------------
@@ -84,35 +88,34 @@ C["minimap"] = {
 Map options
 --------------------------------]]
 C["map"] = {
-	["mapbosscount"] = false,					-- Show boss count in World Map
-	["exploremap"] = false,					-- Tracking Explorer and Lore Master achievements in World Map
-	["fogofwar"] = false,						-- Remove fog of war on World Map
+	["exploremap"] = false,
+	["fogofwar"] = false,
+	["mapbosscount"] = true,
 }
 
 --[[----------------------------
 Buffs / Debuffs options
 --------------------------------]]
 C["buffs"] = {
-	["enable"] = true,
+	["aurasperrow"] = 12,
 	["buffsize"] = 34,
+	["buffsource"] = true,
 	["debuffsize"] = 44,
+	["enable"] = true,
 	["paddingx"] = 6,
 	["paddingy"] = 6,
-	["aurasperrow"] = 12,
-	["buffsource"] = true,
 }
 
 --[[----------------------------
 ActionBar options
 --------------------------------]]
 C["actionbar"] = {
-	-- Main
 	["enable"] = true,
 	["scale"] = 1,
-	["skinbuttons"] = true,
-	["showmacroname"] = true,
-	["showhotkeys"] = true,
 	["showbarart"] = true,
+	["showhotkeys"] = true,
+	["showmacroname"] = true,
+	["skinbuttons"] = true,
 }
 
 --[[----------------------------
@@ -130,12 +133,12 @@ C["nameplate"] = {
 	["good_color"] = {0.2, 0.8, 0.2},
 	["healer_icon"] = false,
 	["health_value"] = true,
-	["height"] = 12,
+	["height"] = 14,
 	["name_abbrev"] = false,
 	["near_color"] = {1, 1, 0},
 	["show_castbar_name"] = true,
 	["track_auras"] = true,
-	["width"] = 120,
+	["width"] = 124,
 }
 
 --[[----------------------------
@@ -163,9 +166,9 @@ C["toppanel"] = {
 Stats options
 --------------------------------]]
 C["stats"] = {
-	["battleground"] = false,
+	["battleground"] = true,
 	["clock"] = true,
-	["coords"] = false,
+	["coords"] = true,
 	["currency_archaeology"] = false,
 	["currency_cooking"] = true,
 	["currency_misc"] = true,
@@ -180,48 +183,56 @@ C["stats"] = {
 	["latency"] = true,
 	["location"] = true,
 	["memory"] = true,
-	
 }
 
 --[[----------------------------
 Combat text options
 --------------------------------]]
 C["combattext"] = {
-	["enable"] = true,							-- Global enable combat text
-	["blizz_head_numbers"] = false,				-- Use blizzard damage/healing output(above mob/player head)
-	["damage_style"] = true,					-- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
-	["damage"] = true,							-- Show outgoing damage in it's own frame
-	["healing"] = true,							-- Show outgoing healing in it's own frame
-	["show_hots"] = true,						-- Show periodic healing effects in healing frame
-	["show_overhealing"] = true,				-- Show outgoing overhealing
-	["pet_damage"] = true,						-- Show your pet damage
-	["dot_damage"] = true,						-- Show damage from your dots
-	["damage_color"] = true,					-- Display damage numbers depending on school of magic
-	["crit_prefix"] = "*",						-- Symbol that will be added before crit
-	["crit_postfix"] = "*",						-- Symbol that will be added after crit
-	["icons"] = true,							-- Show outgoing damage icons
-	["icon_size"] = 16,							-- Icon size of spells in outgoing damage frame, also has effect on dmg font size
-	["treshold"] = 1,							-- Minimum damage to show in damage frame
-	["heal_treshold"] = 1,						-- Minimum healing to show in incoming/outgoing healing messages
-	["scrollable"] = false,						-- Allows you to scroll frame lines with mousewheel
-	["max_lines"] = 15,							-- Max lines to keep in scrollable mode(more lines = more memory)
-	["time_visible"] = 3,						-- Time(seconds) a single message will be visible
-	["dk_runes"] = true,						-- Show deathknight rune recharge
-	["killingblow"] = false,					-- Tells you about your killingblows
-	["merge_aoe_spam"] = true,					-- Merges multiple aoe damage spam into single message
-	["merge_melee"] = true,						-- Merges multiple auto attack damage spam
-	["dispel"] = true,							-- Tells you about your dispels(works only with ["damage"] = true)
-	["interrupt"] = true,						-- Tells you about your interrupts(works only with ["damage"] = true)
-	["direction"] = "bottom",					-- Scrolling Direction("top"(goes down) or "bottom"(goes up))
+	["blizz_head_numbers"] = false,
+	["crit_postfix"] = "*",
+	["crit_prefix"] = "*",
+	["damage"] = true,
+	["damage_color"] = true,
+	["damage_style"] = true,
+	["direction"] = "bottom",
+	["dispel"] = true,
+	["dk_runes"] = true,
+	["dot_damage"] = true,
+	["enable"] = true,
+	["heal_treshold"] = 1,
+	["healing"] = true,
+	["icon_size"] = 16,
+	["icons"] = true,
+	["interrupt"] = true,
+	["killingblow"] = false,
+	["max_lines"] = 15,
+	["merge_aoe_spam"] = true,
+	["merge_melee"] = true,
+	["pet_damage"] = true,
+	["scrollable"] = false,
+	["show_hots"] = true,
+	["show_overhealing"] = true,
+	["time_visible"] = 3,
+	["treshold"] = 1,
 }
 
 --[[----------------------------
 Unitframe options
 --------------------------------]]
 C["unitframe"] = {
-	-- Main
-	["enable"] = true,							-- Enable unit frames
 	["customscript"] = false,
+	["enable"] = true,
+}
+
+--[[----------------------------
+Addonskin options
+--------------------------------]]
+C["skins"] = {
+	["bigwigs"] = false,
+	["dbm"] = false,
+	["skada"] = false,
+	["weakauras"] = false,
 }
 
 
@@ -234,25 +245,25 @@ C["tooltip"] = {
 	["health_value"] = false,
 	["hide_combat"] = false,
 	["hidebuttons"] = false,
-	["item_icon"] = false,
+	["item_icon"] = true,
+	["scale"] = 1,
 	["shift_modifer"] = false,
-	["scale"] = 1.1,
 	-- Plugins
 	["achievements"] = true,
 	["arena_experience"] = false,
-	["average_lvl"] = false,
+	["average_lvl"] = true,
 	["instance_lock"] = false,
 	["item_count"] = false,
 	["item_transmogrify"] = false,
-	["raid_icon"] = false,
+	["raid_icon"] = true,
 	["rank"] = true,
 	["realm"] = true,
-	["spell_id"] = false,
-	["talents"] = false,
+	["spell_id"] = true,
+	["talents"] = true,
 	["target"] = true,
 	["title"] = false,
-	["unit_role"] = false,
-	["who_targetting"] = false,
+	["unit_role"] = true,
+	["who_targetting"] = true,
 }
 
 --[[----------------------------
@@ -278,6 +289,7 @@ C["automation"] = {
 	["declineduel"] = true,
 	["resurrection"] = true,
 	["tabbinder"] = false,
+	["openitems"] = false
 }
 
 --[[----------------------------
@@ -285,8 +297,8 @@ Error options
 --------------------------------]]
 C["error"] = {
 	["black"] = true,
-	["white"] = false,
 	["combat"] = false,
+	["white"] = false,
 }
 
 --[[----------------------------
@@ -295,14 +307,14 @@ Chat options
 C["chat"] = {
 	["bubbles"] = true,
 	["channelreplace"] = true,
-	["chatfilter"] = true,
-	["chatspam"] = true,
+	["chatfilter"] = false,
+	["chatspam"] = false,
 	["combatlog"] = true,
 	["damagemeterspam"] = false,
 	["enable"] = true,
 	["height"] = 112,
+	["outline"] = false,
 	["sticky"] = true,
-	["outline"] = true,
 	["tabmouseover"] = true,
 	["time_color"] = {1, 1, 0},
 	["whisp_sound"] = true,

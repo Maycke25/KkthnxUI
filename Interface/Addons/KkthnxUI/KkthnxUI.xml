@@ -52,6 +52,7 @@
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
 	<Script file="Modules\Misc\CharsCurrency.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
+	<Script file="Modules\Misc\Filger.lua"/>
 	<Script file="Modules\Misc\HatTrick.lua"/>
 	<Script file="Modules\Misc\LFGQueueTimer.lua"/>
 	<Script file="Modules\Misc\Mail.lua"/>
@@ -64,6 +65,7 @@
 	<Script file="Modules\Misc\PaperdollStats.lua"/>
 	<Script file="Modules\Misc\ProfessionTabs.lua"/>
 	<Script file="Modules\Misc\PvPQueueTimer.lua"/>
+	<Script file="Modules\Misc\RaidUtility.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
 	
 	<Script file="Modules\ActionBars\actionbars.lua"/>
@@ -132,7 +134,10 @@
 	<Script file="Modules\Quests\ObjectiveTracker.lua"/>
 	<Script file="Modules\Quests\WowheadLink.lua"/>
 
-	<Script file="Modules\Skins\Addons.lua"/>
+	<Script file="Modules\Skins\BigWigs.lua"/>
+	<Script file="Modules\Skins\DBM.lua"/>
+	<Script file="Modules\Skins\Skada.lua"/>
+	<Script file="Modules\Skins\WeakAuras.lua"/>
 
 	<Script file="Modules\Tooltip\Tooltip.lua"/>
 	<Script file="Modules\Tooltip\Achievement.lua"/>

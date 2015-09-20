@@ -20,7 +20,7 @@ local DG = 935
 local classcolor = ("|cff%.2x%.2x%.2x"):format(K.Color.r * 255, K.Color.g * 255, K.Color.b * 255)
 
 local bgframe = CreateFrame("Frame", "InfoBattleGround", UIParent)
---bgframe:CreatePanel("Invisible", 300, C.font.stats_font_size, unpack(C.position.bg_score))
+bgframe:CreatePanel("Invisible", 300, C.font.stats_font_size, unpack(C.position.bgscore))
 bgframe:EnableMouse(true)
 bgframe:SetScript("OnEnter", function(self)
 	local numScores = GetNumBattlefieldScores()

@@ -115,7 +115,8 @@ local function SkinButton(f)
 		end
 	end
 	
-	CreateBorder(f, 10, 2, "BORDER", "BACKGROUND")
+	--CreateBorder(f, 10, 2, "BORDER", "BACKGROUND")
+	CreateStyle(f, 2)
 	f:SetBackdrop(K.BasicBackdrop)
 	f:SetBackdropColor(1, 1, 1, .9)
 end
