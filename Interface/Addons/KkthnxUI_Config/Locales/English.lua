@@ -22,7 +22,6 @@ L_GUI_MISC_BETTERLOOTFILTER = "Filter party and raid members' loot messages, bas
 L_GUI_MISC_FILGER = "Track buffs/debuffs on yourself, target, pets, focus, etc"
 L_GUI_MISC_FILGER_CONFIG = "Config for Filger to help position it better with /moveui"
 L_GUI_MISC_BOSSBANNER = "Prevents the big Boss Defeated Banner from appearing"
-L_GUI_MISC_CHARS_CURRENCY = "Tracks your currency tokens across multiple characters"
 L_GUI_MISC_CLICK_CAST = "Simple click2cast spell binder"
 L_GUI_MISC_CLICK_CAST_FILTER = "Ignore Player and Target frames for click2cast"
 L_GUI_MISC_DISENCHANTING = "Milling, Prospecting and Disenchanting by Alt + click"

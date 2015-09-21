@@ -50,7 +50,6 @@
 
 	<Script file="Modules\Misc\AFK.lua"/>
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
-	<Script file="Modules\Misc\CharsCurrency.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\Filger.lua"/>
 	<Script file="Modules\Misc\HatTrick.lua"/>

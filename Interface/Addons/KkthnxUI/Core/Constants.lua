@@ -5,7 +5,6 @@ KkthnxUI Constants
 ---------------------------------------]]
 K.Dummy = function() return end
 K.Name = UnitName("player")
-K.Guild = GetGuildInfo("player")
 _, K.Class = UnitClass("player")
 _, K.Race = UnitRace("player")
 K.Level = UnitLevel("player")

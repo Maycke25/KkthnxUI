@@ -46,7 +46,6 @@ local function Local(o)
 	if o == "UIConfigmiscbgspam" then o = L_GUI_MISC_HIDE_BG_SPAM end
 	if o == "UIConfigmiscrarealert" then o = L_GUI_MISC_HIDE_RAREALERT end
 	if o == "UIConfigmiscbossbanner" then o = L_GUI_MISC_BOSSBANNER end
-	if o == "UIConfigmisccharscurrency" then o = L_GUI_MISC_CHARS_CURRENCY end
 	if o == "UIConfigmiscclickcast" then o = L_GUI_MISC_CLICK_CAST end
 	if o == "UIConfigmiscclickcastfilter" then o = L_GUI_MISC_CLICK_CAST_FILTER end
 	if o == "UIConfigmiscdisenchanting" then o = L_GUI_MISC_DISENCHANTING end
