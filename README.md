@@ -1,4 +1,4 @@
-# Kkthnx's UI (WoW 6.2.2)   
+# KkthnxUI (WoW 6.2.2)   
 
 ![kkthnxuilogo](https://cloud.githubusercontent.com/assets/1692977/10210804/9b585afe-67b9-11e5-92d8-bd8012cf1c40.png)
 
