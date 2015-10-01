@@ -323,8 +323,3 @@ KUnitFrames:SetScript("OnEvent", function(self, event, arg1)
         end
     end
 end)
-
-function SetFunctionsForward()
-    hooksecurefunc("PlayerFrame_Update", RewriteUnitFrames)
-    hooksecurefunc("TargetFrame_Update", RewriteUnitFrames)
-end

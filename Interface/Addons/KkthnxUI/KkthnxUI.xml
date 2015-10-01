@@ -22,7 +22,6 @@
 	<Script file="Libs\LibStub\LibStub.lua"/>
 	<Script file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua"/>
 	<Script file="Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
-	<Script file="Libs\AbuTheLib-1.0\AbuTheLib.lua"/>
 	<Script file="Media\Media.lua"/>
 
 	<Script file="Config\Filters\Announcements.lua"/>

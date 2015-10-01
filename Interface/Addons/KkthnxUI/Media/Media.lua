@@ -10,8 +10,6 @@ LSM:Register("font", "KUF_Font", [[Interface\AddOns\KkthnxUI\Media\Fonts\Unitfra
 LSM:Register("font", "KkthnxBorder", [[Interface\AddOns\KkthnxUI\Media\Tooltips\KkthnxBorder.blp]])
 -->< | Statusbars | ><--
 LSM:Register("statusbar", "KkthnxTex", [[Interface\AddOns\KkthnxUI\Media\Textures\KkthnxTex.tga]])
-
 -->< | Sounds | ><--
 LSM:Register("sound", "GMWhisper", [[Sound\Spells\Simongame_visual_gametick.wav]])
 LSM:Register("sound", "KWhisper", [[Interface\AddOns\KkthnxUI\Media\Sounds\KWhisper.ogg]])
-
