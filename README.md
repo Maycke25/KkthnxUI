@@ -1,6 +1,7 @@
 # Kkthnx's UI (WoW 6.2.2)   
 
-![ms0koq2](https://cloud.githubusercontent.com/assets/1692977/9804006/d2a1a628-57f6-11e5-8367-e92735e3ef7a.png)
+![kkthnxuilogo](https://cloud.githubusercontent.com/assets/1692977/10210804/9b585afe-67b9-11e5-92d8-bd8012cf1c40.png)
+
 
 Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever you have your World of Warcraft installed. You get the idea.   
 
@@ -16,6 +17,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever 
 ### Supported Addon Profiles   
 * [Skada](http://www.curse.com/addons/wow/skada)   
 * [Bartender4](http://www.curse.com/addons/wow/Bartender4)   
+* [DBM](http://www.curse.com/addons/wow/deadly-boss-mods)
 * [Masque](http://www.curse.com/addons/wow/Masque)   
 * [BigWigs](http://www.curse.com/addons/wow/big-wigs)   
 * [WeakAuras 2](http://www.curse.com/addons/wow/weakauras-2) (Frost Mage)   
@@ -24,6 +26,7 @@ Put these files  in `...C:\Program Files (x86)\World of Warcraft` Or where ever 
 ### Suggested Addons   
 * [Skada](http://www.curse.com/addons/wow/skada)   
 * [BigWigs](http://www.curse.com/addons/wow/big-wigs)   
+* [DBM](http://www.curse.com/addons/wow/deadly-boss-mods)   
 
 ### Warning   
 * I am not responsible if you break your old UI due to putting mine on!   
