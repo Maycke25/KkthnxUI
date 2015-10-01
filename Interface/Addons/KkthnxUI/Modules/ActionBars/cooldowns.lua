@@ -34,7 +34,7 @@ local function getTimeText(s)
 		return HOURS_FORMAT, hours, hours > 1 and (s - (hours*HOUR - HALFHOURISH)) or (s - HOURISH)
 	else
 		local days = tonumber(K.Round(s/DAY))
-		return DAYS_FORMAT, days,  days > 1 and (s - (days*DAY - HALFDAYISH)) or (s - DAYISH)
+		return DAYS_FORMAT, days, days > 1 and (s - (days*DAY - HALFDAYISH)) or (s - DAYISH)
 	end
 end
 
@@ -51,7 +51,7 @@ end
 local function Timer_OnSizeChanged(self, width, height)
 	local fontScale = K.Round(width) / ICON_SIZE
 	if fontScale == self.fontScale then return end
-
+	
 	self.fontScale = fontScale
 	if fontScale < SetDefaultActionButtonCooldownMinScale then
 		self:Hide()
@@ -71,7 +71,7 @@ local function Timer_OnUpdate(self, elapsed)
 		if tonumber(K.Round(remain)) > 0 then
 			if (self.fontScale * self:GetEffectiveScale() / UIParent:GetScale()) < SetDefaultActionButtonCooldownMinScale then
 				self.text:SetText("")
-				self.nextUpdate  = 1
+				self.nextUpdate = 1
 			else
 				local formatStr, time, nextUpdate = getTimeText(remain)
 				self.text:SetFormattedText(formatStr, time)
@@ -88,26 +88,26 @@ local function Timer_Create(self)
 	--needed since OnSizeChanged has funny triggering if the frame with the handler is not shown
 	local scaler = CreateFrame("Frame", nil, self)
 	scaler:SetAllPoints(self)
-
+	
 	local timer = CreateFrame("Frame", nil, scaler); timer:Hide()
 	timer:SetAllPoints(scaler)
 	timer:SetScript("OnUpdate", Timer_OnUpdate)
-
+	
 	local text = timer:CreateFontString(nil, "OVERLAY")
 	text:SetPoint("CENTER", 2, 0)
 	text:SetJustifyH("CENTER")
 	timer.text = text
-
+	
 	Timer_OnSizeChanged(timer, scaler:GetSize())
 	scaler:SetScript("OnSizeChanged", function(self, ...) Timer_OnSizeChanged(timer, ...) end)
-
+	
 	self.timer = timer
 	return timer
 end
 
 local function Timer_Start(self, start, duration, charges, maxCharges)
 	if self.noOCC then return end
-
+	
 	if start > 0 and duration > SetDefaultActionButtonCooldownMinDuration then
 		local timer = self.timer or Timer_Create(self)
 		local num = charges or 0
@@ -136,7 +136,7 @@ UpdateActionButtonCooldown = function(self)
 	local button = self:GetParent()
 	local start, duration, enable = GetActionCooldown(button.action)
 	local charges, maxCharges, chargeStart, chargeDuration = GetActionCharges(button.action)
-
+	
 	Timer_Start(self, start, duration, charges, maxCharges)
 end
 

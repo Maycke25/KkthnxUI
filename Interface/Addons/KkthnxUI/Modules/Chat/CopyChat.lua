@@ -17,6 +17,7 @@ local sizes = {
 local function CreatCopyFrame()
 	frame = CreateFrame("Frame", "CopyFrame", UIParent)
 	frame:SetBackdrop(K.Backdrop)
+	frame:SetBackdropBorderColor(.7, .7, .7, 1)
 	frame:SetBackdropColor(1, 1, 1, .9)
 	frame:SetWidth(540)
 	frame:SetHeight(300)
@@ -99,9 +100,10 @@ end
 for i = 1, NUM_CHAT_WINDOWS do
 	local cf = _G[format("ChatFrame%d", i)]
 	local button = CreateFrame("Button", format("ButtonCF%d", i), cf)
-	button:SetPoint("TOPRIGHT", 0, 0)
+	button:SetPoint("TOPRIGHT", 20, 20)
 	button:SetHeight(20)
 	button:SetWidth(20)
+	CreateStyle(button, 2)
 	button:SetAlpha(0.1)
 	
 	local buttontexture = button:CreateTexture(nil, "BORDER")

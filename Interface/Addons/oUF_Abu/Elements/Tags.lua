@@ -1,9 +1,6 @@
 
 local _, ns = ...
 
-local oUF = ns.oUF or oUF
-if not oUF then return end
-
 local function FormatTime(time)
 	if (time >= 86400) then
 		return format('%dd', floor(time/86400 + 0.5))

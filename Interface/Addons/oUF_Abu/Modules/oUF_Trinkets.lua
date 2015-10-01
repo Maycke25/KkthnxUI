@@ -8,7 +8,7 @@ local trinketSpells = {
 	[7744] = 45,
 }
 
-local GetTrinketIcon = function(unit)
+local function GetTrinketIcon(unit)
 	if UnitFactionGroup(unit) == "Horde" then
 		return "Interface\\Icons\\INV_Jewelry_TrinketPVP_02"
 	else
@@ -16,7 +16,15 @@ local GetTrinketIcon = function(unit)
 	end
 end
 
-local Update = function(self, event, ...)
+local function Update(self, event, ...)
+	local _, instanceType = IsInInstance();
+	if instanceType ~= 'arena' then
+		self.Trinket:Hide();
+		return;
+	else
+		self.Trinket:Show(); 
+	end
+	
 	if(self.Trinket.PreUpdate) then self.Trinket:PreUpdate(event) end
 	
 	if event == "COMBAT_LOG_EVENT_UNFILTERED" then
@@ -54,8 +62,8 @@ local Enable = function(self)
 			self.Trinket.Icon:SetAllPoints(self.Trinket)
 			self.Trinket.Icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
 			self.Trinket.Icon:SetTexture(GetTrinketIcon('player'))
-		end	
-		
+		end
+
 		return true
 	end
 end

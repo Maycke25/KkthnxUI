@@ -1,9 +1,6 @@
 local _, ns = ...
 local config
 
-local oUF = ns.oUF or oUF
-if not oUF then return end
-
 local textPath = 'Interface\\AddOns\\oUF_Abu\\Media\\Frames\\'
 
 local function CreateBaseFrames(self)
@@ -12,30 +9,30 @@ local function CreateBaseFrames(self)
 	self.Texture:SetSize(230, 100)
 	self.Texture:SetPoint('TOPLEFT', self, -22, 14)
 	self.Texture:SetTexCoord(0, 0.90625, 0, 0.78125)
-	
+
 	ns.PaintFrames(self.Texture)
-	
+
 	self.Health = ns.CreateStatusBar(self, nil, nil, true)
 	self.Health:SetFrameLevel(self:GetFrameLevel()-1)
 	self.Health:SetSize(117, 18)
 	self.Health:SetPoint('TOPRIGHT', self.Texture, -43, -17)
-	
+
 	self.Power = ns.CreateStatusBar(self, nil, nil, true)
 	self.Power:SetFrameLevel(self:GetFrameLevel()-1)
 	self.Power:SetPoint('TOPLEFT', self.Health, 'BOTTOMLEFT', 0, -3)
 	self.Power:SetPoint('TOPRIGHT', self.Health, 'BOTTOMRIGHT', 0, -3)
 	self.Power:SetHeight(self.Health:GetHeight())
-	
+
 	self.Portrait = self.Health:CreateTexture(nil, 'BACKGROUND')
 	self.Portrait:SetSize(64, 64)
 	self.Portrait:SetPoint('TOPLEFT', self.Health, -64, 13)
-	
+
 	self.Health.Value = ns.CreateFontString(self.Health, 13)
 	self.Health.Value:SetPoint('CENTER', self.Health)
-	
+
 	self.Power.Value = ns.CreateFontString(self.Health, 13)
 	self.Power.Value:SetPoint('CENTER', self.Power)
-	
+
 	self:SetSize(167, 46)
 	self:SetScale(ns.config.arena.scale)
 end
@@ -43,7 +40,7 @@ end
 local function CreateArenaLayout(self, unit)
 	self.cUnit = ns.cUnit(unit)
 	local uconfig = ns.config[self.cUnit]
-	
+
 	self:RegisterForClicks('AnyUp')
 	
 	if (config.focBut ~= 'NONE') then
@@ -53,9 +50,9 @@ local function CreateArenaLayout(self, unit)
 	
 	self:HookScript("OnEnter", ns.UnitFrame_OnEnter)
 	self:HookScript("OnLeave", ns.UnitFrame_OnLeave)
-	
+
 	CreateBaseFrames(self)
-	
+
 	self.Health:SetStatusBarColor(unpack(config.healthcolor))
 	self.Health.colorClass = config.healthcolormode == 'CLASS'
 	self.Health.colorReaction = config.healthcolormode == 'CLASS'
@@ -64,58 +61,58 @@ local function CreateArenaLayout(self, unit)
 	self.Health.Smooth = true
 	self.Health.PostUpdate = ns.PostUpdateHealth
 	table.insert(self.mouseovers, self.Health)
-	
+
 	self.Power:SetStatusBarColor(unpack(config.powercolor))
 	self.Power.colorClass = config.powercolormode == 'CLASS'
 	self.Power.colorPower = config.powercolormode == 'TYPE'
-	
+
 	self.Power.Smooth = true
 	self.Power.PostUpdate = ns.PostUpdatePower	
 	table.insert(self.mouseovers, self.Power)
-	
+
 	-- name
 	self.Name = ns.CreateFontStringBig(self.Health, 14, 'CENTER')
 	self.Name:SetSize(110, 10)
 	self.Name:SetPoint('BOTTOM', self.Health, 'TOP', 0, 6)
 	self:Tag(self.Name, '[name]')
 	self.UNIT_NAME_UPDATE = UpdateFrame
-	
+
 	-- raidicons (justin case)
 	self.RaidIcon = self:CreateTexture(nil, 'OVERLAY', self)
 	self.RaidIcon:SetPoint('CENTER', self.Portrait, 'TOP', 0, -1)
 	self.RaidIcon:SetTexture('Interface\\TargetingFrame\\UI-RaidTargetingIcons')
 	self.RaidIcon:SetSize(26, 26)
-	
+
 	-- PvP Icon
 	self.PvP = self:CreateTexture(nil, 'OVERLAY')
 	self.PvP:SetSize(54, 54)
 	self.PvP:SetPoint('TOPLEFT', self.Texture, -8, -8)
-	
+
 	--portrait Timer
 	self.PortraitTimer = CreateFrame('Frame', nil, self.Health)
 	self.PortraitTimer.Icon = self.PortraitTimer:CreateTexture(nil, 'BACKGROUND')
 	self.PortraitTimer.Icon:SetAllPoints(self.Portrait)
-	
+
 	self.PortraitTimer.Remaining = ns.CreateFontString(self.PortraitTimer, self.Portrait:GetWidth()/3.5, 'CENTER')
 	self.PortraitTimer.Remaining:SetPoint('CENTER', self.PortraitTimer.Icon)
 	self.PortraitTimer.Remaining:SetTextColor(1, 1, 1)
-	
+
 	--Auras
 	self.Buffs = ns.AddBuffs(self, 'TOPLEFT', 28, 5, 6, 1)
 	self.Buffs:SetPoint('TOPLEFT', self.Power, 'BOTTOMLEFT', 0, -7)
-	self.Buffs.CustomFilter = ns.CustomAuraFilters.arena
-	
+	self.Buffs.CustomFilter   = ns.CustomAuraFilters.arena
+
 	--Castbars
 	if config.castbars and uconfig.cbshow then
 		ns.CreateCastbars(self)
 	end
-	
+
 	-- oUF_Trinkets support
 	self.Trinket = CreateFrame('Frame', nil, self)
 	self.Trinket:SetSize(25, 25)
 	self.Trinket:SetFrameLevel(self:GetFrameLevel() + 2)
 	self.Trinket:SetPoint('RIGHT', self.Health, 'LEFT', 0, 15)
-	
+
 	self.Trinket.Border = CreateFrame("Frame", nil, self.Trinket)
 	self.Trinket.Border:SetFrameLevel(self.Trinket:GetFrameLevel() + 1)
 	self.Trinket.Border:SetAllPoints()
@@ -123,9 +120,9 @@ local function CreateArenaLayout(self, unit)
 	self.Trinket.Border.Texture:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
 	self.Trinket.Border.Texture:SetPoint("TOPLEFT", -6, 5)
 	self.Trinket.Border.Texture:SetSize(60, 60)
-	
+
 	ns.PaintFrames(self.Trinket.Border.Texture)
-	
+
 	return self
 end
 
@@ -133,9 +130,9 @@ oUF:RegisterStyle('oUF_AbuArena', CreateArenaLayout)
 oUF:Factory(function(self)
 	config = ns.config
 	if not(config.showArena) then return end
-	
+
 	oUF:SetActiveStyle('oUF_AbuArena')
-	
+
 	local arena = {}
 	for i = 1, 5 do
 		arena[i] = self:Spawn('arena'..i, 'oUF_AbuArenaFrame'..i)
@@ -148,18 +145,18 @@ oUF:Factory(function(self)
 	
 	local a = ns.CreateUnitAnchor(arena[1], arena[1], arena[5], nil, "arena1", "arena2", "arena3", "arena4", "arena5")
 	--arena[1]:SetPoint('TOPRIGHT', a)
-	
+
 	local arenaprep = {}
 	for i = 1, 5 do
 		arenaprep[i] = CreateFrame('Frame', 'oUF_AbuArenaPrep '..i, UIParent)
 		arenaprep[i]:SetAllPoints(arena[i])
-		
+
 		CreateBaseFrames(arenaprep[i])
 		arenaprep[i].Power:SetStatusBarTexture('Interface\\Buttons\\WHITE8x8')
-		
+
 		arenaprep[i]:Hide()
 	end
-	
+
 	local arenaprepUpdate = CreateFrame("Frame")
 	arenaprepUpdate:RegisterEvent("PLAYER_ENTERING_WORLD")
 	arenaprepUpdate:RegisterEvent("ARENA_OPPONENT_UPDATE")
@@ -171,19 +168,19 @@ oUF:Factory(function(self)
 			end
 		else
 			local numOpps = GetNumArenaOpponentSpecs()
-			
+
 			if numOpps > 0 then
 				for i = 1, 5 do
 					local f = arenaprep[i]
-					
+
 					if i <= numOpps then
 						local specID = GetArenaOpponentSpec(i)
 						local icon, spec, class = "Interface\\Icons\\Spell_Shadow_SacrificialShield", "UNKNOWN", "UNKNOWN"
-						
+
 						if specID and specID > 0 then
 							_, spec, _, icon, _, _, class = GetSpecializationInfoByID(specID)
 						end
-						
+
 						if class and icon then
 							local color = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[class]
 							if color then

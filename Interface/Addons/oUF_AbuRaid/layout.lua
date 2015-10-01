@@ -1,5 +1,3 @@
-local K, C, L, _ = unpack(KkthnxUI)
-
 local ADDON, ns = ...
 local cfg = ns.config
 local noop = function() end
@@ -174,15 +172,15 @@ local function addIndicators(self)
 	table.insert(self.__elements, ns.Update_Auras)
 end
 
---local function frame_OnEnter(self)
---	UnitFrame_OnEnter(self)
---	UIFrameFadeIn(self.Highlight, 0.1, 0, 0.7)
---end
+local function frame_OnEnter(self)
+	UnitFrame_OnEnter(self)
+	UIFrameFadeIn(self.Highlight, 0.1, 0, 0.7)
+end
 
---local function frame_OnLeave(self)
---	UnitFrame_OnLeave(self)
---	UIFrameFadeOut(self.Highlight, 0.1, 0.6, 0)
---end
+local function frame_OnLeave(self)
+	UnitFrame_OnLeave(self)
+	UIFrameFadeOut(self.Highlight, 0.1, 0.6, 0)
+end
 
 local function player_TargetChanged(self)
 	if ( UnitIsUnit(self.unit, "target") ) then
@@ -319,8 +317,8 @@ local function createRaidFrame(self, unit)
 	local statusbar = cfg.statusbar
 
 	self:RegisterForClicks("AnyUp")
-	--self:SetScript("OnEnter", frame_OnEnter)
-	--self:SetScript("OnLeave", frame_OnLeave)
+	self:SetScript("OnEnter", frame_OnEnter)
+	self:SetScript("OnLeave", frame_OnLeave)
 
 	self:SetBackdrop({bgFile = statusbar})
 	self:SetBackdropColor(0,0,0,cfg.backdrop_alpha)

@@ -1,8 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[----------------------------
-Media options
---------------------------------]]
+-- Main Media options
 C["media"] = {
 	["normal_font"] = [[Interface\AddOns\KkthnxUI\Media\Fonts\Normal.ttf]],
 	["combat_font"] = [[Interface\AddOns\KkthnxUI\Media\Fonts\Damage.ttf]],
@@ -12,8 +10,9 @@ C["media"] = {
 	["glow"] = [[Interface\AddOns\KkthnxUI\Media\Textures\GlowTex.tga]],
 	["blizz"] = [[Interface\AddOns\KkthnxUI\Media\Tooltips\KkthnxBorder.blp]],
 	["blank"] = [[Interface\AddOns\KkthnxUI\Media\Textures\Blank.tga]],
-
+	
 	["abtextures"] = [[Interface\Addons\KkthnxUI\Media\Actionbars\]],
+	["platetextures"] = [[Interface\Addons\KkthnxUI\Media\Nameplates\]],
 	["auratextures"] = [[Interface\Addons\KkthnxUI\Media\Buffs\]],
 	["bordertextures"] = [[Interface\Addons\KkthnxUI\Media\Border\]],
 	
@@ -25,9 +24,7 @@ C["media"] = {
 	["overlay_color"] = {0, 0, 0, 0.7},
 }
 
---[[----------------------------
-General options
---------------------------------]]
+-- General options
 C["general"] = {
 	["auto_scale"] = true,
 	["customlagtolerance"] = false,
@@ -35,16 +32,13 @@ C["general"] = {
 	["welcome_message"] = true,
 }
 
---[[----------------------------
-Misc options
---------------------------------]]
+-- Misc options
 C["misc"] = {
 	["afkcam"] = true,
 	["alreadyknown"] = true,
 	["betterlootfilter"] = false,
 	["bgspam"] = true,
 	["bossbanner"] = true,
-	["charscurrency"] = true,
 	["clickcast"] = false,
 	["clickcastfilter"] = false,
 	["disenchanting"] = true,
@@ -63,9 +57,7 @@ C["misc"] = {
 	["sumbuyouts"] = false,
 }
 
---[[----------------------------
-Blizzard options
---------------------------------]]
+-- Blizzard options
 C["blizzard"] = {
 	["altpowerbar"] = true,
 	["capturebar"] = true,
@@ -75,27 +67,21 @@ C["blizzard"] = {
 	["repreward"] = true,
 }
 
---[[----------------------------
-Minimap options
---------------------------------]]
+-- Minimap options
 C["minimap"] = {
 	["collectbuttons"] = true,
 	["enable"] = true,
 	["size"] = 150,
 }
 
---[[----------------------------
-Map options
---------------------------------]]
+-- Map options
 C["map"] = {
 	["exploremap"] = false,
 	["fogofwar"] = false,
 	["mapbosscount"] = true,
 }
 
---[[----------------------------
-Buffs / Debuffs options
---------------------------------]]
+-- Buffs / Debuffs options
 C["buffs"] = {
 	["aurasperrow"] = 12,
 	["buffsize"] = 34,
@@ -106,9 +92,7 @@ C["buffs"] = {
 	["paddingy"] = 6,
 }
 
---[[----------------------------
-ActionBar options
---------------------------------]]
+-- ActionBar options
 C["actionbar"] = {
 	["enable"] = true,
 	["scale"] = 1,
@@ -118,9 +102,7 @@ C["actionbar"] = {
 	["skinbuttons"] = true,
 }
 
---[[----------------------------
-Nameplate options
---------------------------------]]
+-- Nameplate options
 C["nameplate"] = {
 	["ad_height"] = 0,
 	["ad_width"] = 0,
@@ -141,9 +123,7 @@ C["nameplate"] = {
 	["width"] = 124,
 }
 
---[[----------------------------
-Announcements options
---------------------------------]]
+-- Announcements options
 C["announcements"] = {
 	["badgear"] = true,
 	["drinking"] = false,
@@ -152,9 +132,7 @@ C["announcements"] = {
 	["spells"] = false,
 }
 
---[[----------------------------
-Panel options
---------------------------------]]
+-- Panel options
 C["toppanel"] = {
 	["enable"] = false,
 	["height"] = 90,
@@ -162,9 +140,7 @@ C["toppanel"] = {
 	["width"] = 250,
 }
 
---[[----------------------------
-Stats options
---------------------------------]]
+-- Stats options
 C["stats"] = {
 	["battleground"] = true,
 	["clock"] = true,
@@ -185,9 +161,7 @@ C["stats"] = {
 	["memory"] = true,
 }
 
---[[----------------------------
-Combat text options
---------------------------------]]
+-- Combat text options
 C["combattext"] = {
 	["blizz_head_numbers"] = false,
 	["crit_postfix"] = "*",
@@ -217,17 +191,19 @@ C["combattext"] = {
 	["treshold"] = 1,
 }
 
---[[----------------------------
-Unitframe options
---------------------------------]]
+-- Unitframe options
 C["unitframe"] = {
-	["customscript"] = false,
 	["enable"] = true,
+	["scale"] = 1.2,
+	["cbscale"] = 1.2,
+	["partyscale"] = 1.2,
+	["bossscale"] = 1.2,
+	["arenascale"] = 1.2,
+	["portraits"] = true,
+	["classcolorhealth"] = true,
 }
 
---[[----------------------------
-Addonskin options
---------------------------------]]
+-- Addonskin options
 C["skins"] = {
 	["bigwigs"] = false,
 	["dbm"] = false,
@@ -235,10 +211,7 @@ C["skins"] = {
 	["weakauras"] = false,
 }
 
-
---[[----------------------------
-Tooltip options
---------------------------------]]
+-- Tooltip options
 C["tooltip"] = {
 	["cursor"] = false,
 	["enable"] = true,
@@ -266,9 +239,7 @@ C["tooltip"] = {
 	["who_targetting"] = true,
 }
 
---[[----------------------------
-Loot options
---------------------------------]]
+-- Loot options
 C["loot"] = {
 	["auto_confirm_de"] = true,
 	["auto_greed"] = true,
@@ -278,9 +249,7 @@ C["loot"] = {
 	["width"] = 222,
 }
 
---[[----------------------------
-Automation options
---------------------------------]]
+-- Automation options
 C["automation"] = {
 	["autocollapse"] = true,
 	["autoinvite"] = true,
@@ -292,18 +261,14 @@ C["automation"] = {
 	["openitems"] = false
 }
 
---[[----------------------------
-Error options
---------------------------------]]
+-- Error options
 C["error"] = {
 	["black"] = true,
 	["combat"] = false,
 	["white"] = false,
 }
 
---[[----------------------------
-Chat options
---------------------------------]]
+-- Chat options
 C["chat"] = {
 	["bubbles"] = true,
 	["channelreplace"] = true,

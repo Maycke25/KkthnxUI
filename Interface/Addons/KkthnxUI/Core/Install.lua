@@ -1,10 +1,7 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[-----------------------------------
-Awesome install :D
----------------------------------------]]
+-- Simple Install
 local function InstallUI()
-	-- Don't need to set CVar multiple time
 	SetCVar("BnWhisperMode", "inline")
 	SetCVar("ConversationMode", "inline")
 	SetCVar("RotateMinimap", 0)
@@ -183,10 +180,20 @@ local function InstallUI()
 	-- Reset saved variables on char
 	SavedPositions = {}
 	SavedOptionsPerChar = {}
+	--oUFAbuSettings = {}
+	----------------------------------------------------------------
+	-- If we ever need to manually reset a Database
+	-- You can run the command below but with the saved DB name.
+	-- Example oUF_Abu shows as oUFAbuSettings
+	-- So we type in-game /run oUFAbuSettings = nil ReloadUI()
+	----------------------------------------------------------------
+	if IsAddOnLoaded("oUF_Abu") or IsAddOnLoaded("oUF_AbuRaid") then
+		oUFAbuSettings = {}
+	end
 	
 	SavedOptionsPerChar.Install = true
 	SavedOptionsPerChar.FogOfWar = false
-
+	
 	ReloadUI()
 end
 
@@ -195,9 +202,8 @@ local function DisableUI()
 	ReloadUI()
 end
 
---[[-----------------------------------
-Install Popups :D
----------------------------------------]]
+
+-- Install Popups 
 StaticPopupDialogs.INSTALL_UI = {
 	text = L_POPUP_INSTALLUI,
 	button1 = ACCEPT,
@@ -256,21 +262,25 @@ SlashCmdList.INSTALLUI = function() StaticPopup_Show("INSTALL_UI") end
 SLASH_RESETSTATS1 = "/resetstats"
 SlashCmdList.RESETSTATS = function() StaticPopup_Show("RESET_STATS") end
 
---[[-----------------------------------
-On logon function
----------------------------------------]]
+-- On logon function
 local OnLogon = CreateFrame("Frame")
 OnLogon:RegisterEvent("PLAYER_ENTERING_WORLD")
 OnLogon:SetScript("OnEvent", function(self, event)
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
-
+	
 	-- Create empty CVar if they doesn't exist
 	if SavedOptions == nil then SavedOptions = {} end
 	if SavedPositions == nil then SavedPositions = {} end
 	if SavedAddonProfiles == nil then SavedAddonProfiles = {} end
 	if SavedOptionsPerChar == nil then SavedOptionsPerChar = {} end
-	if SavedOptionsPerChar.FogOfWar == nil then SavedOptionsPerChar.FogOfWar = false end
+	--if oUFAbuSettings == nil then oUFAbuSettings = {} end
 
+	if IsAddOnLoaded("oUF_Abu") or IsAddOnLoaded("oUF_AbuRaid") then
+		if oUFAbuSettings == nil then oUFAbuSettings = {} end
+	end
+
+	if SavedOptionsPerChar.FogOfWar == nil then SavedOptionsPerChar.FogOfWar = false end
+	
 	if K.getscreenwidth < 1024 and GetCVar("gxMonitor") == "0" then
 		SetCVar("useUiScale", 0)
 		StaticPopup_Show("DISABLE_UI")
@@ -278,16 +288,16 @@ OnLogon:SetScript("OnEvent", function(self, event)
 		SetCVar("useUiScale", 1)
 		if C.general.uiscale > 1.28 then C.general.uiscale = 1.28 end
 		if C.general.uiscale < 0.64 then C.general.uiscale = 0.64 end
-
+		
 		-- Set our uiscale
 		SetCVar("uiScale", C.general.uiscale)
-
+		
 		-- Install default if we never ran KkthnxUI on this character
 		if not SavedOptionsPerChar.Install then
 			StaticPopup_Show("INSTALL_UI")
 		end
 	end
-
+	
 	-- Welcome message
 	if C.general.welcome_message == true then
 		print("|cffffff00"..L_WELCOME_LINE_1..K.Version.." "..K.Client..", "..K.Name..".|r")

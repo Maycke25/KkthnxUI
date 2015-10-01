@@ -9,7 +9,6 @@ local colors = oUF.colors
 		and support for a flash textures.
 		
 	Sub-Widgets
-
 		.Text     - A FontString to represent spell name.
 		.Icon     - A Texture to represent spell icon.
 		.Time     - A FontString to represent spell duration.
@@ -17,13 +16,10 @@ local colors = oUF.colors
 		.SafeZone - A Texture to represent latency.
 		.Spark    - A Texture to represent the castbar spark.
 		.Flash    - A Texture or Frame to flash when a cast is finished
-
 	Credits
 	
 		Haste for oUF castbar element and Blizzard
-
 	Hooks and callbacks
-
 		CCastbar.PostCastStart(unit, name, castid)
 		CCastbar.PostCastFailed(unit, spellname, castid)
 		CCastbar.PostCastStop(unit, spellname, castid)
@@ -34,7 +30,6 @@ local colors = oUF.colors
 		CCastbar.PostChannelStart(unit, name)
 		CCastbar.PostChannelUpdate(unit, name)
 		CCastbar.PostChannelStop(unit, spellname)
-
 		CCastbar.CustomDelayText(duration)
 		CCastbar.CustomTimeText(duration)
 ]]
@@ -71,7 +66,7 @@ local UNIT_SPELLCAST_START = function(self, event, unit, spell)
 
 	local castbar = self.CCastbar
 	local name, _, text, texture, startTime, endTime, _, castid, notInterruptible = UnitCastingInfo(unit)
-	if(not name) then
+	if (not name or not castbar.enableCastbar) then
 		castbar:Hide()
 		return
 	end
@@ -276,7 +271,7 @@ local UNIT_SPELLCAST_CHANNEL_START = function(self, event, unit, spellname)
 
 	local castbar = self.CCastbar
 	local name, _, text, texture, startTime, endTime, isTrade, interrupt = UnitChannelInfo(unit)
-	if(not name) then
+	if (not name or not castbar.enableCastbar) then
 		return
 	end
 
@@ -349,6 +344,19 @@ local UNIT_SPELLCAST_CHANNEL_UPDATE = function(self, event, unit, spellname)
 
 	if(castbar.PostChannelUpdate) then
 		return castbar:PostChannelUpdate(unit, name)
+	end
+end
+
+local UNIT_PET = function(self, event, unit)
+	local castbar = self.CCastbar
+
+	if unit == 'player' then
+		castbar.enableCastbar = UnitIsPossessed("pet")
+		if ( not castbar.enableCastbar ) then
+			castbar:Hide()
+		elseif ( castbar.casting or castbar.channeling ) then
+			castbar:Show()
+		end
 	end
 end
 
@@ -556,15 +564,18 @@ local Enable = function(object, unit)
 		castbar.channeling = nil;
 		castbar.holdTime = 0;
 		castbar.DummyCastbar = UnrealCastbar
+		castbar.enableCastbar = true
 
-		if(object.unit == "player") then
+		if(object.cUnit == "player") then
 			CastingBarFrame:UnregisterAllEvents()
 			CastingBarFrame.Show = CastingBarFrame.Hide
 			CastingBarFrame:Hide()
-		elseif(object.unit == 'pet') then
+		elseif(object.cUnit == 'pet') then
 			PetCastingBarFrame:UnregisterAllEvents()
 			PetCastingBarFrame.Show = PetCastingBarFrame.Hide
 			PetCastingBarFrame:Hide()
+			object:RegisterEvent("UNIT_PET", UNIT_PET)
+			castbar.enableCastbar = UnitIsPossessed("pet")
 		end
 
 		if(castbar:IsObjectType'StatusBar' and not castbar:GetStatusBarTexture()) then
@@ -615,6 +626,10 @@ local Disable = function(object, unit)
 		object:UnregisterEvent("UNIT_SPELLCAST_CHANNEL_STOP", UNIT_SPELLCAST_CHANNEL_STOP)
 
 		castbar:SetScript("OnUpdate", nil)
+
+		if(object.cUnit == 'pet') then
+			object:UnregisterEvent("UNIT_PET", UNIT_PET)
+		end
 	end
 end
 

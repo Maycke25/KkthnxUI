@@ -46,44 +46,15 @@ local function CreateVirtualFrame(frame, point)
 
 	frame.backdrop = frame:CreateTexture(nil, "BORDER")
 	frame.backdrop:SetDrawLayer("BORDER", -8)
-	frame.backdrop:SetPoint("TOPLEFT", point, "TOPLEFT", -K.noscalemult * 3, K.noscalemult * 3)
-	frame.backdrop:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", K.noscalemult * 3, -K.noscalemult * 3)
-	frame.backdrop:SetTexture(unpack(C.media.backdrop_color))
+	frame.backdrop:SetPoint("TOPLEFT", point, "TOPLEFT", -K.noscalemult, K.noscalemult)
+	frame.backdrop:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", K.noscalemult, -K.noscalemult)
+	frame.backdrop:SetTexture(0.05, 0.05, 0.05, 1)
 
-	frame.bordertop = frame:CreateTexture(nil, "BORDER")
-	frame.bordertop:SetPoint("TOPLEFT", point, "TOPLEFT", -K.noscalemult * 2, K.noscalemult * 2)
-	frame.bordertop:SetPoint("TOPRIGHT", point, "TOPRIGHT", K.noscalemult * 2, K.noscalemult * 2)
-	frame.bordertop:SetHeight(K.noscalemult)
-	frame.bordertop:SetTexture(unpack(C.media.border_color))
-	frame.bordertop:SetDrawLayer("BORDER", -7)
-
-	frame.borderbottom = frame:CreateTexture(nil, "BORDER")
-	frame.borderbottom:SetPoint("BOTTOMLEFT", point, "BOTTOMLEFT", -K.noscalemult * 2, -K.noscalemult * 2)
-	frame.borderbottom:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", K.noscalemult * 2, -K.noscalemult * 2)
-	frame.borderbottom:SetHeight(K.noscalemult)
-	frame.borderbottom:SetTexture(unpack(C.media.border_color))
-	frame.borderbottom:SetDrawLayer("BORDER", -7)
-
-	frame.borderleft = frame:CreateTexture(nil, "BORDER")
-	frame.borderleft:SetPoint("TOPLEFT", point, "TOPLEFT", -K.noscalemult * 2, K.noscalemult * 2)
-	frame.borderleft:SetPoint("BOTTOMLEFT", point, "BOTTOMLEFT", K.noscalemult * 2, -K.noscalemult * 2)
-	frame.borderleft:SetWidth(K.noscalemult)
-	frame.borderleft:SetTexture(unpack(C.media.border_color))
-	frame.borderleft:SetDrawLayer("BORDER", -7)
-
-	frame.borderright = frame:CreateTexture(nil, "BORDER")
-	frame.borderright:SetPoint("TOPRIGHT", point, "TOPRIGHT", K.noscalemult * 2, K.noscalemult * 2)
-	frame.borderright:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", -K.noscalemult * 2, -K.noscalemult * 2)
-	frame.borderright:SetWidth(K.noscalemult)
-	frame.borderright:SetTexture(unpack(C.media.border_color))
-	frame.borderright:SetDrawLayer("BORDER", -7)
+	CreateStyle2(frame, 3.6)
 end
 
 local function SetVirtualBorder(frame, r, g, b)
-	frame.bordertop:SetTexture(r, g, b)
-	frame.borderbottom:SetTexture(r, g, b)
-	frame.borderleft:SetTexture(r, g, b)
-	frame.borderright:SetTexture(r, g, b)
+	
 end
 
 -- Create aura icons
@@ -92,23 +63,27 @@ local function CreateAuraIcon(frame)
 	button:SetWidth(C.nameplate.auras_size)
 	button:SetHeight(C.nameplate.auras_size)
 
+	CreateStyle2(frame, 3.6)
+
+	CreateStyle(button, 4)
+	
 	button.bg = button:CreateTexture(nil, "BACKGROUND")
-	button.bg:SetTexture(unpack(C.media.backdrop_color))
+	button.bg:SetTexture(0.05, 0.05, 0.05, 1)
 	button.bg:SetAllPoints(button)
 
 	button.bord = button:CreateTexture(nil, "BORDER")
-	button.bord:SetTexture(unpack(C.media.border_color))
-	button.bord:SetPoint("TOPLEFT", button, "TOPLEFT", K.noscalemult, -K.noscalemult)
-	button.bord:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -K.noscalemult, K.noscalemult)
+	button.bord:SetTexture(.6,.6,.6,0)
+	button.bord:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0)
+	button.bord:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, 0)
 
 	button.bg2 = button:CreateTexture(nil, "ARTWORK")
-	button.bg2:SetTexture(unpack(C.media.backdrop_color))
-	button.bg2:SetPoint("TOPLEFT", button, "TOPLEFT", K.noscalemult * 2, -K.noscalemult * 2)
-	button.bg2:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -K.noscalemult * 2, K.noscalemult * 2)
+	button.bg2:SetTexture(0.05, 0.05, 0.05, 1)
+	button.bg2:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0)
+	button.bg2:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, 0)
 
 	button.icon = button:CreateTexture(nil, "OVERLAY")
-	button.icon:SetPoint("TOPLEFT", button, "TOPLEFT", K.noscalemult * 3, -K.noscalemult * 3)
-	button.icon:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -K.noscalemult * 3, K.noscalemult * 3)
+	button.icon:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0)
+	button.icon:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, 0)
 	button.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
 	button.cd = CreateFrame("Cooldown", nil, button)
@@ -424,10 +399,11 @@ local function SkinObjects(frame, nameFrame)
 		local cIconTex = hp:CreateTexture(nil, "OVERLAY")
 		cIconTex:SetPoint("TOPRIGHT", hp, "TOPLEFT", -5, 2)
 		cIconTex:SetTexture("Interface\\WorldStateFrame\\Icons-Classes")
-		cIconTex:SetSize((C.nameplate.height * 2) + 11, (C.nameplate.height * 2) + 11)
+		cIconTex:SetSize(C.nameplate.height + 4, C.nameplate.height + 4)
 		frame.class = cIconTex
 
 		frame.class.Glow = CreateFrame("Frame", nil, frame)
+		CreateStyle2(frame.class.Glow, 2)
 		frame.class.Glow:SetScale(K.noscalemult)
 		frame.class.Glow:SetPoint("TOPLEFT", frame.class, "TOPLEFT", 0, 0)
 		frame.class.Glow:SetPoint("BOTTOMRIGHT", frame.class, "BOTTOMRIGHT", 0, 0)
@@ -438,7 +414,7 @@ local function SkinObjects(frame, nameFrame)
 	-- Create CastBar Icon
 	cbicon:ClearAllPoints()
 	cbicon:SetPoint("TOPLEFT", hp, "TOPRIGHT", 8, 0)
-	cbicon:SetSize((C.nameplate.height * 2) + 8, (C.nameplate.height * 2) + 8)
+	cbicon:SetSize(C.nameplate.height, C.nameplate.height)
 	cbicon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	cbicon:SetDrawLayer("OVERLAY")
 	cb.icon = cbicon

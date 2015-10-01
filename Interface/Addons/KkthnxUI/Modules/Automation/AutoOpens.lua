@@ -51,7 +51,7 @@ frame:Register("BAG_UPDATE_DELAYED", function(bag)
 	for bag = 0, 4 do
 		for slot = 0, GetContainerNumSlots(bag) do
 			local id = GetContainerItemID(bag, slot)
-			if id and T.OpenItems[id] then
+			if id and K.OpenItems[id] then
 				print("|cffff0000"..USE_COLON.." "..GetContainerItemLink(bag, slot).."|cffff0000.|r")
 				UseContainerItem(bag, slot)
 				return

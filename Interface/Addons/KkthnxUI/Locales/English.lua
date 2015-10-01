@@ -12,15 +12,22 @@ L_BIND_SAVED = "All keybindings have been saved."
 --[[----------------------------
 Welcome message
 --------------------------------]]
-L_WELCOME_LINE_1 = "Welcome to |cFF4488FFKkthnx's|r |cFFFEB200UI|r "
+L_WELCOME_LINE_1 = "Welcome to |cFF4488FFKkthnx|r |cFFFEB200UI|r "
 L_WELCOME_LINE_2_1 = ""
 L_WELCOME_LINE_2_2 = "Type |cFF4488FF/uihelp|r or |cFF4488FF/cfg|r for more features"
 L_WELCOME_LINE_2_3 = ""
 L_WELCOME_LINE_2_4 = "For more info visit |cFF4488FFhttps://github.com/Kkthnx/KkthnxUI|r"
 
 -- Popups
-L_POPUP_INSTALLUI = "First time on |cFF4488FFKkthnx's|r |cFFFEB200UI|r with this Character. You must reload UI to configure it."
-L_POPUP_RESETUI = "Are you sure you want to reset all settings for |cFF4488FFKkthnx's|r |cFFFEB200UI|r?"
+L_POPUP_INSTALLUI = "First time on |cFF4488FFKkthnx|r |cFFFEB200UI|r with this Character. You must reload UI to configure it."
+L_POPUP_RESETUI = "Are you sure you want to reset all settings for |cFF4488FFKkthnx|r |cFFFEB200UI|r?"
+
+--[[----------------------------
+LitePanels AFK module
+--------------------------------]]
+L_PANELS_AFK = "You are AFK!"
+L_PANELS_AFK_RCLICK = "Right-Click to hide."
+L_PANELS_AFK_LCLICK = "Left-Click to go back."
 
 --[[----------------------------
 Chat Strings
@@ -112,7 +119,9 @@ L_ANNOUNCE_FP_USE = "%s used a %s."
 L_ANNOUNCE_INTERRUPTED = INTERRUPTED
 L_WATCH_WOWHEAD_LINK = "Wowhead link"
 
--- Map
+--[[----------------------------
+Map
+--------------------------------]]
 L_MAP_FOG = "Fog of War"
 
 --[[----------------------------
@@ -137,6 +146,7 @@ L_INFO_SETTINGS_SKADA = "Type /settings skada, to apply the settings |cffffc700S
 L_INFO_SETTINGS_WEAKAURAS = "Type /settings weakauras, to apply the settings |cffffc700WeakAuras|r."
 L_INFO_SETTINGS_XLOOT = "Type /settings weakauras, to apply the settings |cffffc700XLoot|r."
 L_INFO_SETTINGS_ZYGOR = "Type /settings zygor, to apply the settings |cffffc700ZygorGuidesViewer|r."
+L_POPUP_SETTINGS_DBM = "We need to change the bar positions of DBM."
 L_POPUP_SETTINGS_ALL = "Apply settings for all addon modifications? This is recommended."
 
 --[[----------------------------
@@ -148,7 +158,7 @@ L_MISC_ONECLICK_BID = "Shift-Right-Click to bid on the selected item without con
 L_MISC_ONECLICK_BUYOUT = "Shift-Right-Click to buyout the selected item without confirmation"
 L_MISC_ONECLICK_CANCEL = "Shift-Right-Click to cancel on the selected item without confirmation"
 L_MISC_SCROLL = "Scroll"
-L_MISC_UI_OUTDATED = "Your version of |cFF4488FFKkthnx's|r |cFFFEB200UI|r is out of date. You can download the latest version from www.github.com/Kkthnx/KkthnxUI"
+L_MISC_UI_OUTDATED = "Your version of |cFF4488FFKkthnx|r |cFFFEB200UI|r is out of date. You can download the latest version from www.github.com/Kkthnx/KkthnxUI"
 
 --[[----------------------------
 Click2Cast
@@ -181,7 +191,7 @@ L_STATS_INSERTS_COORDS = "Shift-Clicking location or coords module inserts your 
 L_STATS_ITEMLINK = "itemlink"
 L_STATS_JUNK_EXCEPTIONS = "Junk exceptions"
 L_STATS_JUNK_LIST = "Junk List"
-L_STATS_JUNK_PROFIT = "|cFF4488FFKkthnx's|r |cFFFEB200UI|r Sold Junk for"
+L_STATS_JUNK_PROFIT = "|cFF4488FFKkthnx|r |cFFFEB200UI|r Sold Junk for"
 L_STATS_KILLS = "K"
 L_STATS_LOCATION = "Location/Coords"
 L_STATS_MEMORY = "Memory"

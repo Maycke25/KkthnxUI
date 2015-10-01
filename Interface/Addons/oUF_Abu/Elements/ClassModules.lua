@@ -214,9 +214,7 @@ function ns.classModule.SHAMAN(self, config, uconfig)
 		_G['TotemFrameTotem'..i.. 'IconCooldown']:SetAlpha(0)
 		_G['TotemFrameTotem'..i.. 'IconCooldown'].noCooldownCount = true -- No OmniCC
 
-		--_G['TotemFrameTotem'..i.. 'Duration']:SetParent(self)
-		--_G['TotemFrameTotem'..i..'Duration']:SetParent('TotemFrameTotem'..i)
-		_G['TotemFrameTotem'..i..'Duration']:SetParent(totemBorder)
+		_G['TotemFrameTotem'..i.. 'Duration']:SetParent(totemBorder)
 		_G['TotemFrameTotem'..i.. 'Duration']:SetDrawLayer('OVERLAY')
 		_G['TotemFrameTotem'..i.. 'Duration']:ClearAllPoints()
 		_G['TotemFrameTotem'..i.. 'Duration']:SetPoint('BOTTOM', _G['TotemFrameTotem'..i], 0, 3)

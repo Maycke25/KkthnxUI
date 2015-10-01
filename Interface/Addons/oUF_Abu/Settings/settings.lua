@@ -57,7 +57,7 @@ function oUFAbu:DeleteProfile(id)
 	if ( id == self:GetProfileID() ) then
 		self:SetProfile(self.DEFAULT)
 	end
-	
+
 	oUFAbuSettings[id] = nil
 	return true
 end
@@ -85,7 +85,7 @@ function oUFAbu:SetProfile(id)
 		if oldID ~= id then	-- Clean the old profile
 			oUFAbuSettings[oldID] = cleanDB(oUFAbuSettings[oldID], ns.defaultConfig)
 		end
-		
+
 		oUFAbuProfile['profile'] = id
 		
 		oUFAbuSettings[id] = initDB(oUFAbuSettings[id], ns.defaultConfig)
@@ -110,7 +110,7 @@ end
 -- [[ Aura Profiles ]] --
 function oUFAbu:CreateAuraProfile(id)
 	if isValidID(id) and not oUFAbuAuraFilters[id] then
-		
+
 		oUFAbuAuraFilters[id] = initDB(oUFAbuAuraFilters[id], ns.defaultAuras)
 		if (id ~= self.DEFAULT) then
 			self:SetAuraProfile(id)
@@ -125,7 +125,7 @@ function oUFAbu:DeleteAuraProfile(id)
 	if ( id == self:GetAuraProfileID() ) then
 		self:SetAuraProfile(self.DEFAULT)
 	end
-	
+
 	oUFAbuAuraFilters[id] = nil
 	return true
 end
@@ -167,12 +167,12 @@ end
 function oUFAbu:SetupSettings()
 	-- Per char
 	_G.oUFAbuProfile = initDB(oUFAbuProfile, ns.defaultProfiles)
-	
+
 	-- Settings
 	_G.oUFAbuSettings = initDB(oUFAbuSettings)
 	self:CreateProfile(self.DEFAULT)
 	self:SetProfile(self:GetProfileID())
-	
+
 	-- Auras
 	_G.oUFAbuAuraFilters = initDB(oUFAbuAuraFilters)
 	self:CreateAuraProfile(self.DEFAULT)

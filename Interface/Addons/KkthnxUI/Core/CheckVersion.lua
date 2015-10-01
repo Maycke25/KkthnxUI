@@ -1,7 +1,7 @@
 ﻿local K, C, L, _ = unpack(select(2, ...))
 
 _G.StaticPopupDialogs["OUTDATED"] = {
-	text = "Download & Update |cFF4488FFKkthnx's|r |cFFFEB200UI|r",
+	text = "Download & Update cFF4488FFKkthnx|r |cFFFEB200UI|r",
 	button1 = OKAY,
 	timeout = 0,
 	whileDead = true,

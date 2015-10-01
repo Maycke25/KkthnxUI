@@ -51,7 +51,7 @@ Anchor_TIGERPOWER:SetHeight(50)
 Anchor_TIGERPOWER:SetWidth(50)
 
 Filger_Spells = {
-["DEATHKNIGHT"] = {
+	["DEATHKNIGHT"] = {
 		{
 			Name = "P_BUFF_ICON",
 			Direction = "LEFT",
@@ -60,7 +60,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Bone Shield
 			{spellID = 49222, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Bone Wall (T16)
@@ -90,7 +90,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Scent of Blood
 			{spellID = 50421, unitID = "player", caster = "player", filter = "BUFF"},
@@ -110,7 +110,7 @@ Filger_Spells = {
 			{spellID = 91342, unitID = "pet", caster = "player", filter = "BUFF"},
 			-- Blood Charge
 			{spellID = 114851, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -167,7 +167,7 @@ Filger_Spells = {
 			{spellID = 126679, unitID = "player", caster = "player", filter = "BUFF"},
 			-- PvP Trinkets (Strength, Proc)
 			{spellID = 126700, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Tank
@@ -177,7 +177,7 @@ Filger_Spells = {
 			-- Physical Melee
 			-- Dancing Steel (Strength)
 			{spellID = 120032, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Meta Gems
 			-- Indomitable Primal Diamond (Tank)
 			{spellID = 137593, unitID = "player", caster = "all", filter = "BUFF", absID = true},
@@ -190,7 +190,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Blood Plague
 			{spellID = 55078, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Frost Fever
@@ -206,7 +206,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Incarnation: Tree of Life
 			{spellID = 117679, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Incarnation: Chosen of Elunee
@@ -250,7 +250,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Shooting Stars
 			{spellID = 93400, unitID = "player", caster = "player", filter = "BUFF"},
@@ -268,11 +268,11 @@ Filger_Spells = {
 			{spellID = 135286, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Predatory Swiftness
 			{spellID = 69369, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Item sets
 			-- Sage Mender (T16)
 			{spellID = 144871, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -370,7 +370,7 @@ Filger_Spells = {
 			{spellID = 148911, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Qin-xi's Polarizing Seal (Intellect, Proc)
 			{spellID = 126588, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Tank
@@ -386,7 +386,7 @@ Filger_Spells = {
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Caster Heal
-
+			
 			-- Legendary Meta Gems
 			-- Indomitable Primal Diamond (Tank)
 			{spellID = 137593, unitID = "player", caster = "all", filter = "BUFF", absID = true},
@@ -394,7 +394,7 @@ Filger_Spells = {
 			{spellID = 137590, unitID = "player", caster = "all", filter = "BUFF"},
 			-- Courageous Primal Diamond (Caster Heal)
 			{spellID = 137288, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Cloak
 			-- Spirit of Chi-Ji
 			{spellID = 146200, unitID = "player", caster = "all", filter = "BUFF"},
@@ -407,7 +407,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON}, 
-
+			
 			-- Moonfire
 			{spellID = 164812, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Sunfire
@@ -433,7 +433,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD},
-
+			
 			-- Cyclone
 			{spellID = 33786, unitID = "focus", caster = "all", filter = "DEBUFF"},
 			-- Entangling Roots
@@ -449,7 +449,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Deterrence
 			{spellID = 19263, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Rapid Fire
@@ -471,7 +471,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Ready, Set, Aim...
 			--WoD {spellID = 82925, unitID = "player", caster = "player", filter = "BUFF"},
@@ -487,7 +487,7 @@ Filger_Spells = {
 			{spellID = 19615, unitID = "player", caster = "player", filter = "BUFF", absID = true},
 			-- Mend Pet
 			{spellID = 136, unitID = "pet", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -533,11 +533,11 @@ Filger_Spells = {
 			{spellID = 177668, unitID = "player", caster = "player", filter = "BUFF"},
 			-- прицел
 			{spellID = 156055, unitID = "player", caster = "player", filter = "BUFF"},
-				-- прицел
+			-- прицел
 			{spellID = 162915, unitID = "player", caster = "player", filter = "BUFF"},
-				-- прицел
+			-- прицел
 			{spellID = 177668, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Physical General
@@ -555,7 +555,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Black Arrow
 			{spellID = 3674, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Serpent Sting
@@ -575,7 +575,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD},
-
+			
 			-- Wyvern Sting
 			{spellID = 19386, unitID = "focus", caster = "player", filter = "DEBUFF"},
 		},
@@ -589,7 +589,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Ice Block
 			{spellID = 45438, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Invisibility
@@ -625,7 +625,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Fingers of Frost
 			{spellID = 44544, unitID = "player", caster = "player", filter = "BUFF"},
@@ -635,7 +635,7 @@ Filger_Spells = {
 			{spellID = 79683, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Pyroblast!
 			{spellID = 48108, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -676,7 +676,7 @@ Filger_Spells = {
 			{spellID = 126659, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Light of the Cosmos (Intellect, Proc)
 			{spellID = 126577, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Caster General
@@ -684,7 +684,7 @@ Filger_Spells = {
 			{spellID = 104993, unitID = "player", caster = "all", filter = "BUFF"},
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Legendary Meta Gems
 			-- Sinister Primal Diamond (Caster DPS)
 			{spellID = 137590, unitID = "player", caster = "all", filter = "BUFF"},
@@ -697,7 +697,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Arcane Charge
 			{spellID = 36032, unitID = "player", caster = "player", filter = "DEBUFF"},
 			-- Slow
@@ -735,7 +735,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD},
-
+			
 			-- Polymorph
 			{spellID = 118, unitID = "focus", caster = "all", filter = "DEBUFF"},
 		},
@@ -749,7 +749,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 45,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Guard
 			{spellID = 115295, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Fortifying Brew
@@ -777,7 +777,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Tiger Power
 			{spellID = 125359, unitID = "player", caster = "player", filter = "BUFF"},
@@ -793,7 +793,7 @@ Filger_Spells = {
 			{spellID = 118674, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Serpent's Zeal
 			{spellID = 127722, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -866,7 +866,7 @@ Filger_Spells = {
 			{spellID = 148911, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Qin-xi's Polarizing Seal (Intellect, Proc)
 			{spellID = 126588, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Tank
@@ -882,13 +882,13 @@ Filger_Spells = {
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Caster Heal
-
+			
 			-- Legendary Meta Gems
 			-- Indomitable Primal Diamond (Tank)
 			{spellID = 137593, unitID = "player", caster = "all", filter = "BUFF", absID = true},
 			-- Courageous Primal Diamond (Caster Heal)
 			{spellID = 137288, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Cloak
 			-- Spirit of Chi-Ji
 			{spellID = 146200, unitID = "player", caster = "all", filter = "BUFF"},
@@ -901,7 +901,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Heavy Stagger
 			{spellID = 124273, unitID = "player", caster = "player", filter = "DEBUFF"},
 			-- Dizzying Haze
@@ -917,7 +917,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 50,
 			Position = {"LEFT", Anchor_TIGERPOWER},
-
+			
 			-- Tiger Power
 			{spellID = 125359, unitID = "player", caster = "player", filter = "BUFF"},
 		},
@@ -931,7 +931,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Divine Shield
 			{spellID = 642, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Guardian of Ancient Kings
@@ -950,7 +950,7 @@ Filger_Spells = {
 			{spellID = 114163, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Sacred Shield
 			{spellID = 20925, unitID = "player", caster = "player", filter = "BUFF", absID = true},
-				-- Paladins Last Tier Tallant "Empowered Seals"
+			-- Paladins Last Tier Tallant "Empowered Seals"
 			-- Uther's Insight
 			{spellID = 156988, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Liadrin's Righteousness
@@ -964,7 +964,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Infusion of Light
 			{spellID = 54149, unitID = "player", caster = "player", filter = "BUFF"},
@@ -980,11 +980,11 @@ Filger_Spells = {
 			{spellID = 88819, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Long Arm of the Law
 			{spellID = 87173, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Item sets
 			-- Divine Crusader (T16)
 			{spellID = 144595, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -1059,7 +1059,7 @@ Filger_Spells = {
 			{spellID = 148911, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Qin-xi's Polarizing Seal (Intellect, Proc)
 			{spellID = 126588, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Tank
@@ -1075,13 +1075,13 @@ Filger_Spells = {
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Caster Heal
-
+			
 			-- Legendary Meta Gems
 			-- Indomitable Primal Diamond (Tank)
 			{spellID = 137593, unitID = "player", caster = "all", filter = "BUFF", absID = true},
 			-- Courageous Primal Diamond (Caster Heal)
 			{spellID = 137288, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Cloak
 			-- Spirit of Chi-Ji
 			{spellID = 146200, unitID = "player", caster = "all", filter = "BUFF"},
@@ -1094,7 +1094,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Forbearance
 			{spellID = 25771, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Censure
@@ -1116,7 +1116,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Dispersion
 			{spellID = 47585, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Power Infusion
@@ -1144,7 +1144,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON}, 
-
+			
 			-- Buffs
 			-- Divine Insight
 			{spellID = 124430, unitID = "player", caster = "player", filter = "BUFF"},
@@ -1162,7 +1162,7 @@ Filger_Spells = {
 			{spellID = 123254, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Evangelism
 			{spellID = 81661, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -1212,7 +1212,7 @@ Filger_Spells = {
 			{spellID = 148911, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Qin-xi's Polarizing Seal (Intellect, Proc)
 			{spellID = 126588, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Caster General
@@ -1221,13 +1221,13 @@ Filger_Spells = {
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Caster Heal
-
+			
 			-- Legendary Meta Gems
 			-- Sinister Primal Diamond (Caster DPS)
 			{spellID = 137590, unitID = "player", caster = "all", filter = "BUFF"},
 			-- Courageous Primal Diamond (Caster Heal)
 			{spellID = 137288, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Cloak
 			-- Spirit of Chi-Ji
 			{spellID = 146200, unitID = "player", caster = "all", filter = "BUFF"},
@@ -1240,7 +1240,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Void Tendril's Grasp
 			{spellID = 114404, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Glyph of Mind Blast
@@ -1256,7 +1256,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD},
-
+			
 			-- Shackle Undead
 			{spellID = 9484, unitID = "focus", caster = "player", filter = "DEBUFF"},
 			-- Psychic Scream
@@ -1272,7 +1272,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Slice and Dice
 			{spellID = 5171, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Recuperate
@@ -1316,7 +1316,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON}, 
-
+			
 			-- Buffs
 			-- Anticipation
 			{spellID = 115189, unitID = "player", caster = "player", filter = "BUFF"},
@@ -1328,7 +1328,7 @@ Filger_Spells = {
 			{spellID = 84747, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Blindside
 			{spellID = 121153, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -1368,7 +1368,7 @@ Filger_Spells = {
 			{spellID = 126690, unitID = "player", caster = "player", filter = "BUFF"},
 			-- PvP Trinkets (Agility, Proc)
 			{spellID = 126707, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Physical General
@@ -1384,7 +1384,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON}, 
-
+			
 			-- Rupture
 			{spellID = 1943, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Garrote
@@ -1416,7 +1416,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD},
-
+			
 			-- Blind
 			{spellID = 2094, unitID = "focus", caster = "player", filter = "DEBUFF"},
 			-- Sap
@@ -1432,7 +1432,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Maelstorm Weapon
 			{spellID = 53817, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Lightning Shield
@@ -1466,7 +1466,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Clearcasting
 			--WoD {spellID = 16246, unitID = "player", caster = "player", filter = "BUFF"},
@@ -1476,7 +1476,7 @@ Filger_Spells = {
 			{spellID = 118522, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Tidal Waves
 			{spellID = 53390, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -1559,7 +1559,7 @@ Filger_Spells = {
 			{spellID = 148911, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Qin-xi's Polarizing Seal (Intellect, Proc)
 			{spellID = 126588, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Physical General
@@ -1572,13 +1572,13 @@ Filger_Spells = {
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Caster Heal
-
+			
 			-- Legendary Meta Gems
 			-- Sinister Primal Diamond (Caster DPS)
 			{spellID = 137590, unitID = "player", caster = "all", filter = "BUFF"},
 			-- Courageous Primal Diamond (Caster Heal)
 			{spellID = 137288, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Cloak
 			-- Spirit of Chi-Ji
 			{spellID = 146200, unitID = "player", caster = "all", filter = "BUFF"},
@@ -1591,7 +1591,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Stormstrike
 			{spellID = 17364, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Frost Shock
@@ -1613,7 +1613,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD},
-
+			
 			-- Hex
 			{spellID = 51514, unitID = "focus", caster = "player", filter = "DEBUFF"},
 		},
@@ -1627,7 +1627,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Dark Bargain
 			{spellID = 110913, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Unending Resolve
@@ -1655,7 +1655,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Buffs
 			-- Molten Core
 			{spellID = 122355, unitID = "player", caster = "player", filter = "BUFF"},
@@ -1665,11 +1665,11 @@ Filger_Spells = {
 			--WoD {spellID = 34936, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Demonic Rebirth
 			--WoD {spellID = 108559, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Item sets
 			-- Ember Master (T16)
 			{spellID = 145164, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -1710,7 +1710,7 @@ Filger_Spells = {
 			{spellID = 126659, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Light of the Cosmos (Intellect, Proc)
 			{spellID = 126577, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Caster General
@@ -1718,7 +1718,7 @@ Filger_Spells = {
 			{spellID = 104993, unitID = "player", caster = "all", filter = "BUFF"},
 			-- Lightweave (Intellect)
 			{spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Legendary Meta Gems
 			-- Sinister Primal Diamond (Caster DPS)
 			{spellID = 137590, unitID = "player", caster = "all", filter = "BUFF"},
@@ -1731,7 +1731,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Self
 			-- Enslave Demon
 			{spellID = 1098, unitID = "target", caster = "player", filter = "DEBUFF"},
@@ -1746,7 +1746,7 @@ Filger_Spells = {
 			IconSize = 25,
 			BarWidth = 189,
 			Position = {"LEFT", Anchor_PVEPVPCD}, 
-
+			
 			-- Fear
 			{spellID = 118699, unitID = "focus", caster = "player", filter = "DEBUFF"},
 			-- Banish
@@ -1762,7 +1762,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorBUFF_ICON},
-
+			
 			-- Shield Wall
 			{spellID = 871, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Last Stand
@@ -1798,7 +1798,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorP_PROC_ICON},
-
+			
 			-- Bloodsurge
 			{spellID = 46916, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Sword and Board
@@ -1811,7 +1811,7 @@ Filger_Spells = {
 			{spellID = 12880, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Rude Interruption
 			{spellID = 86663, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Trinkets
 			-- General
 			-- Darkmoon Cards (Proc)
@@ -1868,7 +1868,7 @@ Filger_Spells = {
 			{spellID = 126679, unitID = "player", caster = "player", filter = "BUFF"},
 			-- PvP Trinkets (Strength, Proc)
 			{spellID = 126700, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Enchants
 			-- General
 			-- Tank
@@ -1878,7 +1878,7 @@ Filger_Spells = {
 			-- Physical Melee
 			-- Dancing Steel (Strength)
 			{spellID = 120032, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Legendary Meta Gems
 			-- Indomitable Primal Diamond (Tank)
 			{spellID = 137593, unitID = "player", caster = "all", filter = "BUFF", absID = true},
@@ -1891,7 +1891,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"LEFT", AnchorT_DEBUFF_ICON},
-
+			
 			-- Colossus Smash
 			{spellID = 86346, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Hamstring
@@ -1909,7 +1909,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 37,
 			Position = {"RIGHT", AnchorT_SPECIAL_P_BUFF_ICON}, 
-
+			
 			-- Potions
 			-- Virmen's Bite
 			{spellID = 105697, unitID = "player", caster = "player", filter = "BUFF"},
@@ -1923,7 +1923,7 @@ Filger_Spells = {
 			{spellID = 2379, unitID = "player", caster = "player", filter = "BUFF", absID = true},
 			-- Speed (BG)
 			{spellID = 23451, unitID = "player", caster = "all", filter = "BUFF", absID = true},
-
+			
 			-- Leeroy Jenkins
 			-- Bloodlust
 			{spellID = 2825, unitID = "player", caster = "all", filter = "BUFF"},
@@ -1935,7 +1935,7 @@ Filger_Spells = {
 			{spellID = 90355, unitID = "player", caster = "all", filter = "BUFF"},
 			-- Drums of Rage
 			{spellID = 146555, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Professions
 			-- Synapse Springs
 			{spellID = 126734, unitID = "player", caster = "player", filter = "BUFF"},
@@ -1947,7 +1947,7 @@ Filger_Spells = {
 			{spellID = 55001, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Lifeblood
 			--WoD {spellID = 74497, unitID = "player", caster = "player", filter = "BUFF"},
-
+			
 			-- Racial
 			-- Berserking (Troll)
 			{spellID = 26297, unitID = "player", caster = "player", filter = "BUFF", absID = true},
@@ -1961,7 +1961,7 @@ Filger_Spells = {
 			{spellID = 58984, unitID = "player", caster = "player", filter = "BUFF"},
 			-- Gift of the Naaru (Draenei)
 			{spellID = 28880, unitID = "player", caster = "all", filter = "BUFF"},
-
+			
 			-- Other
 			-- Hand of Protection
 			{spellID = 1022, unitID = "player", caster = "all", filter = "BUFF"},
@@ -2016,7 +2016,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 60,
 			Position = {"LEFT", Anchor_PVEDEBUFF},
-
+			
 			-- Death Knight
 			-- Shroud of Purgatory
 			{spellID = 116888, unitID = "player", caster = "player", filter = "DEBUFF"},
@@ -2036,7 +2036,7 @@ Filger_Spells = {
 			{spellID = 45524, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Chilblains
 			{spellID = 50435, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Druid
 			-- Cyclone
 			{spellID = 33786, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2060,7 +2060,7 @@ Filger_Spells = {
 			{spellID = 58180, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Typhoon
 			{spellID = 61391, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Hunter
 			-- Aspect of the Pack
 			{spellID = 13159, unitID = "player", caster = "all", filter = "BUFF"},
@@ -2090,7 +2090,7 @@ Filger_Spells = {
 			{spellID = 50433, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Warp Time (Warp Stalker)
 			{spellID = 35346, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Mage
 			-- Cauterize
 			{spellID = 87023, unitID = "player", caster = "player", filter = "DEBUFF"},
@@ -2120,7 +2120,7 @@ Filger_Spells = {
 			{spellID = 44614, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Chilled
 			{spellID = 7321, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Monk
 			-- Paralysis
 			{spellID = 115078, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2132,7 +2132,7 @@ Filger_Spells = {
 			{spellID = 119392, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Disable
 			{spellID = 116706, unitID = "player", caster = "all", filter = "DEBUFF", absID = true},
-
+			
 			-- Paladin
 			-- Hammer of Justice
 			{spellID = 853, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2152,7 +2152,7 @@ Filger_Spells = {
 			{spellID = 20170, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Denounce
 			{spellID = 2812, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Priest
 			-- Dominate Mind
 			{spellID = 605, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2170,7 +2170,7 @@ Filger_Spells = {
 			{spellID = 87194, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Mind Flay
 			{spellID = 15407, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Rogue
 			-- Kidney Shot
 			{spellID = 408, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2190,7 +2190,7 @@ Filger_Spells = {
 			{spellID = 26679, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Crippling Poison
 			{spellID = 3409, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Shaman
 			-- Hex
 			{spellID = 51514, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2208,7 +2208,7 @@ Filger_Spells = {
 			{spellID = 8056, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Thunderstorm
 			{spellID = 51490, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Warlock
 			-- Shadowfury
 			{spellID = 30283, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2232,7 +2232,7 @@ Filger_Spells = {
 			{spellID = 17962, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Shadowflame
 			{spellID = 47960, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Warrior
 			-- Storm Bolt
 			{spellID = 132169, unitID = "player", caster = "all", filter = "DEBUFF", absID = true},
@@ -2250,7 +2250,7 @@ Filger_Spells = {
 			{spellID = 86346, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Warbringer
 			{spellID = 7922, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Racial
 			-- War Stomp
 			{spellID = 20549, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2258,7 +2258,7 @@ Filger_Spells = {
 			{spellID = 107079, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Arcane Torrent
 			{spellID = 28730, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Throne of Thunder
 			-- Focused Lightning (Jin'rokh the Breaker)
 			{spellID = 137422, unitID = "player", caster = "all", filter = "DEBUFF"},
@@ -2288,7 +2288,7 @@ Filger_Spells = {
 			{spellID = 116417, unitID = "player", caster = "all", filter = "DEBUFF"},
 			-- Voodoo Doll (Gara'jal the Spiritbinder)
 			{spellID = 122151, unitID = "player", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Other
 			-- Rocket Fuel Leak
 			{spellID = 94794, unitID = "player", caster = "player", filter = "DEBUFF"},
@@ -2301,7 +2301,7 @@ Filger_Spells = {
 			Alpha = 1,
 			IconSize = 60,
 			Position = {"LEFT", AnchorT_BUFF_ICON},
-
+			
 			-- Death knight
 			-- Anti-Magic Shell
 			{spellID = 48707, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2326,7 +2326,7 @@ Filger_Spells = {
 			{spellID = 91797, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Strangulate
 			{spellID = 47476, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Druid
 			-- Survival Instincts
 			{spellID = 61336, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2359,7 +2359,7 @@ Filger_Spells = {
 			{spellID = 114238, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Entangling Roots
 			{spellID = 339, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Hunter
 			-- Aspect of the Pack
 			{spellID = 13159, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2378,7 +2378,7 @@ Filger_Spells = {
 			{spellID = 117526, unitID = "target", caster = "all", filter = "DEBUFF", absID = true},
 			-- Intimidation
 			{spellID = 24394, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Mage
 			-- Ice Block
 			{spellID = 45438, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2403,7 +2403,7 @@ Filger_Spells = {
 			{spellID = 31661, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Frostjaw
 			{spellID = 102051, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Monk
 			-- Touch of Karma
 			{spellID = 125174, unitID = "target", caster = "target", filter = "BUFF"},
@@ -2420,7 +2420,7 @@ Filger_Spells = {
 			{spellID = 120086, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Charging Ox Wave
 			{spellID = 119392, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Paladin
 			-- Divine Shield
 			{spellID = 642, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2453,7 +2453,7 @@ Filger_Spells = {
 			{spellID = 105421, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Avenger's Shield
 			{spellID = 31935, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Priest
 			-- Dispersion
 			{spellID = 47585, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2474,7 +2474,7 @@ Filger_Spells = {
 			{spellID = 64044, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Silence
 			{spellID = 15487, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Rogue
 			-- Cloak of Shadows
 			{spellID = 31224, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2499,7 +2499,7 @@ Filger_Spells = {
 			{spellID = 1330, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Smoke Bomb
 			{spellID = 76577, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Shaman
 			-- Grounding Totem Effect
 			{spellID = 8178, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2514,7 +2514,7 @@ Filger_Spells = {
 			{spellID = 118905, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Pulverize (Earth Elemental)
 			{spellID = 118345, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Warlock
 			-- Dark Bargain
 			{spellID = 110913, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2543,7 +2543,7 @@ Filger_Spells = {
 			{spellID = 115268, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Unstable Affliction
 			{spellID = 31117, unitID = "target", caster = "all", filter = "DEBUFF", absID = true},
-
+			
 			-- Warrior
 			-- Spell Reflection
 			{spellID = 23920, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2568,7 +2568,7 @@ Filger_Spells = {
 			{spellID = 5246, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Silenced (Gag Order)
 			{spellID = 18498, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Racial
 			-- War Stomp
 			{spellID = 20549, unitID = "target", caster = "all", filter = "DEBUFF"},
@@ -2576,11 +2576,11 @@ Filger_Spells = {
 			{spellID = 107079, unitID = "target", caster = "all", filter = "DEBUFF"},
 			-- Arcane Torrent
 			{spellID = 28730, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- Heart of Fear
 			-- Impaling Spear (Wind Lord Mel'jarak)
 			{spellID = 122224, unitID = "target", caster = "all", filter = "DEBUFF"},
-
+			
 			-- All
 			-- Warsong Flag
 			{spellID = 23333, unitID = "target", caster = "all", filter = "BUFF"},
@@ -2634,7 +2634,7 @@ end
 
 function Filger:UpdateCD()
 	local time = self.value.start + self.value.duration - GetTime()
-
+	
 	if self:GetParent().Mode == "BAR" then
 		self.statusbar:SetValue(time)
 		if time <= 60 then
@@ -2658,14 +2658,14 @@ function Filger:DisplayActives()
 	local id = self.Id
 	local index = 1
 	local previous = nil
-
+	
 	for _, _ in pairs(self.actives) do
 		local bar = self.bars[index]
 		if not bar then
 			bar = CreateFrame("Frame", "FilgerAnchor"..id.."Frame"..index, self)
 			bar:SetScale(1)
 			CreateStyle(bar, 2)
-
+			
 			if index == 1 then
 				bar:SetPoint(unpack(self.Position))
 			else
@@ -2679,7 +2679,7 @@ function Filger:DisplayActives()
 					bar:SetPoint("TOP", previous, "BOTTOM", 0, -self.Interval)
 				end
 			end
-
+			
 			if bar.icon then
 				bar.icon = _G[bar.icon:GetName()]
 			else
@@ -2688,7 +2688,7 @@ function Filger:DisplayActives()
 				bar.icon:SetPoint("BOTTOMRIGHT", -2, 2)
 				bar.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			end
-
+			
 			if self.Mode == "ICON" then
 				if bar.cooldown then
 					bar.cooldown = _G[bar.cooldown:GetName()]
@@ -2698,7 +2698,7 @@ function Filger:DisplayActives()
 					bar.cooldown:SetReverse(true)
 					bar.cooldown:SetFrameLevel(2)
 				end
-
+				
 				if bar.count then
 					bar.count = _G[bar.count:GetName()]
 				else
@@ -2725,7 +2725,7 @@ function Filger:DisplayActives()
 				end
 				bar.statusbar:SetMinMaxValues(0, 1)
 				bar.statusbar:SetValue(0)
-
+				
 				if bar.bg then
 					bar.bg = _G[bar.bg:GetName()]
 				else
@@ -2735,7 +2735,7 @@ function Filger:DisplayActives()
 					bar.bg:SetFrameStrata("BACKGROUND")
 					CreateStyle(bar.bg, 2)
 				end
-
+				
 				if bar.background then
 					bar.background = _G[bar.background:GetName()]
 				else
@@ -2744,7 +2744,7 @@ function Filger:DisplayActives()
 					bar.background:SetTexture(C.media.texture)
 					bar.background:SetVertexColor(.05,.05,.05, 0.25)
 				end
-
+				
 				if bar.time then
 					bar.time = _G[bar.time:GetName()]
 				else
@@ -2754,7 +2754,7 @@ function Filger:DisplayActives()
 					bar.time:SetPoint("RIGHT", bar.statusbar, 0, 0)
 					bar.time:SetJustifyH("RIGHT")
 				end
-
+				
 				if bar.count then
 					bar.count = _G[bar.count:GetName()]
 				else
@@ -2764,7 +2764,7 @@ function Filger:DisplayActives()
 					bar.count:SetPoint("BOTTOMRIGHT", 1, 0)
 					bar.count:SetJustifyH("CENTER")
 				end
-
+				
 				if bar.spellname then
 					bar.spellname = _G[bar.spellname:GetName()]
 				else
@@ -2782,22 +2782,22 @@ function Filger:DisplayActives()
 		previous = bar
 		index = index + 1
 	end
-
+	
 	if not self.sortedIndex then self.sortedIndex = {} end
-
+	
 	for n in pairs(self.sortedIndex) do
 		self.sortedIndex[n] = 999
 	end
-
+	
 	local activeCount = 1
 	for n in pairs(self.actives) do
 		self.sortedIndex[activeCount] = n
 		activeCount = activeCount + 1
 	end
 	table.sort(self.sortedIndex)
-
+	
 	index = 1
-
+	
 	for n in pairs(self.sortedIndex) do
 		if n >= activeCount then
 			break
@@ -2850,7 +2850,7 @@ function Filger:DisplayActives()
 		bar:Show()
 		index = index + 1
 	end
-
+	
 	for i = index, #self.bars, 1 do
 		local bar = self.bars[i]
 		bar:Hide()
@@ -2861,13 +2861,13 @@ function Filger:OnEvent(event, unit)
 	if event == "SPELL_UPDATE_COOLDOWN" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "UNIT_AURA" and (unit == "target" or unit == "player" or unit == "pet" or unit == "focus") then
 		local needUpdate = false
 		local id = self.Id
-
+		
 		for i = 1, #Filger_Spells[class][id], 1 do
 			local data = Filger_Spells[class][id][i]
 			local found = false
 			local name, icon, count, duration, start, spid
 			spid = 0
-
+			
 			if data.filter == "BUFF" then
 				local caster, spn, expirationTime
 				spn, _, _ = GetSpellInfo(data.spellID)
@@ -2875,7 +2875,7 @@ function Filger:OnEvent(event, unit)
 				if name and (data.caster ~= 1 and (caster == data.caster or data.caster == "all") or MyUnits[caster]) then
 					start = expirationTime - duration
 					found = true
-					end
+				end
 			elseif data.filter == "DEBUFF" then
 				local caster, spn, expirationTime
 				spn, _, _ = GetSpellInfo(data.spellID)
@@ -2924,7 +2924,7 @@ function Filger:OnEvent(event, unit)
 					found = true
 				end
 			end
-
+			
 			if found then
 				if not self.actives then self.actives = {} end
 				if not self.actives[i] then
@@ -2945,7 +2945,7 @@ function Filger:OnEvent(event, unit)
 				end
 			end
 		end
-
+		
 		if needUpdate and self.actives then
 			Filger.DisplayActives(self)
 		end
@@ -2958,7 +2958,7 @@ if Filger_Spells and Filger_Spells["ALL"] then
 	if not Filger_Spells[class] then
 		Filger_Spells[class] = {}
 	end
-
+	
 	for i = 1, #Filger_Spells["ALL"], 1 do
 		local merge = false
 		local spellListAll = Filger_Spells["ALL"][i]
@@ -2988,12 +2988,12 @@ if Filger_Spells and Filger_Spells[class] then
 			Filger_Spells[index] = nil
 		end
 	end
-
+	
 	local idx = {}
 	for i = 1, #Filger_Spells[class], 1 do
 		local jdx = {}
 		local data = Filger_Spells[class][i]
-
+		
 		for j = 1, #data, 1 do
 			local spn
 			if data[j].spellID then
@@ -3009,21 +3009,21 @@ if Filger_Spells and Filger_Spells[class] then
 				table.insert(jdx, j)
 			end
 		end
-
+		
 		for _, v in ipairs(jdx) do
 			table.remove(data, v)
 		end
-
+		
 		if #data == 0 then
 			print("")
 			table.insert(idx, i)
 		end
 	end
-
+	
 	for _, v in ipairs(idx) do
 		table.remove(Filger_Spells[class], v)
 	end
-
+	
 	for i = 1, #Filger_Spells[class], 1 do
 		local data = Filger_Spells[class][i]
 		local frame = CreateFrame("Frame", "FilgerFrame"..i.."_"..data.Name, UIParent)
@@ -3038,7 +3038,7 @@ if Filger_Spells and Filger_Spells[class] then
 		frame.BarWidth = data.BarWidth or 186
 		frame.Position = data.Position or "CENTER"
 		frame:SetPoint(unpack(data.Position))
-
+		
 		if C.misc.filgerconfigmode then
 			frame.actives = {}
 			for j = 1, math.min(Filger_Settings.max_test_icon, #Filger_Spells[class][i]), 1 do

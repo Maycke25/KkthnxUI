@@ -1,5 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 
+-- Backdrop
 function CreateBackdrop(f, t, tex)
 	if f.backdrop then return end
 	
@@ -7,7 +8,7 @@ function CreateBackdrop(f, t, tex)
 	b:SetPoint("TOPLEFT", -2, 2)
 	b:SetPoint("BOTTOMRIGHT", 2, -2)
 	CreateStyle(b, 2)
-
+	
 	if f:GetFrameLevel() - 1 >= 0 then
 		b:SetFrameLevel(f:GetFrameLevel() - 1)
 	else
@@ -17,37 +18,36 @@ function CreateBackdrop(f, t, tex)
 	f.backdrop = b
 end
 
+-- Get Template
 local function GetTemplate(t)
 	borderr, borderg, borderb, bordera = unpack(C.media.border_color)
 	backdropr, backdropg, backdropb, backdropa = unpack(C.media.backdrop_color)
 end
 
+-- Create Panel
 local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
 	GetTemplate(t)
-
+	
 	f:SetWidth(w)
 	f:SetHeight(h)
 	f:SetFrameLevel(1)
 	f:SetFrameStrata("BACKGROUND")
 	f:SetPoint(a1, p, a2, x, y)
 	f:SetBackdrop(backdrop)
-	--CreateStyle(f, 2)
-
+	
 	if t == "Invisible" then
 		backdropa = 0
 		bordera = 0
 	else
 		backdropa = C.media.backdrop_color[4]
-		CreateStyle(f, 2)
+		CreateStyle(f, 4)
 	end
-
+	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
 	f:SetBackdropBorderColor(borderr, borderg, borderb, bordera)
 end
 
---[[-----------------------------------
-StripTextures
----------------------------------------]]
+-- StripTextures
 local function StripTextures(object, kill)
 	for i = 1, object:GetNumRegions() do
 		local region = select(i, object:GetRegions())
@@ -61,9 +61,7 @@ local function StripTextures(object, kill)
 	end
 end
 
---[[-----------------------------------
-Kill object function
----------------------------------------]]
+-- Kill Object Function
 local HiddenFrame = CreateFrame("Frame")
 HiddenFrame:Hide()
 local function Kill(object)
@@ -76,9 +74,7 @@ local function Kill(object)
 	object:Hide()
 end
 
---[[-----------------------------------
-Fade in/out functions
----------------------------------------]]
+-- Fade In/Out Functions
 local function FadeIn(f)
 	UIFrameFadeIn(f, 0.4, f:GetAlpha(), 1)
 end
@@ -107,6 +103,6 @@ while object do
 		addapi(object)
 		handled[object:GetObjectType()] = true
 	end
-
+	
 	object = EnumerateFrames(object)
 end

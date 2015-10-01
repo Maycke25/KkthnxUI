@@ -1,7 +1,5 @@
 local addon, ns = ...
 
-local oUF = ns.oUF or oUF
-if not oUF then return end
 local colors = oUF.colors
 
 ----------------------------------------------------------------------
@@ -65,11 +63,11 @@ end
 --		TAGS
 ----------------------------------------------------------------------
 
-oUF.Tags.Methods["oUF_AbuRaid:name"] = function(unit, rolf)
-  local name = UnitName(rolf or unit)
-  return ns.utf8sub(name)
+oUF.Tags.Methods["oUF_AbuRaid:name"] = function(u, r)
+	local name = UnitName(r or u) or 'Unknown'
+	return ns.utf8sub(name)
 end
-oUF.Tags.Events["oUF_AbuRaid:name"] = "UNIT_NAME_UPDATE UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
+oUF.Tags.Events["oUF_AbuRaid:name"] = "UNIT_NAME_UPDATE UNIT_ENTERED_VEHICLE UNIT_EXITED_VEHICLE UNIT_PET"
 
 ----------------------------------------------------------------------
 --		Border Coloring
@@ -86,7 +84,6 @@ function ns.UpdateBorder(self)
 	local threat = self.threat_status
 	if (threat) then
 		shadowcolor = colors.threat[threat]
-		--(unpack(oUF_colors.threat[threat]))
 	end
 
 	if (glowcolor) then

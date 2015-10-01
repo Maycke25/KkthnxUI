@@ -1,12 +1,9 @@
-local K, C, L, _ = unpack(KkthnxUI)
+
 local _, ns = ...
 local config, playerClass
 local textPath = 'Interface\\AddOns\\oUF_Abu\\Media\\Frames\\'
 local pathFat = textPath.."Fat\\"
 local pathNormal = textPath.."Normal\\"
-
-local oUF = ns.oUF or oUF
-if not oUF then return end
 
 -- Frame data
 local DataNormal = {
@@ -24,7 +21,7 @@ local DataNormal = {
 		hpt = {                   x = 0,    y = 1,   j = "CENTER", s = 13 }, -- Healthtext
 		mpb = { w = 108, h = 9,   x = 0,    y = 0,   }, -- Mana bar
 		mpt = {                   x = 0,    y = 0,   j = "CENTER", s = 13 }, -- Mana bar text
-		nam = { w = 110, h = 10,  x = 0,    y = 25,  j = "CENTER", s = 14 }, -- Name text
+		nam = { w = 110, h = 10,  x = 0,    y = 22,  j = "CENTER", s = 14 }, -- Name text
 		por = { w = 56,  h = 56,  x = -64,  y = 10,  }, -- Portrait
 		glo = { w = 242, h = 92,  x = 13,   y = 0,   t = "Interface\\Vehicles\\UI-VEHICLE-FRAME-FLASH", c = {0, 1, 0, 1}}, -- Glow texture
 	},
@@ -35,7 +32,7 @@ local DataNormal = {
 		hpt = {                   x = 0,    y = 1,   j = "CENTER", s = 13 },
 		mpb = { w = 108, h = 9,   x = 0,    y = 0,   },
 		mpt = {                   x = 0,    y = 0,   j = "CENTER", s = 13 },
-		nam = { w = 110, h = 10,  x = 0,    y = 25,  j = "CENTER", s = 14 },
+		nam = { w = 110, h = 10,  x = 0,    y = 22,  j = "CENTER", s = 14 },
 		por = { w = 56,  h = 56,  x = -64,  y = 10,  },
 		glo = { w = 242, h = 92,  x = 13,   y = 0,   t = "Interface\\Vehicles\\UI-VEHICLE-FRAME-ORGANIC-FLASH", c = {0, 1, 0, 1}},
 	},
@@ -229,8 +226,8 @@ local function UpdatePlayerFrame(self, ...)
 	self.Health.Value:SetPoint('CENTER', self.Health, data.hpt.x, data.hpt.y)
 	self.Power.Value:SetPoint('CENTER', self.Power, data.mpt.x, data.mpt.y)
 
-	self.Name:SetWidth(data.nam.w)
 	self.Name:SetPoint('TOP', self.Health, data.nam.x, data.nam.y)
+	self.Name:SetSize(data.nam.w, data.nam.h)
 	self.Portrait:SetPoint('CENTER', self.Texture, data.por.x, data.por.y)
 	self.Portrait:SetSize(data.por.w, data.por.h)
 
@@ -438,7 +435,7 @@ local function CreateUnitLayout(self, unit)
 	if (self.IsMainFrame) then
 		--[[ 	Level text		]]
 		self.Level = self:CreateFontString(nil, 'ARTWORK')
-		self.Level:SetFont(C.font.unitframes_font, C.font.unitframes_font_size, C.font.unitframes_font_style)
+		self.Level:SetFont('Interface\\AddOns\\oUF_Abu\\Media\\Font\\fontNumber.ttf', 16, 'THINOUTLINE')
 		self.Level:SetShadowOffset(0, 0)
 		self.Level:SetPoint('CENTER', self.Texture, (cUnit == 'player' and -63) or 63, -16)
 		self:Tag(self.Level, '[level]')
@@ -488,6 +485,12 @@ local function CreateUnitLayout(self, unit)
 			spark:SetSize(5,5)
 			absorb.spark = spark
 			self.HealPrediction.TotalAbsorb = absorb
+		end
+		
+		-- Combat CombatFeedbackText 
+		if (config.combatText) then
+			self.CombatFeedbackText = ns.CreateFontString(self, 18, 'CENTER', 'OUTLINE')
+			self.CombatFeedbackText:SetPoint('CENTER', self.Portrait)
 		end
 	end
 
@@ -560,6 +563,10 @@ local function CreateUnitLayout(self, unit)
 				self.PhaseIcon:SetSize(18, 18)
 			end
 		end
+
+		self.OfflineIcon = self:CreateTexture(nil, 'OVERLAY')
+		self.OfflineIcon:SetPoint('TOPRIGHT', self.Portrait, 7, 7)
+		self.OfflineIcon:SetPoint('BOTTOMLEFT', self.Portrait, -7, -7)
 
 		if (cUnit == 'player' or self.IsPartyFrame) then
 			self.ReadyCheck = self:CreateTexture(nil, 'OVERLAY')
@@ -730,6 +737,10 @@ local function CreateUnitLayout(self, unit)
 	return self
 end
 
+local function fixPetFrame(self, event, ...) -- Petframe doesnt always update correctly
+	oUF_AbuPet:GetScript('OnAttributeChanged')(oUF_AbuPet, 'unit', 'pet')
+end
+
 oUF:Factory( function(self)
 	playerClass = select(2, UnitClass('player'))
 	config = ns.config
@@ -742,6 +753,7 @@ oUF:Factory( function(self)
 
 	local pet = self:Spawn('pet', 'oUF_AbuPet')
 	ns.CreateUnitAnchor(pet, pet, pet, nil, 'pet')
+	player:RegisterEvent('UNIT_PET', fixPetFrame)
 
 	local target = self:Spawn('target', 'oUF_AbuTarget')
 	ns.CreateUnitAnchor(target, target, target, nil, 'target')
@@ -806,7 +818,7 @@ oUF:Factory( function(self)
 
 		local backdrop = select(1, bar:GetRegions())
 		backdrop:SetTexture('Interface\\Buttons\\WHITE8x8')
-		backdrop:SetVertexColor(0, 0, 0, 0.8)
+		backdrop:SetVertexColor(0, 0, 0, 0.5)
 		backdrop:SetAllPoints(bar)
 
 		local border = _G['MirrorTimer' .. i .. 'Border']

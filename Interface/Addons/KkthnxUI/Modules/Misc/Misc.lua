@@ -20,7 +20,7 @@ if C.misc.fadegamemenu == true then
 	
 	hooksecurefunc(GameMenuFrame, 'Show', function()
 		GMFade:SetAlpha(0)
-		securecall('UIFrameFadeIn', GMFade, 0.235, GMFade:GetAlpha(), 0.5)
+		securecall('UIFrameFadeIn', GMFade, 0.235, GMFade:GetAlpha(), 0.7)
 	end)
 	
 	hooksecurefunc(GameMenuFrame, 'Hide', function()

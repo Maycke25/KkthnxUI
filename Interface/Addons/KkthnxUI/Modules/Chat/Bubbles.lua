@@ -16,8 +16,15 @@ local function SkinBubble(frame)
 		end
 	end
 	
-	frame:SetBackdrop(K.Backdrop)
-	frame:SetBackdropColor(1, 1, 1, .9)
+	frame:SetBackdrop({
+		bgFile = 'Interface\\Tooltips\\UI-Tooltip-Background',
+		edgeFile = 'Interface\\Tooltips\\UI-Tooltip-Border',
+		tileSize = 16,
+		edgeSize = 14,
+		insets = {left=2.5, right=2.5, top=2.5, bottom=2.5},
+	})
+	frame:SetBackdropColor(0, 0, 0, 1)
+	frame:SetBackdropBorderColor(.7, .7, .7, 1)
 	
 	tinsert(bubbles, frame)
 end

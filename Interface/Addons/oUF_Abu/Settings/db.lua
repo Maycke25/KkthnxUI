@@ -18,11 +18,11 @@ end
 
 -- [[	Default Settings	]] --
 ns.defaultConfig = {
-	fontNormal = 'Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Unitframe.ttf',
+	fontNormal = 'Interface\\AddOns\\oUF_Abu\\Media\\Font\\fontSmall.ttf',
 	fontNormalOutline = "NONE",
 	fontNormalSize = 1, -- relative size
 
-	fontBig = 'Interface\\AddOns\\KkthnxUI\\Media\\Fonts\\Unitframe.ttf',
+	fontBig = 'Interface\\AddOns\\oUF_Abu\\Media\\Font\\fontThick.ttf',
 	fontBigOutline = "NONE",
 	fontBigSize = 1, -- relative size
 
@@ -61,7 +61,7 @@ ns.defaultConfig = {
 	auraShadow = 'Interface\\AddOns\\oUF_Abu\\Media\\Border\\borderShadow', --TODO maybe
 
 	statusbar = 'Interface\\AddOns\\oUF_Abu\\Media\\Texture\\Raid-Bar-Hp-Fill',
-	frameColor = {0.9, 0.9, 0.9},
+	frameColor = {.7, .7, .7},
 	playerStyle = 'normal',
 	customPlayerTexture = 'Interface\\AddOns\\oUF_Abu\\Media\\Frames\\CUSTOMPLAYER-FRAME',
 	frameStyle = 'normal',

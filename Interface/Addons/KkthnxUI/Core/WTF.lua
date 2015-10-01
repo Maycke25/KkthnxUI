@@ -1,3 +1,5 @@
+local K, C, L, _ = unpack(select(2, ...))
+
 ----------------------------------------------------------------------------------------
 --	Masque Settings
 ----------------------------------------------------------------------------------------
@@ -5914,6 +5916,7 @@ StaticPopupDialogs.SETTINGS_ALL = {
 	button1 = ACCEPT,
 	button2 = CANCEL,
 	OnAccept = function()
+		if IsAddOnLoaded("DBM-Core") and C.skins.dbm then K.UploadDBM() end
 		if IsAddOnLoaded("Bartender4") then UploadBartender4() end
 		if IsAddOnLoaded("BigWigs") then UploadBigWigs() end
 		if IsAddOnLoaded("Mapster") then UploadMapster() end

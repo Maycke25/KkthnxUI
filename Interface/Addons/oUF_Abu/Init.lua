@@ -4,7 +4,7 @@ local OUF_ABUOPTIONS = "oUF_AbuOptions"
 
 ns.fontstrings = {} -- For fonstrings
 ns.fontstringsB = {}-- For big fonstrings
-ns.statusbars = {} -- For statusbars
+ns.statusbars = {}  -- For statusbars
 ns.paintframes = {} -- For coloring frames
 
 ns.L = {}
@@ -26,8 +26,9 @@ oUF.colors.power["POWER_TYPE_FEL_ENERGY"] = {0.65, 0.63, 0.35}
 oUF.colors.power["RUNES"] = {0.55, 0.57, 0.61}
 oUF.colors.power["RUNIC_POWER"] = {0, 0.82, 1}
 
+
 ------------------------------------------------------------------------
--- Event handler
+--  Event handler
 local oUFAbu = CreateFrame("Frame", 'oUFAbu')
 oUFAbu:RegisterEvent("ADDON_LOADED")
 oUFAbu:SetScript("OnEvent", function(self, event, ...)
@@ -36,9 +37,20 @@ end)
 
 function oUFAbu:ADDON_LOADED(event, addon)
 	if addon == OUF_ABU then
+		local SharedMedia = LibStub("LibSharedMedia-3.0", true)
+		if SharedMedia then
+			SharedMedia:Register("font", "Accidental Presidency",   [[Interface\AddOns\oUF_Abu\Media\Font\fontNumber.ttf]])
+			SharedMedia:Register("font", "Expressway Free",         [[Interface\AddOns\oUF_Abu\Media\Font\fontSmall.ttf]])
+			SharedMedia:Register("font", "Expressway RG",           [[Interface\AddOns\oUF_Abu\Media\Font\fontThick.ttf]])
+
+			SharedMedia:Register("statusbar", "Flat", [[Interface\BUTTONS\WHITE8X8]])
+			SharedMedia:Register("statusbar", "Neal", [[Interface\AddOns\oUF_Abu\Media\Texture\statusbarNeal]])
+			SharedMedia:Register("statusbar", "Neal Dark", [[Interface\AddOns\oUF_Abu\Media\Texture\statusbarNealDark]])
+			SharedMedia:Register("statusbar", "Flat Dark", [[Interface\AddOns\oUF_Abu\Media\Texture\Raid-Bar-Hp-Fill]])
+		end
 		
 		self:SetupSettings()
-		
+
 		-- Focus Key
 		if (ns.config.focBut ~= 'NONE') then
 			--Blizzard raid frame
@@ -53,20 +65,20 @@ function oUFAbu:ADDON_LOADED(event, addon)
 			foc:SetAttribute("macrotext", "/focus mouseover")
 			SetOverrideBindingClick(Focuser, true, ns.config.focMod.."BUTTON"..ns.config.focBut, "Focuser")
 		end
-		
+
 		self:UnregisterEvent(event)
 		self:RegisterEvent("PLAYER_LOGOUT") -- For cleaning DB on logout
-		
+
 		self:RegisterEvent("MODIFIER_STATE_CHANGED") -- Showing auras
-		self:RegisterEvent("PLAYER_TARGET_CHANGED") -- Target sounds
+		self:RegisterEvent("PLAYER_TARGET_CHANGED") --  Target sounds
 		self:RegisterEvent("PLAYER_FOCUS_CHANGED") -- Focus Sounds
-		
+
 		-- Setup Options
 		self:SetupOptions()
-		
+
 		-- Skin the Countdown/BG timers:
 		self:RegisterEvent("START_TIMER")
-		
+
 		self.ADDON_LOADED = nil
 	end
 end
@@ -106,28 +118,28 @@ function oUFAbu:START_TIMER(event)
 		if (not bar.borderTextures) then
 			bar:SetScale(1.132)
 			bar:SetSize(220, 18)
-			
+
 			for i = 1, select('#', bar:GetRegions()) do
 				local region = select(i, bar:GetRegions())
-				
+
 				if (region and region:GetObjectType() == 'Texture') then
 					region:SetTexture(nil)
 				end
-				
+
 				if (region and region:GetObjectType() == 'FontString') then
 					region:ClearAllPoints()
 					region:SetPoint('CENTER', bar)
 				end
 			end
-			
+
 			ns.CreateBorder(bar, 11, 3)
-			
+
 			local backdrop = select(1, bar:GetRegions())
 			backdrop:SetTexture('Interface\\Buttons\\WHITE8x8')
-			backdrop:SetVertexColor(0, 0, 0, 0.8)
+			backdrop:SetVertexColor(0, 0, 0, 0.5)
 			backdrop:SetAllPoints(bar)
 		end
-		
+
 		bar:SetStatusBarTexture(ns.config.statusbar)
 		for i = 1, select('#', bar:GetRegions()) do
 			local region = select(i, bar:GetRegions())
@@ -137,11 +149,11 @@ function oUFAbu:START_TIMER(event)
 		end
 	end
 end
-----------------------[[	View Auras ]]-------------------------
+----------------------[[	View Auras      ]]-------------------------
 function oUFAbu:MODIFIER_STATE_CHANGED(event, key, state)
 	if 	
-	( IsControlKeyDown() and (key == 'LALT' or key == 'RALT')) or
-	( IsAltKeyDown() and (key == 'LCTRL' or key == 'RCTRL')) 
+		( IsControlKeyDown() and (key == 'LALT' or key == 'RALT')) or
+		( IsAltKeyDown() and (key == 'LCTRL' or key == 'RCTRL')) 
 	then
 		local a, b
 		if state == 1 then
@@ -169,37 +181,37 @@ function oUFAbu:MODIFIER_STATE_CHANGED(event, key, state)
 	end
 end
 
-----------------------[[	Setup Options ]]-------------------------
+----------------------[[	Setup Options   ]]-------------------------
 function oUFAbu:SetupOptions()
 	local options = CreateFrame('Frame', OUF_ABUOPTIONS)
 	options:Hide()
 	options.name = 'oUF Abu'
-	
+
 	local auras = CreateFrame("Frame", 'oUF_AbuAuraFilters', options)
 	auras.name = ns.L.AuraFilters
 	auras.parent = options.name
-	
+
 	options:SetScript("OnShow", function(self)
 		oUFAbu:LoadOptions()
 		options:SetScript("OnShow", nil)
 	end)
-	
+
 	InterfaceOptions_AddCategory(options)
 	InterfaceOptions_AddCategory(auras)
-	
+
 	-- Nuke cancel button - prevents taint
 	InterfaceOptionsFrameCancel:Hide()
 	InterfaceOptionsFrameOkay:SetAllPoints(InterfaceOptionsFrameCancel)
 	InterfaceOptionsFrameCancel:SetScript("OnClick", function()
 		InterfaceOptionsFrameOkay:Click()
 	end)
-	
+
 	InterfaceOptionsUnitFramePanelPartyPets:Disable()
 	InterfaceOptionsUnitFramePanelArenaEnemyFrames:Disable()
 	InterfaceOptionsUnitFramePanelArenaEnemyCastBar:Disable()
 	InterfaceOptionsUnitFramePanelArenaEnemyPets:Disable()
 	InterfaceOptionsUnitFramePanelFullSizeFocusFrame:Disable()
-	
+
 	_G.SLASH_OUFABU1 = "/ouf"
 	_G.SLASH_OUFABU2 = "/oufabu"
 	SlashCmdList['OUFABU'] = function(...)
@@ -209,7 +221,7 @@ end
 
 function oUFAbu:LoadOptions()
 	if IsAddOnLoaded(OUF_ABUOPTIONS) then return true; end
-	
+
 	if InCombatLockdown() then
 		ns.Print(ns.L['OptionsLoadAfterCombat'])
 		self:RegisterEvent("PLAYER_REGEN_ENABLED")
@@ -222,7 +234,7 @@ function oUFAbu:PLAYER_REGEN_ENABLED(event)
 	if event then
 		self:UnregisterEvent(event)
 	end
-	
+
 	self.localization = ns.L -- locale for options
 	local loaded, reason = LoadAddOn(OUF_ABUOPTIONS)
 	if not loaded then

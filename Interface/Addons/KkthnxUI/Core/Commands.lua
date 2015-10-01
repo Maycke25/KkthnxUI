@@ -1,8 +1,7 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[-----------------------------------
-Misc Slash commands
----------------------------------------]]
+
+-- Misc Slash commands
 SlashCmdList.RELOADUI = function() ReloadUI() end
 SLASH_RELOADUI1 = "/rl"
 
@@ -21,18 +20,14 @@ SLASH_ROLECHECK1 = "/role"
 SlashCmdList.CLEARCOMBAT = function() CombatLogClearEntries() end
 SLASH_CLEARCOMBAT1 = "/clc"
 
---[[-----------------------------------
-Description of the slash commands
----------------------------------------]]
+-- Description of the slash commands
 SlashCmdList.UIHELP = function()
 	for i, v in ipairs(L_SLASHCMD_HELP) do print("|cffffff00"..("%s"):format(tostring(v)).."|r") end
 end
 SLASH_UIHELP1 = "/uihelp"
 SLASH_UIHELP2 = "/helpui"
 
-----------------------------------------------------------------------------------------
---	Disband party or raid(by Monolit)
-----------------------------------------------------------------------------------------
+-- Disband party or raid(by Monolit)
 function DisbandRaidGroup()
 	if InCombatLockdown() then return end
 	if UnitInRaid("player") then
@@ -70,9 +65,7 @@ SlashCmdList.GROUPDISBAND = function()
 end
 SLASH_GROUPDISBAND1 = "/rd"
 
-----------------------------------------------------------------------------------------
---	Convert party to raid
-----------------------------------------------------------------------------------------
+-- Convert party to raid
 SlashCmdList.PARTYTORAID = function()
 	if GetNumGroupMembers() > 0 then
 		if UnitInRaid("player") and IsGroupLeader() then
@@ -88,9 +81,7 @@ SLASH_PARTYTORAID1 = "/toraid"
 SLASH_PARTYTORAID2 = "/toparty"
 SLASH_PARTYTORAID3 = "/convert"
 
---[[-----------------------------------
-Instance teleport
----------------------------------------]]
+-- Instance teleport
 SlashCmdList.INSTTELEPORT = function()
 	local inInstance = IsInInstance()
 	if inInstance then
@@ -101,9 +92,7 @@ SlashCmdList.INSTTELEPORT = function()
 end
 SLASH_INSTTELEPORT1 = "/teleport"
 
---[[-----------------------------------
-Spec switching(by Monolit)
----------------------------------------]]
+-- Spec switching(by Monolit)
 SlashCmdList.SPEC = function()
 	if Klevel >= SHOW_TALENT_LEVEL then
 		local spec = GetActiveSpecGroup()
@@ -115,16 +104,11 @@ end
 SLASH_SPEC1 = "/ss"
 SLASH_SPEC2 = "/spec"
 
---[[-----------------------------------
-DBM Bar testing.
----------------------------------------]]
+-- DBM Bar testing.
 SlashCmdList.DBMTEST = function() if IsAddOnLoaded("DBM-Core") then DBM:DemoMode() end end
 SLASH_DBMTEST1 = "/dbmtest"
 
---[[-----------------------------------
-Command to show frame you currently 
-have mouseovered
----------------------------------------]]
+-- Command to show frame you currently have mouseovered
 SLASH_FRAME1 = "/frame"
 SlashCmdList["FRAME"] = function(arg)
 	if arg ~= "" then
@@ -132,7 +116,7 @@ SlashCmdList["FRAME"] = function(arg)
 	else
 		arg = GetMouseFocus()
 	end
-	if arg ~= nil then FRAME = arg end --Set the global variable FRAME to = whatever we are mousing over to simplify messing with frames that have no name.
+	if arg ~= nil then FRAME = arg end -- Set the global variable FRAME to = whatever we are mousing over to simplify messing with frames that have no name.
 	if arg ~= nil and arg:GetName() ~= nil then
 		local point, relativeTo, relativePoint, xOfs, yOfs = arg:GetPoint()
 		ChatFrame1:AddMessage("|cffCC0000----------------------------")
@@ -162,7 +146,6 @@ SlashCmdList["FRAME"] = function(arg)
 		ChatFrame1:AddMessage("Could not find frame info")
 	end
 end
-
 
 SLASH_FRAMELIST1 = "/framelist"
 SlashCmdList["FRAMELIST"] = function(msg)
@@ -212,9 +195,7 @@ end
 SLASH_TEXLIST1 = "/texlist"
 SlashCmdList["TEXLIST"] = TextureList
 
---[[-----------------------------------
-Clear chat
----------------------------------------]]
+-- Clear Chat
 SlashCmdList.CLEARCHAT = function(cmd)
 	cmd = cmd and strtrim(strlower(cmd))
 	for i = 1, NUM_CHAT_WINDOWS do
@@ -227,9 +208,7 @@ end
 SLASH_CLEARCHAT1 = "/clear"
 SLASH_CLEARCHAT2 = "/clearchat"
 
---[[-----------------------------------
-Test Blizzard Alerts
----------------------------------------]]
+-- Test Blizzard Alert Frames
 SlashCmdList.TEST_ACHIEVEMENT = function()
 	PlaySound("LFG_Rewards")
 	if not AchievementFrame then
@@ -250,10 +229,7 @@ SlashCmdList.TEST_ACHIEVEMENT = function()
 end
 SLASH_TEST_ACHIEVEMENT1 = "/testa"
 
---[[-----------------------------------
-Test and move Blizzard Extra Action 
-Button
----------------------------------------]]
+-- Test and move Blizzard Extra Action Button
 SlashCmdList.TEST_EXTRABUTTON = function()
 	if ExtraActionBarFrame:IsShown() then
 		ExtraActionBarFrame:Hide()
@@ -269,9 +245,7 @@ SlashCmdList.TEST_EXTRABUTTON = function()
 end
 SLASH_TEST_EXTRABUTTON1 = "/teb"
 
---[[-----------------------------------
-Grid on screen
----------------------------------------]]
+-- Grid on screen
 local grid
 SlashCmdList.GRIDONSCREEN = function()
 	if grid then

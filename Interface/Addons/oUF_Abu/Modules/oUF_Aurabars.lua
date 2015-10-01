@@ -1,8 +1,10 @@
 --[[
 	self.Aurabar.spellID  		- The spell to track (required)
 	self.Aurabar.filter 		- Default is "HELPFUL"
+
 	self.Aurabar.PreUpdate(Aurabar, unit)
 	self.Aurabar.PostUpdate(Aurabar, unit, timeleft, duration)
+
 	self.Aurabar.Override(self, event, unit)
 		- Completely override the update function
 	self.Aurabar.Visibility(self, event, unit)

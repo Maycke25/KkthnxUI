@@ -2,9 +2,7 @@ local K, C, L, _ = unpack(select(2, ...))
 if C.actionbar.enable ~= true then return end
 if IsAddOnLoaded("ncHoverBind") then return end
 
-----------------------------------------------------------------------------------------
---	Binding buttons(ncHoverBind by Nightcracker)
-----------------------------------------------------------------------------------------
+-- Binding buttons(ncHoverBind by Nightcracker)
 local bind, oneBind, localmacros = CreateFrame("Frame", "HoverBind", UIParent), true, 0
 
 SlashCmdList.MOUSEOVERBIND = function()

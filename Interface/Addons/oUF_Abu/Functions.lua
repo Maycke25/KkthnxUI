@@ -1,7 +1,4 @@
-local addon,ns = ...
-local oUF = ns.oUF or oUF
-if not oUF then return end
-
+local _, ns = ...
 local select = select
 local tonumber = tonumber
 local gsub = string.gsub
@@ -74,22 +71,6 @@ local UnitIsGhost, GetSpellInfo, UnitIsConnected, UnitIsDead, UnitIsDeadOrGhost,
 local UnitPowerType, UnitPower, UnitPowerMax, UnitHasVehicleUI, UnitClass, UnitIsTapped, UnitIsTappedByPlayer, format = 
 	  UnitPowerType, UnitPower, UnitPowerMax, UnitHasVehicleUI, UnitClass, UnitIsTapped, UnitIsTappedByPlayer, format
 
-local function SetValueText(element, tag, cur, max, color, notMana)
-	if ( not max or max == 0 ) then max = 100; end -- not sure why this happens
-
-	if notMana and tag == "$perc" then
-		tag = "$cur"
-	end
-
-	tag = tag
-		:gsub('$cur', format('%s', (cur > 0 and FormatValue(cur)) or ''))
-		:gsub('$0cur', format('%s', FormatValue(cur)))
-		:gsub('$max', format('%s', FormatValue(max)))
-		:gsub('$def', format('-%s', (cur ~= max and FormatValue(max-cur) or '')))
-		:gsub('$perc', format('%d%s', cur / max * 100, '%%'))
-
-	element:SetFormattedText("|cff%02x%02x%02x%s|r", color[1]*255, color[2]*255, color[3]*255, tag)
-end
 
 local function UpdatePortraitColor(self, unit, cur, max)
 	if (not UnitIsConnected(unit)) then
@@ -109,16 +90,48 @@ local function UpdatePortraitColor(self, unit, cur, max)
 	end
 end
 
+
+local TEXT_PERCENT, TEXT_SHORT, TEXT_LONG, TEXT_MINMAX, TEXT_MAX, TEXT_DEF, TEXT_NONE = 0,1,2,3,4,5,6
+
+local function SetValueText(element, tag, cur, max, color, notMana)
+	if ( not max or max == 0 ) then max = 100; end -- not sure why this happens
+
+	if (tag == TEXT_PERCENT) and (max < 200) then
+		tag = TEXT_SHORT -- Shows energy etc. with real number
+	end
+
+	local s
+
+	if tag == TEXT_SHORT then
+		s = format('%s', cur > 0 and FormatValue(cur) or '')
+	elseif tag == TEXT_LONG then
+		s = format('%s - %d%%', FormatValue(cur), cur / max * 100)
+	elseif tag == TEXT_MINMAX then
+		s = format('%s/%s', FormatValue(cur), FormatValue(max))
+	elseif tag == TEXT_MAX then
+		s = format('%s', FormatValue(max))
+	elseif tag == TEXT_DEF then
+		s = format('%s', (cur == max and '' or '-'..FormatValue(max-cur)))
+	elseif tag == TEXT_PERCENT then
+		s = format('%d%%', cur / max * 100)
+	else
+		s = ''
+	end
+
+	element:SetFormattedText("|cff%02x%02x%02x%s|r", color[1]*255, color[2]*255, color[3]*255, s)
+end
+
+
 ------------------------------------------------------------------
 --							Health Update						--
 ------------------------------------------------------------------
 do
 	local tagtable = {
-		NUMERIC = {cur = "$cur",  			max = "$max",  		mouse = "$0cur/$max"},
-		BOTH	= {cur = "$cur - $perc",  	max = "$max",  		mouse = "$0cur/$max"},
-		PERCENT = {cur = "$perc",  			max = "$perc", 		mouse = "$cur"},
-		MINIMAL = {cur = "$perc", 			max = "", 			mouse = "$cur"},
-		DEFICIT = {cur = "$def", 			max = "", 			mouse = "$def"},
+		NUMERIC = {TEXT_MINMAX, TEXT_SHORT,  	TEXT_MAX },
+		BOTH	= {TEXT_MINMAX, TEXT_LONG,  	TEXT_MAX },
+		PERCENT = {TEXT_SHORT, 	TEXT_PERCENT, 	TEXT_PERCENT },
+		MINIMAL = {TEXT_SHORT, 	TEXT_PERCENT, 	TEXT_NONE },
+		DEFICIT = {TEXT_DEF, 	TEXT_DEF, 		TEXT_NONE },
 	}
 
 	function ns.PostUpdateHealth(Health, unit, cur, max)
@@ -159,11 +172,11 @@ do
 		if uconfig.HealthTag == "DISABLE" then
 			Health.Value:SetText(nil)
 		elseif self.isMouseOver then
-			SetValueText(Health.Value, tagtable[uconfig.HealthTag].mouse, cur, max, color)
+			SetValueText(Health.Value, tagtable[uconfig.HealthTag][1], cur, max, color)
 		elseif cur < max then
-			SetValueText(Health.Value, tagtable[uconfig.HealthTag].cur, cur, max, color)
+			SetValueText(Health.Value, tagtable[uconfig.HealthTag][2], cur, max, color)
 		else
-			SetValueText(Health.Value, tagtable[uconfig.HealthTag].max, cur, max, color)
+			SetValueText(Health.Value, tagtable[uconfig.HealthTag][3], cur, max, color)
 		end
 	end
 end
@@ -212,9 +225,9 @@ end
 ------------------------------------------------------------------
 do
 	local tagtable = {
-		NUMERIC	=	{cur = "$cur",  max = 	"$max",  	mouse = "$0cur/$max"},
-		PERCENT	=	{cur = "$perc", max = 	"$perc",  	mouse = "$cur"},
-		MINIMAL	=	{cur = "$perc", max = 	"", 		mouse = "$cur"},
+		NUMERIC	=	{TEXT_MINMAX, 	TEXT_SHORT,  	TEXT_MAX },
+		PERCENT	=	{TEXT_SHORT, 	TEXT_PERCENT, 	TEXT_PERCENT },
+		MINIMAL	=	{TEXT_SHORT, 	TEXT_PERCENT, 	TEXT_NONE },
 	}
 
 	function ns.PostUpdatePower(Power, unit, cur, max)
@@ -249,11 +262,11 @@ do
 		if uconfig.PowerTag == "DISABLE" then
 			Power.Value:SetText(nil)
 		elseif self.isMouseOver then
-			SetValueText(Power.Value, tagtable[uconfig.PowerTag].mouse, cur, max, color, type ~= "MANA")
+			SetValueText(Power.Value, tagtable[uconfig.PowerTag][1], cur, max, color)
 		elseif cur < max then
-			SetValueText(Power.Value, tagtable[uconfig.PowerTag].cur, cur, max, color, type ~= "MANA")
+			SetValueText(Power.Value, tagtable[uconfig.PowerTag][2], cur, max, color)
 		else
-			SetValueText(Power.Value, tagtable[uconfig.PowerTag].max, cur, max, color, type ~= "MANA")
+			SetValueText(Power.Value, tagtable[uconfig.PowerTag][3], cur, max, color)
 		end
 	end
 end
