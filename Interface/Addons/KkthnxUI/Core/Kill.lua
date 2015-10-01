@@ -65,6 +65,7 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		SetCVar("showPartyBackground", 0)
 	end
 
+	--[[
 	if C.actionbar.enable then
 		InterfaceOptionsActionBarsPanelBottomLeft:Kill()
 		InterfaceOptionsActionBarsPanelBottomRight:Kill()
@@ -72,7 +73,8 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		InterfaceOptionsActionBarsPanelRightTwo:Kill()
 		InterfaceOptionsActionBarsPanelAlwaysShowActionBars:Kill()
 	end
-
+	]]
+	
 	if C.nameplate.enable then
 		InterfaceOptionsCombatPanelEnemyCastBarsOnNameplates:Kill()
 		InterfaceOptionsNamesPanelUnitNameplatesNameplateClassColors:Kill()
