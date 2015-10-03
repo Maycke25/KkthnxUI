@@ -49,8 +49,6 @@ local function CreateVirtualFrame(frame, point)
 	frame.backdrop:SetPoint("TOPLEFT", point, "TOPLEFT", -K.noscalemult, K.noscalemult)
 	frame.backdrop:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", K.noscalemult, -K.noscalemult)
 	frame.backdrop:SetTexture(0.05, 0.05, 0.05, 1)
-
-	CreateStyle2(frame, 3.6)
 end
 
 local function SetVirtualBorder(frame, r, g, b)
@@ -63,9 +61,7 @@ local function CreateAuraIcon(frame)
 	button:SetWidth(C.nameplate.auras_size)
 	button:SetHeight(C.nameplate.auras_size)
 
-	CreateStyle2(frame, 3.6)
-
-	CreateStyle(button, 4)
+	CreateStyle2(button, 4)
 	
 	button.bg = button:CreateTexture(nil, "BACKGROUND")
 	button.bg:SetTexture(0.05, 0.05, 0.05, 1)
@@ -271,6 +267,9 @@ local function UpdateObjects(frame)
 	frame.hp:ClearAllPoints()
 	frame.hp:SetSize(C.nameplate.width * K.noscalemult, C.nameplate.height * K.noscalemult)
 	frame.hp:SetPoint("TOP", frame, "TOP", 0, -15)
+	frame.hp:GetStatusBarTexture():SetHorizTile(true)
+
+	CreateStyle2(frame.hp, 4)
 
 	-- Match values
 	HealthBar_ValueChanged(frame.hp)
@@ -368,6 +367,8 @@ local function SkinObjects(frame, nameFrame)
 	cb:SetPoint("BOTTOMLEFT", hp, "BOTTOMLEFT", 0, -8-(C.nameplate.height * K.noscalemult))
 	cb:SetStatusBarTexture(C.media.texture)
 	CreateVirtualFrame(cb)
+
+	CreateStyle2(cb, 4)
 
 	cb.bg = cb:CreateTexture(nil, "BORDER")
 	cb.bg:SetAllPoints(cb)

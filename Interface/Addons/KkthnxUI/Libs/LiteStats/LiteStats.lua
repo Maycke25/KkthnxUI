@@ -554,7 +554,6 @@ if gold.enabled then
 					currencies = currencies + 1
 				end
 			end
-
 			if archaeology and C.stats.currency_archaeology then
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine(PROFESSIONS_ARCHAEOLOGY, ttsubh.r, ttsubh.g, ttsubh.b)
@@ -670,6 +669,7 @@ if gold.enabled then
 		end
 	end
 end
+
 ----------------------------------------------------------------------------------------
 --	Clock
 ----------------------------------------------------------------------------------------

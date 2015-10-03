@@ -1,8 +1,6 @@
--- by emelio
+﻿-- by emelio
 local K, C, L, _ = unpack(select(2, ...))
-if C.misc.moveblizzard ~= true then return end
-
--- by emelio
+if C.blizzard.moveblizzard ~= true then return end
 
 local addon = CreateFrame("Frame")
 

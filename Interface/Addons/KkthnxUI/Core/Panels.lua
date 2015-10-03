@@ -1,6 +1,27 @@
 local K, C, L, _ = unpack(select(2, ...))
 
 ----------------------------------------------------------------------------------------
+--	Chat background
+----------------------------------------------------------------------------------------
+if C.chat.background == true then
+	local chatbd = CreateFrame("Frame", "ChatBackground", UIParent)
+	chatbd:CreatePanel("Transparent", C.chat.width + 7, C.chat.height + 4, "TOPLEFT", ChatFrame1, "TOPLEFT", -3, 1)
+	chatbd:SetBackdropBorderColor(K.Color.r, K.Color.g, K.Color.b)
+	chatbd:SetBackdropColor(0, 0, 0, C.chat.background_alpha)
+
+	if C.chat.tabs_mouseover ~= true then
+		local chattabs = CreateFrame("Frame", "ChatTabsPanel", UIParent)
+		chattabs:CreatePanel("Transparent", chatbd:GetWidth(), 20, "BOTTOM", chatbd, "TOP", 0, 3)
+		chattabs:SetBackdropBorderColor(K.Color.r, K.Color.g, K.Color.b)
+		chattabs:SetBackdropColor(0, 0, 0, C.chat.background_alpha)
+	end
+else
+	local leftpanel = CreateFrame("Frame", "LeftPanel", UIParent)
+	leftpanel:CreatePanel("ClassColor", 1, C.chat.height - 2, "BOTTOMLEFT", bottompanel, "LEFT", 0, 0)
+end
+
+
+----------------------------------------------------------------------------------------
 --	Top panel
 ----------------------------------------------------------------------------------------
 if C.toppanel.enable ~= true then return end

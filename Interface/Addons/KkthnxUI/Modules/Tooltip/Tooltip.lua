@@ -8,24 +8,23 @@ local StoryTooltip = QuestScrollFrame.StoryTooltip
 local tooltips = {
 	GameTooltip,
 	ItemRefTooltip,
+	ItemRefShoppingTooltip1,
+	ItemRefShoppingTooltip2,
+	ItemRefShoppingTooltip3,
+	AutoCompleteBox,
+	FriendsTooltip,
+	ConsolidatedBuffsTooltip,
 	ShoppingTooltip1,
 	ShoppingTooltip2,
-	ShoppingTooltip3,
 	WorldMapTooltip,
+	WorldMapCompareTooltip1,
+	WorldMapCompareTooltip2,
+	WorldMapCompareTooltip3,
 	DropDownList1MenuBackdrop,
 	DropDownList2MenuBackdrop,
-	ConsolidatedBuffsTooltip,
-	ChatMenu,
-	EmoteMenu,
-	LanguageMenu,
-	VoiceMacroMenu,
-	FriendsTooltip,
-	FloatingGarrisonFollowerTooltip
-}
-
-local backdrop = {
-	bgFile = C.media.blank, edgeFile = C.media.blank, edgeSize = K.mult,
-	insets = {left = -K.mult, right = -K.mult, top = -K.mult, bottom = -K.mult}
+	DropDownList3MenuBackdrop,
+	BNToastFrame,
+	SmallTextTooltip,
 }
 
 for _, tt in pairs(tooltips) do
@@ -35,12 +34,7 @@ for _, tt in pairs(tooltips) do
 		bg:SetPoint("TOPLEFT")
 		bg:SetPoint("BOTTOMRIGHT")
 		bg:SetFrameLevel(tt:GetFrameLevel() -1)
-		--bg:SetTemplate("Transparent")
-		CreateStyle(tt, 2)
-
-		tt.GetBackdrop = function() return backdrop end
-		tt.GetBackdropColor = function() return unpack(C.media.overlay_color) end
-		tt.GetBackdropBorderColor = function() return unpack(C.media.border_color) end
+		CreateStyle(bg, 2)
 	end
 end
 
@@ -55,9 +49,8 @@ PVP_ENABLED = ""
 GameTooltipStatusBar:SetStatusBarTexture(C.media.texture)
 GameTooltipStatusBar:SetHeight(5)
 GameTooltipStatusBar:ClearAllPoints()
-GameTooltipStatusBar:SetPoint('BOTTOMLEFT', GameTooltip, 'TOPLEFT', 3, -7)
-GameTooltipStatusBar:SetPoint('BOTTOMRIGHT', GameTooltip, 'TOPRIGHT', -3, 7)
-CreateStyle2(GameTooltipStatusBar, 2)
+GameTooltipStatusBar:SetPoint("TOPLEFT", GameTooltip, "BOTTOMLEFT", 2, 7)
+GameTooltipStatusBar:SetPoint("TOPRIGHT", GameTooltip, "BOTTOMRIGHT", -2, 7)
 
 -- Raid icon
 local ricon = GameTooltip:CreateTexture("GameTooltipRaidIcon", "OVERLAY")
@@ -346,9 +339,7 @@ if C.tooltip.rank == true then
 	end)
 end
 
-----------------------------------------------------------------------------------------
---	Hide tooltips in combat for action bars, pet bar and stance bar
-----------------------------------------------------------------------------------------
+-- Hide tooltips in combat for action bars, pet bar and stance bar
 if C.tooltip.hidebuttons == true then
 	local CombatHideActionButtonsTooltip = function(self)
 		if not IsShiftKeyDown() then
@@ -361,9 +352,7 @@ if C.tooltip.hidebuttons == true then
 	hooksecurefunc(GameTooltip, "SetShapeshift", CombatHideActionButtonsTooltip)
 end
 
-----------------------------------------------------------------------------------------
---	Fix compare tooltips(by Blizzard)(../FrameXML/GameTooltip.lua)
-----------------------------------------------------------------------------------------
+-- Fix compare tooltips(by Blizzard)(../FrameXML/GameTooltip.lua)
 hooksecurefunc("GameTooltip_ShowCompareItem", function(self, shift)
 	if not self then
 		self = GameTooltip

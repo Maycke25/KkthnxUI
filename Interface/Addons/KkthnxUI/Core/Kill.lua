@@ -1,8 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 
-----------------------------------------------------------------------------------------
---	Kill all stuff on default UI that we don't need
-----------------------------------------------------------------------------------------
+-- Kill all stuff on default UI that we don't need
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", function(self, event, addon)

@@ -38,6 +38,7 @@ C["misc"] = {
 	["alreadyknown"] = true,
 	["betterlootfilter"] = false,
 	["bgspam"] = true,
+	["mountdrop"] = true,
 	["bossbanner"] = true,
 	["clickcast"] = false,
 	["clickcastfilter"] = false,
@@ -85,7 +86,7 @@ C["map"] = {
 C["buffs"] = {
 	["aurasperrow"] = 12,
 	["buffsize"] = 34,
-	["buffsource"] = true,
+	["castby"] = true,
 	["debuffsize"] = 44,
 	["enable"] = true,
 	["paddingx"] = 6,
@@ -134,9 +135,9 @@ C["announcements"] = {
 
 -- Panel options
 C["toppanel"] = {
-	["enable"] = false,
+	["enable"] = true,
 	["height"] = 90,
-	["mouseover"] = false,
+	["mouseover"] = true,
 	["width"] = 250,
 }
 
@@ -222,17 +223,17 @@ C["tooltip"] = {
 	["scale"] = 1,
 	["shift_modifer"] = false,
 	-- Plugins
-	["achievements"] = true,
+	["achievements"] = false,
 	["arena_experience"] = false,
-	["average_lvl"] = true,
+	["average_lvl"] = false,
 	["instance_lock"] = false,
 	["item_count"] = false,
 	["item_transmogrify"] = false,
 	["raid_icon"] = true,
 	["rank"] = true,
 	["realm"] = true,
-	["spell_id"] = true,
-	["talents"] = true,
+	["spell_id"] = false,
+	["talents"] = false,
 	["target"] = true,
 	["title"] = false,
 	["unit_role"] = true,

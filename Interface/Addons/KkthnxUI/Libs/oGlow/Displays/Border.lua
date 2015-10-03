@@ -41,7 +41,7 @@ local createBorder = function(self, point)
 
 			bc:SetTexture("Interface\\Buttons\\UI-ActionButton-Border")
 			bc:SetBlendMode("ADD")
-			bc:SetAlpha(1)
+			bc:SetAlpha(0.7)
 
 			bc:SetSize(70, 70)
 

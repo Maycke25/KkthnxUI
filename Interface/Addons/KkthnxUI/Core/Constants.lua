@@ -1,8 +1,6 @@
 local K, C, L, _ = unpack(KkthnxUI)
 
---[[-----------------------------------
-KkthnxUI Constants
----------------------------------------]]
+-- KkthnxUI Constants
 K.Dummy = function() return end
 K.Name = UnitName("player")
 _, K.Class = UnitClass("player")

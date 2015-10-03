@@ -77,9 +77,9 @@ KUnitFrames:SetScript("OnEvent", function(self, event, arg1)
         }
         
         hooksecurefunc("UnitFrame_Update", function(self, isParty)
-            if not self.name --[[or not self:IsShown()--]] then return end
+            if not self.name or not self:IsShown() then return end
             
-            -- local PET_COLOR = { r = 157/255, g = 197/255, b = 255/255 }
+            local PET_COLOR = { r = 157/255, g = 197/255, b = 255/255 }
             local unit, color = self.unit
             if UnitPlayerControlled(unit) then
                 if UnitIsPlayer(unit) then

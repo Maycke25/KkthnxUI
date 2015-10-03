@@ -1,9 +1,7 @@
 local K, C, L, _ = unpack(select(2, ...))
-if C.buffs.buffsource ~= true then return end
+if C.buffs.castby ~= true then return end
 
-----------------------------------------------------------------------------------------
---	Tells you who cast a buff or debuff in its tooltip(prButler by Renstrom)
-----------------------------------------------------------------------------------------
+-- Tells you who cast a buff or debuff in its tooltip(prButler by Renstrom)
 local function addAuraSource(self, func, unit, index, filter)
 	local srcUnit = select(8, func(unit, index, filter))
 	if srcUnit then
@@ -30,7 +28,7 @@ local function addAuraSource(self, func, unit, index, filter)
 				src = format("|cff%02x%02x%02x%s|r", color[1] * 255, color[2] * 255, color[3] * 255, src)
 			end
 		end
-		self:AddLine(DONE_BY.." "..src)
+		self:AddLine(L_BUFFS_CAST_BY.." "..src)
 		self:Show()
 	end
 end

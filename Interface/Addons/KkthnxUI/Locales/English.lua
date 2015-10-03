@@ -1,6 +1,4 @@
---[[----------------------------
-Keybinding
---------------------------------]]
+-- Keybinds
 L_BIND_BINDING = "Binding"
 L_BIND_CLEARED = "All keybindings cleared for"
 L_BIND_DISCARD = "All newly set keybindings have been discarded."
@@ -9,9 +7,7 @@ L_BIND_KEY = "Key"
 L_BIND_NO_SET = "No bindings set"
 L_BIND_SAVED = "All keybindings have been saved."
 
---[[----------------------------
-Welcome message
---------------------------------]]
+-- Welcome
 L_WELCOME_LINE_1 = "Welcome to |cFF4488FFKkthnx|r |cFFFEB200UI|r "
 L_WELCOME_LINE_2_1 = ""
 L_WELCOME_LINE_2_2 = "Type |cFF4488FF/uihelp|r or |cFF4488FF/cfg|r for more features"
@@ -22,16 +18,12 @@ L_WELCOME_LINE_2_4 = "For more info visit |cFF4488FFhttps://github.com/Kkthnx/Kk
 L_POPUP_INSTALLUI = "First time on |cFF4488FFKkthnx|r |cFFFEB200UI|r with this Character. You must reload UI to configure it."
 L_POPUP_RESETUI = "Are you sure you want to reset all settings for |cFF4488FFKkthnx|r |cFFFEB200UI|r?"
 
---[[----------------------------
-LitePanels AFK module
---------------------------------]]
+-- AFK Panel
 L_PANELS_AFK = "You are AFK!"
 L_PANELS_AFK_RCLICK = "Right-Click to hide."
 L_PANELS_AFK_LCLICK = "Left-Click to go back."
 
---[[----------------------------
-Chat Strings
---------------------------------]]
+-- Chat
 L_CHAT_AFK = "[AFK]"
 L_CHAT_AFK = "[AFK]"
 L_CHAT_BN_WHISPER = "From"
@@ -55,9 +47,7 @@ L_CHAT_RAID_WARNING = "RW"
 L_CHAT_RECRUITMENT = "GuildRecruitment"
 L_CHAT_WHISPER = "From"
 
---[[----------------------------
-Loot / Group Loot
---------------------------------]]
+-- Loot
 L_LOOT_ANNOUNCE = "Announce to"
 L_LOOT_FISH = "Fishing loot"
 L_LOOT_RANDOM = "Random Player"
@@ -67,9 +57,7 @@ L_LOOT_TO_PARTY = "  party"
 L_LOOT_TO_RAID = "  raid"
 L_LOOT_TO_SAY = "  say"
 
---[[----------------------------
-Tooltip Strings
---------------------------------]]
+-- Tooltip
 L_TOOLTIP_ACH_COMPLETE = "Your Status: Completed on "
 L_TOOLTIP_ACH_INCOMPLETE = "Your Status: Incomplete"
 L_TOOLTIP_ACH_STATUS = "Your Status:"
@@ -81,14 +69,10 @@ L_TOOLTIP_NO_TALENT = "No Talents"
 L_TOOLTIP_SPELL_ID = "Spell ID:"
 L_TOOLTIP_WHO_TARGET = "Targeted By"
 
---[[----------------------------
-Raid Utility
---------------------------------]]
+-- Raid Utility
 L_RAID_UTIL_DISBAND = "Disband Group"
 
---[[----------------------------
-Combat text
---------------------------------]]
+-- Combat Text
 L_COMBATTEXT_KILLING_BLOW = "Killing Blow"
 L_COMBATTEXT_ALREADY_UNLOCKED = "Combat text already unlocked."
 L_COMBATTEXT_ALREADY_LOCKED = "Combat text already locked."
@@ -101,9 +85,7 @@ L_COMBATTEXT_POPUP = "To save combat text window positions you need to reload yo
 L_COMBATTEXT_UNSAVED = "Combat text window positions unsaved, don't forget to reload UI."
 L_COMBATTEXT_UNLOCKED = "Combat text unlocked."
 
---[[----------------------------
-Info Strings
---------------------------------]]
+-- Info Strings
 L_INFO_DUEL = "Declined duel request from "
 L_INFO_ERRORS = "No error yet."
 L_INFO_INVITE = "Accepted invite from "
@@ -112,29 +94,21 @@ L_INFO_PET_DUEL = "Declined pet duel request from "
 L_INFO_DISBAND = "Disbanding group..."
 L_POPUP_DISBAND_RAID = "Are you sure you want to disband the group?"
 
---[[----------------------------
-Misc Strings
---------------------------------]]
+-- Misc Strings
 L_ANNOUNCE_FP_USE = "%s used a %s."
 L_ANNOUNCE_INTERRUPTED = INTERRUPTED
 L_WATCH_WOWHEAD_LINK = "Wowhead link"
 
---[[----------------------------
-Map
---------------------------------]]
+-- Map
 L_MAP_FOG = "Fog of War"
 
---[[----------------------------
-Talent spec Strings
---------------------------------]]
+-- Talent spec Strings
 L_PLANNER_DRUID_4 = "Restoration"
 L_PLANNER_MONK_2 = "Mistweaver"
 L_PLANNER_PALADIN_1 = "Holy"
 L_PLANNER_PRIEST_1 = "Discipline"
 
---[[----------------------------
-Profile Strings
---------------------------------]]
+-- Profile Strings
 L_INFO_SETTINGS_ABU = "Type /settings abu, to apply the settings |cffffc700oUF_Abu|r."
 L_INFO_SETTINGS_ALL = "Type /settings all, to apply the settings for all modifications."
 L_INFO_SETTINGS_BIGWIGS = "Type /settings bigwigs, to apply the settings |cffffc700Bigwigs|r."
@@ -147,11 +121,10 @@ L_INFO_SETTINGS_WEAKAURAS = "Type /settings weakauras, to apply the settings |cf
 L_INFO_SETTINGS_XLOOT = "Type /settings weakauras, to apply the settings |cffffc700XLoot|r."
 L_INFO_SETTINGS_ZYGOR = "Type /settings zygor, to apply the settings |cffffc700ZygorGuidesViewer|r."
 L_POPUP_SETTINGS_DBM = "We need to change the bar positions of DBM."
+L_POPUP_SETTINGS_BW = "Need to change the position of elements BigWigs."
 L_POPUP_SETTINGS_ALL = "Apply settings for all addon modifications? This is recommended."
 
---[[----------------------------
-Merchant
---------------------------------]]
+-- Merchant
 L_MISC_BUY_STACK = "Alt-Click to buy a stack"
 L_MISC_DRINKING = " is drinking."
 L_MISC_ONECLICK_BID = "Shift-Right-Click to bid on the selected item without confirmation"
@@ -160,14 +133,28 @@ L_MISC_ONECLICK_CANCEL = "Shift-Right-Click to cancel on the selected item witho
 L_MISC_SCROLL = "Scroll"
 L_MISC_UI_OUTDATED = "Your version of |cFF4488FFKkthnx|r |cFFFEB200UI|r is out of date. You can download the latest version from www.github.com/Kkthnx/KkthnxUI"
 
---[[----------------------------
-Click2Cast
---------------------------------]]
+-- Click2Cast
 L_MISC_BINDER_OPEN = "Mouse Bindings"
 
---[[----------------------------
-LiteStats
---------------------------------]]
+-- Buff Source
+L_BUFFS_CAST_BY = "Cast by:"
+
+-- BG stats
+L_DATATEXT_BASESASSAULTED = "Bases Assaulted:"
+L_DATATEXT_BASESDEFENDED = "Bases Defended:"
+L_DATATEXT_TOWERSASSAULTED = "Towers Assaulted:"
+L_DATATEXT_TOWERSDEFENDED = "Towers Defended:"
+L_DATATEXT_FLAGSCAPTURED = "Flags Captured:"
+L_DATATEXT_FLAGSRETURNED = "Flags Returned:"
+L_DATATEXT_GRAVEYARDSASSAULTED = "Graveyards Assaulted:"
+L_DATATEXT_GRAVEYARDSDEFENDED = "Graveyards Defended:"
+L_DATATEXT_DEMOLISHERSDESTROYED = "Demolishers Destroyed:"
+L_DATATEXT_GATESDESTROYED = "Gates Destroyed:"
+L_DATATEXT_ORB_POSSESSIONS = "Orb Possessions:"
+L_DATATEXT_VICTORY_POINTS = "Victory Points:"
+L_DATATEXT_CARTS_CONTROLLED = "Carts Controlled:"
+
+-- LiteStats
 L_STATS_ACC_PLAYED = "Account Played"
 L_STATS_ADDED_JUNK = "Added junk exception"
 L_STATS_ALREADY_EXCEPTIONS = "is already in exceptions list."
@@ -234,9 +221,6 @@ L_STATS_WATCH_FACTIONS = "Watch factions from the character faction UI."
 L_STATS_WORLD_MAP = "Clicking opens world map."
 L_STATS_XP_RATE = "Level XP rate"
 
---[[----------------------------
-UI Help /Commands
---------------------------------]]
 -- Slash commands
 L_SLASHCMD_HELP = {
 	"Available slash commands:",

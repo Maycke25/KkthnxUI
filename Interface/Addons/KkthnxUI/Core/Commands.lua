@@ -1,6 +1,5 @@
 local K, C, L, _ = unpack(select(2, ...))
 
-
 -- Misc Slash commands
 SlashCmdList.RELOADUI = function() ReloadUI() end
 SLASH_RELOADUI1 = "/rl"
@@ -34,7 +33,7 @@ function DisbandRaidGroup()
 		SendChatMessage(L_INFO_DISBAND, "RAID")
 		for i = 1, GetNumGroupMembers() do
 			local name, _, _, _, _, _, _, online = GetRaidRosterInfo(i)
-			if online and name ~= T.name then
+			if online and name ~= K.Name then
 				UninviteUnit(name)
 			end
 		end
@@ -170,12 +169,7 @@ SlashCmdList["FRAMELIST"] = function(msg)
 		end
 	end
 	print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-	if(CopyChatFrame:IsShown()) then
-		CopyChatFrame:Hide()
-	end
-
-	ElvUI[1]:GetModule("Chat"):CopyChat(ChatFrame1)
+	
 	if(not isPreviouslyShown) then
 		FrameStackTooltip_Toggle();
 	end

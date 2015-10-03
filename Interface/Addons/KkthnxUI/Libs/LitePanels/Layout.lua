@@ -32,9 +32,7 @@ lpanels:CreateLayout("Load For All", {
 		},
 		OnLoad = function(self)
 			self:RegisterEvent("PLAYER_FLAGS_CHANGED")
-			self:SetBackdrop(K.Backdrop)
-			self:SetBackdropColor(1, 1, 1, .9)
-			self:SetBackdropBorderColor(1, 0, 0)
+			--self:SetTemplate("Transparent")
 			self:Hide()
 		end,
 		OnEvent = function(self)
@@ -52,7 +50,7 @@ lpanels:CreateLayout("Load For All", {
 			if b == "LeftButton" then SendChatMessage("", "AFK") end
 		end,
 		OnEnter = function(self) self:SetBackdropBorderColor(K.Color.r, K.Color.g, K.Color.b) end,
-		OnLeave = function(self) self:SetBackdropBorderColor(1, 0, 0) end
+		OnLeave = function(self) self:SetBackdropBorderColor(unpack(C.media.border_color)) end
 	},
 })
 

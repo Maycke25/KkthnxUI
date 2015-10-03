@@ -1,17 +1,12 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[-----------------------------------
-Clean up Keys
----------------------------------------]]
+-- Clean up Keys
 local HKfont = CreateFont("HotKeyFont")
 HKfont:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
 HKfont:SetShadowOffset(0, 0)
 NumberFontNormalSmallGray:SetFontObject(HKfont)
 
---[[-----------------------------------
-Fade in/out world when GameMenu 
-is opened
----------------------------------------]]
+-- Fade in/out world when GameMenu is opened
 if C.misc.fadegamemenu == true then
 	local GMFade = UIParent:CreateTexture(nil, 'BACKGROUND')
 	GMFade:SetAllPoints(UIParent)
@@ -28,9 +23,7 @@ if C.misc.fadegamemenu == true then
 	end)
 end
 
---[[-----------------------------------
-Better loot filter
----------------------------------------]]
+-- Better loot filter
 if C.misc.betterlootfilter == true then
 	local minRarity = 3 --0 = Poor, 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Epic, 5 = Legendary, 6 = Artifact, 7 = Heirloom
 	function lootfilter(self,event,msg)
@@ -74,9 +67,7 @@ LOOT_ITEM_MULTIPLE = "%s gets: %sx%d";
 LOOT_ITEM_PUSHED = "%s gets: %s";
 LOOT_ITEM_PUSHED_MULTIPLE = "%s gets: %sx%d";
 
---[[-----------------------------------
-Code Taken from Tukui v16
----------------------------------------]]
+-- Code Taken from Tukui v16
 local RemoveTexture = function(self, texture)
 	if texture and (string.sub(texture, 1, 9) == "Interface" or string.sub(texture, 1, 9) == "INTERFACE") then
 		self:SetTexture("")
@@ -86,9 +77,7 @@ end
 hooksecurefunc(DraenorZoneAbilityFrame.SpellButton.Style, 'SetTexture', RemoveTexture)
 hooksecurefunc(ExtraActionButton1.style, 'SetTexture', RemoveTexture)
 
---[[-----------------------------------
-Shorten gold display
----------------------------------------]]
+-- Shorten gold display
 if C.misc.shortengold == true then
 	local frame = CreateFrame("FRAME", "DuffedGold")
 	frame:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -111,9 +100,7 @@ if C.misc.shortengold == true then
 	frame:SetScript("OnEvent", eventHandler)
 end
 
---[[-----------------------------------
-Farmmode
----------------------------------------]]
+-- Minimap Farmmode
 local farm = false
 local minisize = 144
 local farmsize = 300
@@ -135,9 +122,7 @@ function SlashCmdList.FARMMODE(msg, editbox)
 end
 SLASH_FARMMODE1 = "/farmmode"
 
---[[-----------------------------------
-Custom Lag Tolerance(by Elv22)
----------------------------------------]]
+-- Custom Lag Tolerance(by Elv22)
 if C.misc.customlagtolerance == true then
 	InterfaceOptionsCombatPanelMaxSpellStartRecoveryOffset:Hide()
 	InterfaceOptionsCombatPanelReducedLagTolerance:Hide()
@@ -159,9 +144,24 @@ if C.misc.customlagtolerance == true then
 	LatencyUpdate(customlag, 10)
 end
 
---[[-----------------------------------
-Rare Alert
----------------------------------------]]
+-- Check for a mount to drop in your loot
+if C.misc.mountdrop == true then
+	local mdrop = CreateFrame("Frame")
+	mdrop:RegisterEvent("LOOT_OPENED")
+	mdrop:SetScript("OnEvent", function()
+		for i = 1, GetNumLootItems() do
+			local link = GetLootSlotLink(i)
+			local _, _, _, _, _, _, subtype, _, _, icon = GetItemInfo(link)
+			if subtype == "Mount" then -- change if you're not playing in English
+				PlaySoundFile("Sound\\Creature\\Ragnaros\\RagnarosSpecialAttack01.wav")
+				RaidNotice_AddMessage(RaidWarningFrame, "|T"..icon..":0|t "..link.." mount dropped!", K.Color.r, K.Color.b, K.Color.g)
+				return -- no need to keep looking
+			end
+		end
+	end)
+end
+
+-- Rare Alert
 if C.misc.rarealert == true then
 	local blacklist = {
 		[971] = true, -- Alliance garrison
@@ -180,9 +180,7 @@ if C.misc.rarealert == true then
 	end)
 end
 
---[[-----------------------------------
-Collect Garbage
----------------------------------------]]
+-- Collect Garbage
 if C.misc.collectgarbage then
 	local Garbage = CreateFrame("Frame")
 	Garbage:RegisterAllEvents()
@@ -196,10 +194,7 @@ if C.misc.collectgarbage then
 	end)
 end
 
---[[-----------------------------------
-Auto select current event boss from LFD 
-tool(EventBossAutoSelect by Nathanyel)
----------------------------------------]]
+-- Auto select current event boss from LFD tool(EventBossAutoSelect by Nathanyel)
 local firstLFD
 LFDParentFrame:HookScript("OnShow", function()
 	if not firstLFD then
@@ -214,9 +209,7 @@ LFDParentFrame:HookScript("OnShow", function()
 	end
 end)
 
---[[-----------------------------------
-GuildTab in FriendsFrame
----------------------------------------]]
+-- GuildTab in FriendsFrame
 local n = FriendsFrame.numTabs + 1
 local gtframe = CreateFrame("Button", "FriendsFrameTab"..n, FriendsFrame, "FriendsFrameTabTemplate")
 gtframe:SetText(GUILD)
@@ -224,10 +217,7 @@ gtframe:SetPoint("LEFT", _G["FriendsFrameTab"..n - 1], "RIGHT", -15, 0)
 PanelTemplates_DeselectTab(gtframe)
 gtframe:SetScript("OnClick", function() ToggleGuildFrame() end)
 
---[[-----------------------------------
-Remove Boss Emote spam in BG 
-(by Partha)
----------------------------------------]]
+-- Remove Boss Emote spam in BG (by Partha)
 if C.misc.bgspam then
 	local BGSpam = CreateFrame("Frame")
 	local RaidBossEmoteFrame, spamDisabled = RaidBossEmoteFrame
@@ -247,17 +237,14 @@ if C.misc.bgspam then
 	BGSpam:SetScript("OnEvent", DisableSpam)
 end
 
---[[-----------------------------------
-Boss Banner Hider
----------------------------------------]]
+-- Boss Banner Hider
 if C.misc.bossbanner == true then
 	BossBanner.PlayBanner = function()
 	end
 end
 
---[[-----------------------------------
-Old achievements filter
----------------------------------------]]
+
+-- Old achievements filter
 function AchievementFrame_GetCategoryNumAchievements_OldIncomplete(categoryID)
 	local numAchievements, numCompleted = GetCategoryNumAchievements(categoryID)
 	return numAchievements - numCompleted, 0, numCompleted
@@ -286,9 +273,7 @@ filter:SetScript("OnEvent", function(self, event, addon, ...)
 	end
 end)
 
---[[-----------------------------------
-Force quit
----------------------------------------]]
+-- Force quit WoW
 local CloseWoW = CreateFrame("Frame")
 CloseWoW:RegisterEvent("CHAT_MSG_SYSTEM")
 CloseWoW:SetScript("OnEvent", function(self, event, msg)
