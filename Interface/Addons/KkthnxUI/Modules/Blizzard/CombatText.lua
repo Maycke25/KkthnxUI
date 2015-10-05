@@ -341,14 +341,18 @@ for i = 1, numf do
 	f:SetInsertMode(C.combattext.direction or "bottom")
 	if i == 1 then
 		f:SetJustifyH(ct.justify_1)
-		if IsAddOnLoaded("oUF_Abu") then
-			f:SetPoint("BOTTOMLEFT", "oUF_AbuPlayer", "TOPLEFT", -3, 60)
+		if C.unitframe.enable == true then
+			f:SetPoint("BOTTOMLEFT", "PlayerFrame", "TOPLEFT", 60, 60)
 		else
-			f:SetPoint("CENTER", -300, -30)
+			f:SetPoint("CENTER", -192, -32)
 		end
 	elseif i == 2 then
 		f:SetJustifyH(ct.justify_2)
-		f:SetPoint("CENTER", -200, -30)
+		if C.unitframe.enable == true then
+			f:SetPoint("BOTTOMRIGHT", "PlayerFrame", "TOPRIGHT", 5, 60)
+		else
+			f:SetPoint("CENTER", 192, -32)
+		end
 	elseif i == 3 then
 		f:SetJustifyH(ct.justify_3)
 		f:SetWidth(256)
@@ -359,14 +363,18 @@ for i = 1, numf do
 		if C.combattext.icons then
 			f:SetHeight(150)
 		end
-		f:SetPoint("CENTER", 250, -8)
+		if C.unitframe.enable == true then
+			f:SetPoint("BOTTOMRIGHT", "TargetFrame", "TOPRIGHT", -60, 60)
+		else
+			f:SetPoint("CENTER", 330, 205)
+		end
 		local a, _, c = f:GetFont()
-		if C.font.combat_font_size == "auto" then
+		if C.font.combat_text_font_size == "auto" then
 			if C.combattext.icons then
 				f:SetFont(a, C.combattext.icon_size / 2, c)
 			end
-		elseif type(C.font.combat_font_size) == "number" then
-			f:SetFont(a, C.font.combat_font_size, c)
+		elseif type(C.font.combat_text_font_size) == "number" then
+			f:SetFont(a, C.font.combat_text_font_size, c)
 		end
 	end
 	ct.frames[i] = f
@@ -852,7 +860,7 @@ if C.combattext.healing then
 	local unpack, select, time = unpack, select, time
 	local xCTh = CreateFrame("Frame")
 	if C.combattext.icons then
-		ct.blank = "Interface\\AddOns\\KkthnxUI\\Media\\Textures\\Blank.tga"
+		ct.blank = C.media.blank
 	end
 	local heal = function(self, event, ...)
 		local msg, icon

@@ -1,8 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 
-----------------------------------------------------------------------------------------
---	Based on Fane(by Haste)
-----------------------------------------------------------------------------------------
+-- Based on Fane(by Haste)
 if C.chat.tabmouseover == true then
 	CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0
 	CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0

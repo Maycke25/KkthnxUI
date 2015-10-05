@@ -597,21 +597,23 @@ local UploadAbu = function()
 				["buffPos"] = "BOTTOM",
 				["cbicon"] = "LEFT",
 				["style"] = "fat",
-				["position"] = "CENTER/210/-120",
-				["cbposition"] = "BOTTOM/10/335",
+				["position"] = "CENTER/220/-150",
+				["cbposition"] = "CENTER/10/160",
 			},
 			["classPortraits"] = true,
 			["player"] = {
 				["cbicon"] = "LEFT",
 				["style"] = "fat",
-				["position"] = "CENTER/-210/-120",
-				["cbposition"] = "BOTTOM/10/300",
+				["position"] = "CENTER/-220/-150",
+				["cbposition"] = "CENTER/10/-162",
 			},
 			["arena"] = {
 				["position"] = "RIGHT/-213/265",
 			},
 			["party"] = {
 				["style"] = "fat",
+				["position"] = "LEFT/76/290",
+				["scale"] = 1.20000001043081,
 			},
 			["focus"] = {
 				["style"] = "fat",

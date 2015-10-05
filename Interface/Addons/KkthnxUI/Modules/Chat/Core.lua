@@ -98,6 +98,37 @@ local function SetChatStyle(frame)
 	-- Hide edit box every time we click on a tab
 	_G[chat.."Tab"]:HookScript("OnClick", function() _G[chat.."EditBox"]:Hide() end)
 	
+	-- Create our own texture for edit box
+	if C.chat.background == true and C.chat.tabmouseover ~= true then
+		local EditBoxBackground = CreateFrame("Frame", "ChatEditBoxBackground", _G[chat.."EditBox"])
+		EditBoxBackground:SetBackdrop(K.Backdrop);
+		EditBoxBackground:SetBackdropColor(0, 0, 0, C.chat.background_alpha);
+		EditBoxBackground:ClearAllPoints()
+		EditBoxBackground:SetPoint("TOPLEFT", _G[chat.."EditBox"], "TOPLEFT", 0, -3)
+		EditBoxBackground:SetPoint("BOTTOMRIGHT", _G[chat.."EditBox"], "BOTTOMRIGHT", 5, 2)
+		EditBoxBackground:SetFrameStrata("LOW")
+		EditBoxBackground:SetFrameLevel(1)
+
+		local function colorize(r, g, b)
+			EditBoxBackground:SetBackdropBorderColor(r, g, b)
+		end
+
+		-- Update border color according where we talk
+		hooksecurefunc("ChatEdit_UpdateHeader", function()
+			local type = _G[chat.."EditBox"]:GetAttribute("chatType")
+			if type == "CHANNEL" then
+				local id = GetChannelName(_G[chat.."EditBox"]:GetAttribute("channelTarget"))
+				if id == 0 then
+					colorize(unpack(C.media.border_color))
+				else
+					colorize(ChatTypeInfo[type..id].r, ChatTypeInfo[type..id].g, ChatTypeInfo[type..id].b)
+				end
+			else
+				colorize(ChatTypeInfo[type].r, ChatTypeInfo[type].g, ChatTypeInfo[type].b)
+			end
+		end)
+	end
+	
 	-- Rename combat log tab
 	if _G[chat] == _G["ChatFrame2"] then
 		CombatLogQuickButtonFrame_Custom:StripTextures()
@@ -118,28 +149,6 @@ local function SetChatStyle(frame)
 		_G.TIMESTAMP_FORMAT_HHMM_24HR = K.RGBToHex(unpack(C.chat.time_color)).."[%H:%M]|r "
 		_G.TIMESTAMP_FORMAT_HHMM_AMPM = K.RGBToHex(unpack(C.chat.time_color)).."[%I:%M %p]|r "
 	end
-	
-	-- Modify the editbox
-	
-	for k = 6, 11 do
-		select(k, _G[chat..'EditBox']:GetRegions()):SetTexture(nil)
-	end
-	
-	_G[chat..'EditBox']:SetBackdrop(K.Backdrop);
-	_G[chat..'EditBox']:SetBackdropColor(1, 1, 1, .9);
-	
-	
-	hooksecurefunc('ChatEdit_UpdateHeader', function(editBox)
-		local type = editBox:GetAttribute('chatType')
-		if (not type) then
-			return
-		end
-		
-		local info = ChatTypeInfo[type]
-		_G[chat..'EditBox']:SetBackdropBorderColor(info.r, info.g, info.b)
-	end)
-	
-	frame.skinned = true
 end
 
 -- Setup chatframes 1 to 10 on login

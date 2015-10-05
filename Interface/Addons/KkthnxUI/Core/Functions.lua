@@ -46,7 +46,7 @@ function CreateStyle(f, size, level, alpha, alphaborder)
 	BlizzBorder:SetPoint("TOPLEFT", -size, size)
 	BlizzBorder:SetPoint("BOTTOMRIGHT", size, -size)
 	BlizzBorder:SetBackdrop(style)
-	BlizzBorder:SetBackdropColor(.08,.08,.08, .9)
+	BlizzBorder:SetBackdropColor(0, 0, 0, .9)
 	BlizzBorder:SetBackdropBorderColor(.7, .7, .7, 1)
 	f.BlizzBorder = BlizzBorder
 	return BlizzBorder
@@ -69,8 +69,8 @@ function CreateStyle2(f, size, level, alpha, alphaborder)
 	shadow:SetPoint("TOPLEFT", -size, size)
 	shadow:SetPoint("BOTTOMRIGHT", size, -size)
 	shadow:SetBackdrop(style2)
-	shadow:SetBackdropColor(.08,.08,.08, alpha or .9)
-	shadow:SetBackdropBorderColor(0, 0, 0, alphaborder or 1)
+	shadow:SetBackdropColor(0, 0, 0, .9)
+	shadow:SetBackdropBorderColor(0, 0, 0, 1)
 	f.shadow = shadow
 	return shadow
 end

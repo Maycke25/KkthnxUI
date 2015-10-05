@@ -170,8 +170,6 @@ local function Local(o)
 	if o == "UIConfigmiscdisenchanting" then o = L_GUI_MISC_DISENCHANTING end
 	if o == "UIConfigmiscenchantscroll" then o = L_GUI_MISC_ENCHANTMENT_SCROLL end
 	if o == "UIConfigmiscfadegamemenu" then o = L_GUI_MISC_FADEGAMEMENU end
-	if o == "UIConfigmiscfilger" then o = L_GUI_MISC_FILGER end
-	if o == "UIConfigmiscfilgerconfigmode" then o = L_GUI_MISC_FILGER_CONFIG end
 	if o == "UIConfigmischattrick" then o = L_GUI_MISC_HATTRICK end
 	if o == "UIConfigmisclfgqueuetimer" then o = L_GUI_MISC_LFGQUEUETIMER end
 	if o == "UIConfigmiscmountdrop" then o = L_GUI_MISC_MOUNT_DROP end
@@ -477,7 +475,7 @@ function CreateUIConfig()
 	
 	local TitleBoxVerText = TitleBoxVer:CreateFontString("UIConfigTitleVer", "OVERLAY", "GameFontNormal")
 	TitleBoxVerText:SetPoint("CENTER")
-	TitleBoxVerText:SetText("|cFF4488FFKkthnx|r |cFFFEB200UI|r "..K.Version)
+	TitleBoxVerText:SetText("|cFF4488FFKkthnx|r|cFFFEB200UI|r "..K.Version)
 	
 	-- Main Frame Title
 	local TitleBox = CreateFrame("Frame", "TitleBox", UIConfigMain)
@@ -832,7 +830,7 @@ do
 	local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 	frame:Hide()
 	
-	frame.name = "|cFF4488FFKkthnx|r |cFFFEB200UI|r"
+	frame.name = "|cFF4488FFKkthnx|r|cFFFEB200UI|r"
 	frame:SetScript("OnShow", function(self)
 		if self.show then return end
 		local K, C, L = unpack(KkthnxUI)
@@ -854,7 +852,7 @@ do
 		subtitle2:SetWidth(580)
 		subtitle2:SetPoint("TOPLEFT", title2, "BOTTOMLEFT", 0, -8)
 		subtitle2:SetJustifyH("LEFT")
-		subtitle2:SetText("|cFFc248d8Magicnachos|r, syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth. Without them I would not have had the inspiration or insight to be able to make this UI.")
+		subtitle2:SetText("|cFFc248d8Magicnachos|r, sticklord, syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth. Without them I would not have had the inspiration or insight to be able to make this UI.")
 		
 		local title3 = self:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 		title3:SetPoint("TOPLEFT", subtitle2, "BOTTOMLEFT", 0, -16)
@@ -874,7 +872,7 @@ do
 		subtitle4:SetWidth(580)
 		subtitle4:SetPoint("TOPLEFT", title4, "BOTTOMLEFT", 0, -8)
 		subtitle4:SetJustifyH("LEFT")
-		subtitle4:SetText("XploitNT, |cFFc248d8Magicnachos|r.")
+		subtitle4:SetText("XploitNT, |cFFc248d8Magicnachos|r, jChirp")
 		
 		local version = self:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 		version:SetPoint("BOTTOMRIGHT", -16, 16)
@@ -890,7 +888,7 @@ end
 --	Button in GameMenuButton frame
 ----------------------------------------------------------------------------------------
 local button = CreateFrame("Button", "GameMenuButtonSettingsUI", GameMenuFrame, "GameMenuButtonTemplate")
-button:SetText("|cFF4488FFKkthnx|r |cFFFEB200UI|r")
+button:SetText("|cFF4488FFKkthnx|r|cFFFEB200UI|r")
 button:SetPoint("TOP", "GameMenuButtonAddons", "BOTTOM", 0, -1)
 
 GameMenuFrame:HookScript("OnShow", function()

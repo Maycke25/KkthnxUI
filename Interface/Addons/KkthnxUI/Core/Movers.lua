@@ -4,20 +4,11 @@ local K, C, L, _ = unpack(select(2, ...))
 K.MoverFrames = {
 	WatchFrameAnchor,
 	AchievementAnchor,
-	MinimapAnchor,
 	TopPanelAnchor,
 	LootRollAnchor,
 	TooltipAnchor,
 	AutoButtonAnchor,
-	PVEPVPCDAnchor,
-	TIGERPOWERAnchor,
-	PVEDEBUFFAnchor,
-	CDAnchor,
-	SPECIALPBUFFICONAnchor,
-	PPROCICONAnchor,
-	TBUFFICONAnchor,
-	BUFFICONAnchor,
-	TDEBUFFICONAnchor,
+	TopPanelAnchor,
 }
 
 local moving = false

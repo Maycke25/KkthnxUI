@@ -146,15 +146,17 @@ end
 
 -- Check for a mount to drop in your loot
 if C.misc.mountdrop == true then
-	local mdrop = CreateFrame("Frame")
-	mdrop:RegisterEvent("LOOT_OPENED")
-	mdrop:SetScript("OnEvent", function()
+	local c = { r = 1, g = 1, b = 1 } -- change values to use some color other than white
+	
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("LOOT_OPENED")
+	f:SetScript("OnEvent", function()
 		for i = 1, GetNumLootItems() do
 			local link = GetLootSlotLink(i)
 			local _, _, _, _, _, _, subtype, _, _, icon = GetItemInfo(link)
 			if subtype == "Mount" then -- change if you're not playing in English
 				PlaySoundFile("Sound\\Creature\\Ragnaros\\RagnarosSpecialAttack01.wav")
-				RaidNotice_AddMessage(RaidWarningFrame, "|T"..icon..":0|t "..link.." mount dropped!", K.Color.r, K.Color.b, K.Color.g)
+				RaidNotice_AddMessage(RaidWarningFrame, "|T"..icon..":0|t "..link.." mount dropped!", c)
 				return -- no need to keep looking
 			end
 		end

@@ -12,9 +12,7 @@ local K, C, L, _ = unpack(select(2, ...))
 -- }
 ----------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------
---	Fonts options
-----------------------------------------------------------------------------------------
+-- Fonts options
 C["font"] = {
 	-- basic text font
 	["basic_font"] = C.media.normal_font,
@@ -30,6 +28,12 @@ C["font"] = {
 	["combat_font"] = C.media.combat_font,
 	["combat_font_size"] = 12,
 	["combat_font_style"] = "OUTLINE",
+	
+	-- Filger font
+	["filger_font"] = C.media.normal_font,
+	["filger_font_size"] = 12,
+	["filger_font_style"] = "OUTLINE",
+	["filger_font_shadow"] = false,
 
 	-- buff text font
 	["buff_font"] = C.media.normal_font,
@@ -104,7 +108,6 @@ C["font"] = {
 --	Font replace for zhTW and zhCN client
 ----------------------------------------------------------------------------------------
 if K.Client == "zhTW" then
-	C["media"].basic_font = "Fonts\\bLEI00D.ttf"
 	C["media"].basic_font = "Fonts\\bLEI00D.ttf"
 	C["media"].basic_font_style = "OUTLINE"
 	C["media"].basic_font_size = 11
