@@ -9,6 +9,8 @@ K.MoverFrames = {
 	TooltipAnchor,
 	AutoButtonAnchor,
 	TopPanelAnchor,
+	BuffsAnchor,
+	MinimapAnchor,
 }
 
 local moving = false
@@ -43,7 +45,8 @@ end
 local CreateMover = function(frame)
 	local mover = CreateFrame("Frame", nil, UIParent)
 	mover:SetBackdrop(K.Backdrop)
-	mover:SetBackdropBorderColor(1, 0, 0)
+	mover:SetBackdropColor(0.05, 0.05, 0.05, .9)
+	mover:SetBackdropBorderColor(1, 0, 0, 1)
 	mover:SetAllPoints(frame)
 	mover:SetFrameStrata("TOOLTIP")
 	mover:EnableMouse(true)

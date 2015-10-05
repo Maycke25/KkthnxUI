@@ -1,6 +1,10 @@
 local K, C, L, _ = unpack(select(2, ...))
 if C.minimap.enable ~= true then return end
 
+-- Minimap border
+local MinimapAnchor = CreateFrame("Frame", "MinimapAnchor", UIParent)
+MinimapAnchor:CreatePanel("Transparent", C.minimap.size, C.minimap.size, unpack(C.position.minimap))
+
 local frames = {
 	'MiniMapVoiceChatFrame',
 	'MiniMapWorldMapButton',
@@ -25,9 +29,20 @@ for i in pairs(frames) do
 	_G[frames[i]].Show = K.Dummy
 end
 
--- Set Default Map X/Y Position
-Minimap:SetPoint(unpack(C.position.minimap))
-Minimap:SetSize(C.minimap.size, C.minimap.size)
+-- Kill Minimap Cluster
+MinimapCluster:Kill()
+
+-- Parent Minimap into our frame
+Minimap:SetParent(MinimapAnchor)
+Minimap:ClearAllPoints()
+Minimap:SetPoint("TOPLEFT", MinimapAnchor, "TOPLEFT", 0, 0)
+Minimap:SetPoint("BOTTOMRIGHT", MinimapAnchor, "BOTTOMRIGHT", 0, 0)
+Minimap:SetSize(MinimapAnchor:GetWidth(), MinimapAnchor:GetWidth())
+
+MinimapBackdrop:ClearAllPoints()
+MinimapBackdrop:SetPoint("TOPLEFT", MinimapAnchor, "TOPLEFT", 2, -2)
+MinimapBackdrop:SetPoint("BOTTOMRIGHT", MinimapAnchor, "BOTTOMRIGHT", -2, 2)
+MinimapBackdrop:SetSize(MinimapAnchor:GetWidth(), MinimapAnchor:GetWidth())
 
 -- Hide Mail Button
 MiniMapMailFrame:SetParent(Minimap)
@@ -250,12 +265,3 @@ Minimap:SetMaskTexture(C.media.blank)
 MinimapBorder:Hide()
 Minimap:SetArchBlobRingScalar(0)
 Minimap:SetQuestBlobRingScalar(0)
-
--- Set Boarder Texture
-MinimapBackdrop:SetBackdrop(K.Backdrop)		
-MinimapBackdrop:ClearAllPoints()		
-MinimapBackdrop:SetBackdropBorderColor(.7, .7, .7, 1)		
-MinimapBackdrop:SetBackdropColor(1, 1, 1, 0)		
-MinimapBackdrop:SetAlpha(1.0)		
-MinimapBackdrop:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -4, 4)		
-MinimapBackdrop:SetPoint("BOTTOMRIGHT", Minimap, "BOTTOMRIGHT", 4, -4)

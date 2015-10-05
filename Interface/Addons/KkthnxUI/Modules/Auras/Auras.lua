@@ -1,6 +1,10 @@
 local K, C, L, _ = unpack(select(2, ...))
 if C.buffs.enable ~= true then return end
 
+local BuffsAnchor = CreateFrame("Frame", "BuffsAnchor", UIParent)
+BuffsAnchor:SetPoint('TOPRIGHT', Minimap, 'TOPLEFT', -26, 2)
+BuffsAnchor:SetSize(C.buffs.buffsize, C.buffs.buffsize)
+
 local function CreateSkin(button, type)
 
     if (not button) or (button and button.Shadow) then return; end
@@ -94,7 +98,7 @@ local function UpdateAllBuffAnchors()
         if slack > 0 then
             aboveBuff = TempEnchant1
         end
-        TempEnchant1:SetPoint('TOPRIGHT', Minimap, 'TOPLEFT', -26, 2)
+        TempEnchant1:SetPoint("TOPRIGHT", BuffsAnchor, "TOPRIGHT", 0, 0)
     end
 
     if (BuffFrame.numEnchants > 0) and (not UnitHasVehicleUI("player")) then
@@ -160,7 +164,7 @@ end
 
 -- Temp Enchant frame
 TempEnchant1:ClearAllPoints()
-TempEnchant1:SetPoint('TOPRIGHT', Minimap, 'TOPLEFT', -15, 0)
+TempEnchant1:SetPoint('TOPRIGHT', BuffsAnchor, 'TOPLEFT', -15, 0)
 TempEnchant2:ClearAllPoints()
 TempEnchant2:SetPoint('TOPRIGHT', TempEnchant1, 'TOPLEFT', -C.buffs.paddingx, 0) 
 TempEnchant3:ClearAllPoints()
