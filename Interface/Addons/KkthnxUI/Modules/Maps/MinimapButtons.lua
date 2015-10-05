@@ -118,7 +118,8 @@ local function SkinButton(f)
 	--CreateBorder(f, 10, 2, "BORDER", "BACKGROUND")
 	CreateStyle(f, 2)
 	f:SetBackdrop(K.BasicBackdrop)
-	f:SetBackdropColor(1, 1, 1, .9)
+	f:SetBackdropColor(0.05, 0.05, 0.05, .9)
+	f:SetBackdropBorderColor(.7, .7, .7, 1)
 end
 
 local frame = CreateFrame("Frame")

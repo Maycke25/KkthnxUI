@@ -20,7 +20,7 @@ C["media"] = {
 	["warning_sound"] = [[Interface\AddOns\KkthnxUI\Media\Sounds\Warning.ogg]],
 	
 	["border_color"] = {0.37, 0.3, 0.3, 1},
-	["backdrop_color"] = {0, 0, 0, 1},
+	["backdrop_color"] = {0.05, 0.05, 0.05, 1},
 	["overlay_color"] = {0, 0, 0, 0.7},
 }
 

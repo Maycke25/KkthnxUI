@@ -1,29 +1,27 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[-----------------------------------
-Backdrops
----------------------------------------]]
+-- Backdrops
 K.Backdrop = {
-	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
-	edgeFile = "Interface\\Addons\\KkthnxUI\\Media\\Tooltips\\KkthnxBorder.blp",
+	bgFile = C.media.blank,
+	edgeFile = C.media.blizz,
 	tile = true, tileSize = 16, edgeSize = 14, 
     insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
 	}
 }
 
 K.BasicBackdrop = {
-	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+	bgFile = C.media.blank,
 	tile = true, tileSize = 16,
     insets = { left = 2.5, right = 2.5, top = 2.5, bottom = 2.5
 	}
 }
 
 K.SimpleBackdrop = {
-	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+	bgFile = C.media.blank,
 }
 
 K.ModBackdrop = {
-	bgFile = "Interface\\Addons\\KkthnxUI\\Media\\Backgrounds\\Background.blp",
+	bgFile = C.media.blank,
 	tile = true, tileSize = 16,
     insets = { left = 8, right = 8, top = 8, bottom = 8
 	}
@@ -46,7 +44,7 @@ function CreateStyle(f, size, level, alpha, alphaborder)
 	BlizzBorder:SetPoint("TOPLEFT", -size, size)
 	BlizzBorder:SetPoint("BOTTOMRIGHT", size, -size)
 	BlizzBorder:SetBackdrop(style)
-	BlizzBorder:SetBackdropColor(0, 0, 0, .9)
+	BlizzBorder:SetBackdropColor(0.05, 0.05, 0.05, .9)
 	BlizzBorder:SetBackdropBorderColor(.7, .7, .7, 1)
 	f.BlizzBorder = BlizzBorder
 	return BlizzBorder
@@ -69,7 +67,7 @@ function CreateStyle2(f, size, level, alpha, alphaborder)
 	shadow:SetPoint("TOPLEFT", -size, size)
 	shadow:SetPoint("BOTTOMRIGHT", size, -size)
 	shadow:SetBackdrop(style2)
-	shadow:SetBackdropColor(0, 0, 0, .9)
+	shadow:SetBackdropColor(0.05, 0.05, 0.05, .9)
 	shadow:SetBackdropBorderColor(0, 0, 0, 1)
 	f.shadow = shadow
 	return shadow

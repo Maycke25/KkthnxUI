@@ -19,7 +19,6 @@ AltPowerBar:SetPoint("TOP", UIParent, "TOP", 0, -21)
 AltPowerBar:SetFrameStrata("MEDIUM")
 AltPowerBar:SetFrameLevel(0)
 CreateStyle(AltPowerBar, 4)
-AltPowerBar:SetBackdropColor(1, 1, 1, .9)
 
 local AltPowerBarStatus = CreateFrame("StatusBar", "KkthnxUIAltPowerBarStatus", AltPowerBar)
 AltPowerBarStatus:SetFrameLevel(AltPowerBar:GetFrameLevel() + 1)
