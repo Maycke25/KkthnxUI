@@ -191,14 +191,14 @@ C["combattext"] = {
 
 -- Unitframe options
 C["unitframe"] = {
-	["enable"] = false,
+	["enable"] = true,
 	["scale"] = 1.2,
 	["cbscale"] = 1.2,
 	["partyscale"] = 1.2,
 	["bossscale"] = 1.2,
 	["arenascale"] = 1.2,
-	["portraits"] = false,
-	["classcolorhealth"] = false,
+	["portraits"] = true,
+	["classcolorhealth"] = true,
 }
 
 -- Addonskin options
