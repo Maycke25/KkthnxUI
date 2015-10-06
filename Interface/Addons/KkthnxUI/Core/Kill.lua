@@ -49,7 +49,8 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		InterfaceOptionsSocialPanelWholeChatWindowClickable:Kill()
 	end
 
-	if C.unitframe.enable then
+	--if C.unitframe.enable then
+	if addon == "oUF_Abu" then
 		InterfaceOptionsFrameCategoriesButton9:SetScale(0.00001)
 		InterfaceOptionsFrameCategoriesButton9:SetAlpha(0)
 		InterfaceOptionsFrameCategoriesButton10:SetScale(0.00001)
@@ -61,7 +62,7 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		InterfaceOptionsCombatPanelEnemyCastBars:Kill()
 		InterfaceOptionsCombatPanelEnemyCastBarsOnPortrait:Kill()
 		SetCVar("showPartyBackground", 0)
-	end
+	end	
 
 	--[[
 	if C.actionbar.enable then

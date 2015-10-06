@@ -12,7 +12,6 @@ C["media"] = {
 	["blank"] = [[Interface\AddOns\KkthnxUI\Media\Textures\Blank.tga]],
 	
 	["abtextures"] = [[Interface\Addons\KkthnxUI\Media\Actionbars\]],
-	["platetextures"] = [[Interface\Addons\KkthnxUI\Media\Nameplates\]],
 	["auratextures"] = [[Interface\Addons\KkthnxUI\Media\Buffs\]],
 	["bordertextures"] = [[Interface\Addons\KkthnxUI\Media\Border\]],
 	
