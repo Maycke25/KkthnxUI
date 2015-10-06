@@ -418,8 +418,9 @@ end
 local StartConfigmode = function()
 	if not InCombatLockdown()then
 		for i = 1, #ct.frames do
-			f = ct.frames[i]
+			f = ct.frames[i]	
 			f:SetBackdrop(K.Backdrop)
+			f:SetBackdropColor(0.05, 0.05, 0.05, .9)
 			f:SetBackdropBorderColor(1, 0, 0, 1)
 			
 			f.fs = f:CreateFontString(nil, "OVERLAY")

@@ -107,12 +107,12 @@ local farmsize = 300
 function SlashCmdList.FARMMODE(msg, editbox)
 	if farm == false then
 		Minimap:SetSize(farmsize, farmsize)
-		Minimap:SetSize(farmsize, farmsize)
+		MinimapAnchor:SetSize(farmsize, farmsize)
 		farm = true
 		print("Farm Mode : On")
 	else
 		Minimap:SetSize(minisize, minisize)
-		Minimap:SetSize(minisize, minisize)
+		MinimapAnchor:SetSize(minisize, minisize)
 		farm = false
 		print("Farm Mode : Off")
 	end

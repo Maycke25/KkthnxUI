@@ -9,7 +9,7 @@ frame:SetScript("OnEvent", function(self, event, addon)
 			hooksecurefunc("AchievementFrameCategories_DisplayButton", function(button) button.showTooltipFunc = nil end)
 		end
 	end
-
+	
 	--if C.unitframe.enable or addon == "oUF_AbuRaid" then
 	if addon == "oUF_AbuRaid" then
 		InterfaceOptionsFrameCategoriesButton11:SetScale(0.00001)
@@ -25,7 +25,7 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		CompactRaidFrameManager_UpdateShown = K.Dummy
 		CompactRaidFrameManager_UpdateOptionsFlowContainer = K.Dummy
 	end
-
+	
 	Advanced_UseUIScale:Kill()
 	Advanced_UIScaleSlider:Kill()
 	TutorialFrameAlertButton:Kill()
@@ -39,18 +39,18 @@ frame:SetScript("OnEvent", function(self, event, addon)
 	SetCVarBitfield("closedInfoFrames", LE_FRAME_TUTORIAL_WORLD_MAP_FRAME, true)
 	SetCVarBitfield("closedInfoFrames", LE_FRAME_TUTORIAL_PET_JOURNAL, true)
 	SetCVarBitfield("closedInfoFrames", LE_FRAME_TUTORIAL_GARRISON_BUILDING, true)
-
+	
 	SetCVar("countdownForCooldowns", 0)
 	InterfaceOptionsActionBarsPanelCountdownCooldowns:Kill()
-
+	
 	if C.chat.enable then
 		SetCVar("chatStyle", "im")
 		InterfaceOptionsSocialPanelChatStyle:Kill()
 		InterfaceOptionsSocialPanelWholeChatWindowClickable:Kill()
 	end
-
-	--if C.unitframe.enable then
-	if addon == "oUF_Abu" then
+	
+	--[[
+	if C.unitframe.enable and IsAddOnLoaded("oUF_Abu") then
 		InterfaceOptionsFrameCategoriesButton9:SetScale(0.00001)
 		InterfaceOptionsFrameCategoriesButton9:SetAlpha(0)
 		InterfaceOptionsFrameCategoriesButton10:SetScale(0.00001)
@@ -65,7 +65,6 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		SetCVar("showTargetOfTarget", 0) -- Just to be safe!
 	end	
 
-	--[[
 	if C.actionbar.enable then
 		InterfaceOptionsActionBarsPanelBottomLeft:Kill()
 		InterfaceOptionsActionBarsPanelBottomRight:Kill()
@@ -79,11 +78,11 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		InterfaceOptionsCombatPanelEnemyCastBarsOnNameplates:Kill()
 		InterfaceOptionsNamesPanelUnitNameplatesNameplateClassColors:Kill()
 	end
-
+	
 	if C.minimap.enable then
 		InterfaceOptionsDisplayPanelRotateMinimap:Kill()
 	end
-
+	
 	if C.combattext.enable then
 		InterfaceOptionsCombatTextPanelFCTDropDown:Kill()
 		if C.combattext.blizz_head_numbers ~= true then

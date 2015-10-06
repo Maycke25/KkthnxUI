@@ -1,5 +1,5 @@
 local K, C, L, _ = unpack(select(2, ...))
-if C.map.fog_of_war ~= true then return end
+if C.map.fogofwar ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Fog of war on World Map(module from LeatrixPlus by Leatrix)

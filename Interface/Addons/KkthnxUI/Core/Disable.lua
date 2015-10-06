@@ -1,8 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 
---[[----------------------------
-Prevent users config errors
---------------------------------]]
+-- Prevent users config errors
 if C.error.black == true and C.error.white == true then
 	C.error.white = false
 end
@@ -12,9 +10,7 @@ if C.error.combat == true then
 	C.error.white = false
 end
 
---[[----------------------------
-Auto-overwrite script config is X addon is found
---------------------------------]]
+-- Auto-overwrite script config is X addon is found
 if IsAddOnLoaded("gUI4_Minimap") or IsAddOnLoaded("SexyMap") or IsAddOnLoaded("wMinimap") then
 	C.minimap.enable = false
 end
