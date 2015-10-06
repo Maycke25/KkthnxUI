@@ -62,6 +62,7 @@ frame:SetScript("OnEvent", function(self, event, addon)
 		InterfaceOptionsCombatPanelEnemyCastBars:Kill()
 		InterfaceOptionsCombatPanelEnemyCastBarsOnPortrait:Kill()
 		SetCVar("showPartyBackground", 0)
+		SetCVar("showTargetOfTarget", 0) -- Just to be safe!
 	end	
 
 	--[[
