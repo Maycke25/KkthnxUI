@@ -1,8 +1,0 @@
-Copyright (c) 2015, Josh "Kkthnx" Russell
-
-Contact: JRussell20@gmail.com
-
-All Rights Reserved © Kkthnx.
- You have permission to copy all code from the lua / xml files.   
-
-Restriction: Do not touch or use any of the tga files in this UI in any other way!   

@@ -6,6 +6,10 @@
 ## Credits: Affli, Ildyria, SinaC
 ## Thanks: Erratic, Tryllemann, Wetxius, Lanseb
 ## RequiredDeps: KkthnxUI
+## X-Curse-Packaged-Version: 2.9
+## X-Curse-Project-Name: KkthnxUI
+## X-Curse-Project-ID: kkthnxui
+## Website: https://github.com/Kkthnx/KkthnxUI
 
 Config\Settings.lua
 Config\Positions.lua

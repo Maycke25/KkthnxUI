@@ -7,6 +7,9 @@
 ## OptionalDeps: Blizzard_CombatText, KkthnxUI_Config, Skada, DBM, Bigwigs
 ## SavedVariables: SavedOptions, SavedStats, SavedAddonProfiles, SavedBindings
 ## SavedVariablesPerCharacter: SavedOptionsPerChar, SavedPositions
+## X-Curse-Packaged-Version: 2.9
+## X-Curse-Project-Name: KkthnxUI
+## X-Curse-Project-ID: kkthnxui
 ## Website: https://github.com/Kkthnx/KkthnxUI
 
 KkthnxUI.xml

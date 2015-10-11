@@ -97,6 +97,16 @@ C["actionbar"] = {
 	["skinbuttons"] = true,
 }
 
+-- Nameplate options
+C["nameplate"] = {
+	["enable"] = true,
+	["shortnames"] = true,
+	["showlevel"] = true,
+	["showtotem"] = true,
+	["targetborder"] = true,
+}
+
+
 -- Announcements options
 C["announcements"] = {
 	["badgear"] = true,
