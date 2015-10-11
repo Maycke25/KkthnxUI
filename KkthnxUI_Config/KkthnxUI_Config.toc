@@ -10,6 +10,7 @@
 ## X-Curse-Packaged-Version: 2.9
 ## X-Curse-Project-Name: KkthnxUI
 ## X-Curse-Project-ID: kkthnxui
+## X-WoWI-ID: 23677
 ## Website: https://github.com/Kkthnx/KkthnxUI
 
 Locales\English.lua
