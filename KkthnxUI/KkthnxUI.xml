@@ -43,7 +43,7 @@
 	<Script file="Core\Panels.lua"/>
 	<Script file="Core\Border.lua"/>
 	
-	<Script file="Modules\Unitframes\UnitFrames.lua"/>
+	<Script file="Modules\Unitframes\Layout.lua"/>
 	
 	<Script file="Modules\Misc\AFK.lua"/>
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>

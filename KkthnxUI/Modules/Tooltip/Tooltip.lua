@@ -437,12 +437,14 @@ if (C.tooltip.hiderealm) then
 	end)
 end
 
-hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
-	if C.tooltip.cursor and GetMouseFocus() == WorldFrame then
-		self:SetOwner(parent, "ANCHOR_CURSOR")
+local function GameTooltipDefault(self, parent)
+	if C.tooltip.cursor == true then
+		self:SetOwner(parent, "ANCHOR_CURSOR_RIGHT", 20, 20)
 	else
 		self:SetOwner(parent, "ANCHOR_NONE")
 		self:ClearAllPoints()
 		self:SetPoint("BOTTOMRIGHT", TooltipAnchor, "BOTTOMRIGHT", 0, 0)
+		self.default = 1
 	end
-end)
+end
+hooksecurefunc("GameTooltip_SetDefaultAnchor", GameTooltipDefault)
