@@ -49,7 +49,8 @@ local function SetUnitFrames()
 		TargetFrameTextureFrameHealthBarText,
 		TargetFrameTextureFrameManaBarText,
 	}) do
-		FrameBarText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size - 1, C.font.unitframes_font_style)
+		FrameBarText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size - 2, "")
+		FrameBarText:SetShadowOffset(0.5, -0.5)
 	end
 	
 	for _, LevelText in pairs({
@@ -99,7 +100,7 @@ local function SetUnitFrames()
 	TargetFrame:SetPoint("CENTER", TargetFrameAnchor, "CENTER", 51, 3);
 	TargetFrame:SetUserPlaced( true );
 	TargetFrame:SetMovable( false );
-	TargetFrame.buffsOnTop = true;
+	--TargetFrame.buffsOnTop = true;
 	
 	-- Tweak Focus Frame
 	FocusFrame:SetMovable( true );
@@ -151,34 +152,8 @@ local function MoveCastBar()
 	-- Casting Timer
 	CastingBarFrame.timer = CastingBarFrame:CreateFontString(nil);
 	CastingBarFrame.timer:SetFont(C.font.basic_font, C.font.basic_font_size + 1, C.font.basic_font_style);
-	CastingBarFrame.timer:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, 4);
+	CastingBarFrame.timer:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, -3);
 	CastingBarFrame.updateDelay = 0.1;
-end
-
-local function UpdateClassIcon(class)
-	if class == "WARRIOR" then
-		classIcon:SetTexCoord( 0, .25, 0, .25 );
-	elseif class == "MAGE" then
-		classIcon:SetTexCoord( .25, .5,0, .25 );
-	elseif class == "ROGUE" then
-		classIcon:SetTexCoord( .5, .74,0, .25 );
-	elseif class == "DRUID" then
-		classIcon:SetTexCoord( .75, .98, 0, .25 );
-	elseif class == "PALADIN" then
-		classIcon:SetTexCoord( 0, .25, .5, .75 );
-	elseif class == "DEATHKNIGHT" then
-		classIcon:SetTexCoord( .25, .5, .5, .75);
-	elseif class == "MONK" then
-		classIcon:SetTexCoord( .5, .74, .5,.75);
-	elseif class == "HUNTER" then
-		classIcon:SetTexCoord( 0, .25, .25, .5 );
-	elseif class == "SHAMAN" then
-		classIcon:SetTexCoord( .25, .5, .25, .5 );
-	elseif class == "PRIEST" then
-		classIcon:SetTexCoord( .5, .74, .25, .5 );
-	elseif class == "WARLOCK" then
-		classIcon:SetTexCoord( .75, .98, .25, .5 );
-	end
 end
 
 local function UF_HandleEvents( self, event, ... )
@@ -192,46 +167,15 @@ local function UF_HandleEvents( self, event, ... )
 	
 	if( event == "ADDON_LOADED" and ... == "KkthnxUI" )then
 		-- Unit Font Style
-		local shorts = {
-			{ 1e10, 1e9, "%.0fB" }, -- 10b+ as 12B
-			{ 1e9, 1e9, "%.1fB" }, -- 1b+ as 8.3B
-			{ 1e7, 1e6, "%.0fM" }, -- 10m+ as 14M
-			{ 1e6, 1e6, "%.1fM" }, -- 1m+ as 7.4M
-			{ 1e5, 1e3, "%.0fK" }, -- 100k+ as 840K
-			{ 1e3, 1e3, "%.1fK" }, -- 1k+ as 2.5K
-			{ 0, 1, "%d" }, -- < 1k as 974
-		}
-		for i = 1, #shorts do
-			shorts[i][4] = shorts[i][3] .. " (%.0f%%)"
-		end
-		
-		hooksecurefunc("TextStatusBar_UpdateTextStringWithValues", function(statusBar, textString, value, valueMin, valueMax)
-			if value == 0 then
-				return textString:SetText("")
-			end
+		hooksecurefunc("TextStatusBar_UpdateTextStringWithValues", function()
+			PlayerFrameHealthBar.TextString:SetText(AbbreviateLargeNumbers(UnitHealth("player")))
+			PlayerFrameManaBar.TextString:SetText(AbbreviateLargeNumbers(UnitMana("player")))
 			
-			local style = GetCVar("statusTextDisplay")
-			if style == "PERCENT" then
-				return textString:SetFormattedText("%.0f%%", value / valueMax * 100)
-			end
-			for i = 1, #shorts do
-				local t = shorts[i]
-				if value >= t[1] then
-					if style == "BOTH" then
-						return textString:SetFormattedText(t[4], value / t[2], value / valueMax * 100)
-					else
-						if value < valueMax then
-							for j = 1, #shorts do
-								local v = shorts[j]
-								if valueMax >= v[1] then
-									return textString:SetFormattedText(t[3] .. " / " .. v[3], value / t[2], valueMax / v[2])
-								end
-							end
-						end
-						return textString:SetFormattedText(t[3], value / t[2])
-					end
-				end
-			end
+			TargetFrameHealthBar.TextString:SetText(AbbreviateLargeNumbers(UnitHealth("target")))
+			TargetFrameManaBar.TextString:SetText(AbbreviateLargeNumbers(UnitMana("target")))
+			
+			FocusFrameHealthBar.TextString:SetText(AbbreviateLargeNumbers(UnitHealth("focus")))
+			FocusFrameManaBar.TextString:SetText(AbbreviateLargeNumbers(UnitMana("focus")))
 		end)
 		
 		-- Unit Font Color
@@ -273,37 +217,40 @@ local function UF_HandleEvents( self, event, ... )
 			end
 		end)
 		
-		if( event == "UNIT_FACTION" or event == "GROUP_ROSTER_UPDATE" or event == "PLAYER_FOCUS_CHANGED" or event == "UNIT_FACTION")then
-			if( C.unitframe.classhealth == true ) then
-				function colour(statusbar, unit)
-					if UnitIsPlayer(unit) and UnitIsConnected(unit) and unit == statusbar.unit and UnitClass(unit) then
-						local _, class = UnitClass(unit)
-						local c = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[class] or RAID_CLASS_COLORS[class]
-						statusbar:SetStatusBarColor(c.r, c.g, c.b )
-					end
+		if ( C.unitframe.classhealth == true ) then
+			local UnitIsPlayer, UnitIsConnected, UnitClass, RAID_CLASS_COLORS =
+			UnitIsPlayer, UnitIsConnected, UnitClass, RAID_CLASS_COLORS
+			local _, class, c
+			
+			local function colour(statusbar, unit)
+				if UnitIsPlayer(unit) and UnitIsConnected(unit) and unit == statusbar.unit and UnitClass(unit) then
+					_, class = UnitClass(unit)
+					c = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[class] or RAID_CLASS_COLORS[class]
+					statusbar:SetStatusBarColor(c.r, c.g, c.b)
 				end
-				
-				hooksecurefunc("UnitFrameHealthBar_Update", colour)
-				hooksecurefunc("HealthBar_OnValueChanged", function(self)
-					colour(self, self.unit)
-				end)
 			end
+			
+			hooksecurefunc("UnitFrameHealthBar_Update", colour)
+			hooksecurefunc("HealthBar_OnValueChanged", function(self)
+				colour(self, self.unit)
+			end)
 		end
 		
-		-- Create Frames
-		if( C.unitframe.classicon == true ) then
-			classFrame = CreateFrame("Frame", "ClassFrame", TargetFrame );
-			classFrame:SetPoint( "CENTER", C.unitframe.classiconx, C.unitframe.classicony);
-			classFrame:SetSize( C.unitframe.classiconsize, C.unitframe.classiconsize );
-			classIcon = classFrame:CreateTexture( "ClassIcon" );
-			classIcon:SetPoint( "CENTER" );
-			classIcon:SetSize( C.unitframe.classiconsize, C.unitframe.classiconsize );
-			classIcon:SetTexture( "Interface\\TARGETINGFRAME\\UI-CLASSES-CIRCLES.BLP" );
-			classIconBorder = classFrame:CreateTexture( "ClassIconBorder", "ARTWORK", nil, 1 );
-			classIconBorder:SetPoint( "CENTER" , classIcon );
-			classIconBorder:SetSize( C.unitframe.classiconsize * 2, C.unitframe.classiconsize * 2 );
-			classIconBorder:SetTexture( "Interface\\UNITPOWERBARALT\\WowUI_Circular_Frame.blp" );
-		end
+		hooksecurefunc("UnitFramePortrait_Update", function(self)
+			if( C.unitframe.classicon == true ) then
+				if self.portrait then
+					if UnitIsPlayer(self.unit) then 
+						local t = CLASS_ICON_TCOORDS[select(2, UnitClass(self.unit))]
+						if t then
+							self.portrait:SetTexture("Interface\\TargetingFrame\\UI-Classes-Circles")
+							self.portrait:SetTexCoord(unpack(t))
+						end
+					else
+						self.portrait:SetTexCoord(0, 1, 0, 1)
+					end
+				end
+			end
+		end)
 	end
 	
 	if( event == "UNIT_EXITED_VEHICLE" or event == "UNIT_ENTERED_VEHICLE" ) then
@@ -311,13 +258,6 @@ local function UF_HandleEvents( self, event, ... )
 			if( UnitControllingVehicle("player") or UnitHasVehiclePlayerFrameUI("player") ) then
 				SetUnitFrames();
 			end
-		end
-	end
-	
-	if ( event == "PLAYER_TARGET_CHANGED" ) then
-		if( C.unitframe.classicon == true ) then
-			local target = select( 2, UnitClass("target") );
-			UpdateClassIcon( target );
 		end
 	end
 end
@@ -328,19 +268,13 @@ local function UF_Init()
 	
 	Unitframes:RegisterEvent( "PLAYER_ENTERING_WORLD" );
 	Unitframes:RegisterEvent( "ADDON_LOADED" );
-	Unitframes:RegisterEvent( "PLAYER_TARGET_CHANGED" );
-	Unitframes:RegisterEvent( "GROUP_ROSTER_UPDATE" );
-	Unitframes:RegisterEvent( "UNIT_FACTION" );
-	Unitframes:RegisterEvent( "PLAYER_FOCUS_CHANGED" );
 	Unitframes:RegisterEvent( "UNIT_EXITED_VEHICLE" );
 end
 
 -- Remove Portrait Damage Spam
--- Reimplimentation of CombatFeedback_OnCombatEvent from CombatFeedback.lua
 if( C.unitframe.combatfeedback == true ) then
-	function CFeedback_OnCombatEvent(self, event, flags, amount, type)
-		self.feedbackText:SetText(" ");
-	end
+	PlayerHitIndicator:SetText(nil)
+	PlayerHitIndicator.SetText = K.Dummy
 end
 
 -- Casting Bar Update
@@ -363,7 +297,7 @@ function CastingUpdate(self, elapsed)
 end
 
 do
-	hooksecurefunc("CombatFeedback_OnCombatEvent", CFeedback_OnCombatEvent );
+	hooksecurefunc("UnitFramePortrait_Update", UnitFramePortrait_Update) ;
 	hooksecurefunc("CastingBarFrame_OnUpdate", CastingUpdate);
 end
 

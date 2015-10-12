@@ -168,12 +168,9 @@ C["combattext"] = {
 -- Unitframe options
 C["unitframe"] = {
 	["enable"] = true,
-	["classhealth"] = false,
-	["classicon"] = false,
+	["classhealth"] = true,
+	["classicon"] = true,
 	["combatfeedback"] = true,
-	["classiconx"] = 90,
-	["classicony"] = 40,
-	["classiconsize"] = 24,
 	["scale"] = 1.2,
 	["cbscale"] = 1.2,
 	["partyscale"] = 1.2,
