@@ -326,7 +326,7 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		local name, realm = UnitName(unit)
 		
 		-- Hide player titles
-		if (C.showtitles) then
+		if (C.tooltip.showtitles) then
 			if (UnitPVPName(unit)) then
 				name = UnitPVPName(unit)
 			end

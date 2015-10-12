@@ -2,9 +2,6 @@ local K, C, L, _ = unpack(select(2, ...))
 if C.unitframe.enable ~= true then return end
 
 local Unitframes = CreateFrame( "Frame", "KkthnxUF", UIParent );
-local classFrame;
-local classIcon;
-local classIconBorder;
 
 local PlayerAnchor = CreateFrame("Frame", "PlayerFrameAnchor", UIParent)
 PlayerAnchor:SetSize(146, 28)
@@ -17,6 +14,15 @@ TargetAnchor:SetPoint(unpack(C.position.targetframe))
 local PlayerCastbarAnchor = CreateFrame("Frame", "PlayerCastbarAnchor", UIParent)
 PlayerCastbarAnchor:SetSize(CastingBarFrame:GetWidth() * C.unitframe.cbscale, CastingBarFrame:GetHeight() * 2)
 PlayerCastbarAnchor:SetPoint(unpack(C.position.playercastbar))
+
+-- Delete some lines from unit dropdown menu (prevent errors)
+for _, menu in pairs(UnitPopupMenus) do
+	for index = #menu, 1, -1 do
+		if menu[index] == "SET_FOCUS" or menu[index] == "CLEAR_FOCUS" or menu[index] == "MOVE_PLAYER_FRAME" or menu[index] == "MOVE_TARGET_FRAME" or menu[index] == "LARGE_FOCUS" or menu[index] == "MOVE_FOCUS_FRAME" or (menu[index] == "PET_DISMISS" and K.Class == "HUNTER") then
+			table.remove(menu, index)
+		end
+	end
+end
 
 local function SetUnitFrames()
 	
@@ -49,7 +55,7 @@ local function SetUnitFrames()
 		TargetFrameTextureFrameHealthBarText,
 		TargetFrameTextureFrameManaBarText,
 	}) do
-		FrameBarText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size - 2, "")
+		FrameBarText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size - 2)
 		FrameBarText:SetShadowOffset(0.5, -0.5)
 	end
 	
@@ -59,24 +65,6 @@ local function SetUnitFrames()
 	}) do
 		LevelText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size + 1, C.font.unitframes_font_style)
 	end
-	
-	-- Unit Text
-	-- PlayerFrame
-	hooksecurefunc("PlayerFrame_UpdateLevelTextAnchor", function(level)
-		if ( level >= 100 ) then
-			PlayerLevelText:SetPoint("CENTER", PlayerFrameTexture, "CENTER", -60.5, -15);
-		else
-			PlayerLevelText:SetPoint("CENTER", PlayerFrameTexture, "CENTER", -61, -15);
-		end
-	end)
-	-- TargetFrame
-	hooksecurefunc("TargetFrame_UpdateLevelTextAnchor", function(self, targetLevel)
-		if ( targetLevel >= 100 ) then
-			self.levelText:SetPoint("CENTER", 62, -15);
-		else
-			self.levelText:SetPoint("CENTER", 62, -15);
-		end
-	end)
 	
 	-- Tweak Party Frame
 	--PartyMemberFrame1:ClearAllPoints();
@@ -167,6 +155,7 @@ local function UF_HandleEvents( self, event, ... )
 	
 	if( event == "ADDON_LOADED" and ... == "KkthnxUI" )then
 		-- Unit Font Style
+	if( C.unitframe.formattext == true ) then
 		hooksecurefunc("TextStatusBar_UpdateTextStringWithValues", function()
 			PlayerFrameHealthBar.TextString:SetText(AbbreviateLargeNumbers(UnitHealth("player")))
 			PlayerFrameManaBar.TextString:SetText(AbbreviateLargeNumbers(UnitMana("player")))
@@ -177,6 +166,7 @@ local function UF_HandleEvents( self, event, ... )
 			FocusFrameHealthBar.TextString:SetText(AbbreviateLargeNumbers(UnitHealth("focus")))
 			FocusFrameManaBar.TextString:SetText(AbbreviateLargeNumbers(UnitMana("focus")))
 		end)
+	end
 		
 		-- Unit Font Color
 		CUSTOM_FACTION_BAR_COLORS = {
@@ -275,6 +265,11 @@ end
 if( C.unitframe.combatfeedback == true ) then
 	PlayerHitIndicator:SetText(nil)
 	PlayerHitIndicator.SetText = K.Dummy
+end
+
+-- Remove Group Number Frame
+if( C.unitframe.groupnumber == true ) then
+PlayerFrameGroupIndicator.Show = K.Dummy
 end
 
 -- Casting Bar Update

@@ -920,7 +920,7 @@ local UploadSkada = function()
 					{
 						["barslocked"] = true,
 						["barwidth"] = 217,
-						["barheight"] = 12,
+						["barheight"] = 14,
 						["barspacing"] = 7,
 						["background"] = {
 							["color"] = {
@@ -929,8 +929,8 @@ local UploadSkada = function()
 							["height"] = 132,
 						},
 						["point"] = "BOTTOMRIGHT",
-						["x"] = -247,
-						["y"] = 1,
+						["x"] = -360,
+						["y"] = 10,
 						["title"] = {
 							["height"] = 12,
 						},

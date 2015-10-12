@@ -12,7 +12,6 @@
 	<Script file="Core\GUI.lua"/>
 	<Script file="Core\PixelPerfect.lua"/>
 
-	<Include file="Libs\oGlow\oGlow.xml"/>
 	<Script file="Libs\LitePanels\LitePanels.lua"/>
 	<Script file="Libs\LitePanels\Layout.lua"/>
 	<Script file="Config\DataText.lua"/>
@@ -57,7 +56,7 @@
 	<Script file="Modules\Misc\OneClickBuyOut.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
-	<Script file="Modules\Misc\PaperdollStats.lua"/>
+	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\ProfessionTabs.lua"/>
 	<Script file="Modules\Misc\PvPQueueTimer.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
@@ -66,6 +65,7 @@
 	<Script file="Modules\ActionBars\skins.lua"/>
 	<Script file="Modules\ActionBars\cooldowns.lua"/>
 	<Script file="Modules\ActionBars\bindings.lua"/>
+	<Script file="Modules\ActionBars\extras.lua"/>
 
 	<Script file="Modules\Announcements\BadGear.lua"/>
 	<Script file="Modules\Announcements\Drinking.lua"/>
@@ -84,11 +84,12 @@
 	<Script file="Modules\Blizzard\AltPowerBar.lua"/>
 	<Script file="Modules\Blizzard\CaptureBar.lua"/>
 	<Script file="Modules\Blizzard\CombatText.lua"/>
+	<Script file="Modules\Blizzard\Durability.lua"/>
 	<Script file="Modules\Blizzard\Errors.lua"/>
 	<Script file="Modules\Blizzard\Fixes.lua"/>
 	<Script file="Modules\Blizzard\Fonts.lua"/>
 	<Script file="Modules\Blizzard\FriendList.lua"/>
-	<Script file="Modules\Blizzard\MoveBlizzard.lua"/>
+	<Script file="Modules\Blizzard\MoveBlizzFrames.lua"/>
 	<Script file="Modules\Blizzard\RepReward.lua"/>
 
 	<Script file="Modules\Auras\Auras.lua"/>
@@ -131,7 +132,7 @@
 	<Script file="Modules\Skins\WeakAuras.lua"/>
 
 	<Script file="Modules\Tooltip\Tooltip.lua"/>
-	<Script file="Modules\Tooltip\TooltipIcons.lua"/>
+	<Script file="Modules\Tooltip\ItemIcons.lua"/>
 
 	<Script file="Core\Movers.lua"/>
 </Ui>

@@ -64,6 +64,7 @@ local function Local(o)
 	if o == "UIConfigblizzardmoveblizzard" then o = L_GUI_BLIZZARD_MOVE_BLIZZARD end
 	if o == "UIConfigblizzardquestbuttonsize" then o = L_GUI_BLIZZARD_QUESTBUTTON_SIZE end
 	if o == "UIConfigblizzardrepreward" then o = L_GUI_BLIZZARD_REPREWARD end
+	if o == "UIConfigblizzarddurability" then o = L_GUI_BLIZZARD_DURABILITY end
 
 	-- Buffs options
 	if o == "UIConfigbuffs" then o = L_GUI_BUFFS end
@@ -171,7 +172,7 @@ local function Local(o)
 	if o == "UIConfigmiscfadegamemenu" then o = L_GUI_MISC_FADEGAMEMENU end
 	if o == "UIConfigmischattrick" then o = L_GUI_MISC_HATTRICK end
 	if o == "UIConfigmisclfgqueuetimer" then o = L_GUI_MISC_LFGQUEUETIMER end
-	if o == "UIConfigmiscpaperdollstats" then o = L_GUI_MISC_PAPERDOLLSTATS end
+	if o == "UIConfigmiscitemlevel" then o = L_GUI_MISC_ITEM_LEVEL end
 	if o == "UIConfigmiscprofessiontabs" then o = L_GUI_MISC_PROFESSION_TABS end
 	if o == "UIConfigmiscquestautobutton" then o = L_GUI_MISC_QUEST_AUTOBUTTON end
 	if o == "UIConfigmiscrarealert" then o = L_GUI_MISC_HIDE_RAREALERT end
@@ -804,7 +805,7 @@ do
 		subtitle2:SetWidth(580)
 		subtitle2:SetPoint("TOPLEFT", title2, "BOTTOMLEFT", 0, -8)
 		subtitle2:SetJustifyH("LEFT")
-		subtitle2:SetText("|cFFc248d8Magicnachos|r, sticklord, syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, Phanx, Tekkub, p3lim, Haste, Haleth, and Roth. Without them I would not have had the inspiration or insight to be able to make this UI.")
+		subtitle2:SetText("|cFFc248d8Magicnachos|r, sticklord, syncrow, liquidbase, Nibelheim, Shestak, Munglunch, Neav, Goldpaw, AcidWeb, Aezay, Affli, Ailae, Allez, ALZA, Ammo, Astromech, Beoko, Bitbyte, Blamdarot, Bozo, Caellian, Califpornia, Camealion, Chiril, CrusaderHeimdall, Cybey, Dawn, Don Kaban, Dridzt, Duffed, Durcyn, Eclipse, Egingell, Elv22, Evilpaul, Evl, Favorit, Fernir, Foof, Freebaser, g0st, gi2k15, Gorlasch, Gsuz, Haleth, Haste, Hoochie, Hungtar, HyPeRnIcS, Hydra, Ildyria, iSpawnAtHome, Jaslm, Karl_w_w, Karudon, Katae, Kellett, Kemayo, Killakhan, Kraftman, Kunda, Leatrix, m2jest1c, Magdain, Meurtcriss, Monolit, MrRuben5, Myrilandell of Lothar, Nathanyel, Nefarion, Nightcracker, Nils Ruesch, p3lim, Partha, Phanx, Rahanprout, Renstrom, RustamIrzaev, Safturento, Sara.Festung, SDPhantom, Sildor, Silverwind, SinaC, Slakah, Soeters, Starlon, Suicidal Katt, Syzgyn, Tekkub, Telroth, Thalyra, Thizzelle, Tia Lynn, Tohveli, Tukz, Tuller, Veev, Villiv, Wetxius, Woffle of Dark Iron, Wrug, Xuerian, Yleaf, Zork.")
 		
 		local title3 = self:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 		title3:SetPoint("TOPLEFT", subtitle2, "BOTTOMLEFT", 0, -16)

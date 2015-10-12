@@ -78,7 +78,7 @@ frame:SetScript("OnEvent", function(self, event)
 						K.CreateBackdrop(v)
 					end
 
-					v:SetHeight(12)
+					v:SetHeight(14)
 
 					v.label:ClearAllPoints()
 					v.label.ClearAllPoints = K.Dummy

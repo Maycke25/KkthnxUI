@@ -40,16 +40,16 @@ C["misc"] = {
 	["bossbanner"] = true,
 	["clickcast"] = false,
 	["clickcastfilter"] = false,
-	["disenchanting"] = true,
-	["enchantscroll"] = true,
+	["disenchanting"] = false,
+	["enchantscroll"] = false,
 	["fadegamemenu"] = true,
 	["hattrick"] = true,
 	["lfgqueuetimer"] = true,
-	["paperdollstats"] = true,
+	["itemlevel"] = true,
 	["professiontabs"] = false,
 	["questautobutton"] = false,
 	["rarealert"] = false,
-	["shortengold"] = true,
+	["shortengold"] = false,
 	["sumbuyouts"] = false,
 }
 
@@ -61,6 +61,7 @@ C["blizzard"] = {
 	["moveblizzard"] = true,
 	["questbuttonsize"] = 26,
 	["repreward"] = true,
+	["durability"] = true,
 }
 
 -- Minimap options
@@ -94,12 +95,13 @@ C["actionbar"] = {
 	["showbarart"] = true,
 	["showhotkeys"] = true,
 	["showmacroname"] = true,
+	["showvehiclekeybinds"] = false,
 	["skinbuttons"] = true,
 }
 
 -- Announcements options
 C["announcements"] = {
-	["badgear"] = true,
+	["badgear"] = false,
 	["drinking"] = false,
 	["interrupts"] = true,
 	["saysapped"] = true,
@@ -168,9 +170,11 @@ C["combattext"] = {
 -- Unitframe options
 C["unitframe"] = {
 	["enable"] = true,
-	["classhealth"] = true,
-	["classicon"] = true,
-	["combatfeedback"] = true,
+	["classhealth"] = false,
+	["classicon"] = false,
+	["combatfeedback"] = false,
+	["groupnumber"] = false,
+	["formattext"] = false,
 	["scale"] = 1.2,
 	["cbscale"] = 1.2,
 	["partyscale"] = 1.2,
@@ -194,15 +198,12 @@ C["tooltip"] = {
 	["shortrealm"] = true,
 	["hideincombat"] = false,
 	["hiderealm"] = false,
-	["reactionbordercolor"] = true,
+	["reactionbordercolor"] = false,
 	["qualitybordercolor"] = true,
 	["showtitles"] = false,
 	["showpvpicons"] = false,
 	["mouseovertarget"] = true,
 	["cursor"] = false,
-	["specicon"] = true,
-	
-	["healthvalue"] = false,
 }
 
 -- Loot options

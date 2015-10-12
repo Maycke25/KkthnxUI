@@ -18,4 +18,5 @@ C["position"] = {
 	["playerframe"] = {"CENTER", UIParent, "CENTER", -206, -180},
 	["playercastbar"] = {"CENTER", UIParent, "CENTER", 0, -180},
 	["targetframe"] = {"CENTER", UIParent, "CENTER", 206, -180},
+	["extrabars"] = {"BOTTOMRIGHT", UIParent, "BOTTOM", -214, 144},
 }
