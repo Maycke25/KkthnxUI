@@ -1,8 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 
-----------------------------------------------------------------------------------------
---	Move ObjectiveTrackerFrame
-----------------------------------------------------------------------------------------
+-- Move ObjectiveTrackerFrame
 local frame = CreateFrame("Frame", "WatchFrameAnchor", UIParent)
 frame:SetPoint(unpack(C.position.quest))
 frame:SetHeight(150)
@@ -20,9 +18,7 @@ hooksecurefunc(ObjectiveTrackerFrame, "SetPoint", function(_, _, parent)
 end)
 ObjectiveTrackerFrame.HeaderMenu.Title:SetAlpha(0)
 
-----------------------------------------------------------------------------------------
---	Skin ObjectiveTrackerFrame item buttons
-----------------------------------------------------------------------------------------
+-- Skin ObjectiveTrackerFrame item buttons
 hooksecurefunc(QUEST_TRACKER_MODULE, "SetBlockHeader", function(_, block)
 	local item = block.itemButton
 
@@ -39,12 +35,12 @@ hooksecurefunc(QUEST_TRACKER_MODULE, "SetBlockHeader", function(_, block)
 		item.HotKey:ClearAllPoints()
 		item.HotKey:SetPoint("BOTTOMRIGHT", 0, 2)
 		item.HotKey:SetFont(C.font.basic_font, C.font.basic_font_size, C.font.basic_font_style)
-		item.HotKey:SetShadowOffset(C.font.basic_font_shadow and 1 or 0, C.font.basic_font_shadow and -1 or 0)
+		--item.HotKey:SetShadowOffset(0.75, -0.75)
 
 		item.Count:ClearAllPoints()
 		item.Count:SetPoint("TOPLEFT", 1, -1)
 		item.Count:SetFont(C.font.basic_font, C.font.basic_font_size, C.font.basic_font_style)
-		item.Count:SetShadowOffset(C.font.basic_font_shadow and 1 or 0, C.font.basic_font_shadow and -1 or 0)
+		--item.Count:SetShadowOffset(0.75, -0.75)
 
 		item.skinned = true
 	end

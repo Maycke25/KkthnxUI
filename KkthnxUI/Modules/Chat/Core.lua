@@ -198,7 +198,7 @@ local function SetupChatPosAndFont(self)
 			chat:SetShadowOffset(0, -0)
 		else
 			chat:SetFont(C.font.chat_font, fontSize, C.font.chat_font_style)
-			chat:SetShadowOffset(1, -1)
+			chat:SetShadowOffset(0.75, -0.75)
 		end
 		
 		-- Force chat position

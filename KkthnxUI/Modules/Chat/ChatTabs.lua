@@ -14,9 +14,15 @@ local Fane = CreateFrame("Frame")
 
 local updateFS = function(self, inc, ...)
 	local fstring = self:GetFontString()
-
-	fstring:SetFont(C.font.chat_tabs_font, C.font.chat_tabs_font_size, C.font.chat_tabs_font_style)
-	fstring:SetShadowOffset(0, 0)
+	
+	-- Font and font style for chat
+	if C.chat.tabsoutline == true then
+		fstring:SetFont(C.font.chat_tabs_font, C.font.chat_tabs_font_size + 1, "OUTLINE")
+		fstring:SetShadowOffset(0, -0)
+	else
+		fstring:SetFont(C.font.chat_tabs_font, C.font.chat_tabs_font_size + 1)
+		fstring:SetShadowOffset(0.75, -0.75)
+	end
 
 	if (...) then
 		fstring:SetTextColor(...)

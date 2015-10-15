@@ -158,7 +158,7 @@ SpellBinder.makeFramesList = function(self)
 		if C.misc.clickcastfilter ~= true then
 			if v then DB.frames[frame] = DB.frames[frame] or true end
 		else
-			if v ~= "oUF_Target" and v ~= "oUF_Player" then DB.frames[frame] = DB.frames[frame] or true end
+			if v ~= "TargetFrame" and v ~= "PlayerFrame" then DB.frames[frame] = DB.frames[frame] or true end
 		end
 	end
 end

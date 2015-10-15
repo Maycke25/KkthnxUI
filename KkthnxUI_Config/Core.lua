@@ -89,6 +89,7 @@ local function Local(o)
 	if o == "UIConfigchatenable" then o = L_GUI_CHAT_ENABLE end
 	if o == "UIConfigchatheight" then o = L_GUI_CHAT_HEIGHT end
 	if o == "UIConfigchatoutline" then o = L_GUI_CHAT_OUTLINE end
+	if o == "UIConfigchattabsoutline" then o = L_GUI_CHAT_TABS_OUTLINE end
 	if o == "UIConfigchatsticky" then o = L_GUI_CHAT_STICKY end
 	if o == "UIConfigchattabmouseover" then o = L_GUI_CHAT_TABS_MOUSEOVER end
 	if o == "UIConfigchattime_color" then o = L_GUI_CHAT_TIMESTAMP end
@@ -171,6 +172,7 @@ local function Local(o)
 	if o == "UIConfigmiscenchantscroll" then o = L_GUI_MISC_ENCHANTMENT_SCROLL end
 	if o == "UIConfigmiscfadegamemenu" then o = L_GUI_MISC_FADEGAMEMENU end
 	if o == "UIConfigmischattrick" then o = L_GUI_MISC_HATTRICK end
+	if o == "UIConfigmiscenhancedmail" then o = L_GUI_ENCHANCED_MAIL end
 	if o == "UIConfigmisclfgqueuetimer" then o = L_GUI_MISC_LFGQUEUETIMER end
 	if o == "UIConfigmiscitemlevel" then o = L_GUI_MISC_ITEM_LEVEL end
 	if o == "UIConfigmiscprofessiontabs" then o = L_GUI_MISC_PROFESSION_TABS end
@@ -210,8 +212,16 @@ local function Local(o)
 	if o == "UIConfigtooltip" then o = L_GUI_TOOLTIP end
 	if o == "UIConfigtooltipenable" then o = L_GUI_TOOLTIP_ENABLE end
 	if o == "UIConfigtooltipitemicon" then o = L_GUI_TOOLTIP_ICONS end
-	if o == "UIConfigtooltipmenuscale" then o = L_GUI_TOOLTIP_MENUSCALE end
-	if o == "UIConfigtooltipscale" then o = L_GUI_TOOLTIP_SCALE end
+	if o == "UIConfigtooltipfontoutline" then o = L_GUI_TOOLTIP_OUTLINE end
+	if o == "UIConfigtooltipshortrealm" then o = L_GUI_TOOLTIP_SHORT_REALM end
+	if o == "UIConfigtooltiphideincombat" then o = L_GUI_TOOLTIP_HIDE_IN_COMBAT end
+	if o == "UIConfigtooltiphiderealm" then o = L_GUI_TOOLTIP_HIDE_REALM end
+	if o == "UIConfigtooltipreactionbordercolor" then o = L_GUI_TOOLTIP_REACTION_BORDER_COLOR end
+	if o == "UIConfigtooltipqualitybordercolor" then o = L_GUI_TOOLTIP_QUALITY_BORDER_COLOR end
+	if o == "UIConfigtooltipshowtitles" then o = L_GUI_TOOLTIP_SHOW_TITLES end
+	if o == "UIConfigtooltipshowpvpicons" then o = L_GUI_TOOLTIP_SHOW_PVP_ICONS end
+	if o == "UIConfigtooltipmouseovertarget" then o = L_GUI_TOOLTIP_MOUSEOVER_TARGET end
+	if o == "UIConfigtooltipcursor" then o = L_GUI_TOOLTIP_CURSOR end
 
 	-- Top Panel options
 	if o == "UIConfigtoppanel" then o = L_GUI_TOP_PANEL end
@@ -228,6 +238,11 @@ local function Local(o)
 	if o == "UIConfigunitframepartyscale" then o = L_GUI_UNITFRAME_PARTY_SCALE end
 	if o == "UIConfigunitframebossscale" then o = L_GUI_UNITFRAME_BOSS_SCALE end
 	if o == "UIConfigunitframearenascale" then o = L_GUI_UNITFRAME_ARENA_SCALE end
+	if o == "UIConfigunitframeclasshealth" then o = L_GUI_UNITFRAME_CLASS_HEALTH end
+	if o == "UIConfigunitframeclassicon" then o = L_GUI_UNITFRAME_CLASS_ICON end
+	if o == "UIConfigunitframecombatfeedback" then o = L_GUI_UNITFRAME_COMBAT_FEEDBACK end
+	if o == "UIConfigunitframegroupnumber" then o = L_GUI_UNITFRAME_GROUP_NUMBER end
+	if o == "UIConfigunitframeformattext" then o = L_GUI_UNITFRAME_FORMAT_TEXT end
 	
 	K.option = o
 end

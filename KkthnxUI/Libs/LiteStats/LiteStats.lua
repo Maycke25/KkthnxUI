@@ -56,7 +56,6 @@ local nameplates = modules.Nameplates
 -- Events Reg
 local function RegEvents(f, l) for _, e in ipairs{strsplit(" ", l)} do f:RegisterEvent(e) end end
 
-------------------------------------------
 -- Saved Vars Init / Coords
 local ls, coordX, coordY, conf, Coords = CreateFrame("Frame"), 0, 0, {}
 RegEvents(ls, "ADDON_LOADED PLAYER_REGEN_DISABLED PLAYER_REGEN_ENABLED")
@@ -95,7 +94,6 @@ if profiles then for _, p in ipairs{class,format("%s - %s", char, realm)} do
 end profiles = nil end
 
 
-------------------------------------------
 local function zsub(s, ...) local t = {...} for i = 1, #t, 2 do s = gsub(s, t[i], t[i + 1]) end return s end
 
 

@@ -381,10 +381,12 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self, ...)
 		end
 		
 		-- Move the healthbar inside the tooltip
-		self:AddLine(' ')
-		GameTooltipStatusBar:ClearAllPoints()
-		GameTooltipStatusBar:SetPoint('LEFT', self:GetName()..'TextLeft'..self:NumLines(), 1, -3)
-		GameTooltipStatusBar:SetPoint('RIGHT', self, -10, 0)
+		if GameTooltipStatusBar:IsShown() then
+			self:AddLine(' ')
+			GameTooltipStatusBar:ClearAllPoints()
+			GameTooltipStatusBar:SetPoint('LEFT', self:GetName()..'TextLeft'..self:NumLines(), 1, -3)
+			GameTooltipStatusBar:SetPoint('RIGHT', self, -10, 0)
+		end
 		
 		-- Border coloring
 		if (C.tooltip.reactionbordercolor) then

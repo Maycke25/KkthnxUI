@@ -1,5 +1,6 @@
 local K, C, L, _ = unpack(select(2, ...))
 if IsAddOnLoaded("OpenAll") or IsAddOnLoaded("Postal") or IsAddOnLoaded("TradeSkillMaster_Mailing") then return end
+if C.misc.enhancedmail ~= true then return end
 
 local LOOTDELAY = 0.3
 local MAX_LOOPS = 5

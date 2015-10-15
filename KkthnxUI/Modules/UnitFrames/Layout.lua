@@ -1,7 +1,7 @@
 local K, C, L, _ = unpack(select(2, ...))
 if C.unitframe.enable ~= true then return end
 
-local Unitframes = CreateFrame( "Frame", "KkthnxUF", UIParent );
+local Unitframes = CreateFrame( "Frame", "KkthnxUF", UIParent )
 
 local PlayerAnchor = CreateFrame("Frame", "PlayerFrameAnchor", UIParent)
 PlayerAnchor:SetSize(146, 28)
@@ -47,6 +47,7 @@ local function SetUnitFrames()
 		PetName,
 	}) do
 		Names:SetFont(C.font.unitframes_font, C.font.unitframes_font_size - 1)
+		Names:SetShadowOffset(0.75, -0.75)
 	end
 	
 	for _, FrameBarText in pairs({
@@ -54,56 +55,59 @@ local function SetUnitFrames()
 		PlayerFrameManaBarText,
 		TargetFrameTextureFrameHealthBarText,
 		TargetFrameTextureFrameManaBarText,
+		PetFrameHealthBarText,
+		PetFrameManaBarText,
 	}) do
 		FrameBarText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size - 2)
-		FrameBarText:SetShadowOffset(0.5, -0.5)
+		FrameBarText:SetShadowOffset(0.75, -0.75)
 	end
 	
 	for _, LevelText in pairs({
 		PlayerLevelText,
 		TargetFrameTextureFrameLevelText,
 	}) do
-		LevelText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size + 1, C.font.unitframes_font_style)
+		LevelText:SetFont(C.font.unitframes_font, C.font.unitframes_font_size + 1)
+		LevelText:SetShadowOffset(1.25, -1.25)
 	end
 	
 	-- Tweak Party Frame
-	--PartyMemberFrame1:ClearAllPoints();
-	PartyMemberFrame1:SetScale( C.unitframe.partyscale );
-	PartyMemberFrame2:SetScale( C.unitframe.partyscale );
-	PartyMemberFrame3:SetScale( C.unitframe.partyscale );
-	PartyMemberFrame4:SetScale( C.unitframe.partyscale );
+	--PartyMemberFrame1:ClearAllPoints()
+	PartyMemberFrame1:SetScale( C.unitframe.partyscale )
+	PartyMemberFrame2:SetScale( C.unitframe.partyscale )
+	PartyMemberFrame3:SetScale( C.unitframe.partyscale )
+	PartyMemberFrame4:SetScale( C.unitframe.partyscale )
 	
 	-- Tweak Player Frame
-	PlayerFrame:SetMovable( true );
-	PlayerFrame:ClearAllPoints();
-	PlayerFrame:SetScale( C.unitframe.scale );
-	PlayerFrame:SetPoint("CENTER", PlayerFrameAnchor, "CENTER", -51, 3);
-	PlayerFrame:SetUserPlaced( true );
-	PlayerFrame:SetMovable( false );
+	PlayerFrame:SetMovable( true )
+	PlayerFrame:ClearAllPoints()
+	PlayerFrame:SetScale( C.unitframe.scale )
+	PlayerFrame:SetPoint("CENTER", PlayerFrameAnchor, "CENTER", -51, 3)
+	PlayerFrame:SetUserPlaced( true )
+	PlayerFrame:SetMovable( false )
 	
 	-- Tweak Target Frame
-	TargetFrame:SetMovable( true );
-	TargetFrame:ClearAllPoints();
-	TargetFrame:SetScale( C.unitframe.scale );
-	TargetFrame:SetPoint("CENTER", TargetFrameAnchor, "CENTER", 51, 3);
-	TargetFrame:SetUserPlaced( true );
-	TargetFrame:SetMovable( false );
+	TargetFrame:SetMovable( true )
+	TargetFrame:ClearAllPoints()
+	TargetFrame:SetScale( C.unitframe.scale )
+	TargetFrame:SetPoint("CENTER", TargetFrameAnchor, "CENTER", 51, 3)
+	TargetFrame:SetUserPlaced( true )
+	TargetFrame:SetMovable( false )
 	--TargetFrame.buffsOnTop = true;
 	
 	-- Tweak Focus Frame
-	FocusFrame:SetMovable( true );
-	FocusFrame:ClearAllPoints();
-	FocusFrame:SetScale( C.unitframe.scale );
-	FocusFrame:SetPoint( "TOPLEFT", 300, -200 );
-	FocusFrame:SetUserPlaced( true );
-	FocusFrame:SetMovable( false );
+	FocusFrame:SetMovable( true )
+	FocusFrame:ClearAllPoints()
+	FocusFrame:SetScale( C.unitframe.scale )
+	FocusFrame:SetPoint( "TOPLEFT", 300, -200 )
+	FocusFrame:SetUserPlaced( true )
+	FocusFrame:SetMovable( false )
 	
 	-- Tweak Boss Frames
 	for i = 1, 5 do -- Position
 		local bossFrame = _G["Boss"..i.."TargetFrame"]
-		bossFrame:SetParent( UIParent );
-		bossFrame:SetScale( C.unitframe.bossscale );
-		bossFrame:SetFrameStrata("BACKGROUND");
+		bossFrame:SetParent( UIParent )
+		bossFrame:SetScale( C.unitframe.bossscale )
+		bossFrame:SetFrameStrata("BACKGROUND")
 	end
 	
 	for i = 2, 5 do -- Spacing
@@ -111,36 +115,37 @@ local function SetUnitFrames()
 	end	
 	
 	for i=1, 5 do
-		_G["ArenaPrepFrame"..i]:SetScale( C.unitframe.arenascale ); 
+		_G["ArenaPrepFrame"..i]:SetScale( C.unitframe.arenascale ) 
 	end
-	ArenaEnemyFrames:SetScale( C.unitframe.arenascale );
+	ArenaEnemyFrames:SetScale( C.unitframe.arenascale )
 end
 
 local function MoveCastBar()
 	-- Move Cast Bar
-	CastingBarFrame:SetMovable(true);
-	CastingBarFrame:ClearAllPoints();
-	CastingBarFrame:SetScale( C.unitframe.cbscale );
-	CastingBarFrame:SetPoint("CENTER", PlayerCastbarAnchor, "CENTER", 0, -3);
-	CastingBarFrame:SetUserPlaced( true );
-	CastingBarFrame:SetMovable( false );
+	CastingBarFrame:SetMovable(true)
+	CastingBarFrame:ClearAllPoints()
+	CastingBarFrame:SetScale( C.unitframe.cbscale )
+	CastingBarFrame:SetPoint("CENTER", PlayerCastbarAnchor, "CENTER", 0, -3)
+	CastingBarFrame:SetUserPlaced( true )
+	CastingBarFrame:SetMovable( false )
 	
 	-- Player Castbar Icon
-	CastingBarFrameIcon:Show();
-	CastingBarFrameIcon:SetSize(30, 30);
-	CastingBarFrameIcon:ClearAllPoints();
-	CastingBarFrameIcon:SetPoint("CENTER", CastingBarFrame, "TOP", 0, 24);
+	CastingBarFrameIcon:Show()
+	CastingBarFrameIcon:SetSize(30, 30)
+	CastingBarFrameIcon:ClearAllPoints()
+	CastingBarFrameIcon:SetPoint("CENTER", CastingBarFrame, "TOP", 0, 24)
 	
 	-- Target Castbar
-	TargetFrameSpellBar:ClearAllPoints();
-	TargetFrameSpellBar:SetPoint("CENTER", UIParent, "CENTER", 10, 150);
+	TargetFrameSpellBar:ClearAllPoints()
+	TargetFrameSpellBar:SetPoint("CENTER", UIParent, "CENTER", 10, 150)
 	TargetFrameSpellBar.SetPoint = K.Dummy;
-	TargetFrameSpellBar:SetScale( C.unitframe.cbscale );
+	TargetFrameSpellBar:SetScale( C.unitframe.cbscale )
 	
 	-- Casting Timer
-	CastingBarFrame.timer = CastingBarFrame:CreateFontString(nil);
-	CastingBarFrame.timer:SetFont(C.font.basic_font, C.font.basic_font_size + 1, C.font.basic_font_style);
-	CastingBarFrame.timer:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, -3);
+	CastingBarFrame.timer = CastingBarFrame:CreateFontString(nil)
+	CastingBarFrame.timer:SetFont(C.font.basic_font, C.font.basic_font_size + 1)
+	CastingBarFrame.timer:SetShadowOffset(1, -1)
+	CastingBarFrame.timer:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, -3)
 	CastingBarFrame.updateDelay = 0.1;
 end
 
@@ -148,8 +153,8 @@ local function UF_HandleEvents( self, event, ... )
 	
 	if( event == "PLAYER_ENTERING_WORLD" ) then
 		if( InCombatLockdown() == false ) then
-			SetUnitFrames();
-			MoveCastBar();
+			SetUnitFrames()
+			MoveCastBar()
 		end
 	end
 	
@@ -246,19 +251,19 @@ local function UF_HandleEvents( self, event, ... )
 	if( event == "UNIT_EXITED_VEHICLE" or event == "UNIT_ENTERED_VEHICLE" ) then
 		if( InCombatLockdown() == false )then
 			if( UnitControllingVehicle("player") or UnitHasVehiclePlayerFrameUI("player") ) then
-				SetUnitFrames();
+				SetUnitFrames()
 			end
 		end
 	end
 end
 
 local function UF_Init()
-	Unitframes:SetScript( "OnEvent", UF_HandleEvents );
-	LoadAddOn("Blizzard_ArenaUI");
+	Unitframes:SetScript( "OnEvent", UF_HandleEvents )
+	LoadAddOn("Blizzard_ArenaUI")
 	
-	Unitframes:RegisterEvent( "PLAYER_ENTERING_WORLD" );
-	Unitframes:RegisterEvent( "ADDON_LOADED" );
-	Unitframes:RegisterEvent( "UNIT_EXITED_VEHICLE" );
+	Unitframes:RegisterEvent( "PLAYER_ENTERING_WORLD" )
+	Unitframes:RegisterEvent( "ADDON_LOADED" )
+	Unitframes:RegisterEvent( "UNIT_EXITED_VEHICLE" )
 end
 
 -- Remove Portrait Damage Spam
@@ -279,11 +284,11 @@ function CastingUpdate(self, elapsed)
 	end
 	if( self.updateDelay ) and (self.updateDelay < elapsed ) then
 		if( self.casting ) then
-			self.timer:SetText( format( "%2.1f / %1.1f", max( self.maxValue - self.value, 0), self.maxValue ));
+			self.timer:SetText( format( "%2.1f / %1.1f", max( self.maxValue - self.value, 0), self.maxValue ))
 		elseif( self.channeling ) then
-			self.timer:SetText( format( "%.1f", max( self.value, 0 )));
+			self.timer:SetText( format( "%.1f", max( self.value, 0 )))
 		else
-			self.timer:SetText("");
+			self.timer:SetText("")
 		end
 		self.updateDelay = 0.1;
 	else
@@ -292,9 +297,8 @@ function CastingUpdate(self, elapsed)
 end
 
 do
-	hooksecurefunc("UnitFramePortrait_Update", UnitFramePortrait_Update) ;
-	hooksecurefunc("CastingBarFrame_OnUpdate", CastingUpdate);
+	hooksecurefunc("CastingBarFrame_OnUpdate", CastingUpdate)
 end
 
 -- Run Initialisation
-UF_Init();
+UF_Init()

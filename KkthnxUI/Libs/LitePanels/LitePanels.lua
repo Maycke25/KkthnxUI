@@ -21,7 +21,7 @@ lpanels = {
 			justify_h = "CENTER", justify_v = "MIDDLE",
 			anchor_to = "CENTER", anchor_from = "CENTER",
 			x_off = 0, y_off = 0, color = "1 1 1", alpha = 1,
-			shadow = {color = "0 0 0", alpha = 1, y = -1, x = 1},
+			shadow = {color = "0 0 0", alpha = 1, y = -0.75, x = 0.75},
 		}
 	},
 	events = {"OnEvent", "OnUpdate", "OnResize", "OnClick", "OnDoubleClick", "OnMouseUp", "OnMouseDown", "OnEnter", "OnLeave", "OnHide", "OnShow"},

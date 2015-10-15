@@ -1,9 +1,7 @@
 ﻿local K, C, L, _ = unpack(select(2, ...))
 
-----------------------------------------------------------------------------------------
---	LitePanels configuration file
---	BACKUP THIS FILE BEFORE UPDATING!
-----------------------------------------------------------------------------------------
+-- LitePanels configuration file
+-- BACKUP THIS FILE BEFORE UPDATING!
 lpanels:CreateLayout("Load For All", {
 
 -- AFK panel

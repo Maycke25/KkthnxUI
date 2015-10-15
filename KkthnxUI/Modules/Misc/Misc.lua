@@ -8,7 +8,7 @@ NumberFontNormalSmallGray:SetFontObject(HKfont)
 
 -- Fade in/out world when GameMenu is opened
 if C.misc.fadegamemenu == true then
-	local GMFade = UIParent:CreateTexture(nil, 'BACKGROUND')
+	local GMFade = UIParent:CreateTexture(nil, 'ARTWORK')
 	GMFade:SetAllPoints(UIParent)
 	GMFade:SetTexture(0, 0, 0)
 	GMFade:Hide()
